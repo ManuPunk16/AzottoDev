@@ -1,1 +1,40 @@
-<p>contact works!</p>
+<div class="container">
+  <h2>Formulario de Contacto</h2>
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre *</label>
+      <input type="text" class="form-control" id="name" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+        El nombre es requerido.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="company" class="form-label">Empresa</label>
+      <input type="text" class="form-control" id="company" formControlName="company">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo Electrónico *</label>
+      <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+      <div *ngIf="submitted && f['email'].errors?.['required']" class="invalid-feedback">
+        El correo electrónico es requerido.
+      </div>
+      <div *ngIf="submitted && f['email'].errors?.['email']" class="invalid-feedback">
+        Ingrese un correo electrónico válido.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Mensaje *</label>
+      <textarea class="form-control" id="message" rows="5" formControlName="message" [ngClass]="{ 'is-invalid': submitted && f['message'].errors }"></textarea>
+      <div *ngIf="submitted && f['message'].errors" class="invalid-feedback">
+        El mensaje es requerido.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="submitted">
+      <span *ngIf="submitted" class="spinner-border spinner-border-sm me-2"></span>
+      Enviar
+    </button>
+  </form>
+</div>
+

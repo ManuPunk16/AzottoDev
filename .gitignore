@@ -43,3 +43,8 @@ Thumbs.db
 
 # Junk
 src/app/environments
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
