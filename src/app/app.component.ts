@@ -1,45 +1,33 @@
-import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { ThemeService } from './services/theme.service';
-import { MediaMatcher } from '@angular/cdk/layout';
+import { NgOptimizedImage, NgIf } from '@angular/common';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-root',
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    NgIf,
+    NgOptimizedImage,
+    MarkdownModule,
+  ],
+  standalone: true,
   templateUrl: './app.component.html',
-  standalone: false,
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnDestroy, OnInit {
-  title = 'azottodev';
+export class AppComponent implements OnInit {
 
-  private themeSubscription!: Subscription;
-  isDarkTheme = false;
+  currentYear!: number;
 
-  mobileQuery: MediaQueryList;
+  constructor(
+    public themeService: ThemeService
+  ) {
 
-  private _mobileQueryListener: () => void;
-
-  constructor(private themeService: ThemeService) {
-    const changeDetectorRef = inject(ChangeDetectorRef);
-    const media = inject(MediaMatcher);
-
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  ngOnInit() {
-    this.themeSubscription = this.themeService.isDarkTheme$.subscribe(isDarkTheme => {
-      this.isDarkTheme = isDarkTheme;
-    });
-  }
-
-  toggleTheme() {
-    this.isDarkTheme = !this.isDarkTheme;
-    this.themeService.setDarkTheme(this.isDarkTheme);
+  ngOnInit(): void {
+    this.currentYear = new Date().getFullYear();
   }
 }

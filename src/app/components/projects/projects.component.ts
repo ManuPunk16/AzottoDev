@@ -1,23 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Cards } from '../../models/cards.model';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-projects',
-  standalone: false,
+  imports: [
 
+  ],
+  standalone: true,
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })
-export class ProjectsComponent implements OnInit {
-
-  public cards = Cards.cards;
-
-  constructor() {
-
-  }
-
-  ngOnInit(): void {
-
-  }
+export class ProjectsComponent {
 
 }
