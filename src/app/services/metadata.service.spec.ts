@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ContactService } from './contact.service';
+import { MetadataService } from './metadata.service';
 
-describe('ContactService', () => {
-  let service: ContactService;
+describe('MetadataService', () => {
+  let service: MetadataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ContactService);
+    service = TestBed.inject(MetadataService);
   });
 
   it('should be created', () => {

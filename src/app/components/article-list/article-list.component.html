@@ -1,0 +1,7 @@
+<h2>Lista de Artículos</h2>
+<ul>
+  <li *ngFor="let article of articles">
+    <a [routerLink]="['/articles', article.slug]">{{ article.title }}</a>
+  </li>
+</ul>
+

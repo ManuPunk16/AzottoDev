@@ -40,11 +40,3 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-
-# Junk
-src/app/environments
-
-# Firebase
-.firebase
-*-debug.log
-.runtimeconfig.json
