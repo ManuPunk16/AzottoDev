@@ -41,11 +41,15 @@ testem.log
 .DS_Store
 Thumbs.db
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 986c8b2eb36f53dad37970eec17e3223e971c506
 
 # Firebase
 .firebase
 *-debug.log
 .runtimeconfig.json
+<<<<<<< HEAD
 
 # Environment files
 /src/environments/*.ts
@@ -64,3 +68,5 @@ firebase-debug.log
 firebase-hosting-*.cache
 =======
 >>>>>>> bbb0e7422d75cb60ab425e1535372dfe2fce8c27
+=======
+>>>>>>> 986c8b2eb36f53dad37970eec17e3223e971c506
