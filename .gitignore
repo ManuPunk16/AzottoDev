@@ -40,6 +40,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+<<<<<<< HEAD
 
 # Firebase
 .firebase
@@ -61,3 +62,5 @@ firebase-debug.log
 
 # Deployment specific files
 firebase-hosting-*.cache
+=======
+>>>>>>> bbb0e7422d75cb60ab425e1535372dfe2fce8c27
