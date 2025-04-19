@@ -6,7 +6,7 @@
     "date": "2025-04-15",
     "author": "Azotto",
     "category": "Frontend",
-    "tags": ["Angular", "JavaScript", "TypeScript", "Web Development"],
+    "tags": ["Angular", "JavaScript", "TypeScript", "Web Development", "SSR", "Performance", "Signals", "DX"],
     "image": "/assets/images/articles/angular19.webp",
     "readTime": 8,
     "featured": true,
