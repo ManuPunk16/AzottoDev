@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { ThemeService } from './services/theme.service';
 import { NgOptimizedImage, NgIf } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
@@ -22,12 +22,18 @@ export class AppComponent implements OnInit {
   currentYear!: number;
 
   constructor(
-    public themeService: ThemeService
+    public themeService: ThemeService,
+    private router: Router
   ) {
 
   }
 
   ngOnInit(): void {
     this.currentYear = new Date().getFullYear();
+    const redirectPath = sessionStorage.getItem('redirectPath');
+    if (redirectPath) {
+      sessionStorage.removeItem('redirectPath');
+      this.router.navigateByUrl(redirectPath);
+    }
   }
 }
