@@ -1,0 +1,41 @@
+.article-card {
+  position: relative;
+
+  &:hover {
+    .article-title {
+      color: var(--primary-500);
+    }
+  }
+}
+
+// Animación para el estado de carga
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading-placeholder {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+// Asegura que las tarjetas sean de la misma altura
+.article-card {
+  display: flex;
+  flex-direction: column;
+
+  .article-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// Mejora la accesibilidad para enlaces
+a:focus {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}

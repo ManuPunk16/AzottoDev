@@ -1,7 +1,71 @@
-<h2>Lista de Artículos</h2>
-<ul>
-  <li *ngFor="let article of articles">
-    <a [routerLink]="['/articles', article.slug]">{{ article.title }}</a>
-  </li>
-</ul>
+<div class="mb-8">
+  <h2 class="text-3xl font-bold text-[var(--primary-900)] mb-6">Artículos</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let article of articles"
+         class="article-card rounded-lg overflow-hidden shadow-md transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1 bg-[var(--background-primary)]">
+
+      <!-- Badge para artículos destacados -->
+      <div *ngIf="article.featured"
+           class="absolute top-4 right-4 bg-[var(--primary-500)] text-[var(--primary-100)] text-xs font-semibold px-2 py-1 rounded-full z-10">
+        Destacado
+      </div>
+
+      <a [routerLink]="['/articles', article.slug]" class="block h-full">
+        <!-- Imagen del artículo -->
+        <div class="relative h-48 w-full overflow-hidden">
+          <img [src]="article.image || '/assets/images/default-article.webp'"
+               [alt]="article.title"
+               class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+        </div>
+
+        <!-- Contenido del artículo -->
+        <div class="p-5">
+          <!-- Meta información -->
+          <div class="flex flex-wrap gap-2 text-xs mb-3">
+            <span class="px-2 py-1 rounded-full bg-[var(--tertiary-500)] text-[var(--tertiary-100)]">
+              {{ article.category }}
+            </span>
+            <span class="px-2 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)]">
+              {{ article.date | date:'dd MMM yyyy' }}
+            </span>
+            <span class="px-2 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)]">
+              {{ article.readTime }} min lectura
+            </span>
+          </div>
+
+          <!-- Título y descripción -->
+          <h3 class="text-xl font-semibold mb-2 text-[var(--primary-900)] line-clamp-2">{{ article.title }}</h3>
+          <p class="text-[var(--text-secondary)] mb-4 line-clamp-3">{{ article.excerpt }}</p>
+
+          <!-- Autor -->
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 bg-[var(--primary-500)] rounded-full flex items-center justify-center text-[var(--primary-100)]">
+              {{ article.author.charAt(0) }}
+            </div>
+            <span class="text-sm text-[var(--text-secondary)]">{{ article.author }}</span>
+          </div>
+
+          <!-- Etiquetas -->
+          <div class="flex flex-wrap gap-1 mt-2">
+            <span *ngFor="let tag of article.tags"
+                  class="text-xs px-2 py-1 rounded-md bg-[var(--background-secondary)] text-[var(--text-secondary)]">
+              {{ tag }}
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Estado de carga -->
+  <div *ngIf="loading" class="flex justify-center items-center py-20">
+    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--primary-500)]"></div>
+  </div>
+
+  <!-- Mensaje cuando no hay artículos -->
+  <div *ngIf="!loading && articles.length === 0" class="text-center py-20">
+    <p class="text-xl text-[var(--text-secondary)]">No se encontraron artículos disponibles.</p>
+  </div>
+</div>
 

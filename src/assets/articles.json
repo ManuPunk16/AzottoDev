@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "introduccion-a-angular",
+    "title": "Introducción a Angular 19: Novedades y mejoras",
+    "description": "Un recorrido completo por las nuevas características de Angular 19 y cómo pueden mejorar tus proyectos frontend.",
+    "date": "2025-04-15",
+    "author": "Azotto",
+    "category": "Frontend",
+    "tags": ["Angular", "JavaScript", "TypeScript", "Web Development"],
+    "image": "/assets/images/articles/angular19.webp",
+    "readTime": 8,
+    "featured": true,
+    "excerpt": "Angular 19 trae importantes mejoras de rendimiento y nuevas APIs que facilitan el desarrollo."
+  },
+  {
+    "slug": "tailwind-en-angular",
+    "title": "Tailwind CSS 4 y Angular: La combinación perfecta",
+    "description": "Aprende a integrar y sacar el máximo provecho de Tailwind CSS 4 en tus aplicaciones Angular.",
+    "date": "2025-04-01",
+    "author": "Azotto",
+    "category": "CSS",
+    "tags": ["Tailwind CSS", "Angular", "Diseño Web", "Frontend"],
+    "image": "/assets/images/articles/tailwind-angular.webp",
+    "readTime": 6,
+    "featured": false,
+    "excerpt": "Tailwind CSS 4 introduce varias mejoras que se integran perfectamente con Angular."
+  },
+  {
+    "slug": "componentes-standalone",
+    "title": "Componentes Standalone: Simplificando la arquitectura Angular",
+    "description": "Descubre cómo los componentes standalone pueden hacer tu código más limpio y mantenible en proyectos grandes.",
+    "date": "2025-03-22",
+    "author": "Azotto",
+    "category": "Angular",
+    "tags": ["Angular", "Arquitectura", "Buenas Prácticas"],
+    "image": "/assets/images/articles/standalone.webp",
+    "readTime": 10,
+    "featured": true,
+    "excerpt": "Los componentes standalone son una de las mejores innovaciones de Angular reciente. Aprende a aprovecharlos al máximo en tu próximo proyecto."
+  }
+]

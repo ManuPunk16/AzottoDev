@@ -1,1 +1,141 @@
-<markdown [data]="articleContent"></markdown>
+<div class="container mx-auto max-w-4xl px-4 py-8" *ngIf="!loading && !error">
+  <!-- Header del artículo -->
+  <div class="mb-8">
+    <!-- Meta información -->
+    <div class="flex flex-wrap gap-2 mb-4 text-sm">
+      <span class="px-3 py-1 rounded-full bg-[var(--tertiary-500)] text-[var(--tertiary-100)]">
+        {{ articleMetadata?.category }}
+      </span>
+      <span class="px-3 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)]">
+        {{ articleMetadata?.date | date:'dd MMM yyyy' }}
+      </span>
+      <span class="px-3 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)] flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        {{ articleMetadata?.readTime }} min de lectura
+      </span>
+    </div>
+
+    <!-- Título y descripción -->
+    <h1 class="text-4xl font-bold text-[var(--primary-900)] mb-4">{{ articleMetadata?.title }}</h1>
+    <p class="text-xl text-[var(--text-secondary)] mb-6">{{ articleMetadata?.description }}</p>
+
+    <!-- Autor -->
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-10 h-10 bg-[var(--primary-500)] rounded-full flex items-center justify-center text-[var(--primary-100)] text-lg font-semibold">
+        {{ articleMetadata?.author?.charAt(0) }}
+      </div>
+      <span class="text-[var(--text-secondary)]">Por <span class="font-medium text-[var(--primary-900)]">{{ articleMetadata?.author }}</span></span>
+    </div>
+
+    <!-- Etiquetas -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      <span *ngFor="let tag of articleMetadata?.tags"
+            class="px-3 py-1 text-sm rounded-md bg-[var(--background-secondary)] text-[var(--text-secondary)] hover:bg-[var(--primary-100)] transition-colors duration-200">
+        #{{ tag }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Imagen destacada -->
+  <div class="mb-10 rounded-xl overflow-hidden shadow-lg" *ngIf="articleMetadata?.image">
+    <img [src]="articleMetadata?.image"
+         [alt]="articleMetadata?.title"
+         class="w-full h-auto object-cover">
+  </div>
+
+  <!-- Contenido del artículo -->
+  <div class="prose prose-lg max-w-none text-[var(--text-primary)]">
+    <!-- Renderizamos cada bloque según su tipo -->
+    <ng-container *ngFor="let block of articleContent">
+      <!-- Encabezados -->
+      <h1 *ngIf="block.type === 'heading' && block.level === 1"
+          class="text-3xl font-bold mt-10 mb-6 text-[var(--primary-900)]">
+        {{ block.text }}
+      </h1>
+      <h2 *ngIf="block.type === 'heading' && block.level === 2"
+          class="text-2xl font-semibold mt-8 mb-4 text-[var(--primary-900)]">
+        {{ block.text }}
+      </h2>
+      <h3 *ngIf="block.type === 'heading' && block.level === 3"
+          class="text-xl font-semibold mt-6 mb-3 text-[var(--primary-900)]">
+        {{ block.text }}
+      </h3>
+      <h4 *ngIf="block.type === 'heading' && block.level === 4"
+          class="text-lg font-semibold mt-5 mb-2 text-[var(--primary-900)]">
+        {{ block.text }}
+      </h4>
+
+      <!-- Párrafos -->
+      <p *ngIf="block.type === 'paragraph'"
+         class="mb-6 leading-relaxed"
+         [innerHTML]="block.text">
+      </p>
+
+      <!-- Listas -->
+      <ul *ngIf="block.type === 'list'"
+          class="list-disc pl-6 mb-6 space-y-2">
+        <li *ngFor="let item of block.items"
+            class="pl-2"
+            [innerHTML]="item">
+        </li>
+      </ul>
+
+      <!-- Imágenes -->
+      <figure *ngIf="block.type === 'image'"
+              class="my-8">
+        <img [src]="block.src"
+             [alt]="block.alt || ''"
+             class="w-full h-auto rounded-lg shadow">
+        <figcaption *ngIf="block.alt"
+                   class="text-center text-sm text-[var(--text-secondary)] mt-2">
+          {{ block.alt }}
+        </figcaption>
+      </figure>
+
+      <!-- Enlaces destacados -->
+      <div *ngIf="block.type === 'link'"
+           class="my-6 p-4 border-l-4 border-[var(--primary-500)] bg-[var(--background-secondary)] rounded-r">
+        <a [href]="block.url"
+           target="_blank"
+           class="text-[var(--primary-500)] hover:text-[var(--primary-700)] font-medium flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+          {{ block.text }}
+        </a>
+      </div>
+
+      <!-- Bloques de código -->
+      <div *ngIf="block.type === 'code'"
+           class="my-6 rounded-lg overflow-hidden">
+        <div class="bg-gray-800 text-gray-200 px-4 py-2 text-sm font-mono">
+          {{ block.language || 'código' }}
+        </div>
+        <pre class="bg-gray-900 text-gray-100 p-4 overflow-x-auto"><code [class]="block.language">{{ block.code }}</code></pre>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Estado de carga -->
+<div *ngIf="loading"
+     class="flex flex-col items-center justify-center min-h-[50vh] py-20">
+  <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[var(--primary-500)] mb-4"></div>
+  <p class="text-[var(--text-secondary)] text-xl">Cargando artículo...</p>
+</div>
+
+<!-- Estado de error -->
+<div *ngIf="error"
+     class="text-center py-20 max-w-md mx-auto">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-red-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+  <h2 class="text-2xl font-bold text-[var(--primary-900)] mb-2">No se pudo cargar el artículo</h2>
+  <p class="text-[var(--text-secondary)] mb-6">Lo sentimos, ha ocurrido un error al intentar cargar el contenido.</p>
+  <button (click)="loadArticleContent()"
+          class="px-4 py-2 bg-[var(--primary-500)] text-[var(--primary-100)] rounded-lg hover:bg-[var(--primary-600)] transition-colors">
+    Intentar nuevamente
+  </button>
+</div>

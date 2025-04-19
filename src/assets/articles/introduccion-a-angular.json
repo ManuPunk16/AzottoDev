@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "slug": "introduccion-a-angular",
+    "title": "Introducción a Angular 19: Novedades y mejoras",
+    "description": "Un recorrido completo por las nuevas características de Angular 19 y cómo pueden mejorar tus proyectos frontend.",
+    "date": "2025-04-15",
+    "author": "Azotto",
+    "category": "Frontend",
+    "tags": ["Angular", "JavaScript", "TypeScript", "Web Development"],
+    "image": "/assets/images/articles/angular19.webp",
+    "readTime": 8,
+    "featured": true,
+    "excerpt": "Angular 19 trae importantes mejoras de rendimiento y nuevas APIs que facilitan el desarrollo."
+  },
+  "content": [
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "Introducción a Angular 19"
+    },
+    {
+      "type": "paragraph",
+      "text": "Angular 19 trae importantes mejoras de rendimiento y nuevas APIs que facilitan el desarrollo."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Principales novedades"
+    },
+    {
+      "type": "list",
+      "items": [
+        "**Standalone APIs**: Ahora son el enfoque predeterminado",
+        "**Mejoras en el rendimiento**: Hasta un 30% más rápido",
+        "**Nuevo sistema de señales**: Para gestión de estado más reactiva"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conclusión"
+    },
+    {
+      "type": "paragraph",
+      "text": "Angular sigue evolucionando para ofrecer mejores herramientas a los desarrolladores frontend modernos."
+    }
+  ]
+}
