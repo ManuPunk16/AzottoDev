@@ -46,7 +46,7 @@ Thumbs.db
 >>>>>>> 986c8b2eb36f53dad37970eec17e3223e971c506
 
 # Firebase
-.firebase
+/.firebase
 *-debug.log
 .runtimeconfig.json
 <<<<<<< HEAD
