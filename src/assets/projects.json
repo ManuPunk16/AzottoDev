@@ -1,0 +1,41 @@
+[
+  {
+    "id": "azotto-dev",
+    "title": "AzottoDev Portfolio",
+    "description": "Portafolio personal y blog técnico desarrollado con Angular y Tailwind CSS.",
+    "longDescription": "Portfolio personal que muestra mis proyectos y artículos técnicos. Desarrollado con Angular 19, utiliza componentes standalone y cuenta con un sistema de temas claro/oscuro. El diseño es totalmente responsive y optimizado para SEO.",
+    "imageUrl": "/assets/images/projects/azottodev.webp",
+    "technologies": ["Angular", "TypeScript", "Tailwind CSS", "Firebase"],
+    "demoUrl": "https://azotodev.web.app",
+    "repoUrl": "https://github.com/azotto/portfolio",
+    "featured": true,
+    "date": "2025-03-15",
+    "category": "Web"
+  },
+  {
+    "id": "weather-app",
+    "title": "Weather Forecast",
+    "description": "Aplicación de pronóstico del tiempo que muestra información meteorológica en tiempo real.",
+    "longDescription": "Aplicación web que consume la API de OpenWeather para mostrar pronósticos detallados. Permite buscar ciudades, guardar ubicaciones favoritas y ver métricas avanzadas como humedad, viento y presión atmosférica.",
+    "imageUrl": "/assets/images/projects/weather-app.webp",
+    "technologies": ["Angular", "RxJS", "Chart.js", "OpenWeather API"],
+    "demoUrl": "https://weather.azotto.dev",
+    "repoUrl": "https://github.com/azotto/weather-app",
+    "featured": false,
+    "date": "2025-02-10",
+    "category": "Web"
+  },
+  {
+    "id": "task-manager",
+    "title": "Task Manager",
+    "description": "Aplicación de gestión de tareas con funcionalidades de organización y recordatorios.",
+    "longDescription": "Sistema de gestión de tareas con autenticación de usuarios, categorías, etiquetas, recordatorios por email y filtros avanzados. Desarrollado con Angular para el frontend y Node.js/Express para el backend.",
+    "imageUrl": "/assets/images/projects/task-manager.webp",
+    "technologies": ["Angular", "Node.js", "Express", "MongoDB"],
+    "demoUrl": "https://tasks.azotto.dev",
+    "repoUrl": "https://github.com/azotto/task-manager",
+    "featured": true,
+    "date": "2025-01-20",
+    "category": "Fullstack"
+  }
+]
