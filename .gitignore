@@ -45,3 +45,19 @@ Thumbs.db
 .firebase
 *-debug.log
 .runtimeconfig.json
+
+# Environment files
+/src/environments/*.ts
+!/src/environments/environment.ts.example
+
+# Firebase configuration
+.firebaserc
+firebase-debug.log
+
+# Local configuration files
+*.local.ts
+*.local.js
+*.local.json
+
+# Deployment specific files
+firebase-hosting-*.cache
