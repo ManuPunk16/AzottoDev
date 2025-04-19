@@ -19,6 +19,12 @@
   --background-secondary: #e0e0e0; /* Gris ligeramente más oscuro */
 
   transition: background-color 0.3s ease, color 0.3s ease;
+
+  /* Nuevas variables para código y elementos markdown */
+  --primary-700: #606060; /* Para código inline en tema claro */
+  --code-background: var(--secondary-100);
+  --link-color: var(--primary-500);
+  --link-hover-color: var(--primary-700);
 }
 
 [data-theme="dark"] {
@@ -40,6 +46,12 @@
   --background-secondary: #282828; /* Gris ligeramente más claro */
 
   transition: background-color 0.3s ease, color 0.3s ease;
+
+  /* Nuevas variables para código y elementos markdown */
+  --primary-700: #c0c0c0; /* Para código inline en tema oscuro */
+  --code-background: var(--secondary-100);
+  --link-color: var(--primary-500);
+  --link-hover-color: var(--primary-300);
 }
 
 body {

@@ -67,20 +67,22 @@
         {{ block.text }}
       </h4>
 
-      <!-- Párrafos -->
+      <!-- Párrafos con soporte para Markdown -->
       <p *ngIf="block.type === 'paragraph'"
          class="mb-6 leading-relaxed"
-         [innerHTML]="block.text">
+         [innerHTML]="renderMarkdown(block.text || '')">
       </p>
 
-      <!-- Listas -->
-      <ul *ngIf="block.type === 'list'"
-          class="list-disc pl-6 mb-6 space-y-2">
-        <li *ngFor="let item of block.items"
-            class="pl-2"
-            [innerHTML]="item">
-        </li>
-      </ul>
+      <!-- Listas con estilo mejorado -->
+      <div *ngIf="block.type === 'list'" class="mb-6">
+        <ul class="space-y-4">
+          <li *ngFor="let item of block.items"
+              class="pl-2 flex">
+            <span class="text-[var(--primary-500)] mr-2">•</span>
+            <div [innerHTML]="renderMarkdown(item)" class="flex-1"></div>
+          </li>
+        </ul>
+      </div>
 
       <!-- Imágenes -->
       <figure *ngIf="block.type === 'image'"

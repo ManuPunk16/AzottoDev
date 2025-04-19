@@ -1,48 +1,94 @@
 {
   "metadata": {
-    "slug": "introduccion-a-angular",
-    "title": "Introducción a Angular 19: Novedades y mejoras",
-    "description": "Un recorrido completo por las nuevas características de Angular 19 y cómo pueden mejorar tus proyectos frontend.",
-    "date": "2025-04-15",
+    "slug": "introduccion-angular-v19",
+    "title": "Novedades Clave de Angular v19: Rendimiento, DX y Reactividad Mejorados",
+    "description": "Explora las características destacadas de Angular v19, incluyendo hidratación incremental (preview), HMR mejorado, APIs de señales estables y nuevas herramientas para desarrolladores.",
+    "date": "2024-11-25",
     "author": "Azotto",
     "category": "Frontend",
-    "tags": ["Angular", "JavaScript", "TypeScript", "Web Development"],
+    "tags": ["Angular", "JavaScript", "TypeScript", "Web Development", "SSR", "Performance", "Signals", "DX"],
     "image": "/assets/images/articles/angular19.webp",
-    "readTime": 8,
+    "readTime": 12,
     "featured": true,
-    "excerpt": "Angular 19 trae importantes mejoras de rendimiento y nuevas APIs que facilitan el desarrollo."
+    "excerpt": "Angular v19 llega con avances significativos en SSR con hidratación incremental (preview), mejoras en DX como HMR para estilos, y la estabilización de las APIs de señales."
   },
   "content": [
     {
       "type": "heading",
       "level": 1,
-      "text": "Introducción a Angular 19"
+      "text": "Introducción a Angular v19: Más Rápido y Mejor Experiencia"
     },
     {
       "type": "paragraph",
-      "text": "Angular 19 trae importantes mejoras de rendimiento y nuevas APIs que facilitan el desarrollo."
+      "text": "Angular v19 continúa la fuerte inversión en rendimiento y experiencia de desarrollador (DX) vista en versiones recientes. Esta versión trae avances clave en Server-Side Rendering (SSR), herramientas de desarrollo más eficientes y la maduración de su sistema de reactividad basado en señales."
     },
     {
       "type": "heading",
       "level": 2,
-      "text": "Principales novedades"
+      "text": "Avances Significativos en Rendimiento y SSR"
     },
     {
       "type": "list",
       "items": [
-        "**Standalone APIs**: Ahora son el enfoque predeterminado",
-        "**Mejoras en el rendimiento**: Hasta un 30% más rápido",
-        "**Nuevo sistema de señales**: Para gestión de estado más reactiva"
+        "**Hidratación Incremental (Developer Preview):** Permite anotar partes de la plantilla con `@defer (hydrate on ...)` para cargar e hidratar esos componentes de forma diferida en SSR. Esto mejora drásticamente el *Time to Interactive* (TTI) al no necesitar todo el JavaScript de la página de inmediato. ¡Una función muy esperada!",
+        "**Replay de Eventos por Defecto (Estable):** En SSR, captura eventos del usuario (como clics) que ocurren antes de que el JavaScript se cargue por completo y los reproduce después. Esto evita interacciones perdidas y ahora está habilitado por defecto para nuevos proyectos SSR.",
+        "**Modo de Renderizado por Ruta (Developer Preview):** Permite configurar a nivel de ruta si esta debe ser renderizada en el servidor (SSR), pre-renderizada (SSG), o renderizada en el cliente (CSR), ofreciendo un control granular sobre la estrategia de renderizado.",
+        "**Resolución de Parámetros en Pre-renderizado:** Facilita la obtención de parámetros de ruta dinámicos durante el pre-renderizado usando `getPrerenderPaths` dentro de la configuración de rutas del servidor.",
+        "**Avances en SSR Zoneless (Experimental):** Continúa el trabajo para permitir SSR sin depender de `zone.js`, un paso clave hacia un Angular completamente 'zoneless'."
       ]
     },
     {
       "type": "heading",
       "level": 2,
-      "text": "Conclusión"
+      "text": "Mejoras Clave en la Experiencia de Desarrollador (DX)"
+    },
+    {
+      "type": "list",
+      "items": [
+        "**Hot Module Replacement (HMR) Mejorado:** HMR para estilos ahora está activo por defecto, reflejando cambios CSS sin recargar la página. HMR para plantillas es experimental (`NG_HMR_TEMPLATES=1`), prometiendo ciclos de desarrollo aún más rápidos.",
+        "**Standalone APIs por Defecto:** Los nuevos proyectos generados con el CLI usarán Standalone APIs por defecto. Un schematic de `ng update` simplifica los componentes existentes eliminando `standalone: true` donde ya es el default.",
+        "**Schematics desde el Language Service:** ¡Genial! Ahora puedes ejecutar migraciones (como pasar a Signal Inputs/Outputs/Queries) directamente desde tu editor (VSCode) a través de acciones rápidas del Angular Language Service.",
+        "**Variables Locales en Plantillas (`@let`) Estable:** La sintaxis `@let` para declarar variables locales dentro de las plantillas (introducida en v18.1) ahora es estable. Muy útil para simplificar plantillas complejas.",
+        "**Variables de Entorno en Build:** Se introduce el flag `ng build --define \"VAR_NAME='$VALUE'\"` para pasar variables de entorno directamente durante el proceso de build.",
+        "**Avisos de Imports No Usados:** El CLI y el Language Service ahora detectan y advierten sobre imports no utilizados en componentes Standalone, ayudando a mantener el código limpio."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Evolución y Estabilización de la Reactividad (Signals)"
+    },
+    {
+      "type": "list",
+      "items": [
+        "**APIs de Signals Estables (Input, Output, Queries):** ¡Finalmente! Las APIs basadas en señales como `input()`, `output()`, `viewChild()`, `contentChild()` son ahora estables. Se proporcionan schematics (`ng generate @angular/core:signals`) para facilitar la migración.",
+        "**`linkedSignal` (Experimental):** Una nueva primitiva para crear señales cuyo estado puede ser modificado pero que también reacciona y se resetea basado en otras señales. Útil para UI complejas.",
+        "**`resource()` (Experimental):** Una API experimental para manejar operaciones asíncronas (como llamadas HTTP) dentro del grafo de señales, exponiendo estados como loading, resolved, error. Un paso hacia la integración asíncrona con señales.",
+        "**`effect()` Sigue en Developer Preview:** Se mantiene experimental para recoger más feedback y asegurar que su semántica sea correcta antes de estabilizar."
+      ]
+    },
+     {
+      "type": "heading",
+      "level": 2,
+      "text": "Novedades en Angular Material y CDK"
+    },
+    {
+       "type": "list",
+       "items": [
+        "**Theming Simplificado (Material 3):** Nueva API `mat.theme` para aplicar temas completos con un solo mixin y API de `overrides` para personalizar tokens específicos más fácilmente.",
+        "**CDK Drag & Drop Bidimensional:** Soporte para arrastrar y soltar elementos en listas con orientación mixta (horizontal y vertical).",
+        "**CDK Reordenación de Pestañas:** Funcionalidad en el CDK para hacer que las pestañas sean fácilmente reordenables.",
+        "**Nuevo Componente Time Picker:** ¡Uno de los componentes más solicitados! Angular Material ahora incluye un componente nativo para seleccionar la hora."
+       ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conclusión: Un Paso Firme Hacia el Futuro"
     },
     {
       "type": "paragraph",
-      "text": "Angular sigue evolucionando para ofrecer mejores herramientas a los desarrolladores frontend modernos."
+      "text": "Angular v19 solidifica muchas de las iniciativas recientes, especialmente en rendimiento SSR y la adopción de Signals. Aunque características emocionantes como la hidratación incremental, `resource()` y Zoneless siguen siendo experimentales, la dirección es clara: un Angular más rápido, moderno y con mejor DX. La estabilización de las APIs de Signals es un hito importantísimo que invita a modernizar nuestras aplicaciones."
     }
   ]
 }
