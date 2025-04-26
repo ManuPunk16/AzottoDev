@@ -266,39 +266,31 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
 
   // Añade estos métodos
   preventClickCapture(event: MouseEvent) {
-    // Prevenir que clics en el contenedor exterior bloqueen eventos
-    event.stopPropagation();
+    // Solo detener la propagación para clicks específicos, no para todos
+    if (event.target === event.currentTarget) {
+      event.stopPropagation();
+    }
   }
 
+  // Mejorar los métodos de manejo de eventos táctiles
   handleTouchStart(event: TouchEvent) {
-    // Registrar posición inicial del toque
+    // Registramos la posición, pero IMPORTANTE: no detener la propagación
     this.touchStartX = event.touches[0].clientX;
     this.touchStartY = event.touches[0].clientY;
-    this.isSwiping = false;
   }
 
   handleTouchMove(event: TouchEvent) {
-    if (!this.touchStartX || !this.touchStartY) return;
-
-    // Calcular la distancia del movimiento
-    const deltaX = event.touches[0].clientX - this.touchStartX;
-    const deltaY = event.touches[0].clientY - this.touchStartY;
-
-    // Si el movimiento es principalmente horizontal y significativo
-    if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
-      this.isSwiping = true;
+    // Si es scrolling horizontal dentro del código, prevenir navegación lateral
+    if (Math.abs(event.touches[0].clientX - this.touchStartX) > 10) {
+      event.stopPropagation();
     }
+    // No retornar nada, permitir comportamiento por defecto
   }
 
   handleTouchEnd(event: TouchEvent) {
-    // Si se detectó un swipe, permitir la navegación del navegador
-    if (this.isSwiping) {
-      event.stopPropagation();
-    }
-
-    // Resetear variables
+    // Crítico: NO detener la propagación aquí
+    // Solo limpiar variables
     this.touchStartX = 0;
     this.touchStartY = 0;
-    this.isSwiping = false;
   }
 }

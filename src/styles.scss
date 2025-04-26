@@ -791,36 +791,45 @@ code[class*="language-"] *:hover,
   transform: none !important;
 }
 
-/* Solución para problemas de navegación en iOS */
+/* Solución específica para problemas de navegación en iOS */
 @supports (-webkit-touch-callout: none) {
+  /* Resetear eventos touch en los bloques de código */
   .code-block {
-    /* Prevenir que capture eventos táctiles de manera incorrecta */
-    touch-action: manipulation;
-    -webkit-touch-callout: default;
-    -webkit-user-select: auto;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
   }
 
+  /* Asegurarse que los elementos del artículo reciben eventos */
+  .prose a {
+    position: relative;
+    z-index: 10 !important; /* Fuerza prioridad */
+    pointer-events: auto !important;
+  }
+
+  /* Evitar que los eventos en el bloque de código afecten la navegación */
   .code-body pre,
   .code-body pre code {
-    /* Mejorar el comportamiento táctil en iOS */
-    touch-action: pan-y;
+    pointer-events: auto;
+    touch-action: auto;
+  }
+
+  /* Permitir scroll dentro del bloque de código sin afectar navegación */
+  .code-body pre {
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
-    pointer-events: auto;
+    max-width: 100%;
   }
 
-  /* Permitir desplazamiento pero no capturar otros eventos táctiles */
-  .code-body .absolute {
-    touch-action: pan-y;
-    pointer-events: none;
+  /* Contenedor principal debe tener scroll nativo */
+  .container {
+    -webkit-overflow-scrolling: touch;
   }
 
-  /* Asegurarse que los elementos clickeables sigan funcionando */
-  .code-actions button {
-    touch-action: manipulation;
-    pointer-events: auto;
-    position: relative;
-    z-index: 20;
+  /* Forzar que los enlaces sean clickeables en iOS */
+  a, button {
+    cursor: pointer;
+    -webkit-touch-callout: default;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
   }
 }

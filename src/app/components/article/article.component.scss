@@ -5,6 +5,7 @@
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 /* Header del bloque de código */
@@ -126,4 +127,19 @@
 .container {
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
+}
+
+/* Solución para iOS */
+.ios-fix-container {
+  isolation: isolate; /* Crea nuevo contexto de apilamiento */
+
+  a, button {
+    position: relative;
+    z-index: 5;
+  }
+
+  .code-block {
+    position: relative;
+    z-index: 1;
+  }
 }

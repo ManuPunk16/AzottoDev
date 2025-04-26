@@ -1,4 +1,4 @@
-<div class="container mx-auto max-w-4xl px-4 py-8" *ngIf="!loading && !error">
+<div class="container mx-auto max-w-4xl px-4 py-8 ios-fix-container" *ngIf="!loading && !error">
   <!-- Header del artículo -->
   <div class="mb-8">
     <!-- Meta información -->
@@ -151,11 +151,10 @@
           <pre [attr.data-language]="block.language || 'plain'"
                [ngClass]="{'pl-12': showLineNumbers}"
                class="relative"
-               tabindex="0"
-               (touchstart)="handleTouchStart($event)"
-               (touchmove)="handleTouchMove($event)"
-               (touchend)="handleTouchEnd($event)">
-            <code [className]="'language-' + (block.language || 'plain')">{{ block.code }}</code>
+               tabindex="0">
+            <code [className]="'language-' + (block.language || 'plain')"
+                  (touchstart)="$event.stopPropagation()"
+                  (touchmove)="$event.stopPropagation()">{{ block.code }}</code>
           </pre>
         </div>
       </div>
