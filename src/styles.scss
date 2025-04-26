@@ -327,6 +327,18 @@ a.disabled {
   border-right: 1px solid rgba(120, 120, 120, 0.3);
 }
 
+/* Estilos para corregir la alineación del código */
+.code-body pre {
+  tab-size: 2;
+  -moz-tab-size: 2;
+}
+
+.code-body pre code {
+  padding: 0;
+  text-indent: 0;
+  margin: 0;
+}
+
 /* Estilo para diferentes lenguajes */
 .code-js .token.keyword { color: var(--code-keyword); }
 .code-js .token.string { color: var(--code-string); }
@@ -347,6 +359,47 @@ a.disabled {
 .code-ts .token.class-name { color: var(--code-class-name); }
 .code-ts .token.interface { color: var(--code-class-name); }
 .code-ts .token.decorator { color: var(--code-function); }
+
+/* Estilo específico para TypeScript */
+.code-typescript .token.keyword,
+.code-ts .token.keyword {
+  color: var(--code-keyword);
+}
+
+.code-typescript .token.string,
+.code-ts .token.string {
+  color: var(--code-string);
+}
+
+.code-typescript .token.function,
+.code-ts .token.function {
+  color: var(--code-function);
+}
+
+.code-typescript .token.number,
+.code-ts .token.number {
+  color: var(--code-number);
+}
+
+.code-typescript .token.comment,
+.code-ts .token.comment {
+  color: var(--code-comment);
+}
+
+.code-typescript .token.class-name,
+.code-ts .token.class-name {
+  color: var(--code-class);
+}
+
+.code-typescript .token.operator,
+.code-ts .token.operator {
+  color: var(--code-operator);
+}
+
+.code-typescript .token.punctuation,
+.code-ts .token.punctuation {
+  color: var(--code-punctuation);
+}
 
 /* Clase para evitar selección automática */
 .no-select {
