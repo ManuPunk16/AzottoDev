@@ -200,7 +200,7 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    if (!this.loading && this.articleContent.length > 0) {
+    if (!this.loading && this.articleContent.length > 0 && !this.codeBlocksProcessed) {
       // Usamos requestAnimationFrame para esperar que el DOM esté listo
       window.requestAnimationFrame(() => {
         // Selecciona todos los bloques de código
@@ -223,6 +223,9 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
           this.cdr.detectChanges();
         }
       });
+
+      // Fix para iOS
+      this.fixCodeBlocksForIOS();
     }
   }
 
@@ -292,5 +295,38 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
     // Solo limpiar variables
     this.touchStartX = 0;
     this.touchStartY = 0;
+  }
+
+  // Añadir este método para hacer que los bloques de código sean más amigables con iOS
+  fixCodeBlocksForIOS() {
+    // Detectar si es iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+    if (isIOS) {
+      // Aplica fix específico para iOS después del render
+      setTimeout(() => {
+        const codeBlocks = document.querySelectorAll('.code-body pre');
+        codeBlocks.forEach(block => {
+          // Hacer que el bloque tenga un z-index negativo
+          (block as HTMLElement).style.zIndex = '1';
+
+          // Forzar iOS a tratar los bloques de código como capas separadas
+          (block as HTMLElement).style.transform = 'translateZ(0)';
+          (block as HTMLElement).style.webkitTransform = 'translateZ(0)';
+
+          // Evitar que capture eventos
+          block.parentElement?.addEventListener('touchstart', e => {
+            e.stopPropagation();
+          }, { passive: true });
+        });
+
+        // Hacer que los enlaces en el artículo sean prioritarios
+        const links = document.querySelectorAll('.prose a, nav a, header a');
+        links.forEach(link => {
+          (link as HTMLElement).style.position = 'relative';
+          (link as HTMLElement).style.zIndex = '100';
+        });
+      }, 500);
+    }
   }
 }
