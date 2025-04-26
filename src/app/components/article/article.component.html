@@ -3,7 +3,9 @@
   <div class="mb-8">
     <!-- Meta información -->
     <div class="flex flex-wrap gap-2 mb-4 text-sm">
-      <span class="px-3 py-1 rounded-full bg-[var(--tertiary-500)] text-[var(--tertiary-100)]">
+      <!-- Usamos la clase de categoría para el color adecuado -->
+      <span [ngClass]="'category-' + (articleMetadata?.category ? articleMetadata?.category?.toLowerCase()?.replace(' ', '-') : '')"
+            class="px-3 py-1 rounded-full">
         {{ articleMetadata?.category }}
       </span>
       <span class="px-3 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)]">
@@ -19,7 +21,7 @@
 
     <!-- Título y descripción -->
     <h1 class="text-4xl font-bold text-[var(--primary-900)] mb-4">{{ articleMetadata?.title }}</h1>
-    <p class="text-xl text-[var(--text-secondary)] mb-6">{{ articleMetadata?.description }}</p>
+    <p class="text-xl text-[var(--text-primary)] mb-6 highlight p-4 rounded-md">{{ articleMetadata?.description }}</p>
 
     <!-- Autor -->
     <div class="flex items-center gap-3 mb-6">
@@ -32,7 +34,7 @@
     <!-- Etiquetas -->
     <div class="flex flex-wrap gap-2 mb-8">
       <span *ngFor="let tag of articleMetadata?.tags"
-            class="px-3 py-1 text-sm rounded-md bg-[var(--background-secondary)] text-[var(--text-secondary)] hover:bg-[var(--primary-100)] transition-colors duration-200">
+            class="tag text-sm px-3 py-1 rounded-md">
         #{{ tag }}
       </span>
     </div>
@@ -69,7 +71,7 @@
 
       <!-- Párrafos con soporte para Markdown -->
       <p *ngIf="block.type === 'paragraph'"
-         class="mb-6 leading-relaxed"
+         class="mb-6 leading-relaxed text-[var(--text-primary)]"
          [innerHTML]="renderMarkdown(block.text || '')">
       </p>
 
@@ -77,7 +79,7 @@
       <div *ngIf="block.type === 'list'" class="mb-6">
         <ul class="space-y-4">
           <li *ngFor="let item of block.items"
-              class="pl-2 flex">
+              class="pl-2 flex text-[var(--text-primary)]">
             <span class="text-[var(--primary-500)] mr-2">•</span>
             <div [innerHTML]="renderMarkdown(item)" class="flex-1"></div>
           </li>
@@ -98,10 +100,10 @@
 
       <!-- Enlaces destacados -->
       <div *ngIf="block.type === 'link'"
-           class="my-6 p-4 border-l-4 border-[var(--primary-500)] bg-[var(--background-secondary)] rounded-r">
+           class="my-6 p-4 border-l-4 border-[var(--primary-500)] bg-[var(--highlight-bg)] rounded-r">
         <a [href]="block.url"
            target="_blank"
-           class="text-[var(--primary-500)] hover:text-[var(--primary-700)] font-medium flex items-center">
+           class="text-[var(--link-color)] hover:text-[var(--link-hover-color)] font-medium flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
@@ -109,13 +111,47 @@
         </a>
       </div>
 
-      <!-- Bloques de código -->
+      <!-- Bloques de código con Prism.js -->
       <div *ngIf="block.type === 'code'"
-           class="my-6 rounded-lg overflow-hidden">
-        <div class="bg-gray-800 text-gray-200 px-4 py-2 text-sm font-mono">
-          {{ block.language || 'código' }}
+           class="code-block my-6 rounded-lg overflow-hidden shadow-lg">
+        <div class="code-header">
+          <div class="flex items-center gap-3">
+            <div class="flex gap-1.5">
+              <span class="code-dot code-dot-red"></span>
+              <span class="code-dot code-dot-yellow"></span>
+              <span class="code-dot code-dot-green"></span>
+            </div>
+            <span class="font-mono text-sm font-medium">{{ block.language || 'texto plano' }}</span>
+          </div>
+          <div class="code-actions">
+            <button (click)="copyCode(block.code || '')"
+                    class="flex items-center gap-1 px-2 py-1 rounded text-xs font-medium hover:bg-opacity-20 hover:bg-[var(--primary-500)] transition-colors"
+                    aria-label="Copiar código">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+              </svg>
+              <span>Copiar</span>
+            </button>
+          </div>
         </div>
-        <pre class="bg-gray-900 text-gray-100 p-4 overflow-x-auto"><code [class]="block.language">{{ block.code }}</code></pre>
+
+        <div class="code-body" [ngClass]="'code-' + (block.language || 'plain')">
+          <!-- Números de línea con mejor estructura -->
+          <div *ngIf="showLineNumbers"
+               class="absolute left-0 top-0 bottom-0 w-12 bg-[var(--code-gutter-bg)] flex flex-col text-right pt-3 text-[var(--code-line-number)]"
+               aria-hidden="true">
+            <ng-container *ngFor="let line of getCodeLines(block.code); let i = index">
+              <div class="pr-3">{{ i + 1 }}</div>
+            </ng-container>
+          </div>
+
+          <!-- Código con mejor estructura -->
+          <pre [attr.data-language]="block.language || 'plain'"
+               [ngClass]="{'pl-12': showLineNumbers}"
+               class="relative m-0">
+            <code>{{ block.code }}</code>
+          </pre>
+        </div>
       </div>
     </ng-container>
   </div>

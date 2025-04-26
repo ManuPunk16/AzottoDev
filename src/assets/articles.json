@@ -8,34 +8,21 @@
     "category": "Frontend",
     "tags": ["Angular", "JavaScript", "TypeScript", "Web Development", "SSR", "Performance", "Signals", "DX"],
     "image": "/assets/images/articles/angular19.webp",
-    "readTime": 8,
+    "readTime": 12,
     "featured": true,
     "excerpt": "Angular 19 trae importantes mejoras de rendimiento y nuevas APIs que facilitan el desarrollo."
   },
   {
-    "slug": "tailwind-en-angular",
-    "title": "Tailwind CSS 4 y Angular: La combinación perfecta",
-    "description": "Aprende a integrar y sacar el máximo provecho de Tailwind CSS 4 en tus aplicaciones Angular.",
-    "date": "2025-04-01",
+    "slug": "componentes-accesibles-angular-tailwind",
+    "title": "Componentes accesibles con Angular y Tailwind CSS",
+    "description": "Guía completa sobre cómo construir componentes que cumplan con los estándares WCAG utilizando Angular y Tailwind CSS.",
+    "date": "2025-04-20",
     "author": "Azotto",
-    "category": "CSS",
-    "tags": ["Tailwind CSS", "Angular", "Diseño Web", "Frontend"],
-    "image": "/assets/images/articles/tailwind-angular.webp",
-    "readTime": 6,
-    "featured": false,
-    "excerpt": "Tailwind CSS 4 introduce varias mejoras que se integran perfectamente con Angular."
-  },
-  {
-    "slug": "componentes-standalone",
-    "title": "Componentes Standalone: Simplificando la arquitectura Angular",
-    "description": "Descubre cómo los componentes standalone pueden hacer tu código más limpio y mantenible en proyectos grandes.",
-    "date": "2025-03-22",
-    "author": "Azotto",
-    "category": "Angular",
-    "tags": ["Angular", "Arquitectura", "Buenas Prácticas"],
-    "image": "/assets/images/articles/standalone.webp",
-    "readTime": 10,
+    "category": "Diseño Web",
+    "tags": ["Accesibilidad", "Angular", "Tailwind CSS", "WCAG", "UX", "UI", "a11y", "Diseño inclusivo"],
+    "image": "/assets/images/articles/accesibilidad-angular.webp",
+    "readTime": 15,
     "featured": true,
-    "excerpt": "Los componentes standalone son una de las mejores innovaciones de Angular reciente. Aprende a aprovecharlos al máximo en tu próximo proyecto."
+    "excerpt": "Aprende a crear interfaces accesibles e inclusivas siguiendo las mejores prácticas de WCAG con Angular y Tailwind CSS."
   }
 ]

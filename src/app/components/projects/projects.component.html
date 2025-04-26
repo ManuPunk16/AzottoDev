@@ -18,7 +18,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div *ngFor="let project of featuredProjects"
-           class="bg-[var(--background-primary)] rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1">
+           class="bg-[var(--background-primary)] rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1 border border-transparent hover:border-[var(--primary-300)]">
 
         <!-- Badge de destacado -->
         <div class="absolute top-4 right-4 bg-[var(--primary-500)] text-[var(--primary-100)] text-xs font-semibold px-2 py-1 rounded-full z-10">
@@ -26,10 +26,25 @@
         </div>
 
         <!-- Imagen del proyecto -->
-        <div class="relative h-56 w-full overflow-hidden">
+        <div class="relative h-56 w-full overflow-hidden cursor-pointer" (click)="showProjectDetails(project)">
           <img [src]="project.imageUrl || '/assets/images/default-project.webp'"
                [alt]="project.title"
-               class="w-full h-full object-cover">
+               class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+
+          <!-- Overlay de categoría -->
+          <div class="absolute bottom-0 left-0 p-2">
+            <span [ngClass]="'category-' + project.category.toLowerCase()"
+                  class="px-3 py-1 text-xs font-medium rounded-full">
+              {{ project.category }}
+            </span>
+          </div>
+
+          <!-- Overlay de información hover -->
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <div class="text-white text-center px-4">
+              <p class="font-medium">Click para ver detalles</p>
+            </div>
+          </div>
         </div>
 
         <!-- Contenido -->
@@ -37,18 +52,18 @@
           <div class="flex justify-between items-center mb-2">
             <h3 class="text-xl font-bold text-[var(--primary-900)]">{{ project.title }}</h3>
             <!-- Fecha del proyecto -->
-            <span class="text-sm text-[var(--primary-600)]">{{ project.date | date:'dd/MM/yyyy' }}</span>
+            <span class="text-sm text-[var(--text-secondary)]">{{ project.date | date:'dd/MM/yyyy' }}</span>
           </div>
 
-          <!-- Tecnologías -->
+          <!-- Tecnologías con colores suaves -->
           <div class="flex flex-wrap gap-2 mb-4">
             <span *ngFor="let tech of project.technologies"
-                  class="bg-[var(--primary-100)] text-[var(--primary-700)] text-xs px-2 py-1 rounded-full">
+                  class="tag text-xs px-2 py-1 rounded-full">
               {{ tech }}
             </span>
           </div>
 
-          <p class="text-[var(--primary-700)] mb-4">{{ project.description }}</p>
+          <p class="text-[var(--text-primary)] mb-4">{{ project.description }}</p>
 
           <!-- Enlaces -->
           <div class="flex gap-4">
@@ -84,13 +99,28 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div *ngFor="let project of projects"
-           class="bg-[var(--background-primary)] rounded-lg overflow-hidden shadow-md transition-all duration-300 transform hover:shadow-lg hover:-translate-y-1">
+           class="bg-[var(--background-primary)] rounded-lg overflow-hidden shadow-md transition-all duration-300 transform hover:shadow-lg hover:-translate-y-1 border border-transparent hover:border-[var(--primary-300)]">
 
         <!-- Imagen del proyecto -->
-        <div class="relative h-44 w-full overflow-hidden">
+        <div class="relative h-44 w-full overflow-hidden cursor-pointer" (click)="showProjectDetails(project)">
           <img [src]="project.imageUrl || '/assets/images/default-project.webp'"
                [alt]="project.title"
-               class="w-full h-full object-cover">
+               class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+
+          <!-- Overlay de categoría -->
+          <div class="absolute bottom-0 left-0 p-2">
+            <span [ngClass]="'category-' + project.category.toLowerCase()"
+                  class="px-3 py-1 text-xs font-medium rounded-full">
+              {{ project.category }}
+            </span>
+          </div>
+
+          <!-- Overlay de información hover -->
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <div class="text-white text-center px-4">
+              <p class="font-medium">Click para ver detalles</p>
+            </div>
+          </div>
         </div>
 
         <!-- Contenido -->
@@ -98,18 +128,18 @@
           <div class="flex justify-between items-center mb-2">
             <h3 class="text-lg font-bold text-[var(--primary-900)]">{{ project.title }}</h3>
             <!-- Fecha del proyecto -->
-            <span class="text-xs text-[var(--primary-600)]">{{ project.date | date:'dd/MM/yyyy' }}</span>
+            <span class="text-xs text-[var(--text-secondary)]">{{ project.date | date:'dd/MM/yyyy' }}</span>
           </div>
 
-          <!-- Tecnologías (ahora mostramos todas) -->
+          <!-- Tecnologías (ahora mostramos todas) con colores suaves -->
           <div class="flex flex-wrap gap-1 mb-3">
             <span *ngFor="let tech of project.technologies"
-                  class="bg-[var(--primary-100)] text-[var(--primary-700)] text-xs px-2 py-0.5 rounded-full mb-1">
+                  class="tag text-xs px-2 py-0.5 rounded-full mb-1">
               {{ tech }}
             </span>
           </div>
 
-          <p class="text-[var(--primary-700)] text-sm mb-4 line-clamp-2">{{ project.description }}</p>
+          <p class="text-[var(--text-primary)] text-sm mb-4 line-clamp-2">{{ project.description }}</p>
 
           <!-- Enlaces -->
           <div class="flex gap-3">

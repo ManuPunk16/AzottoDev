@@ -1,0 +1,359 @@
+{
+  "metadata": {
+    "title": "Componentes accesibles con Angular y Tailwind CSS",
+    "description": "Guía completa sobre cómo construir componentes que cumplan con los estándares WCAG utilizando Angular y Tailwind CSS.",
+    "date": "2025-04-20",
+    "author": "Azotto",
+    "category": "Diseño Web",
+    "tags": ["Accesibilidad", "Angular", "Tailwind CSS", "WCAG", "UX", "UI", "a11y", "Diseño inclusivo"],
+    "image": "/assets/images/articles/accesibilidad-angular.webp",
+    "readTime": 15,
+    "featured": true,
+    "excerpt": "Aprende a crear interfaces accesibles e inclusivas siguiendo las mejores prácticas de WCAG con Angular y Tailwind CSS."
+  },
+  "content": [
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "Componentes accesibles con Angular y Tailwind CSS"
+    },
+    {
+      "type": "paragraph",
+      "text": "La accesibilidad web no es solo una recomendación, sino una necesidad para garantizar que las aplicaciones sean utilizables por todas las personas, independientemente de sus capacidades. En este artículo, exploraremos cómo crear componentes accesibles utilizando Angular y Tailwind CSS, siguiendo los estándares WCAG (Web Content Accessibility Guidelines)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "¿Por qué es importante la accesibilidad web?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Según la Organización Mundial de la Salud, más de mil millones de personas (aproximadamente el 15% de la población mundial) vive con algún tipo de discapacidad. La accesibilidad web no solo beneficia a personas con discapacidades permanentes, sino también a aquellas con limitaciones temporales o situacionales."
+    },
+    {
+      "type": "paragraph",
+      "text": "Además de ser lo correcto desde un punto de vista ético, implementar la accesibilidad ofrece varios beneficios:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "**Mayor alcance de usuarios:** tu aplicación será utilizable por más personas.",
+        "**Mejora en SEO:** muchas prácticas de accesibilidad también mejoran el posicionamiento en buscadores.",
+        "**Cumplimiento legal:** en muchos países, la accesibilidad es un requisito legal para sitios web públicos y comerciales.",
+        "**Mejor UX para todos:** las prácticas de accesibilidad suelen mejorar la usabilidad general de la aplicación."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Entendiendo WCAG"
+    },
+    {
+      "type": "paragraph",
+      "text": "Las Web Content Accessibility Guidelines (WCAG) son el estándar más ampliamente aceptado para la accesibilidad web. Estas guías se organizan en torno a cuatro principios fundamentales, conocidos como POUR:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "**Perceptible:** la información debe ser presentada de manera que los usuarios puedan percibirla.",
+        "**Operable:** los componentes de la interfaz deben ser operables por cualquier usuario.",
+        "**Comprensible:** la información y las operaciones deben ser comprensibles.",
+        "**Robusto:** el contenido debe ser lo suficientemente robusto para funcionar con diversas tecnologías de asistencia."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "WCAG define tres niveles de conformidad: A (mínimo), AA (recomendado) y AAA (óptimo). La mayoría de los sitios buscan cumplir al menos con el nivel AA."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Configurando Angular para la accesibilidad"
+    },
+    {
+      "type": "paragraph",
+      "text": "Angular proporciona herramientas nativas que facilitan la creación de aplicaciones accesibles. Comencemos configurando nuestro proyecto para soportar las mejores prácticas de accesibilidad."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Instalando dependencias útiles"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "npm install @angular/cdk --save\nnpm install axe-core --save-dev"
+    },
+    {
+      "type": "paragraph",
+      "text": "El Angular CDK (Component Development Kit) incluye utilidades para la accesibilidad, mientras que axe-core es una herramienta para probar la accesibilidad en tiempo de desarrollo."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Activando comprobación de accesibilidad durante el desarrollo"
+    },
+    {
+      "type": "paragraph",
+      "text": "Podemos añadir axe-core a nuestra aplicación para detectar problemas de accesibilidad durante el desarrollo:"
+    },
+    {
+      "type": "code",
+      "language": "typescript",
+      "code": "// main.ts\nimport { bootstrapApplication } from '@angular/platform-browser';\nimport { AppComponent } from './app/app.component';\nimport { environment } from './environments/environment';\n\nimport 'axe-core';\n\n// Solo en desarrollo\nif (!environment.production) {\n  import('axe-core').then(axe => {\n    // Espera a que la aplicación se cargue\n    setTimeout(() => {\n      axe.default.run((err, results) => {\n        if (err) throw err;\n        if (results.violations.length) {\n          console.warn('Problemas de accesibilidad detectados:');\n          console.table(\n            results.violations.map(v => ({\n              'Impacto': v.impact,\n              'Descripción': v.description,\n              'Elementos': v.nodes.length\n            }))\n          );\n        }\n      });\n    }, 1000);\n  });\n}\n\nbootstrapApplication(AppComponent)\n  .catch(err => console.error(err));"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Implementando componentes accesibles con Tailwind CSS"
+    },
+    {
+      "type": "paragraph",
+      "text": "Veamos ahora cómo crear componentes accesibles utilizando Angular y Tailwind CSS. Trabajaremos con algunos ejemplos comunes."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "1. Botones accesibles"
+    },
+    {
+      "type": "paragraph",
+      "text": "Los botones son uno de los componentes más básicos en cualquier interfaz. Aquí hay un ejemplo de un botón accesible:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<!-- button.component.html -->\n<button\n  [attr.aria-label]=\"ariaLabel || null\"\n  [attr.aria-labelledby]=\"ariaLabelledby || null\"\n  [attr.aria-describedby]=\"ariaDescribedby || null\"\n  [attr.aria-pressed]=\"ariaPressed || null\"\n  [disabled]=\"disabled\"\n  [ngClass]=\"{\n    'bg-blue-600 hover:bg-blue-700 text-white': variant === 'primary' && !disabled,\n    'bg-gray-200 hover:bg-gray-300 text-gray-800': variant === 'secondary' && !disabled,\n    'bg-red-600 hover:bg-red-700 text-white': variant === 'danger' && !disabled,\n    'opacity-50 cursor-not-allowed': disabled,\n    'focus:ring-2 focus:ring-offset-2': !disabled\n  }\"\n  class=\"px-4 py-2 rounded font-medium transition-colors duration-200 focus:outline-none\"\n  type=\"button\"\n  [type]=\"type\">\n  <ng-content></ng-content>\n</button>"
+    },
+    {
+      "type": "code",
+      "language": "typescript",
+      "code": "// button.component.ts\nimport { Component, Input } from '@angular/core';\nimport { NgClass } from '@angular/common';\n\n@Component({\n  selector: 'app-button',\n  standalone: true,\n  imports: [NgClass],\n  templateUrl: './button.component.html'\n})\nexport class ButtonComponent {\n  @Input() variant: 'primary' | 'secondary' | 'danger' = 'primary';\n  @Input() type: 'button' | 'submit' | 'reset' = 'button';\n  @Input() disabled = false;\n  @Input() ariaLabel?: string;\n  @Input() ariaLabelledby?: string;\n  @Input() ariaDescribedby?: string;\n  @Input() ariaPressed?: boolean;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Este botón incluye:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Atributos ARIA para mejorar la compatibilidad con lectores de pantalla.",
+        "Estado visual y funcional para botones deshabilitados.",
+        "Indicadores visuales para el estado de foco, crucial para la navegación por teclado.",
+        "Contrastes de colores adecuados para diferentes variantes."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "2. Formularos accesibles"
+    },
+    {
+      "type": "paragraph",
+      "text": "Los formularios son otro componente esencial que requiere especial atención para la accesibilidad:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<!-- input-field.component.html -->\n<div class=\"mb-4\">\n  <label \n    [for]=\"id\" \n    class=\"block text-sm font-medium text-[var(--primary-900)] mb-1\">\n    {{ label }}<span *ngIf=\"required\" class=\"text-red-500 ml-1\">*</span>\n  </label>\n  \n  <input\n    [id]=\"id\"\n    [type]=\"type\"\n    [formControl]=\"control\"\n    [attr.aria-invalid]=\"control.invalid && control.touched ? true : null\"\n    [attr.aria-describedby]=\"errorId\"\n    [required]=\"required\"\n    [placeholder]=\"placeholder || ''\"\n    class=\"w-full px-3 py-2 border rounded-md text-[var(--primary-900)] bg-[var(--background-primary)]\n           focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]\n           disabled:bg-[var(--background-secondary)] disabled:text-[var(--text-secondary)] disabled:cursor-not-allowed\n           transition-colors duration-200\"\n    [ngClass]=\"{\n      'border-red-500 focus:ring-red-500': control.invalid && control.touched,\n      'border-[var(--primary-300)]': !control.invalid || !control.touched\n    }\"\n  />\n  \n  <div \n    *ngIf=\"control.invalid && control.touched\" \n    [id]=\"errorId\"\n    role=\"alert\"\n    class=\"mt-1 text-sm text-red-600\">\n    <ng-container *ngIf=\"control.hasError('required')\">Este campo es obligatorio.</ng-container>\n    <ng-container *ngIf=\"control.hasError('email')\">Ingresa un correo electrónico válido.</ng-container>\n    <ng-container *ngIf=\"control.hasError('minlength')\">Debe tener al menos {{ control.getError('minlength').requiredLength }} caracteres.</ng-container>\n    <!-- Otros errores personalizados -->\n    <ng-content select=\"[error]\"></ng-content>\n  </div>\n</div>"
+    },
+    {
+      "type": "code",
+      "language": "typescript",
+      "code": "// input-field.component.ts\nimport { Component, Input, OnInit } from '@angular/core';\nimport { FormControl } from '@angular/forms';\nimport { NgIf, NgClass } from '@angular/common';\nimport { ReactiveFormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'app-input-field',\n  standalone: true,\n  imports: [NgIf, NgClass, ReactiveFormsModule],\n  templateUrl: './input-field.component.html'\n})\nexport class InputFieldComponent implements OnInit {\n  @Input() label = '';\n  @Input() control!: FormControl;\n  @Input() type = 'text';\n  @Input() placeholder = '';\n  @Input() required = false;\n  @Input() id = '';\n  \n  errorId = '';\n  \n  ngOnInit() {\n    // Generamos IDs únicos para los campos sin ID explícito\n    if (!this.id) {\n      this.id = `input-${Math.random().toString(36).substring(2, 9)}`;\n    }\n    \n    this.errorId = `${this.id}-error`;\n  }\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Este componente de campo de formulario incluye características importantes para la accesibilidad:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Etiquetas correctamente asociadas con los campos de entrada usando `for` y `id`.",
+        "Indicación clara de campos obligatorios, tanto visual como semánticamente.",
+        "Atributo `aria-invalid` para comunicar a los lectores de pantalla cuando hay errores.",
+        "Mensajes de error asociados mediante `aria-describedby`.",
+        "Atributo `role=\"alert\"` para notificar a las tecnologías asistivas de los errores.",
+        "Estados visuales claros para diferentes estados del campo (normal, error, deshabilitado, foco)."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "3. Diálogos modales accesibles"
+    },
+    {
+      "type": "paragraph",
+      "text": "Los diálogos modales presentan desafíos particulares para la accesibilidad:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<!-- modal.component.html -->\n<div\n  *ngIf=\"isOpen\"\n  class=\"fixed inset-0 z-50 overflow-y-auto\"\n  role=\"dialog\"\n  [attr.aria-labelledby]=\"titleId\"\n  [attr.aria-modal]=\"true\"\n  (keydown.escape)=\"closeModal()\">\n  \n  <!-- Backdrop -->\n  <div \n    class=\"fixed inset-0 bg-black bg-opacity-50 transition-opacity\"\n    (click)=\"closeOnBackdrop && closeModal()\"></div>\n  \n  <!-- Diálogo -->\n  <div class=\"flex min-h-screen items-center justify-center p-4\">\n    <!-- Focus trap aquí -->\n    <div \n      #modalContent\n      class=\"relative bg-[var(--background-primary)] rounded-lg shadow-xl max-w-md w-full p-6\"\n      [ngClass]=\"{'animate-modal-in': isOpen}\"\n      tabindex=\"-1\">\n      \n      <!-- Cabecera -->\n      <div class=\"flex items-start justify-between mb-4\">\n        <h2 [id]=\"titleId\" class=\"text-xl font-semibold text-[var(--primary-900)]\">\n          {{ title }}\n        </h2>\n        \n        <button\n          type=\"button\"\n          class=\"text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors\"\n          aria-label=\"Cerrar\"\n          (click)=\"closeModal()\">\n          <svg class=\"w-5 h-5\" fill=\"currentColor\" viewBox=\"0 0 20 20\">\n            <path fill-rule=\"evenodd\" d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\" clip-rule=\"evenodd\"></path>\n          </svg>\n        </button>\n      </div>\n      \n      <!-- Contenido -->\n      <div class=\"mb-4\">\n        <ng-content></ng-content>\n      </div>\n      \n      <!-- Footer -->\n      <div class=\"flex justify-end gap-3\">\n        <ng-content select=\"[footer]\"></ng-content>\n      </div>\n    </div>\n  </div>\n</div>"
+    },
+    {
+      "type": "code",
+      "language": "typescript",
+      "code": "// modal.component.ts\nimport { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';\nimport { NgIf, NgClass } from '@angular/common';\nimport { A11yModule, FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';\n\n@Component({\n  selector: 'app-modal',\n  standalone: true,\n  imports: [NgIf, NgClass, A11yModule],\n  templateUrl: './modal.component.html',\n})\nexport class ModalComponent implements AfterViewInit {\n  @Input() isOpen = false;\n  @Input() title = 'Modal';\n  @Input() closeOnBackdrop = true;\n  \n  @Output() closed = new EventEmitter<void>();\n  \n  @ViewChild('modalContent') modalContent!: ElementRef<HTMLElement>;\n  \n  titleId = `modal-title-${Math.random().toString(36).substring(2, 9)}`;\n  private focusTrap!: FocusTrap;\n  private previouslyFocusedElement!: HTMLElement;\n  \n  constructor(private focusTrapFactory: FocusTrapFactory) {}\n  \n  ngAfterViewInit(): void {\n    if (this.isOpen) {\n      this.setupModal();\n    }\n  }\n  \n  ngOnChanges() {\n    if (this.isOpen) {\n      setTimeout(() => {\n        this.setupModal();\n      });\n    } else {\n      this.cleanupModal();\n    }\n  }\n  \n  closeModal(): void {\n    this.isOpen = false;\n    this.closed.emit();\n    this.cleanupModal();\n  }\n  \n  private setupModal(): void {\n    if (!this.modalContent) return;\n    \n    // Guardar el elemento con foco actual\n    this.previouslyFocusedElement = document.activeElement as HTMLElement;\n    \n    // Crear una trampa de foco\n    this.focusTrap = this.focusTrapFactory.create(this.modalContent.nativeElement);\n    this.focusTrap.focusInitialElement() || this.modalContent.nativeElement.focus();\n    \n    // Evitar scroll en el body\n    document.body.style.overflow = 'hidden';\n  }\n  \n  private cleanupModal(): void {\n    if (this.focusTrap) {\n      this.focusTrap.destroy();\n    }\n    \n    // Restaurar el foco al elemento anterior\n    if (this.previouslyFocusedElement) {\n      this.previouslyFocusedElement.focus();\n    }\n    \n    // Restaurar scroll\n    document.body.style.overflow = '';\n  }\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Este modal incorpora importantes características de accesibilidad:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Trampa de foco utilizando el CDK de Angular para mantener el foco dentro del modal.",
+        "Restauración del foco al elemento que abrió el modal cuando éste se cierra.",
+        "Uso adecuado de atributos ARIA (`role=\"dialog\"`, `aria-labelledby`, `aria-modal`).",
+        "Cierre del modal presionando ESC.",
+        "Título del modal correctamente asociado utilizando `id` y `aria-labelledby`.",
+        "Botón de cierre con etiqueta accesible."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Mejores prácticas para el contraste de colores con Tailwind"
+    },
+    {
+      "type": "paragraph",
+      "text": "El contraste de colores es crucial para la accesibilidad visual. Tailwind CSS puede ayudarnos a implementar esquemas de colores accesibles."
+    },
+    {
+      "type": "paragraph",
+      "text": "Una buena práctica es definir variables CSS personalizadas que respeten los estándares de contraste WCAG, y luego asignarlas a las clases de utilidad de Tailwind:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "// tailwind.config.js\nmodule.exports = {\n  theme: {\n    extend: {\n      colors: {\n        primary: {\n          100: 'var(--primary-100)',\n          200: 'var(--primary-200)',\n          300: 'var(--primary-300)',\n          400: 'var(--primary-400)',\n          500: 'var(--primary-500)',\n          600: 'var(--primary-600)',\n          700: 'var(--primary-700)',\n          800: 'var(--primary-800)',\n          900: 'var(--primary-900)'\n        },\n        // ...otros colores\n      }\n    },\n  },\n  plugins: [\n    require('@tailwindcss/forms')({ strategy: 'class' }),\n  ],\n};"
+    },
+    {
+      "type": "paragraph",
+      "text": "Luego, podemos definir estas variables en CSS, asegurándonos de que los contrastes sean adecuados:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ":root {\n  /* Modo claro */\n  --primary-100: #f0f7ff; /* Fondo muy claro */\n  --primary-500: #3b82f6; /* Color base que cumple con AA en texto normal */\n  --primary-700: #1d4ed8; /* Color para textos pequeños sobre fondo claro */\n  --primary-900: #1e3a8a; /* Máximo contraste */\n  \n  /* ...otras variables */\n}\n\n@media (prefers-color-scheme: dark) {\n  :root {\n    /* Modo oscuro */\n    --primary-100: #172554; /* Fondo oscuro */\n    --primary-500: #60a5fa; /* Color base más claro para AA */\n    --primary-700: #93c5fd; /* Color para textos pequeños */\n    --primary-900: #e0f2fe; /* Máximo contraste */\n    \n    /* ...otras variables */\n  }\n}"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Probando la accesibilidad de nuestros componentes"
+    },
+    {
+      "type": "paragraph",
+      "text": "Una vez implementados nuestros componentes, es crucial probarlos para asegurar que cumplen con los estándares de accesibilidad."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Herramientas de prueba automática"
+    },
+    {
+      "type": "list",
+      "items": [
+        "**axe DevTools**: Extensión del navegador para auditorías de accesibilidad.",
+        "**Lighthouse**: Integrado en Chrome DevTools, incluye auditorías de accesibilidad.",
+        "**Pa11y**: Herramienta de línea de comandos para pruebas automatizadas de accesibilidad.",
+        "**WAVE**: Extensión del navegador que ofrece evaluación visual de accesibilidad."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Pruebas manuales esenciales"
+    },
+    {
+      "type": "paragraph",
+      "text": "Las pruebas automáticas no capturan todos los problemas de accesibilidad. Por eso, es importante realizar también pruebas manuales:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "**Navegación por teclado**: Asegurarse de que toda la funcionalidad es accesible usando solo el teclado.",
+        "**Lectores de pantalla**: Probar con NVDA (Windows), VoiceOver (Mac/iOS) o TalkBack (Android).",
+        "**Ampliación**: Comprobar cómo se comporta la interfaz al ampliarla hasta un 200%.",
+        "**Alto contraste**: Verificar la legibilidad en modo de alto contraste.",
+        "**Reducción de movimiento**: Comprobar que las animaciones respetan la preferencia `prefers-reduced-motion`."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Implementando la preferencia de movimiento reducido"
+    },
+    {
+      "type": "paragraph",
+      "text": "Un aspecto importante de la accesibilidad es respetar la preferencia de reducción de movimiento. Esto es especialmente relevante para usuarios que sufren de trastornos vestibulares o sensibilidad a los movimientos."
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": "/* En tu archivo global de estilos */\n@media (prefers-reduced-motion: reduce) {\n  *, ::before, ::after {\n    animation-duration: 0.01ms !important;\n    animation-iteration-count: 1 !important;\n    transition-duration: 0.01ms !important;\n    scroll-behavior: auto !important;\n  }\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "En Tailwind, podemos usar el modificador `motion-reduce` para aplicar estilos específicos cuando se detecta esta preferencia:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<div class=\"transition-transform hover:scale-110 motion-reduce:transition-none motion-reduce:hover:transform-none\">\n  Contenido con animación (desactivada con motion-reduce)\n</div>"
+    },
+    {
+      "type": "image",
+      "src": "/assets/images/articles/wcag-levels.webp",
+      "alt": "Diagrama mostrando los niveles de conformidad WCAG: A, AA y AAA"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conclusiones"
+    },
+    {
+      "type": "paragraph",
+      "text": "La creación de componentes accesibles con Angular y Tailwind CSS requiere atención a los detalles y un compromiso con las mejores prácticas de accesibilidad, pero los beneficios valen la pena. Un diseño accesible no solo amplía el alcance de tu aplicación, sino que mejora la experiencia de usuario para todos."
+    },
+    {
+      "type": "paragraph",
+      "text": "Recuerda:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "**Diseña con la accesibilidad en mente desde el principio**, no como una ocurrencia tardía.",
+        "**Prueba regularmente** con herramientas automáticas y evaluaciones manuales.",
+        "**Usa correctamente los atributos ARIA**, pero solo cuando sean realmente necesarios.",
+        "**Crea componentes flexibles** que respeten las preferencias del usuario.",
+        "**Mantente actualizado** con las evoluciones de los estándares de accesibilidad."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "La accesibilidad web es un viaje continuo, no un destino final. Cada mejora que implementes hará tu aplicación más inclusiva y utilizable para todos los usuarios, independientemente de sus capacidades."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Recursos adicionales"
+    },
+    {
+      "type": "list",
+      "items": [
+        "[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)",
+        "[Angular Accessibility Guide](https://angular.io/guide/accessibility)",
+        "[Tailwind CSS Accessibility Recipes](https://tailwindcss.com/docs/screen-readers)",
+        "[The A11Y Project](https://www.a11yproject.com/)",
+        "[WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)"
+      ]
+    },
+    {
+      "type": "link",
+      "text": "Explorar recursos de accesibilidad web",
+      "url": "https://www.w3.org/WAI/fundamentals/"
+    }
+  ]
+}

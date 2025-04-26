@@ -54,6 +54,7 @@ Thumbs.db
 # Environment files
 /src/environments/*.ts
 !/src/environments/environment.ts.example
+notes.ts
 
 # Firebase configuration
 .firebaserc

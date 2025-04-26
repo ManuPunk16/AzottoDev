@@ -3,7 +3,7 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <div *ngFor="let article of articles"
-         class="article-card rounded-lg overflow-hidden shadow-md transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1 bg-[var(--background-primary)]">
+         class="article-card rounded-lg overflow-hidden shadow-md transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1 bg-[var(--background-primary)] border border-transparent hover:border-[var(--primary-300)]">
 
       <!-- Badge para artículos destacados -->
       <div *ngIf="article.featured"
@@ -17,26 +17,35 @@
           <img [src]="article.image || '/assets/images/default-article.webp'"
                [alt]="article.title"
                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+
+          <!-- Añadimos overlay de categoría -->
+          <div class="absolute bottom-0 left-0 p-2">
+            <span [ngClass]="'category-' + article.category.toLowerCase().replace(' ', '-')"
+                  class="px-3 py-1 text-xs font-medium rounded-full">
+              {{ article.category }}
+            </span>
+          </div>
         </div>
 
         <!-- Contenido del artículo -->
         <div class="p-5">
           <!-- Meta información -->
           <div class="flex flex-wrap gap-2 text-xs mb-3">
-            <span class="px-2 py-1 rounded-full bg-[var(--tertiary-500)] text-[var(--tertiary-100)]">
-              {{ article.category }}
-            </span>
+            <!-- Quitamos la categoría de aquí, ya la mostramos en la imagen -->
             <span class="px-2 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)]">
               {{ article.date | date:'dd MMM yyyy' }}
             </span>
-            <span class="px-2 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)]">
-              {{ article.readTime }} min lectura
+            <span class="px-2 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)] flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {{ article.readTime }} min
             </span>
           </div>
 
           <!-- Título y descripción -->
-          <h3 class="text-xl font-semibold mb-2 text-[var(--primary-900)] line-clamp-2">{{ article.title }}</h3>
-          <p class="text-[var(--text-secondary)] mb-4 line-clamp-3">{{ article.excerpt }}</p>
+          <h3 class="text-xl font-semibold mb-2 text-[var(--primary-900)] line-clamp-2 hover:text-[var(--link-color)]">{{ article.title }}</h3>
+          <p class="text-[var(--text-primary)] mb-4 line-clamp-3">{{ article.excerpt }}</p>
 
           <!-- Autor -->
           <div class="flex items-center gap-2 mb-3">
@@ -48,9 +57,12 @@
 
           <!-- Etiquetas -->
           <div class="flex flex-wrap gap-1 mt-2">
-            <span *ngFor="let tag of article.tags"
-                  class="text-xs px-2 py-1 rounded-md bg-[var(--background-secondary)] text-[var(--text-secondary)]">
+            <span *ngFor="let tag of article.tags.slice(0, 3)"
+                  class="tag text-xs px-2 py-1 rounded-md">
               {{ tag }}
+            </span>
+            <span *ngIf="article.tags.length > 3" class="text-xs text-[var(--text-secondary)]">
+              +{{ article.tags.length - 3 }}
             </span>
           </div>
         </div>

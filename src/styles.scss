@@ -25,6 +25,57 @@
   --code-background: var(--secondary-100);
   --link-color: var(--primary-500);
   --link-hover-color: var(--primary-700);
+
+  /* Paleta de colores suaves para categorías */
+  --category-web-bg: #e6f2ff;
+  --category-web-text: #0066cc;
+
+  --category-frontend-bg: #e6f7f2;
+  --category-frontend-text: #00997a;
+
+  --category-backend-bg: #f2e6ff;
+  --category-backend-text: #6600cc;
+
+  --category-fullstack-bg: #fff2e6;
+  --category-fullstack-text: #cc6600;
+
+  --category-design-bg: #ffe6f2;
+  --category-design-text: #cc0066;
+
+  --category-devops-bg: #f2ffe6;
+  --category-devops-text: #33cc00;
+
+  /* Colores para tags y elementos interactivos */
+  --tag-bg: #f0f0f0;
+  --tag-text: #606060;
+  --tag-bg-hover: #e0e0e0;
+  --tag-text-hover: #404040;
+
+  /* Colores para estados y realces */
+  --highlight-bg: #fff8e6;
+  --highlight-border: #ffd966;
+  --new-badge-bg: #e6f7ff;
+  --new-badge-text: #0099cc;
+
+  /* Colores para bloques de código estilo VS Code - Tema claro */
+  --code-bg: #f5f5f5;
+  --code-text: #24292e;
+  --code-comment: #6a737d;
+  --code-punctuation: #24292e;
+  --code-keyword: #d73a49;
+  --code-string: #032f62;
+  --code-function: #6f42c1;
+  --code-number: #005cc5;
+  --code-operator: #d73a49;
+  --code-class-name: #6f42c1;
+  --code-variable: #e36209;
+  --code-property: #005cc5;
+  --code-constant: #005cc5;
+  --code-line-highlight: rgba(255, 255, 140, 0.15);
+  --code-line-number: #bbbbbb;
+  --code-gutter-bg: #f0f0f0;
+  --code-selection: rgba(135, 163, 237, 0.3);
+  --code-header-bg: #e1e8f0;
 }
 
 [data-theme="dark"] {
@@ -52,6 +103,57 @@
   --code-background: var(--secondary-100);
   --link-color: var(--primary-500);
   --link-hover-color: var(--primary-300);
+
+  /* Paleta de colores suaves para tema oscuro */
+  --category-web-bg: #1a2533;
+  --category-web-text: #4d94ff;
+
+  --category-frontend-bg: #1a2e2b;
+  --category-frontend-text: #33ccb3;
+
+  --category-backend-bg: #29193d;
+  --category-backend-text: #b366ff;
+
+  --category-fullstack-bg: #33291a;
+  --category-fullstack-text: #ffaa66;
+
+  --category-design-bg: #331a29;
+  --category-design-text: #ff66b3;
+
+  --category-devops-bg: #29331a;
+  --category-devops-text: #99ff66;
+
+  /* Colores para tags y elementos interactivos en tema oscuro */
+  --tag-bg: #333333;
+  --tag-text: #c0c0c0;
+  --tag-bg-hover: #444444;
+  --tag-text-hover: #ffffff;
+
+  /* Colores para estados y realces en tema oscuro */
+  --highlight-bg: #332e1a;
+  --highlight-border: #806600;
+  --new-badge-bg: #1a2e33;
+  --new-badge-text: #66ccff;
+
+  /* Colores para bloques de código estilo VS Code - Tema oscuro */
+  --code-bg: #1e1e1e;
+  --code-text: #d4d4d4;
+  --code-comment: #6a9955;
+  --code-punctuation: #d4d4d4;
+  --code-keyword: #c586c0;
+  --code-string: #ce9178;
+  --code-function: #dcdcaa;
+  --code-number: #b5cea8;
+  --code-operator: #d4d4d4;
+  --code-class-name: #4ec9b0;
+  --code-variable: #9cdcfe;
+  --code-property: #9cdcfe;
+  --code-constant: #4fc1ff;
+  --code-line-highlight: rgba(55, 65, 81, 0.5);
+  --code-line-number: #858585;
+  --code-gutter-bg: #252525;
+  --code-header-bg: #252526;
+  --code-selection: rgba(79, 79, 97, 0.5);
 }
 
 body {
@@ -101,4 +203,163 @@ img {
 a.disabled {
   pointer-events: none;
   cursor: default;
+}
+
+// SweetAlert2 themed styles
+.swal2-popup {
+  background-color: var(--background-primary) !important;
+}
+
+.swal2-title, .swal2-html-container {
+  color: var(--primary-900) !important;
+}
+
+.swal2-confirm {
+  background-color: var(--primary-600) !important;
+  &:focus {
+    box-shadow: 0 0 0 3px var(--primary-300) !important;
+  }
+}
+
+/* Clases para categorías */
+.category-web {
+  background-color: var(--category-web-bg);
+  color: var(--category-web-text);
+}
+
+.category-frontend {
+  background-color: var(--category-frontend-bg);
+  color: var(--category-frontend-text);
+}
+
+.category-backend {
+  background-color: var(--category-backend-bg);
+  color: var(--category-backend-text);
+}
+
+.category-fullstack {
+  background-color: var(--category-fullstack-bg);
+  color: var(--category-fullstack-text);
+}
+
+.category-design {
+  background-color: var(--category-design-bg);
+  color: var(--category-design-text);
+}
+
+.category-devops {
+  background-color: var(--category-devops-bg);
+  color: var(--category-devops-text);
+}
+
+/* Clases para tags */
+.tag {
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tag:hover {
+  background-color: var(--tag-bg-hover);
+  color: var(--tag-text-hover);
+}
+
+/* Clases para realces */
+.highlight {
+  background-color: var(--highlight-bg);
+  border-left: 3px solid var(--highlight-border);
+}
+
+.new-badge {
+  background-color: var(--new-badge-bg);
+  color: var(--new-badge-text);
+}
+
+/* Estilos adicionales para bloques de código */
+.code-block {
+  position: relative;
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--code-header-bg);
+  color: var(--code-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.code-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.code-dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+}
+
+.code-dot-red { background-color: #ff5f56; }
+.code-dot-yellow { background-color: #ffbd2e; }
+.code-dot-green { background-color: #27c93f; }
+
+.code-body {
+  position: relative;
+  background-color: var(--code-bg);
+  padding: 1rem;
+  overflow-x: auto;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.code-body .absolute {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-right: 1px solid rgba(120, 120, 120, 0.3);
+}
+
+/* Estilo para diferentes lenguajes */
+.code-js .token.keyword { color: var(--code-keyword); }
+.code-js .token.string { color: var(--code-string); }
+.code-js .token.function { color: var(--code-function); }
+.code-js .token.number { color: var(--code-number); }
+.code-js .token.comment { color: var(--code-comment); }
+
+.code-html .token.tag { color: var(--code-keyword); }
+.code-html .token.attr-name { color: var(--code-variable); }
+.code-html .token.attr-value { color: var(--code-string); }
+
+.code-css .token.property { color: var(--code-property); }
+.code-css .token.value { color: var(--code-string); }
+.code-css .token.selector { color: var(--code-keyword); }
+
+.code-ts .token.keyword { color: var(--code-keyword); }
+.code-ts .token.string { color: var(--code-string); }
+.code-ts .token.class-name { color: var(--code-class-name); }
+.code-ts .token.interface { color: var(--code-class-name); }
+.code-ts .token.decorator { color: var(--code-function); }
+
+/* Clase para evitar selección automática */
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Aplicar color solo cuando el usuario selecciona */
+.no-select::selection,
+.no-select *::selection {
+  background-color: var(--code-selection);
 }

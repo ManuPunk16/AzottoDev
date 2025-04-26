@@ -1,10 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MarkdownModule } from 'ngx-markdown';
-import { NgIf, DatePipe, NgFor } from '@angular/common';
+import { NgIf, DatePipe, NgFor, NgClass } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MetadataService } from '../../services/metadata.service';
+import Swal from 'sweetalert2';
+import * as Prism from 'prismjs';
+
+// Importa los lenguajes que necesitas para tu blog
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-scss';
+import 'prismjs/components/prism-markup'; // HTML
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-json';
 
 interface ArticleMetadata {
   title: string;
@@ -36,30 +47,47 @@ interface ArticleData {
   content: ArticleContentBlock[];
 }
 
+// Añadir esta interface para definir la estructura del artículo completo
+interface Article {
+  metadata: ArticleMetadata;
+  content: ArticleContentBlock[];
+}
+
 @Component({
   selector: 'app-article',
   imports: [
     MarkdownModule,
     NgIf,
     DatePipe,
-    NgFor
+    NgFor,
+    NgClass
   ],
   standalone: true,
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent implements OnInit, AfterViewChecked {
   articleSlug: string | null = '';
   articleContent: ArticleContentBlock[] = [];
   articleMetadata: ArticleMetadata | null = null;
   loading: boolean = true;
   error: boolean = false;
 
+  // Añadir esta propiedad
+  article: Article | null = null;
+
+  // Agrega esta propiedad para controlar si se muestran los números de línea
+  showLineNumbers: boolean = true;
+
+  // Añade esta propiedad a tu componente
+  codeBlocksProcessed = false;
+
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
     private metadataService: MetadataService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -103,6 +131,12 @@ export class ArticleComponent implements OnInit {
           // Guardamos el contenido del artículo
           this.articleContent = data.content || [];
 
+          // Creamos el objeto article que combina metadata y content
+          this.article = {
+            metadata: this.articleMetadata!,
+            content: this.articleContent
+          };
+
           this.loading = false;
         },
         error: (err) => {
@@ -135,5 +169,98 @@ export class ArticleComponent implements OnInit {
 
     // Sanitizar el HTML resultante
     return this.sanitizer.bypassSecurityTrustHtml(formatted);
+  }
+
+  // Añade esta función en tu clase ArticleComponent
+  copyCode(code: string): void {
+    navigator.clipboard.writeText(code)
+      .then(() => {
+        // Opcional: mostrar feedback de copiado exitoso
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'bottom-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+        });
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Código copiado al portapapeles'
+        });
+      })
+      .catch(err => {
+        console.error('Error al copiar código', err);
+      });
+  }
+
+  ngAfterViewChecked() {
+    if (!this.loading && !this.codeBlocksProcessed && this.articleContent.length > 0) {
+      setTimeout(() => {
+        document.querySelectorAll('pre code').forEach((block: any) => {
+          // Aplicar Prism
+          const language = block.parentElement.dataset.language || 'plain';
+          block.className = `language-${language}`;
+          Prism.highlightElement(block);
+
+          // Dividir en líneas para asegurar alineación
+          const content = block.innerHTML;
+          const lines = content.split('\n');
+
+          if (lines.length > 1) {
+            // Envolver cada línea en un span con clase específica para alineación uniforme
+            const wrappedLines = lines
+              .map((line: any) => `<span class="code-line">${line || ' '}</span>`)
+              .join('\n');
+
+            block.innerHTML = wrappedLines;
+          }
+        });
+
+        this.codeBlocksProcessed = true;
+        this.cdr.detectChanges();
+      }, 100);
+    }
+  }
+
+  // Función para obtener la clase CSS para el lenguaje
+  getLanguageClass(language: string | undefined): string {
+    if (!language) return 'language-plain';
+    return `language-${language}`;
+  }
+
+  // Función para dividir el código en líneas para mostrar números de línea
+  getCodeLines(code: string | undefined): string[] {
+    if (!code) return [];
+
+    // Eliminar caracteres invisibles o de control
+    code = code.replace(/\uFEFF/g, '');
+
+    // Dividir por saltos de línea
+    const lines = code.split('\n');
+
+    // Tratar líneas vacías al final que pueden causar desalineación
+    let result = [...lines];
+
+    // Si la última línea está vacía, la eliminamos para evitar números de línea extra
+    if (result.length > 0 && !result[result.length - 1].trim()) {
+      result = result.slice(0, -1);
+    }
+
+    return result.length > 0 ? result : [''];
+  }
+
+  // Función para resaltar líneas específicas en el código
+  // Esto asume que puedes marcar líneas para resaltar usando un comentario especial
+  // como // highlight-line o un rango como // highlight-start y // highlight-end
+  processLineHighlighting(code: string): SafeHtml {
+    if (!code) return '';
+
+    // No escapamos HTML aquí para permitir que Prism aplique sus propios estilos
+    // Solo limpiamos caracteres invisibles
+    code = code.replace(/\uFEFF/g, '');
+
+    // Dejamos que Prism maneje el resaltado de sintaxis
+    return this.sanitizer.bypassSecurityTrustHtml(code);
   }
 }

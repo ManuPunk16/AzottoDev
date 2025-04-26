@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
-import { DatePipe, NgFor, NgIf } from '@angular/common';
+import { DatePipe, NgClass, NgFor, NgIf } from '@angular/common';
 
 interface Article {
   slug: string;
@@ -24,13 +24,15 @@ interface Article {
     RouterLink,
     NgFor,
     NgIf,
-    DatePipe
+    DatePipe,
+    NgClass
   ],
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.scss',
 })
 export class ArticleListComponent implements OnInit {
   articles: Article[] = [];
+  featuredArticles: Article[] = []; // Añade esta propiedad
   loading: boolean = true;
   error: boolean = false;
 
@@ -40,6 +42,8 @@ export class ArticleListComponent implements OnInit {
     this.http.get<Article[]>('/assets/articles.json').subscribe({
       next: (data) => {
         this.articles = data;
+        // Filtra los artículos destacados
+        this.featuredArticles = data.filter(article => article.featured);
         this.loading = false;
       },
       error: (err) => {

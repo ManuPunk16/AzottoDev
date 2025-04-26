@@ -1,0 +1,29 @@
+:host ::ng-deep {
+  .swal2-popup {
+    border-radius: 0.75rem;
+  }
+
+  .swal2-title {
+    color: var(--primary-900);
+  }
+
+  .swal2-html-container {
+    color: var(--primary-800);
+  }
+
+  .swal2-close {
+    color: var(--primary-600);
+    &:hover {
+      color: var(--primary-800);
+    }
+  }
+
+  .swal-project-details {
+    max-width: 600px;
+  }
+}
+
+// Mejoras para la interactividad de las imágenes
+.cursor-pointer {
+  cursor: pointer;
+}
