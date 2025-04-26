@@ -8,10 +8,10 @@
             class="px-3 py-1 rounded-full">
         {{ articleMetadata?.category }}
       </span>
-      <span class="px-3 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)]">
+      <span class="date-badge px-3 py-1 rounded-full">
         {{ articleMetadata?.date | date:'dd MMM yyyy' }}
       </span>
-      <span class="px-3 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)] flex items-center">
+      <span class="read-time-badge px-3 py-1 rounded-full flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
@@ -25,7 +25,7 @@
 
     <!-- Autor -->
     <div class="flex items-center gap-3 mb-6">
-      <div class="w-10 h-10 bg-[var(--primary-500)] rounded-full flex items-center justify-center text-[var(--primary-100)] text-lg font-semibold">
+      <div class="w-10 h-10 author-badge rounded-full flex items-center justify-center text-lg font-semibold">
         {{ articleMetadata?.author?.charAt(0) }}
       </div>
       <span class="text-[var(--text-secondary)]">Por <span class="font-medium text-[var(--primary-900)]">{{ articleMetadata?.author }}</span></span>

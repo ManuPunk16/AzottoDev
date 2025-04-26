@@ -7,7 +7,7 @@
 
       <!-- Badge para artículos destacados -->
       <div *ngIf="article.featured"
-           class="absolute top-4 right-4 bg-[var(--primary-500)] text-[var(--primary-100)] text-xs font-semibold px-2 py-1 rounded-full z-10">
+           class="absolute top-4 right-4 featured-badge text-xs font-semibold px-2 py-1 rounded-full z-10">
         Destacado
       </div>
 
@@ -31,11 +31,10 @@
         <div class="p-5">
           <!-- Meta información -->
           <div class="flex flex-wrap gap-2 text-xs mb-3">
-            <!-- Quitamos la categoría de aquí, ya la mostramos en la imagen -->
-            <span class="px-2 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)]">
+            <span class="date-badge px-2 py-1 rounded-full">
               {{ article.date | date:'dd MMM yyyy' }}
             </span>
-            <span class="px-2 py-1 rounded-full bg-[var(--secondary-100)] text-[var(--secondary-900)] flex items-center">
+            <span class="read-time-badge px-2 py-1 rounded-full flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -49,7 +48,7 @@
 
           <!-- Autor -->
           <div class="flex items-center gap-2 mb-3">
-            <div class="w-8 h-8 bg-[var(--primary-500)] rounded-full flex items-center justify-center text-[var(--primary-100)]">
+            <div class="w-8 h-8 author-badge rounded-full flex items-center justify-center">
               {{ article.author.charAt(0) }}
             </div>
             <span class="text-sm text-[var(--text-secondary)]">{{ article.author }}</span>
