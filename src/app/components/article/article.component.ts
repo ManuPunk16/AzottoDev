@@ -195,20 +195,29 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    if (!this.loading && !this.codeBlocksProcessed && this.articleContent.length > 0) {
-      setTimeout(() => {
-        document.querySelectorAll('pre code').forEach((block: any) => {
-          // Asegurar que la clase del lenguaje está aplicada correctamente
-          const language = block.parentElement.getAttribute('data-language') || 'plain';
-          block.className = `language-${language}`;
+    if (!this.loading && this.articleContent.length > 0) {
+      // Usamos requestAnimationFrame para esperar que el DOM esté listo
+      window.requestAnimationFrame(() => {
+        // Selecciona todos los bloques de código
+        const codeBlocks = document.querySelectorAll('pre code');
+        if (codeBlocks.length > 0 && !this.codeBlocksProcessed) {
+          codeBlocks.forEach((block: any) => {
+            // Determina el lenguaje para highlighting
+            const language = block.parentElement.getAttribute('data-language') || 'plain';
 
-          // Aplicar resaltado
-          Prism.highlightElement(block);
-        });
+            // Limpia y añade la clase correcta
+            const langClass = `language-${language}`;
+            block.className = block.className.replace(/language-\w+/g, '');
+            block.className = `${block.className} ${langClass}`.trim();
 
-        this.codeBlocksProcessed = true;
-        this.cdr.detectChanges();
-      }, 100);
+            // Aplica el resaltado de Prism
+            Prism.highlightElement(block);
+          });
+
+          this.codeBlocksProcessed = true;
+          this.cdr.detectChanges();
+        }
+      });
     }
   }
 
@@ -222,21 +231,18 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
   getCodeLines(code: string | undefined): string[] {
     if (!code) return [];
 
-    // Eliminar caracteres invisibles o de control
+    // Limpiamos caracteres invisibles
     code = code.replace(/\uFEFF/g, '');
 
-    // Dividir por saltos de línea
+    // Dividir en líneas preservando líneas vacías
     const lines = code.split('\n');
 
-    // Tratar líneas vacías al final que pueden causar desalineación
-    let result = [...lines];
-
-    // Si la última línea está vacía, la eliminamos para evitar números de línea extra
-    if (result.length > 0 && !result[result.length - 1].trim()) {
-      result = result.slice(0, -1);
+    // Eliminar última línea si está vacía (común en los editores de código)
+    if (lines[lines.length - 1].trim() === '') {
+      return lines.slice(0, -1);
     }
 
-    return result.length > 0 ? result : [''];
+    return lines;
   }
 
   // Función para resaltar líneas específicas en el código

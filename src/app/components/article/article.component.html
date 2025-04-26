@@ -113,7 +113,7 @@
 
       <!-- Bloques de código con Prism.js -->
       <div *ngIf="block.type === 'code'"
-           class="code-block my-6 rounded-lg overflow-hidden shadow-lg">
+           class="code-block my-6">
         <div class="code-header">
           <div class="flex items-center gap-3">
             <div class="flex gap-1.5">
@@ -136,20 +136,21 @@
         </div>
 
         <div class="code-body" [ngClass]="'code-' + (block.language || 'plain')">
-          <!-- Números de línea con mejor estructura -->
+          <!-- Números de línea -->
           <div *ngIf="showLineNumbers"
-               class="absolute left-0 top-0 bottom-0 w-12 bg-[var(--code-gutter-bg)] flex flex-col text-right pt-3 text-[var(--code-line-number)]"
+               class="absolute"
                aria-hidden="true">
-            <ng-container *ngFor="let line of getCodeLines(block.code); let i = index">
-              <div class="pr-3">{{ i + 1 }}</div>
-            </ng-container>
+            <div *ngFor="let line of getCodeLines(block.code); let i = index"
+                 class="line-number">
+              {{ i + 1 }}
+            </div>
           </div>
 
           <!-- Código con mejor estructura -->
           <pre [attr.data-language]="block.language || 'plain'"
                [ngClass]="{'pl-12': showLineNumbers}"
-               class="relative m-0 leading-normal">
-            <code class="block whitespace-pre">{{ block.code }}</code>
+               class="relative">
+            <code [className]="'language-' + (block.language || 'plain')">{{ block.code }}</code>
           </pre>
         </div>
       </div>

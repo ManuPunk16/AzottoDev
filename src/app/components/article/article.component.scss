@@ -1,0 +1,110 @@
+/* Estilos mejorados para los bloques de código */
+.code-block {
+  position: relative;
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Header del bloque de código */
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--code-header-bg);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+/* Cuerpo principal del código */
+.code-body {
+  position: relative;
+  background-color: var(--code-bg);
+  overflow: hidden;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* Números de línea - alineación corregida */
+.code-body .absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3rem !important; /* Ancho fijo */
+  background-color: var(--code-gutter-bg);
+  border-right: 1px solid rgba(120, 120, 120, 0.3);
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  padding-top: 0.75rem;
+  z-index: 5; /* Asegúrate que esté detrás del código */
+}
+
+.code-body .absolute div {
+  padding-right: 0.75rem;
+  height: 1.38rem;
+  line-height: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--code-line-number);
+  /* Evitar selección */
+  user-select: none;
+}
+
+/* Estilos del código */
+.code-body pre {
+  margin: 0;
+  padding: 0rem 0;
+  tab-size: 2;
+  -moz-tab-size: 2;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+}
+
+.code-body pre code {
+  display: block;
+  white-space: pre;
+  padding-left: 1rem; /* Espacio adicional a la izquierda */
+  padding-right: 1rem;
+  margin-left: 0;
+  color: var(--code-text);
+}
+
+/* Ajuste cuando hay números de línea */
+.code-body pre.pl-12 {
+  padding-left: 3rem !important; /* Asegura que haya suficiente espacio */
+}
+
+/* Ajustes para los puntos de colores en la cabecera */
+.code-dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Añade estas reglas para forzar los colores correctos en modo oscuro */
+.code-body.theme-dark {
+  background-color: var(--code-bg);
+
+  pre {
+    background-color: var(--code-bg);
+  }
+
+  pre code {
+    color: var(--code-text);
+  }
+
+  .absolute {
+    background-color: var(--code-gutter-bg);
+    border-right: 1px solid rgba(120, 120, 120, 0.5);
+  }
+
+  .line-number {
+    color: var(--code-line-number);
+  }
+}
