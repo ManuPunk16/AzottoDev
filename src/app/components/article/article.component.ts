@@ -198,23 +198,12 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
     if (!this.loading && !this.codeBlocksProcessed && this.articleContent.length > 0) {
       setTimeout(() => {
         document.querySelectorAll('pre code').forEach((block: any) => {
-          // Aplicar Prism
-          const language = block.parentElement.dataset.language || 'plain';
+          // Asegurar que la clase del lenguaje está aplicada correctamente
+          const language = block.parentElement.getAttribute('data-language') || 'plain';
           block.className = `language-${language}`;
+
+          // Aplicar resaltado
           Prism.highlightElement(block);
-
-          // Dividir en líneas para asegurar alineación
-          const content = block.innerHTML;
-          const lines = content.split('\n');
-
-          if (lines.length > 1) {
-            // Envolver cada línea en un span con clase específica para alineación uniforme
-            const wrappedLines = lines
-              .map((line: any) => `<span class="code-line">${line || ' '}</span>`)
-              .join('\n');
-
-            block.innerHTML = wrappedLines;
-          }
         });
 
         this.codeBlocksProcessed = true;

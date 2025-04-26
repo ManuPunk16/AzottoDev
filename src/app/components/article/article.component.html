@@ -148,8 +148,8 @@
           <!-- Código con mejor estructura -->
           <pre [attr.data-language]="block.language || 'plain'"
                [ngClass]="{'pl-12': showLineNumbers}"
-               class="relative m-0">
-            <code>{{ block.code }}</code>
+               class="relative m-0 leading-normal">
+            <code class="block whitespace-pre">{{ block.code }}</code>
           </pre>
         </div>
       </div>
