@@ -110,4 +110,25 @@ export class ProjectsComponent implements OnInit {
       showConfirmButton: false
     });
   }
+
+  // Añade esta función para manejar rutas de imágenes
+  getImageUrl(path: string): string {
+    if (!path) {
+      return './assets/images/default-project.webp';
+    }
+
+    // Si la ruta ya es absoluta (comienza con http o https), la devolvemos tal cual
+    if (path.startsWith('http')) {
+      return path;
+    }
+
+    // Asegurar que la ruta comience con ./
+    if (!path.startsWith('./') && !path.startsWith('/')) {
+      path = './' + path;
+    } else if (path.startsWith('/')) {
+      path = '.' + path;
+    }
+
+    return path;
+  }
 }

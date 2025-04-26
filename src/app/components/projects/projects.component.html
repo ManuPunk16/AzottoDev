@@ -27,7 +27,7 @@
 
         <!-- Imagen del proyecto -->
         <div class="relative h-56 w-full overflow-hidden cursor-pointer" (click)="showProjectDetails(project)">
-          <img [src]="project.imageUrl || '/assets/images/default-project.webp'"
+          <img [src]="getImageUrl(project.imageUrl)"
                [alt]="project.title"
                class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
 
@@ -105,7 +105,7 @@
 
         <!-- Imagen del proyecto -->
         <div class="relative h-44 w-full overflow-hidden cursor-pointer" (click)="showProjectDetails(project)">
-          <img [src]="project.imageUrl || '/assets/images/default-project.webp'"
+          <img [src]="getImageUrl(project.imageUrl)"
                [alt]="project.title"
                class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
 

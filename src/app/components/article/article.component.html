@@ -113,7 +113,8 @@
 
       <!-- Bloques de código con Prism.js -->
       <div *ngIf="block.type === 'code'"
-           class="code-block my-6">
+           class="code-block my-6"
+           (click)="$event.target === $event.currentTarget && preventClickCapture($event)">
         <div class="code-header">
           <div class="flex items-center gap-3">
             <div class="flex gap-1.5">
@@ -149,7 +150,11 @@
           <!-- Código con mejor estructura -->
           <pre [attr.data-language]="block.language || 'plain'"
                [ngClass]="{'pl-12': showLineNumbers}"
-               class="relative">
+               class="relative"
+               tabindex="0"
+               (touchstart)="handleTouchStart($event)"
+               (touchmove)="handleTouchMove($event)"
+               (touchend)="handleTouchEnd($event)">
             <code [className]="'language-' + (block.language || 'plain')">{{ block.code }}</code>
           </pre>
         </div>

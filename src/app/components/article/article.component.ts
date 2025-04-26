@@ -82,6 +82,11 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
   // Añade esta propiedad a tu componente
   codeBlocksProcessed = false;
 
+  // Añade estas variables a tu clase
+  private touchStartX = 0;
+  private touchStartY = 0;
+  private isSwiping = false;
+
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -257,5 +262,43 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
 
     // Dejamos que Prism maneje el resaltado de sintaxis
     return this.sanitizer.bypassSecurityTrustHtml(code);
+  }
+
+  // Añade estos métodos
+  preventClickCapture(event: MouseEvent) {
+    // Prevenir que clics en el contenedor exterior bloqueen eventos
+    event.stopPropagation();
+  }
+
+  handleTouchStart(event: TouchEvent) {
+    // Registrar posición inicial del toque
+    this.touchStartX = event.touches[0].clientX;
+    this.touchStartY = event.touches[0].clientY;
+    this.isSwiping = false;
+  }
+
+  handleTouchMove(event: TouchEvent) {
+    if (!this.touchStartX || !this.touchStartY) return;
+
+    // Calcular la distancia del movimiento
+    const deltaX = event.touches[0].clientX - this.touchStartX;
+    const deltaY = event.touches[0].clientY - this.touchStartY;
+
+    // Si el movimiento es principalmente horizontal y significativo
+    if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      this.isSwiping = true;
+    }
+  }
+
+  handleTouchEnd(event: TouchEvent) {
+    // Si se detectó un swipe, permitir la navegación del navegador
+    if (this.isSwiping) {
+      event.stopPropagation();
+    }
+
+    // Resetear variables
+    this.touchStartX = 0;
+    this.touchStartY = 0;
+    this.isSwiping = false;
   }
 }

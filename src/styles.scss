@@ -269,7 +269,6 @@ img {
 .color-postman { background-color: #FF6C37; }
 .color-wordpress { background-color: #21759B; }
 .color-firebase { background-color: #DD2C00; }
-.color-c { background-color: #00599C; }
 
 .color-tailwind { background-color: #06B6D4;}
 .color-github { background-color: #9E95B7;}
@@ -790,4 +789,38 @@ code[class*="language-"] *:hover,
   background: transparent !important;
   box-shadow: none !important;
   transform: none !important;
+}
+
+/* Solución para problemas de navegación en iOS */
+@supports (-webkit-touch-callout: none) {
+  .code-block {
+    /* Prevenir que capture eventos táctiles de manera incorrecta */
+    touch-action: manipulation;
+    -webkit-touch-callout: default;
+    -webkit-user-select: auto;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .code-body pre,
+  .code-body pre code {
+    /* Mejorar el comportamiento táctil en iOS */
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    pointer-events: auto;
+  }
+
+  /* Permitir desplazamiento pero no capturar otros eventos táctiles */
+  .code-body .absolute {
+    touch-action: pan-y;
+    pointer-events: none;
+  }
+
+  /* Asegurarse que los elementos clickeables sigan funcionando */
+  .code-actions button {
+    touch-action: manipulation;
+    pointer-events: auto;
+    position: relative;
+    z-index: 20;
+  }
 }
