@@ -1,95 +1,523 @@
-<div class="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 p-4">
-  <div class="text-[var(--primary-900)] opacity-0 transition-opacity duration-600" #animatedElement>
-    <h1 class="text-xl font-semibold mb-2">Hola, mi nombre es Luis Hernandez.</h1>
-    <h2 class="text-xl font-semibold mb-2">Full Stack Developer.</h2>
-  </div>
-
-  <div class="text-[var(--primary-900)] opacity-0 transition-opacity duration-600" #animatedElement>
-    <p class="normal-case indent-8">
-      Soy desarrollador full stack con más de 5 años de experiencia en el diseño y desarrollo, especializado en Angular y enfocado en la creación de aplicaciones escalables y eficientes. Combino mi pasión por la tecnología con un fuerte compromiso por la optimización de código, la accesibilidad web y la mejora continua de experiencias de usuario.
-    </p>
-    <br>
-      <p class="normal-case">
-        En mi trayectoria profesional, he liderado proyectos clave, como el desarrollo del sistema de Control de Gestión Documental y la mejora del portal oficial de la Consejería Jurídica de Campeche, logrando soluciones funcionales y accesibles. Además, tengo experiencia en la implementación de sistemas internos y en la integración de APIs para maximizar la eficiencia organizacional.
-      </p>
-      <br>
-        <p class="normal-case">
-          Actualmente, busco aportar mis habilidades técnicas y mi visión estratégica en proyectos desafiantes que impulsen la innovación y el crecimiento.
-        </p>
-      </div>
-    </div>
-
-    <div class="border-t bg-[var(--primary-900)] my-4 opacity-0 transition-opacity duration-600 mx-auto max-w-screen-md w-full" #animatedElement></div>
-
-    <div class="text-[var(--primary-900)] opacity-0 transition-opacity duration-600 mx-auto max-w-screen-md w-full" #animatedElement>
-      <h2 class="text-xl font-semibold mb-2">Habilidades y Herramientas</h2>
-      <div class="flex flex-wrap gap-4">
-        @for (svg of svgs; track svg) {
-          <div [ngClass]="['svg', svg.color, 'flex', 'items-center', 'justify-center', 'p-3', 'rounded-full']">
-            <svg [attr.aria.labelledby]="svg.icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-12 h-12">
-              <title> {{svg.title}} </title>
-              <path [attr.d]="svg.path" />
-            </svg>
+<div class="min-h-screen bg-gradient-to-br from-[var(--background-primary)] to-[var(--background-secondary)]">
+  
+  <!-- Hero Section con Parallax y Partículas -->
+  <section class="relative min-h-screen flex items-center overflow-hidden" #heroSection>
+    
+    <!-- Animated Background Particles -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="particles-container" #particlesContainer>
+        @for (particle of particles; track $index) {
+          <div 
+            class="particle absolute rounded-full bg-[var(--primary-300)] opacity-20"
+            [style.left.%]="particle.x"
+            [style.top.%]="particle.y"
+            [style.width.px]="particle.size"
+            [style.height.px]="particle.size"
+            [style.animation-delay.s]="particle.delay">
           </div>
         }
       </div>
     </div>
 
-    <div class="border-t bg-[var(--primary-900)] my-4 opacity-0 transition-opacity duration-600 mx-auto max-w-screen-md w-full" #animatedElement></div>
+    <!-- Main Hero Content -->
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 items-center">
+        
+        <!-- Left Content -->
+        <div class="space-y-8" #animatedElement>
+          <!-- Status Badge -->
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--primary-100)]/10 border border-[var(--primary-100)]/20">
+            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span class="text-sm font-medium text-[var(--primary-700)]">Disponible para nuevos proyectos</span>
+          </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 opacity-0 transition-opacity duration-600 mx-auto max-w-screen-md w-full" #animatedElement>
-      <div class="text-[var(--primary-900)]">
-        <h2 class="text-xl font-semibold mb-2">Redes Sociales</h2>
-        <div class="flex items-center gap-4">
-          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-12 h-12">
-            <title>Instagram</title>
-            <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/>
-          </svg>
+          <!-- Main Title with Typewriter Effect -->
+          <div class="space-y-4">
+            <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+              <span class="text-[var(--primary-900)]">Hola, soy</span>
+              <br>
+              <span class="bg-gradient-to-r from-[var(--primary-500)] to-[var(--accent-500)] bg-clip-text text-transparent">
+                Luis Hernández
+              </span>
+            </h1>
+            
+            <!-- Typewriter Role -->
+            <div class="text-xl lg:text-2xl text-[var(--primary-700)] font-medium h-8">
+              <span class="typewriter" #typewriterText></span>
+              <span class="cursor animate-pulse">|</span>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <p class="text-lg text-[var(--text-primary)] leading-relaxed max-w-2xl">
+            Desarrollador Full Stack especializado en <strong>Angular</strong> con 5+ años creando 
+            soluciones digitales escalables y accesibles. Combino innovación técnica con 
+            experiencia gubernamental para impulsar la transformación digital.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap gap-4">
+            <button 
+              (click)="scrollToSection('projects')"
+              class="group px-8 py-4 bg-[var(--primary-500)] text-white rounded-xl font-semibold 
+                     hover:bg-[var(--primary-600)] transform hover:scale-105 transition-all duration-300
+                     shadow-lg hover:shadow-xl">
+              Ver Proyectos
+              <svg class="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
+                   fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </button>
+            
+            <button 
+              (click)="downloadCV()"
+              class="px-8 py-4 border-2 border-[var(--primary-500)] text-[var(--primary-500)] rounded-xl 
+                     font-semibold hover:bg-[var(--primary-500)] hover:text-white transition-all duration-300">
+              Descargar CV
+            </button>
+            
+            <button 
+              (click)="scheduleCall()"
+              class="px-8 py-4 bg-[var(--secondary-100)] text-[var(--primary-900)] rounded-xl 
+                     font-semibold hover:bg-[var(--secondary-500)] transition-all duration-300">
+              📅 Agendar Llamada
+            </button>
+          </div>
+
+          <!-- Social Links -->
+          <div class="flex items-center gap-6">
+            <span class="text-sm text-[var(--text-secondary)]">Encuéntrame en:</span>
+            @for (social of socialLinks; track social.name) {
+              <a 
+                [href]="social.url" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-12 h-12 rounded-full bg-[var(--background-primary)] shadow-md 
+                       hover:shadow-lg flex items-center justify-center transition-all duration-300
+                       hover:scale-110 hover:bg-[var(--primary-100)] group"
+                [attr.aria-label]="social.name">
+                
+                <!-- GitHub Icon -->
+                @if (social.name === 'GitHub') {
+                  <svg class="w-6 h-6 text-[var(--primary-600)] group-hover:text-[var(--primary-700)] transition-colors duration-300" 
+                       fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+                  </svg>
+                }
+                
+                <!-- LinkedIn Icon -->
+                @if (social.name === 'LinkedIn') {
+                  <svg class="w-6 h-6 text-[var(--primary-600)] group-hover:text-[var(--primary-700)] transition-colors duration-300" 
+                       fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                }
+                
+                <!-- Twitter Icon -->
+                @if (social.name === 'Twitter') {
+                  <svg class="w-6 h-6 text-[var(--primary-600)] group-hover:text-[var(--primary-700)] transition-colors duration-300" 
+                       fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+                  </svg>
+                }
+                
+                <!-- Email Icon -->
+                @if (social.name === 'Email') {
+                  <svg class="w-6 h-6 text-[var(--primary-600)] group-hover:text-[var(--primary-700)] transition-colors duration-300" 
+                       fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+                  </svg>
+                }
+              </a>
+            }
+          </div>
         </div>
-      </div>
 
-      <div class="text-[var(--primary-900)]">
-        <h2 class="text-xl font-semibold mb-2">Correo Electronico</h2>
-        <div class="flex items-center gap-4">
-          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-12 h-12">
-            <title>Gmail</title>
-            <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
-          </svg>
-          <span class="font-medium">
-            <a href="mailto:luisadrianhdzsoto@gmail.com">luisadrianhdzsoto&#54;gmail.com</a>
-          </span>
-        </div>
+        <!-- Right Content - 3D Avatar/Animation -->
+        <div class="relative" #animatedElement>
+          <div class="relative w-full max-w-md mx-auto">
+            <!-- Main Avatar Container -->
+            <div class="relative w-80 h-80 mx-auto">
+              <!-- Floating Ring -->
+              <div class="absolute inset-0 rounded-full border-4 border-[var(--primary-300)]/30 animate-spin-slow"></div>
+              <div class="absolute inset-4 rounded-full border-2 border-[var(--accent-500)]/20 animate-spin-reverse"></div>
+              
+              <!-- Avatar Image -->
+              <div class="absolute inset-8 rounded-full overflow-hidden shadow-2xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-700 dark:to-gray-800">
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face&auto=format&q=80" 
+                  alt="Luis Hernández - Full Stack Developer"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <!-- Overlay con gradiente sutil -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent dark:from-black/30"></div>
+              </div>
 
-        <div class="flex items-center gap-4">
-          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-12 h-12">
-            <title>iCloud</title>
-            <path d="M13.762 4.29a6.51 6.51 0 0 0-5.669 3.332 3.571 3.571 0 0 0-1.558-.36 3.571 3.571 0 0 0-3.516 3A4.918 4.918 0 0 0 0 14.796a4.918 4.918 0 0 0 4.92 4.914 4.93 4.93 0 0 0 .617-.045h14.42c2.305-.272 4.041-2.258 4.043-4.589v-.009a4.594 4.594 0 0 0-3.727-4.508 6.51 6.51 0 0 0-6.511-6.27z"/>
-          </svg>
-          <span class="font-medium">
-            <a href="mailto:azzotto@icloud.com">azzotto&#64;icloud.com</a>
-          </span>
+              <!-- Floating Tech Icons -->
+              @for (tech of floatingTechs; track tech.name; let i = $index) {
+                <div 
+                  class="absolute w-16 h-16 rounded-xl bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center
+                         hover:scale-110 transition-transform duration-300 cursor-pointer border border-gray-200 dark:border-gray-600"
+                  [style.transform]="getTechPosition(i)"
+                  [style.animation-delay.s]="i * 0.2"
+                  class="animate-float"
+                  (click)="showTechInfo(tech)">
+                  <div 
+                    class="w-8 h-8 flex items-center justify-center"
+                    [style.color]="tech.color">
+                    <svg 
+                      [attr.viewBox]="tech.viewBox || '0 0 24 24'" 
+                      class="w-8 h-8"
+                      [style.fill]="tech.color">
+                      <path [attr.d]="tech.path"></path>
+                    </svg>
+                  </div>
+                </div>
+              }
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-2 gap-4 mt-8">
+              @for (stat of stats; track stat.label) {
+                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-xl p-4 text-center shadow-lg border border-gray-200 dark:border-gray-600">
+                  <div class="text-2xl font-bold text-[var(--primary-600)]">{{ stat.value }}</div>
+                  <div class="text-sm text-[var(--text-secondary)]">{{ stat.label }}</div>
+                </div>
+              }
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="border-t bg-[var(--primary-900)] my-4 opacity-0 transition-opacity duration-600 mx-auto max-w-screen-md w-full" #animatedElement></div>
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-[var(--primary-500)] rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-[var(--primary-500)] rounded-full mt-2 animate-pulse"></div>
+      </div>
+    </div>
+  </section>
 
-    <div class="text-[var(--primary-900)] opacity-0 transition-opacity duration-600 mx-auto max-w-screen-md w-full" #animatedElement>
-      <h2 class="text-xl font-semibold mb-2">Más sobre mi</h2>
-      <p class="normal-case indent-8">
-        Soy apasionado por el aprendizaje continuo. Me encanta crear aplicaciones entornos que combinan un diseño atractivo con una funcionalidad impecable. La experiencia del usuario, el código limpio, accesible y lo más humano posible son aspectos fundamentales para mí, al igual que los detalles. A veces, menos es más.
-      </p>
-      <br>
-        <p class="normal-case">
-          Poseo una ingeniería en Sistemas Computacionales por la Universidad Mundo Maya, campus Campeche. También he completado varios cursos en Udemy, y voy por más.
+  <!-- Skills Matrix Section -->
+  <section class="py-20 bg-[var(--background-secondary)]" id="skills" #animatedElement>
+    <div class="container mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-bold text-improved-contrast mb-6">
+          Stack Tecnológico
+        </h2>
+        <p class="text-xl text-improved-contrast max-w-3xl mx-auto">
+          Dominio completo del ecosistema moderno de desarrollo web, 
+          desde interfaces hasta infraestructura en la nube.
         </p>
-        <br>
-          <p class="normal-case">
-            Disfruto mucho de mis momentos construyendo, aprendiendo, explorando y pensando en cómo mejorar las cosas. Actualmente, me dedico a crear y perfeccionar proyectos e ideas personales. Estoy disponible para trabajos fijos e independientes. ¡No dudes en saludar y charlar un rato!
-          </p>
-          <br>
-            <p>
-              Reina Isabel II:
-              <q>En esencia, la ingeniería consiste en utilizar la ciencia para encontrar soluciones creativas y prácticas. Es una profesión noble.</q>
-            </p>
+      </div>
+
+      <!-- Interactive Skills Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        
+        <!-- Frontend Skills -->
+        <div class="bg-white dark:bg-[var(--background-primary)] rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+              <i class="fas fa-palette text-white text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-improved-contrast ml-4">Frontend</h3>
           </div>
+          
+          @for (skill of frontendSkills; track skill.name) {
+            <div class="mb-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-medium text-improved-contrast">{{ skill.name }}</span>
+                <span class="text-sm font-bold text-[var(--primary-600)]">{{ skill.level }}%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                <div 
+                  class="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all duration-1000"
+                  [style.width.%]="animatedSkills ? skill.level : 0">
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Backend Skills -->
+        <div class="bg-white dark:bg-[var(--background-primary)] rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl flex items-center justify-center">
+              <i class="fas fa-server text-white text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-improved-contrast ml-4">Backend</h3>
+          </div>
+          
+          @for (skill of backendSkills; track skill.name) {
+            <div class="mb-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-medium text-improved-contrast">{{ skill.name }}</span>
+                <span class="text-sm font-bold text-[var(--primary-600)]">{{ skill.level }}%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                <div 
+                  class="bg-gradient-to-r from-green-500 to-teal-600 h-3 rounded-full transition-all duration-1000"
+                  [style.width.%]="animatedSkills ? skill.level : 0">
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Tools & DevOps -->
+        <div class="bg-white dark:bg-[var(--background-primary)] rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
+              <i class="fas fa-tools text-white text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-improved-contrast ml-4">DevOps & Tools</h3>
+          </div>
+          
+          @for (skill of toolsSkills; track skill.name) {
+            <div class="mb-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-medium text-improved-contrast">{{ skill.name }}</span>
+                <span class="text-sm font-bold text-[var(--primary-600)]">{{ skill.level }}%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                <div 
+                  class="bg-gradient-to-r from-orange-500 to-red-600 h-3 rounded-full transition-all duration-1000"
+                  [style.width.%]="animatedSkills ? skill.level : 0">
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Technology Icons Cloud -->
+      <div class="relative">
+        <h3 class="text-2xl font-bold text-center text-improved-contrast mb-8">
+          Tecnologías que domino
+        </h3>
+        
+        <div class="flex flex-wrap justify-center gap-6">
+          @for (tech of allTechnologies; track tech.name) {
+            <div 
+              class="group relative"
+              (mouseenter)="showTechTooltip(tech, $event)"
+              (mouseleave)="hideTechTooltip()">
+              
+              <div 
+                class="w-16 h-16 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 
+                       transform hover:scale-110 cursor-pointer flex items-center justify-center
+                       bg-white dark:bg-[var(--background-primary)] border border-gray-200 dark:border-gray-600"
+                [style.background-color]="tech.color + '20'"
+                [style.border]="'2px solid ' + tech.color + '40'">
+                
+                <svg 
+                  [attr.viewBox]="tech.viewBox || '0 0 24 24'" 
+                  class="w-8 h-8"
+                  [style.fill]="tech.color">
+                  <path [attr.d]="tech.path"></path>
+                </svg>
+              </div>
+
+              <!-- Tooltip -->
+              <div 
+                class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 
+                       px-3 py-2 bg-black text-white text-sm rounded-lg opacity-0 
+                       group-hover:opacity-100 transition-opacity duration-300 
+                       pointer-events-none whitespace-nowrap z-10">
+                {{ tech.name }}
+                <div class="absolute top-full left-1/2 transform -translate-x-1/2 
+                           border-4 border-transparent border-t-black"></div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-20 bg-[var(--background-secondary)]" id="contact" #animatedElement>
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-4xl lg:text-5xl font-bold text-improved-contrast mb-6">
+            ¿Listo para colaborar?
+          </h2>
+          <p class="text-xl text-improved-contrast">
+            Estoy disponible para proyectos freelance y oportunidades full-time
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          
+          <!-- Contact Info -->
+          <div class="space-y-8">
+            <h3 class="text-2xl font-bold text-improved-contrast mb-6">
+              Formas de contacto
+            </h3>
+
+            @for (contact of contactMethods; track contact.type) {
+              <div class="flex items-center p-6 bg-white dark:bg-[var(--background-primary)] rounded-2xl shadow-lg hover:shadow-xl 
+                          transition-all duration-300 transform hover:scale-105 cursor-pointer border border-gray-200 dark:border-gray-600"
+                   (click)="openContact(contact)">
+                <div 
+                  class="w-16 h-16 rounded-xl flex items-center justify-center mr-6"
+                  [style.background-color]="contact.color + '20'">
+                  
+                  <!-- Email Icon -->
+                  @if (contact.type === 'email') {
+                    <svg class="w-8 h-8" [style.color]="contact.color" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+                    </svg>
+                  }
+                  
+                  <!-- WhatsApp Icon -->
+                  @if (contact.type === 'whatsapp') {
+                    <svg class="w-8 h-8" [style.color]="contact.color" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                    </svg>
+                  }
+                  
+                  <!-- Telegram Icon -->
+                  @if (contact.type === 'telegram') {
+                    <svg class="w-8 h-8" [style.color]="contact.color" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                  }
+                  
+                  <!-- LinkedIn Icon -->
+                  @if (contact.type === 'linkedin') {
+                    <svg class="w-8 h-8" [style.color]="contact.color" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  }
+                </div>
+                <div>
+                  <h4 class="text-lg font-bold text-improved-contrast">{{ contact.label }}</h4>
+                  <p class="text-secondary-improved">{{ contact.value }}</p>
+                  <span class="text-sm text-[var(--primary-600)]">{{ contact.action }}</span>
+                </div>
+              </div>
+            }
+
+            <!-- Quick Actions -->
+            <div class="flex flex-wrap gap-4 pt-6">
+              <button 
+                (click)="scheduleCall()"
+                class="flex items-center px-6 py-3 bg-[var(--primary-500)] text-white 
+                       rounded-xl font-semibold hover:bg-[var(--primary-600)] 
+                       transition-colors duration-300">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Agendar Reunión
+              </button>
+              
+              <button 
+                (click)="downloadCV()"
+                class="flex items-center px-6 py-3 border-2 border-[var(--primary-500)] 
+                       text-[var(--primary-500)] rounded-xl font-semibold 
+                       hover:bg-[var(--primary-500)] hover:text-white transition-all duration-300">
+                <i class="fas fa-download mr-2"></i>
+                Descargar CV
+              </button>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="bg-white dark:bg-[var(--background-primary)] rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-600">
+            <h3 class="text-2xl font-bold text-improved-contrast mb-6">
+              Envíame un mensaje
+            </h3>
+
+            <form [formGroup]="contactForm" (ngSubmit)="sendMessage()" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-improved-contrast mb-2">
+                    Nombre
+                  </label>
+                  <input 
+                    type="text" 
+                    formControlName="name"
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 
+                           focus:ring-[var(--primary-500)] focus:border-transparent 
+                           transition-all duration-300 bg-white dark:bg-[var(--background-secondary)]
+                           text-improved-contrast"
+                    placeholder="Tu nombre">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium text-improved-contrast mb-2">
+                    Email
+                  </label>
+                  <input 
+                    type="email" 
+                    formControlName="email"
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 
+                           focus:ring-[var(--primary-500)] focus:border-transparent 
+                           transition-all duration-300 bg-white dark:bg-[var(--background-secondary)]
+                           text-improved-contrast"
+                    placeholder="tu@email.com">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-improved-contrast mb-2">
+                  Tipo de proyecto
+                </label>
+                <select 
+                  formControlName="projectType"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 
+                         focus:ring-[var(--primary-500)] focus:border-transparent 
+                         transition-all duration-300 bg-white dark:bg-[var(--background-secondary)]
+                         text-improved-contrast">
+                  <option value="">Selecciona una opción</option>
+                  <option value="web-app">Aplicación Web</option>
+                  <option value="mobile-app">Aplicación Móvil</option>
+                  <option value="ecommerce">E-commerce</option>
+                  <option value="dashboard">Dashboard/Admin</option>
+                  <option value="api">API/Backend</option>
+                  <option value="consulting">Consultoría</option>
+                  <option value="other">Otro</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-improved-contrast mb-2">
+                  Mensaje
+                </label>
+                <textarea 
+                  formControlName="message"
+                  rows="5"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 
+                         focus:ring-[var(--primary-500)] focus:border-transparent 
+                         transition-all duration-300 resize-none bg-white dark:bg-[var(--background-secondary)]
+                         text-improved-contrast"
+                  placeholder="Cuéntame sobre tu proyecto..."></textarea>
+              </div>
+
+              <button 
+                type="submit"
+                [disabled]="!contactForm.valid || isSubmitting"
+                class="w-full py-4 bg-[var(--primary-500)] text-white rounded-xl font-semibold 
+                       hover:bg-[var(--primary-600)] disabled:opacity-50 disabled:cursor-not-allowed
+                       transition-all duration-300 transform hover:scale-105">
+                @if (isSubmitting) {
+                  <i class="fas fa-spinner fa-spin mr-2"></i>
+                  Enviando...
+                } @else {
+                  <i class="fas fa-paper-plane mr-2"></i>
+                  Enviar Mensaje
+                }
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

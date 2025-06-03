@@ -2,3 +2,100 @@ q {
   font-style: italic;
   color: #41678d;
 }
+
+// Animaciones de partículas
+.particle {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+// Animaciones de tecnologías flotantes
+.animate-float {
+  animation: floatTech 4s ease-in-out infinite;
+}
+
+@keyframes floatTech {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+// Animación de elementos
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+.translate-y-8 {
+  transform: translateY(2rem);
+}
+
+.translate-y-0 {
+  transform: translateY(0);
+}
+
+// Animaciones de spinning
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin 6s linear infinite reverse;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Efectos de hover mejorados
+.group:hover .group-hover\:scale-105 {
+  transform: scale(1.05);
+}
+
+.group:hover .group-hover\:translate-x-1 {
+  transform: translateX(0.25rem);
+}
+
+// Responsividad
+@media (max-width: 768px) {
+  .particles-container {
+    display: none; // Ocultar partículas en móvil para mejor performance
+  }
+  
+  .animate-float {
+    animation: none; // Reducir animaciones en móvil
+  }
+}
+
+// Mejoras de accesibilidad
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .animate-float,
+  .animate-spin-slow,
+  .animate-spin-reverse {
+    animation: none !important;
+  }
+  
+  * {
+    transition: none !important;
+  }
+}

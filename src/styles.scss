@@ -3,6 +3,9 @@
 :root {
   --primary-100: #f0f0f0;
   --primary-500: #808080;
+  --primary-600: #606060; /* Agregar esta variable que faltaba */
+  --primary-700: #606060;
+  --primary-800: #404040; /* Agregar esta variable que faltaba */
   --primary-900: #1a1a1a;
 
   --secondary-100: #e0e0e0;
@@ -17,6 +20,13 @@
   --text-secondary: #666666;
   --background-primary: #e7e7e7; /* Gris muy claro en lugar de blanco */
   --background-secondary: #e0e0e0; /* Gris ligeramente más oscuro */
+
+  /* Variables específicas para footer */
+  --footer-bg: #1a1a1a;
+  --footer-text: #ffffff;
+  --footer-text-secondary: #cccccc;
+  --footer-link: #cccccc;
+  --footer-link-hover: #ffffff;
 
   transition: background-color 0.3s ease, color 0.3s ease;
 
@@ -107,6 +117,9 @@
 [data-theme="dark"] {
   --primary-100: #333333;
   --primary-500: #a0a0a0;
+  --primary-600: #b0b0b0; /* Más claro para modo oscuro */
+  --primary-700: #c0c0c0;
+  --primary-800: #d0d0d0; /* Más claro para modo oscuro */
   --primary-900: #dddddd;
 
   --secondary-100: #2a2a2a;
@@ -121,6 +134,13 @@
   --text-secondary: #b3b3b3;
   --background-primary: #1a1a1a; /* Gris muy oscuro */
   --background-secondary: #282828; /* Gris ligeramente más claro */
+
+  /* Variables específicas para footer en modo oscuro */
+  --footer-bg: #0f0f0f;
+  --footer-text: #ffffff;
+  --footer-text-secondary: #cccccc;
+  --footer-link: #cccccc;
+  --footer-link-hover: #ffffff;
 
   transition: background-color 0.3s ease, color 0.3s ease;
 
@@ -832,4 +852,39 @@ code[class*="language-"] *:hover,
     -webkit-touch-callout: default;
     -webkit-tap-highlight-color: rgba(0,0,0,0.1);
   }
+}
+
+/* Mejoras específicas para el contraste en modo oscuro */
+[data-theme="dark"] {
+  /* Asegurar que los textos principales sean completamente blancos */
+  .text-improved-contrast {
+    color: #ffffff !important;
+  }
+  
+  /* Textos secundarios con buen contraste */
+  .text-secondary-improved {
+    color: #cccccc !important;
+  }
+  
+  /* Mejorar contraste en cards */
+  .bg-white {
+    background-color: var(--background-primary) !important;
+    border-color: #404040 !important;
+  }
+  
+  /* Inputs y selects en modo oscuro */
+  input, select, textarea {
+    background-color: var(--background-secondary) !important;
+    color: #ffffff !important;
+    border-color: #404040 !important;
+  }
+  
+  input::placeholder, textarea::placeholder {
+    color: #888888 !important;
+  }
+}
+
+/* Transiciones suaves para cambios de tema */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
