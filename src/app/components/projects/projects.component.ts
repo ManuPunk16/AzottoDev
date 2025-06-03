@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../../models/project.model';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
@@ -9,12 +9,10 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-projects',
   imports: [
-    NgFor,
-    NgIf,
     RouterLink,
     DatePipe,
     NgClass
-  ],
+],
   standalone: true,
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'

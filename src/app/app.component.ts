@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { ThemeService } from './services/theme.service';
-import { NgOptimizedImage, NgIf } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
@@ -9,10 +9,9 @@ import { MarkdownModule } from 'ngx-markdown';
   imports: [
     RouterOutlet,
     RouterLink,
-    NgIf,
     NgOptimizedImage,
-    MarkdownModule,
-  ],
+    MarkdownModule
+],
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

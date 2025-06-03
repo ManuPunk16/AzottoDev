@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewChecked, ChangeDetectorRef } from '@angular
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MarkdownModule } from 'ngx-markdown';
-import { NgIf, DatePipe, NgFor, NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MetadataService } from '../../services/metadata.service';
 import Swal from 'sweetalert2';
@@ -57,11 +57,9 @@ interface Article {
   selector: 'app-article',
   imports: [
     MarkdownModule,
-    NgIf,
     DatePipe,
-    NgFor,
     NgClass
-  ],
+],
   standalone: true,
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'

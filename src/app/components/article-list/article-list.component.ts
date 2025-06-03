@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
-import { DatePipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 
 interface Article {
   slug: string;
@@ -22,11 +22,9 @@ interface Article {
   standalone: true,
   imports: [
     RouterLink,
-    NgFor,
-    NgIf,
     DatePipe,
     NgClass
-  ],
+],
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.scss',
 })

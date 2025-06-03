@@ -2,81 +2,86 @@
   <h2 class="text-3xl font-bold text-[var(--primary-900)] mb-6">Artículos</h2>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div *ngFor="let article of articles"
-         class="article-card rounded-lg overflow-hidden shadow-md transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1 bg-[var(--background-primary)] border border-transparent hover:border-[var(--primary-300)]">
-
-      <!-- Badge para artículos destacados -->
-      <div *ngIf="article.featured"
-           class="absolute top-4 right-4 featured-badge text-xs font-semibold px-2 py-1 rounded-full z-10">
-        Destacado
-      </div>
-
-      <a [routerLink]="['/articles', article.slug]" class="block h-full">
-        <!-- Imagen del artículo -->
-        <div class="relative h-48 w-full overflow-hidden">
-          <img [src]="article.image || '/assets/images/default-article.webp'"
-               [alt]="article.title"
-               class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
-
-          <!-- Añadimos overlay de categoría -->
-          <div class="absolute bottom-0 left-0 p-2">
-            <span [ngClass]="'category-' + article.category.toLowerCase().replace(' ', '-')"
+    @for (article of articles; track article) {
+      <div
+        class="article-card rounded-lg overflow-hidden shadow-md transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1 bg-[var(--background-primary)] border border-transparent hover:border-[var(--primary-300)]">
+        <!-- Badge para artículos destacados -->
+        @if (article.featured) {
+          <div
+            class="absolute top-4 right-4 featured-badge text-xs font-semibold px-2 py-1 rounded-full z-10">
+            Destacado
+          </div>
+        }
+        <a [routerLink]="['/articles', article.slug]" class="block h-full">
+          <!-- Imagen del artículo -->
+          <div class="relative h-48 w-full overflow-hidden">
+            <img [src]="article.image || '/assets/images/default-article.webp'"
+              [alt]="article.title"
+              class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+              <!-- Añadimos overlay de categoría -->
+              <div class="absolute bottom-0 left-0 p-2">
+                <span [ngClass]="'category-' + article.category.toLowerCase().replace(' ', '-')"
                   class="px-3 py-1 text-xs font-medium rounded-full">
-              {{ article.category }}
-            </span>
-          </div>
-        </div>
-
-        <!-- Contenido del artículo -->
-        <div class="p-5">
-          <!-- Meta información -->
-          <div class="flex flex-wrap gap-2 text-xs mb-3">
-            <span class="date-badge px-2 py-1 rounded-full">
-              {{ article.date | date:'dd MMM yyyy' }}
-            </span>
-            <span class="read-time-badge px-2 py-1 rounded-full flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              {{ article.readTime }} min
-            </span>
-          </div>
-
-          <!-- Título y descripción -->
-          <h3 class="text-xl font-semibold mb-2 text-[var(--primary-900)] line-clamp-2 hover:text-[var(--link-color)]">{{ article.title }}</h3>
-          <p class="text-[var(--text-primary)] mb-4 line-clamp-3">{{ article.excerpt }}</p>
-
-          <!-- Autor -->
-          <div class="flex items-center gap-2 mb-3">
-            <div class="w-8 h-8 author-badge rounded-full flex items-center justify-center">
-              {{ article.author.charAt(0) }}
+                  {{ article.category }}
+                </span>
+              </div>
             </div>
-            <span class="text-sm text-[var(--text-secondary)]">{{ article.author }}</span>
-          </div>
-
-          <!-- Etiquetas -->
-          <div class="flex flex-wrap gap-1 mt-2">
-            <span *ngFor="let tag of article.tags.slice(0, 3)"
-                  class="tag text-xs px-2 py-1 rounded-md">
-              {{ tag }}
-            </span>
-            <span *ngIf="article.tags.length > 3" class="text-xs text-[var(--text-secondary)]">
-              +{{ article.tags.length - 3 }}
-            </span>
-          </div>
+            <!-- Contenido del artículo -->
+            <div class="p-5">
+              <!-- Meta información -->
+              <div class="flex flex-wrap gap-2 text-xs mb-3">
+                <span class="date-badge px-2 py-1 rounded-full">
+                  {{ article.date | date:'dd MMM yyyy' }}
+                </span>
+                <span class="read-time-badge px-2 py-1 rounded-full flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {{ article.readTime }} min
+                </span>
+              </div>
+              <!-- Título y descripción -->
+              <h3 class="text-xl font-semibold mb-2 text-[var(--primary-900)] line-clamp-2 hover:text-[var(--link-color)]">{{ article.title }}</h3>
+              <p class="text-[var(--text-primary)] mb-4 line-clamp-3">{{ article.excerpt }}</p>
+              <!-- Autor -->
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-8 h-8 author-badge rounded-full flex items-center justify-center">
+                  {{ article.author.charAt(0) }}
+                </div>
+                <span class="text-sm text-[var(--text-secondary)]">{{ article.author }}</span>
+              </div>
+              <!-- Etiquetas -->
+              <div class="flex flex-wrap gap-1 mt-2">
+                @for (tag of article.tags.slice(0, 3); track tag) {
+                  <span
+                    class="tag text-xs px-2 py-1 rounded-md">
+                    {{ tag }}
+                  </span>
+                }
+                @if (article.tags.length > 3) {
+                  <span class="text-xs text-[var(--text-secondary)]">
+                    +{{ article.tags.length - 3 }}
+                  </span>
+                }
+              </div>
+            </div>
+          </a>
         </div>
-      </a>
+      }
     </div>
-  </div>
 
-  <!-- Estado de carga -->
-  <div *ngIf="loading" class="flex justify-center items-center py-20">
-    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--primary-500)]"></div>
-  </div>
+    <!-- Estado de carga -->
+    @if (loading) {
+      <div class="flex justify-center items-center py-20">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--primary-500)]"></div>
+      </div>
+    }
 
-  <!-- Mensaje cuando no hay artículos -->
-  <div *ngIf="!loading && articles.length === 0" class="text-center py-20">
-    <p class="text-xl text-[var(--text-secondary)]">No se encontraron artículos disponibles.</p>
+    <!-- Mensaje cuando no hay artículos -->
+    @if (!loading && articles.length === 0) {
+      <div class="text-center py-20">
+        <p class="text-xl text-[var(--text-secondary)]">No se encontraron artículos disponibles.</p>
+      </div>
+    }
   </div>
-</div>
 
