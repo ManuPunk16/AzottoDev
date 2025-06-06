@@ -8,12 +8,40 @@
       <div class="particles-container" #particlesContainer>
         @for (particle of particles; track $index) {
           <div 
-            class="particle absolute rounded-full bg-[var(--primary-300)] opacity-20"
+            class="particle absolute rounded-full bg-blue-400 opacity-30"
             [style.left.%]="particle.x"
             [style.top.%]="particle.y"
             [style.width.px]="particle.size"
             [style.height.px]="particle.size"
             [style.animation-delay.s]="particle.delay">
+          </div>
+        }
+      </div>
+      
+      <!-- Partículas adicionales con diferentes colores -->
+      <div class="particles-container-2 absolute inset-0">
+        @for (particle of logoParticles; track $index) {
+          <div 
+            class="particle absolute rounded-full bg-purple-400 opacity-20"
+            [style.left.%]="particle.x"
+            [style.top.%]="particle.y"
+            [style.width.px]="particle.size + 3"
+            [style.height.px]="particle.size + 3"
+            [style.animation-delay.s]="particle.delay + 2">
+          </div>
+        }
+      </div>
+      
+      <!-- Partículas de gradiente -->
+      <div class="particles-container-3 absolute inset-0">
+        @for (particle of particles.slice(0, 10); track $index) {
+          <div 
+            class="particle absolute rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-25"
+            [style.left.%]="particle.x + 10"
+            [style.top.%]="particle.y + 15"
+            [style.width.px]="particle.size * 1.5"
+            [style.height.px]="particle.size * 1.5"
+            [style.animation-delay.s]="particle.delay + 1">
           </div>
         }
       </div>

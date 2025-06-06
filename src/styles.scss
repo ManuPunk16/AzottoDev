@@ -112,6 +112,14 @@
   --read-time-text: #0077cc;
   --date-bg: #f5f5f5;
   --date-text: #555555;
+
+  /* Accent color for gradients */
+  --accent-500: #8B5CF6; /* Purple accent */
+  --accent-600: #7C3AED;
+
+  /* Primary color variations */
+  --primary-300: #9CA3AF;
+  --primary-400: #6B7280;
 }
 
 [data-theme="dark"] {
@@ -200,6 +208,14 @@
   --code-gutter-bg: #252526;
   --code-header-bg: #252526;
   --code-selection: rgba(79, 79, 97, 0.5);
+
+  /* Accent color for gradients in dark mode */
+  --accent-500: #A78BFA;
+  --accent-600: #8B5CF6;
+
+  /* Primary color variations for dark mode */
+  --primary-300: #D1D5DB;
+  --primary-400: #E5E7EB;
 }
 
 /* Añadir estos estilos para mejorar la integración del tema oscuro */
