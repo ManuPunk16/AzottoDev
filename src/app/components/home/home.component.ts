@@ -292,25 +292,25 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   socialLinks: SocialLink[] = [
     { 
       name: 'GitHub', 
-      url: 'https://github.com/azottodev', 
+      url: 'https://github.com/manupunk16', 
       icon: 'fab fa-github',
       svg: '' // Vamos a usar SVGs inline en el template
     },
     { 
       name: 'LinkedIn', 
-      url: 'https://linkedin.com/in/azottodev', 
+      url: 'https://linkedin.com/in/azotodev/', 
       icon: 'fab fa-linkedin',
       svg: ''
     },
-    { 
-      name: 'Twitter', 
-      url: 'https://twitter.com/azottodev', 
-      icon: 'fab fa-twitter',
-      svg: ''
-    },
+    // { 
+    //   name: 'Twitter', 
+    //   url: 'https://twitter.com/azottodev', 
+    //   icon: 'fab fa-twitter',
+    //   svg: ''
+    // },
     { 
       name: 'Email', 
-      url: 'mailto:contact@azottodev.com', 
+      url: 'mailto:azzoto@icloud.com', 
       icon: 'fas fa-envelope',
       svg: ''
     }
@@ -321,7 +321,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       type: 'email',
       label: 'Email',
-      value: 'contact@azottodev.com',
+      value: 'azzoto@icloud.com',
       action: 'Enviar email',
       icon: 'fas fa-envelope',
       color: '#EA4335',
@@ -347,7 +347,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       type: 'telegram',
       label: 'Telegram',
-      value: '@azottodev',
+      value: '@azotodev',
       action: 'Abrir chat',
       icon: 'fab fa-telegram',
       color: '#0088CC',
@@ -360,7 +360,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       type: 'linkedin',
       label: 'LinkedIn',
-      value: 'linkedin.com/in/azottodev',
+      value: 'linkedin.com/in/azotodev/',
       action: 'Ver perfil',
       icon: 'fab fa-linkedin',
       color: '#0A66C2',
