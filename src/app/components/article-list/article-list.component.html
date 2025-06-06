@@ -1,87 +1,260 @@
-<div class="mb-8">
-  <h2 class="text-3xl font-bold text-[var(--primary-900)] mb-6">Artículos</h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    @for (article of articles; track article) {
-      <div
-        class="article-card rounded-lg overflow-hidden shadow-md transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1 bg-[var(--background-primary)] border border-transparent hover:border-[var(--primary-300)]">
-        <!-- Badge para artículos destacados -->
-        @if (article.featured) {
-          <div
-            class="absolute top-4 right-4 featured-badge text-xs font-semibold px-2 py-1 rounded-full z-10">
-            Destacado
-          </div>
-        }
-        <a [routerLink]="['/articles', article.slug]" class="block h-full">
-          <!-- Imagen del artículo -->
-          <div class="relative h-48 w-full overflow-hidden">
-            <img [src]="article.image || '/assets/images/default-article.webp'"
-              [alt]="article.title"
-              class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
-              <!-- Añadimos overlay de categoría -->
-              <div class="absolute bottom-0 left-0 p-2">
-                <span [ngClass]="'category-' + article.category.toLowerCase().replace(' ', '-')"
-                  class="px-3 py-1 text-xs font-medium rounded-full">
-                  {{ article.category }}
-                </span>
-              </div>
-            </div>
-            <!-- Contenido del artículo -->
-            <div class="p-5">
-              <!-- Meta información -->
-              <div class="flex flex-wrap gap-2 text-xs mb-3">
-                <span class="date-badge px-2 py-1 rounded-full">
-                  {{ article.date | date:'dd MMM yyyy' }}
-                </span>
-                <span class="read-time-badge px-2 py-1 rounded-full flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {{ article.readTime }} min
-                </span>
-              </div>
-              <!-- Título y descripción -->
-              <h3 class="text-xl font-semibold mb-2 text-[var(--primary-900)] line-clamp-2 hover:text-[var(--link-color)]">{{ article.title }}</h3>
-              <p class="text-[var(--text-primary)] mb-4 line-clamp-3">{{ article.excerpt }}</p>
-              <!-- Autor -->
-              <div class="flex items-center gap-2 mb-3">
-                <div class="w-8 h-8 author-badge rounded-full flex items-center justify-center">
-                  {{ article.author.charAt(0) }}
-                </div>
-                <span class="text-sm text-[var(--text-secondary)]">{{ article.author }}</span>
-              </div>
-              <!-- Etiquetas -->
-              <div class="flex flex-wrap gap-1 mt-2">
-                @for (tag of article.tags.slice(0, 3); track tag) {
-                  <span
-                    class="tag text-xs px-2 py-1 rounded-md">
-                    {{ tag }}
-                  </span>
-                }
-                @if (article.tags.length > 3) {
-                  <span class="text-xs text-[var(--text-secondary)]">
-                    +{{ article.tags.length - 3 }}
-                  </span>
-                }
-              </div>
-            </div>
-          </a>
-        </div>
-      }
-    </div>
-
-    <!-- Estado de carga -->
-    @if (loading) {
-      <div class="flex justify-center items-center py-20">
-        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[var(--primary-500)]"></div>
-      </div>
-    }
-
-    <!-- Mensaje cuando no hay artículos -->
-    @if (!loading && articles.length === 0) {
-      <div class="text-center py-20">
-        <p class="text-xl text-[var(--text-secondary)]">No se encontraron artículos disponibles.</p>
-      </div>
-    }
+<div class="container mx-auto px-6 py-8">
+  <!-- Header con gradiente -->
+  <div class="text-center mb-16">
+    <h1 class="text-5xl font-bold bg-gradient-to-r from-[var(--primary-500)] to-[var(--accent-500)] bg-clip-text text-transparent mb-4">
+      Artículos
+    </h1>
+    <p class="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto">
+      Explora mis últimos artículos sobre desarrollo web, tecnologías modernas y mejores prácticas
+    </p>
   </div>
+
+  <!-- Artículos destacados -->
+  @if (!loading && !error && featuredArticles.length > 0) {
+    <section class="mb-16">
+      <div class="flex items-center mb-8">
+        <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center mr-4">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+          </svg>
+        </div>
+        <h2 class="text-3xl font-bold text-[var(--primary-900)]">Artículos Destacados</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        @for (article of featuredArticles; track article.slug) {
+          <article class="group relative overflow-hidden rounded-2xl bg-white dark:bg-[var(--background-primary)] shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+            <!-- Badge destacado -->
+            <div class="absolute top-6 right-6 z-20">
+              <span class="featured-badge text-xs font-bold px-3 py-1 rounded-full shadow-lg backdrop-blur-sm">
+                ⭐ Destacado
+              </span>
+            </div>
+            
+            <a [routerLink]="['/articles', article.slug]" class="block h-full">
+              <!-- Imagen con overlay mejorado -->
+              <div class="relative h-64 overflow-hidden">
+                <img 
+                  [src]="article.image || '/assets/images/default-article.webp'"
+                  [alt]="article.title"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                
+                <!-- Overlay con gradiente -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0"></div>
+                
+                <!-- Categoría flotante -->
+                <div class="absolute bottom-4 left-4">
+                  <span [ngClass]="'category-' + article.category.toLowerCase().replace(' ', '-')"
+                        class="px-3 py-1 text-sm font-semibold rounded-full shadow-lg backdrop-blur-sm">
+                    {{ article.category }}
+                  </span>
+                </div>
+              </div>
+              
+              <!-- Contenido -->
+              <div class="p-8">
+                <!-- Meta información mejorada -->
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 author-badge rounded-full flex items-center justify-center text-sm font-bold">
+                      {{ article.author.charAt(0) }}
+                    </div>
+                    <span class="text-sm font-medium text-[var(--text-secondary)]">{{ article.author }}</span>
+                  </div>
+                  
+                  <div class="h-4 w-px bg-gray-300 dark:bg-gray-600"></div>
+                  
+                  <div class="flex items-center gap-4 text-sm text-[var(--text-secondary)]">
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      {{ article.date | date:'dd MMM yyyy' }}
+                    </span>
+                    
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      {{ article.readTime }} min
+                    </span>
+                  </div>
+                </div>
+                
+                <!-- Título y descripción -->
+                <h3 class="text-2xl font-bold text-[var(--primary-900)] mb-3 line-clamp-2 group-hover:text-[var(--primary-600)] transition-colors duration-300">
+                  {{ article.title }}
+                </h3>
+                
+                <p class="text-[var(--text-primary)] mb-6 line-clamp-3 leading-relaxed">
+                  {{ article.excerpt }}
+                </p>
+                
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-2">
+                  @for (tag of article.tags.slice(0, 3); track tag) {
+                    <span class="tag text-xs px-3 py-1 rounded-full bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 hover:scale-105 transition-transform duration-200">
+                      #{{ tag }}
+                    </span>
+                  }
+                  @if (article.tags.length > 3) {
+                    <span class="text-xs text-[var(--text-secondary)] px-2 py-1">
+                      +{{ article.tags.length - 3 }} más
+                    </span>
+                  }
+                </div>
+              </div>
+            </a>
+          </article>
+        }
+      </div>
+    </section>
+  }
+
+  <!-- Todos los artículos -->
+  @if (!loading && !error && articles.length > 0) {
+    <section>
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl font-bold text-[var(--primary-900)]">Todos los Artículos</h2>
+        <div class="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+          </svg>
+          {{ articles.length }} artículos
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        @for (article of articles; track article.slug) {
+          <article class="group bg-white dark:bg-[var(--background-primary)] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 hover:border-[var(--primary-300)]">
+            <a [routerLink]="['/articles', article.slug]" class="block h-full">
+              <!-- Imagen -->
+              <div class="relative h-48 overflow-hidden">
+                <img 
+                  [src]="article.image || '/assets/images/default-article.webp'"
+                  [alt]="article.title"
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                
+                <!-- Overlay sutil -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <!-- Categoría -->
+                <div class="absolute bottom-3 left-3">
+                  <span [ngClass]="'category-' + article.category.toLowerCase().replace(' ', '-')"
+                        class="px-2 py-1 text-xs font-medium rounded-md backdrop-blur-sm">
+                    {{ article.category }}
+                  </span>
+                </div>
+                
+                <!-- Badge destacado si aplica -->
+                @if (article.featured) {
+                  <div class="absolute top-3 right-3">
+                    <span class="featured-badge text-xs font-semibold px-2 py-1 rounded-full">
+                      ⭐
+                    </span>
+                  </div>
+                }
+              </div>
+              
+              <!-- Contenido -->
+              <div class="p-6">
+                <!-- Meta información compacta -->
+                <div class="flex items-center justify-between mb-3 text-xs text-[var(--text-secondary)]">
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 author-badge rounded-full flex items-center justify-center text-xs">
+                      {{ article.author.charAt(0) }}
+                    </div>
+                    <span>{{ article.author }}</span>
+                  </div>
+                  
+                  <div class="flex items-center gap-3">
+                    <span class="flex items-center gap-1">
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      {{ article.date | date:'dd MMM' }}
+                    </span>
+                    
+                    <span class="flex items-center gap-1">
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      {{ article.readTime }}min
+                    </span>
+                  </div>
+                </div>
+                
+                <!-- Título -->
+                <h3 class="text-lg font-bold text-[var(--primary-900)] mb-2 line-clamp-2 group-hover:text-[var(--primary-600)] transition-colors duration-300">
+                  {{ article.title }}
+                </h3>
+                
+                <!-- Descripción -->
+                <p class="text-sm text-[var(--text-primary)] mb-4 line-clamp-3 leading-relaxed">
+                  {{ article.excerpt }}
+                </p>
+                
+                <!-- Tags compactos -->
+                <div class="flex flex-wrap gap-1">
+                  @for (tag of article.tags.slice(0, 2); track tag) {
+                    <span class="tag text-xs px-2 py-1 rounded-md">
+                      #{{ tag }}
+                    </span>
+                  }
+                  @if (article.tags.length > 2) {
+                    <span class="text-xs text-[var(--text-secondary)] px-1">
+                      +{{ article.tags.length - 2 }}
+                    </span>
+                  }
+                </div>
+              </div>
+            </a>
+          </article>
+        }
+      </div>
+    </section>
+  }
+
+  <!-- Estado de carga mejorado -->
+  @if (loading) {
+    <div class="flex flex-col items-center justify-center py-20">
+      <div class="relative">
+        <div class="w-16 h-16 border-4 border-[var(--primary-200)] rounded-full animate-spin"></div>
+        <div class="absolute top-0 left-0 w-16 h-16 border-4 border-transparent border-t-[var(--primary-500)] rounded-full animate-spin"></div>
+      </div>
+      <p class="text-[var(--text-secondary)] mt-6 text-lg">Cargando artículos...</p>
+    </div>
+  }
+
+  <!-- Estado de error mejorado -->
+  @if (error) {
+    <div class="text-center py-20 max-w-md mx-auto">
+      <div class="w-20 h-20 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L5.084 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold text-[var(--primary-900)] mb-2">¡Ups! Algo salió mal</h3>
+      <p class="text-[var(--text-secondary)] mb-6">No pudimos cargar los artículos en este momento.</p>
+      <button 
+        (click)="ngOnInit()"
+        class="px-6 py-3 bg-gradient-to-r from-[var(--primary-500)] to-[var(--accent-500)] text-white rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+        Intentar nuevamente
+      </button>
+    </div>
+  }
+
+  <!-- Mensaje cuando no hay artículos -->
+  @if (!loading && !error && articles.length === 0) {
+    <div class="text-center py-20 max-w-md mx-auto">
+      <div class="w-20 h-20 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold text-[var(--primary-900)] mb-2">No hay artículos disponibles</h3>
+      <p class="text-[var(--text-secondary)]">Pronto estarán disponibles nuevos artículos interesantes.</p>
+    </div>
+  }
+</div>
 

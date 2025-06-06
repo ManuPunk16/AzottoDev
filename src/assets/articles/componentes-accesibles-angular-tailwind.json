@@ -37,10 +37,11 @@
     {
       "type": "list",
       "items": [
-        "**Mayor alcance de usuarios:** tu aplicación será utilizable por más personas.",
-        "**Mejora en SEO:** muchas prácticas de accesibilidad también mejoran el posicionamiento en buscadores.",
-        "**Cumplimiento legal:** en muchos países, la accesibilidad es un requisito legal para sitios web públicos y comerciales.",
-        "**Mejor UX para todos:** las prácticas de accesibilidad suelen mejorar la usabilidad general de la aplicación."
+        "**Mayor alcance de audiencia**: Al hacer tu aplicación accesible, puedes llegar a un público más amplio",
+        "**Mejor SEO**: Muchas prácticas de accesibilidad mejoran también el posicionamiento en buscadores",
+        "**Cumplimiento legal**: En muchas jurisdicciones, la accesibilidad web es un requisito legal",
+        "**Mejor experiencia para todos**: Las mejoras de accesibilidad benefician a todos los usuarios",
+        "**Código más limpio y semántico**: Seguir estándares de accesibilidad resulta en código más mantenible"
       ]
     },
     {
@@ -55,10 +56,10 @@
     {
       "type": "list",
       "items": [
-        "**Perceptible:** la información debe ser presentada de manera que los usuarios puedan percibirla.",
-        "**Operable:** los componentes de la interfaz deben ser operables por cualquier usuario.",
-        "**Comprensible:** la información y las operaciones deben ser comprensibles.",
-        "**Robusto:** el contenido debe ser lo suficientemente robusto para funcionar con diversas tecnologías de asistencia."
+        "**Perceptible**: La información debe ser presentable de manera que los usuarios puedan percibirla",
+        "**Operable**: Los componentes de la interfaz deben ser operables por todos los usuarios",
+        "**Comprensible**: La información y el funcionamiento de la interfaz deben ser comprensibles",
+        "**Robusto**: El contenido debe ser suficientemente robusto para ser interpretado por diferentes tecnologías de asistencia"
       ]
     },
     {
@@ -132,15 +133,15 @@
     },
     {
       "type": "paragraph",
-      "text": "Este botón incluye:"
+      "text": "Este botón incluye características importantes para la accesibilidad:"
     },
     {
       "type": "list",
       "items": [
-        "Atributos ARIA para mejorar la compatibilidad con lectores de pantalla.",
-        "Estado visual y funcional para botones deshabilitados.",
-        "Indicadores visuales para el estado de foco, crucial para la navegación por teclado.",
-        "Contrastes de colores adecuados para diferentes variantes."
+        "**Atributos ARIA**: `aria-label`, `aria-labelledby`, `aria-describedby` para descripciones alternativas",
+        "**Estados visuales claros**: Diferentes estilos para estados normal, hover, focus y disabled",
+        "**Indicadores de foco**: Ring visible cuando se navega con teclado",
+        "**Tipos de botón apropiados**: Soporte para diferentes tipos semánticos"
       ]
     },
     {

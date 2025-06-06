@@ -1,29 +1,244 @@
 :host ::ng-deep {
   .swal2-popup {
-    border-radius: 0.75rem;
+    border-radius: 1rem !important;
+    background-color: var(--background-primary) !important;
   }
 
   .swal2-title {
-    color: var(--primary-900);
+    color: var(--primary-900) !important;
   }
 
   .swal2-html-container {
-    color: var(--primary-800);
+    color: var(--text-primary) !important;
   }
 
   .swal2-close {
-    color: var(--primary-600);
+    color: var(--primary-600) !important;
     &:hover {
-      color: var(--primary-800);
+      color: var(--primary-800) !important;
     }
   }
 
   .swal-project-details {
-    max-width: 600px;
+    max-width: 700px !important;
   }
 }
 
 // Mejoras para la interactividad de las imágenes
 .cursor-pointer {
   cursor: pointer;
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Mejoras para las cards de proyectos */
+.project-card {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    .project-title {
+      color: var(--primary-600);
+    }
+    
+    /* Efecto de brillo sutil */
+    &::before {
+      opacity: 1;
+    }
+  }
+  
+  /* Efecto de brillo en hover */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
+
+/* Animación para el estado de carga */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.loading-placeholder {
+  animation: shimmer 1.2s ease-in-out infinite;
+  background: linear-gradient(90deg, 
+    var(--background-primary) 25%, 
+    var(--background-secondary) 50%, 
+    var(--background-primary) 75%);
+  background-size: 400% 100%;
+}
+
+/* Mejoras para hover en tags */
+.tag {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Animación para badges destacados */
+.featured-badge {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Mejoras para la accesibilidad */
+button:focus,
+a:focus {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+/* Efectos de paralaje sutil */
+@media (prefers-reduced-motion: no-preference) {
+  .group:hover img {
+    transform: scale(1.05) translateZ(0);
+  }
+  
+  .group:hover .overlay {
+    opacity: 1;
+  }
+}
+
+/* Responsive mejoras */
+@media (max-width: 768px) {
+  .project-card {
+    margin-bottom: 1rem;
+  }
+  
+  .featured-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Transiciones suaves para modo oscuro */
+* {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Mejoras para la lectura */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Estilos para mejorar el contraste */
+[data-theme="dark"] {
+  .project-card {
+    background-color: var(--background-primary);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .project-card:hover {
+    border-color: var(--primary-400);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Animación de entrada para las cards */
+.project-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Retraso escalonado para animaciones */
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Mejoras para los botones de acción */
+.action-button {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+/* Hover effects mejorados para enlaces */
+.project-link {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+  
+  &:hover::after {
+    width: 100%;
+  }
 }

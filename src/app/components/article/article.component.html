@@ -32,177 +32,168 @@
       <!-- Etiquetas -->
       <div class="flex flex-wrap gap-2 mb-8">
         @for (tag of articleMetadata?.tags; track tag) {
-          <span
-            class="tag text-sm px-3 py-1 rounded-md">
+          <span class="tag text-sm px-3 py-1 rounded-md">
             #{{ tag }}
           </span>
         }
       </div>
     </div>
+    
     <!-- Imagen destacada -->
     @if (articleMetadata?.image) {
       <div class="mb-10 rounded-xl overflow-hidden shadow-lg">
         <img [src]="articleMetadata?.image"
           [alt]="articleMetadata?.title"
           class="w-full h-auto object-cover">
-        </div>
-      }
-      <!-- Contenido del artículo -->
-      <div class="prose prose-lg max-w-none text-[var(--text-primary)]">
-        <!-- Renderizamos cada bloque según su tipo -->
-        @for (block of articleContent; track block) {
-          <!-- Encabezados -->
-          @if (block.type === 'heading' && block.level === 1) {
-            <h1
-              class="text-3xl font-bold mt-10 mb-6 text-[var(--primary-900)]">
-              {{ block.text }}
-            </h1>
-          }
-          @if (block.type === 'heading' && block.level === 2) {
-            <h2
-              class="text-2xl font-semibold mt-8 mb-4 text-[var(--primary-900)]">
-              {{ block.text }}
-            </h2>
-          }
-          @if (block.type === 'heading' && block.level === 3) {
-            <h3
-              class="text-xl font-semibold mt-6 mb-3 text-[var(--primary-900)]">
-              {{ block.text }}
-            </h3>
-          }
-          @if (block.type === 'heading' && block.level === 4) {
-            <h4
-              class="text-lg font-semibold mt-5 mb-2 text-[var(--primary-900)]">
-              {{ block.text }}
-            </h4>
-          }
-          <!-- Párrafos con soporte para Markdown -->
-          @if (block.type === 'paragraph') {
-            <p
-              class="mb-6 leading-relaxed text-[var(--text-primary)]"
-              [innerHTML]="renderMarkdown(block.text || '')">
-            </p>
-          }
-          <!-- Listas con estilo mejorado -->
-          @if (block.type === 'list') {
-            <div class="mb-6">
-              <ul class="space-y-4">
-                @for (item of block.items; track item) {
-                  <li
-                    class="pl-2 flex text-[var(--text-primary)]">
-                    <span class="text-[var(--primary-500)] mr-2">•</span>
-                    <div [innerHTML]="renderMarkdown(item)" class="flex-1"></div>
-                  </li>
-                }
-              </ul>
-            </div>
-          }
-          <!-- Imágenes -->
-          @if (block.type === 'image') {
-            <figure
-              class="my-8">
-              <img [src]="block.src"
-                [alt]="block.alt || ''"
-                class="w-full h-auto rounded-lg shadow">
-                @if (block.alt) {
-                  <figcaption
-                    class="text-center text-sm text-[var(--text-secondary)] mt-2">
-                    {{ block.alt }}
-                  </figcaption>
-                }
-              </figure>
+      </div>
+    }
+    
+    <!-- Contenido del artículo -->
+    <div class="prose prose-lg max-w-none text-[var(--text-primary)]">
+      <!-- Renderizamos cada bloque según su tipo -->
+      @for (block of articleContent; track $index) {
+        <!-- Encabezados -->
+        @if (block.type === 'heading' && block.level === 1) {
+          <h1 class="text-3xl font-bold mt-10 mb-6 text-[var(--primary-900)]">
+            {{ block.text }}
+          </h1>
+        }
+        @if (block.type === 'heading' && block.level === 2) {
+          <h2 class="text-2xl font-semibold mt-8 mb-4 text-[var(--primary-900)]">
+            {{ block.text }}
+          </h2>
+        }
+        @if (block.type === 'heading' && block.level === 3) {
+          <h3 class="text-xl font-semibold mt-6 mb-3 text-[var(--primary-900)]">
+            {{ block.text }}
+          </h3>
+        }
+        @if (block.type === 'heading' && block.level === 4) {
+          <h4 class="text-lg font-semibold mt-5 mb-2 text-[var(--primary-900)]">
+            {{ block.text }}
+          </h4>
+        }
+        
+        <!-- Párrafos con soporte para Markdown -->
+        @if (block.type === 'paragraph') {
+          <p class="mb-6 leading-relaxed text-[var(--text-primary)]"
+             [innerHTML]="renderMarkdown(block.text || '')">
+          </p>
+        }
+        
+        <!-- Listas con estilo mejorado -->
+        @if (block.type === 'list') {
+          <div class="mb-6">
+            <ul class="space-y-4">
+              @for (item of block.items; track $index) {
+                <li class="pl-2 flex text-[var(--text-primary)]">
+                  <span class="text-[var(--primary-500)] mr-2">•</span>
+                  <div [innerHTML]="renderMarkdown(item)" class="flex-1"></div>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+        
+        <!-- Imágenes -->
+        @if (block.type === 'image') {
+          <figure class="my-8">
+            <img [src]="block.src"
+              [alt]="block.alt || ''"
+              class="w-full h-auto rounded-lg shadow">
+            @if (block.alt) {
+              <figcaption class="text-center text-sm text-[var(--text-secondary)] mt-2">
+                {{ block.alt }}
+              </figcaption>
             }
-            <!-- Enlaces destacados -->
-            @if (block.type === 'link') {
-              <div
-                class="my-6 p-4 border-l-4 border-[var(--primary-500)] bg-[var(--highlight-bg)] rounded-r">
-                <a [href]="block.url"
-                  target="_blank"
-                  class="text-[var(--link-color)] hover:text-[var(--link-hover-color)] font-medium flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                  {{ block.text }}
-                </a>
-              </div>
-            }
-            <!-- Bloques de código con Prism.js -->
-            @if (block.type === 'code') {
-              <div
-                class="code-block my-6"
-                (click)="$event.target === $event.currentTarget && preventClickCapture($event)">
-                <div class="code-header">
-                  <div class="flex items-center gap-3">
-                    <div class="flex gap-1.5">
-                      <span class="code-dot code-dot-red"></span>
-                      <span class="code-dot code-dot-yellow"></span>
-                      <span class="code-dot code-dot-green"></span>
-                    </div>
-                    <span class="font-mono text-sm font-medium">{{ block.language || 'texto plano' }}</span>
-                  </div>
-                  <div class="code-actions">
-                    <button (click)="copyCode(block.code || '')"
-                      class="flex items-center gap-1 px-2 py-1 rounded text-xs font-medium hover:bg-opacity-20 hover:bg-[var(--primary-500)] transition-colors"
-                      aria-label="Copiar código">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                      </svg>
-                      <span>Copiar</span>
-                    </button>
-                  </div>
+          </figure>
+        }
+        
+        <!-- Enlaces destacados -->
+        @if (block.type === 'link') {
+          <div class="my-6 p-4 border-l-4 border-[var(--primary-500)] bg-[var(--highlight-bg)] rounded-r">
+            <a [href]="block.url"
+              target="_blank"
+              class="text-[var(--link-color)] hover:text-[var(--link-hover-color)] font-medium flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              {{ block.text }}
+            </a>
+          </div>
+        }
+        
+        <!-- Bloques de código con Prism.js -->
+        @if (block.type === 'code') {
+          <div class="code-block my-6"
+               (click)="$event.target === $event.currentTarget && preventClickCapture($event)">
+            <div class="code-header">
+              <div class="flex items-center gap-3">
+                <div class="flex gap-1.5">
+                  <span class="code-dot code-dot-red"></span>
+                  <span class="code-dot code-dot-yellow"></span>
+                  <span class="code-dot code-dot-green"></span>
                 </div>
-                <div class="code-body" [ngClass]="'code-' + (block.language || 'plain')">
-                  <!-- Números de línea -->
-                  @if (showLineNumbers) {
-                    <div
-                      class="absolute"
-                      aria-hidden="true">
-                      @for (line of getCodeLines(block.code); track line; let i = $index) {
-                        <div
-                          class="line-number">
-                          {{ i + 1 }}
-                        </div>
-                      }
+                <span class="font-mono text-sm font-medium">{{ block.language || 'texto plano' }}</span>
+              </div>
+              <div class="code-actions">
+                <button (click)="copyCode(block.code || '')"
+                  class="flex items-center gap-1 px-2 py-1 rounded text-xs font-medium hover:bg-opacity-20 hover:bg-[var(--primary-500)] transition-colors"
+                  aria-label="Copiar código">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                  </svg>
+                  <span>Copiar</span>
+                </button>
+              </div>
+            </div>
+            <div class="code-body" [ngClass]="'code-' + (block.language || 'plain')">
+              <!-- Números de línea -->
+              @if (showLineNumbers) {
+                <div class="absolute" aria-hidden="true">
+                  @for (line of getCodeLines(block.code); track $index) {
+                    <div class="line-number">
+                      {{ $index + 1 }}
                     </div>
                   }
-                  <!-- Código con mejor estructura -->
-                  <pre [attr.data-language]="block.language || 'plain'"
-                    [ngClass]="{'pl-12': showLineNumbers}"
-                    class="relative"
-                    tabindex="0">
-                    <code [className]="'language-' + (block.language || 'plain')"
-                      (touchstart)="$event.stopPropagation()"
-                    (touchmove)="$event.stopPropagation()">{{ block.code }}</code>
-                  </pre>
                 </div>
-              </div>
-            }
-          }
-        </div>
-      </div>
-    }
+              }
+              <!-- Código con mejor estructura -->
+              <pre [attr.data-language]="block.language || 'plain'"
+                [ngClass]="{'pl-12': showLineNumbers}"
+                class="relative"
+                tabindex="0">
+                <code [className]="'language-' + (block.language || 'plain')"
+                  (touchstart)="$event.stopPropagation()"
+                  (touchmove)="$event.stopPropagation()">{{ block.code }}</code>
+              </pre>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
+}
 
-    <!-- Estado de carga -->
-    @if (loading) {
-      <div
-        class="flex flex-col items-center justify-center min-h-[50vh] py-20">
-        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[var(--primary-500)] mb-4"></div>
-        <p class="text-[var(--text-secondary)] text-xl">Cargando artículo...</p>
-      </div>
-    }
+<!-- Estado de carga -->
+@if (loading) {
+  <div class="flex flex-col items-center justify-center min-h-[50vh] py-20">
+    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[var(--primary-500)] mb-4"></div>
+    <p class="text-[var(--text-secondary)] text-xl">Cargando artículo...</p>
+  </div>
+}
 
-    <!-- Estado de error -->
-    @if (error) {
-      <div
-        class="text-center py-20 max-w-md mx-auto">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-red-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <h2 class="text-2xl font-bold text-[var(--primary-900)] mb-2">No se pudo cargar el artículo</h2>
-        <p class="text-[var(--text-secondary)] mb-6">Lo sentimos, ha ocurrido un error al intentar cargar el contenido.</p>
-        <button (click)="loadArticleContent()"
-          class="px-4 py-2 bg-[var(--primary-500)] text-[var(--primary-100)] rounded-lg hover:bg-[var(--primary-600)] transition-colors">
-          Intentar nuevamente
-        </button>
-      </div>
-    }
+<!-- Estado de error -->
+@if (error) {
+  <div class="text-center py-20 max-w-md mx-auto">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-red-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <h2 class="text-2xl font-bold text-[var(--primary-900)] mb-2">No se pudo cargar el artículo</h2>
+    <p class="text-[var(--text-secondary)] mb-6">Lo sentimos, ha ocurrido un error al intentar cargar el contenido.</p>
+    <button (click)="loadArticleContent()"
+      class="px-4 py-2 bg-[var(--primary-500)] text-[var(--primary-100)] rounded-lg hover:bg-[var(--primary-600)] transition-colors">
+      Intentar nuevamente
+    </button>
+  </div>
+}

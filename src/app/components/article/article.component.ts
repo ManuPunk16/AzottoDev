@@ -30,8 +30,9 @@ interface ArticleMetadata {
   excerpt?: string;
 }
 
+// Actualiza la interfaz ArticleContentBlock
 interface ArticleContentBlock {
-  type: string;
+  type: 'heading' | 'paragraph' | 'list' | 'image' | 'link' | 'code';
   level?: number;
   text?: string;
   items?: string[];

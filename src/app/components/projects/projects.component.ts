@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-projects',
   imports: [
-    RouterLink,
     DatePipe,
     NgClass
 ],
