@@ -64,6 +64,25 @@ interface QuickLink {
   href: string;
 }
 
+interface Achievement {
+  title: string;
+  value: string;
+  description: string;
+  icon: string;
+  color: string;
+}
+
+interface ProfessionalValue {
+  title: string;
+  description: string;
+}
+
+interface PersonalInterest {
+  name: string;
+  icon: string;
+  color: string;
+}
+
 @Component({
   selector: 'app-home',
   imports: [
@@ -401,6 +420,70 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   angularVersion = '20.0';
   lastUpdate = new Date();
   currentYear = new Date().getFullYear();
+
+  // Nuevas propiedades para la sección About Me
+  professionalAchievements: Achievement[] = [
+    {
+      title: 'Años de Experiencia',
+      value: '5+',
+      description: 'En desarrollo web profesional',
+      icon: 'fas fa-calendar-alt',
+      color: '#3B82F6'
+    },
+    {
+      title: 'Proyectos Completados',
+      value: '50+',
+      description: 'Aplicaciones web exitosas',
+      icon: 'fas fa-project-diagram',
+      color: '#10B981'
+    },
+    {
+      title: 'Usuarios Impactados',
+      value: '10k+',
+      description: 'A través de mis aplicaciones',
+      icon: 'fas fa-users',
+      color: '#8B5CF6'
+    },
+    {
+      title: 'Tecnologías Dominadas',
+      value: '15+',
+      description: 'Frameworks y herramientas',
+      icon: 'fas fa-cogs',
+      color: '#F59E0B'
+    }
+  ];
+
+  professionalValues: ProfessionalValue[] = [
+    {
+      title: 'Calidad ante todo',
+      description: 'Escribo código limpio, escalable y mantenible siguiendo las mejores prácticas.'
+    },
+    {
+      title: 'Aprendizaje continuo',
+      description: 'Me mantengo actualizado con las últimas tecnologías y tendencias del desarrollo.'
+    },
+    {
+      title: 'Colaboración efectiva',
+      description: 'Trabajo bien en equipo y comunico ideas técnicas de manera clara.'
+    },
+    {
+      title: 'Enfoque en el usuario',
+      description: 'Desarrollo pensando en la experiencia del usuario final y la accesibilidad.'
+    },
+    {
+      title: 'Soluciones innovadoras',
+      description: 'Busco enfoques creativos para resolver problemas técnicos complejos.'
+    }
+  ];
+
+  personalInterests: PersonalInterest[] = [
+    { name: 'Fotografía', icon: 'fas fa-camera', color: '#EF4444' },
+    { name: 'Lectura Técnica', icon: 'fas fa-book', color: '#3B82F6' },
+    { name: 'Gaming', icon: 'fas fa-gamepad', color: '#8B5CF6' },
+    { name: 'Música', icon: 'fas fa-music', color: '#10B981' },
+    { name: 'Viajes', icon: 'fas fa-plane', color: '#F59E0B' },
+    { name: 'Fitness', icon: 'fas fa-dumbbell', color: '#EF4444' }
+  ];
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object
