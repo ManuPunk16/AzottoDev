@@ -1,128 +1,284 @@
 <div class="min-h-screen flex flex-col">
-  <header class="bg-[var(--primary-900)] text-[var(--primary-100)] p-4 flex justify-between items-center">
-    <div class="font-bold text-xl">
-      <a [routerLink]="['']">
-        AzotoDev
+
+  <!-- Header con todas las clases de Tailwind -->
+  <header class="sticky top-0 z-50 h-20 min-h-20 max-h-20 
+                 flex items-center justify-between px-4
+                 bg-[var(--primary-900)] text-[var(--primary-100)]
+                 backdrop-blur-xl supports-[backdrop-filter]:bg-[var(--primary-900)]/90
+                 border-b border-[var(--primary-800)]/20">
+
+    <!-- Logo Section -->
+    <div class="w-30 min-w-30 max-w-30">
+      <a routerLink="/" class="text-xl font-bold text-[var(--primary-100)] 
+                hover:text-[var(--primary-500)] transition-colors duration-300
+                focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)] 
+                focus:ring-offset-2 focus:ring-offset-[var(--primary-900)] rounded-lg px-1">
+        AzottoDev
       </a>
     </div>
-    <nav class="flex space-x-4">
-      <a [routerLink]="['/projects']" class="hover:text-[var(--primary-300)] transition-colors duration-300">Proyectos</a>
-      <a [routerLink]="['/articles']" class="hover:text-[var(--primary-300)] transition-colors duration-300">Articulos</a>
+
+    <!-- Navigation -->
+    <nav class="hidden md:flex items-center justify-center w-60 space-x-8" role="navigation"
+      aria-label="Navegación principal">
+
+      <a routerLink="/projects" routerLinkActive="!text-[var(--primary-400)] nav-active" class="nav-link relative overflow-hidden text-center block w-20
+                text-[var(--primary-100)] hover:text-[var(--primary-500)]
+                transition-colors duration-300 py-2 px-3 rounded-lg
+                focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]
+                focus:ring-offset-2 focus:ring-offset-[var(--primary-900)]">
+        Proyectos
+      </a>
+
+      <a routerLink="/articles" routerLinkActive="!text-[var(--primary-400)] nav-active" class="nav-link relative overflow-hidden text-center block w-20
+                text-[var(--primary-100)] hover:text-[var(--primary-500)]
+                transition-colors duration-300 py-2 px-3 rounded-lg
+                focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]
+                focus:ring-offset-2 focus:ring-offset-[var(--primary-900)]">
+        Artículos
+      </a>
     </nav>
-    <button (click)="themeService.toggleTheme()" class="relative w-12 h-12 rounded-full transition-colors duration-300 focus:outline-none">
-      @if (themeService.getTheme() === 'dark') {
-        <img ngSrc="moon-50.ico" width="32" height="32" alt="Tema Claro" class="absolute w-8 h-8 top-2 left-2 transition-opacity duration-300 ease-in-out" />
-      }
-      @if (themeService.getTheme() !== 'dark') {
-        <img ngSrc="sun-50.ico" width="32" height="32" alt="Tema Oscuro" class="absolute w-8 h-8 top-2 left-2 transition-opacity duration-300 ease-in-out" />
-      }
+
+    <!-- Mobile Menu Button -->
+    <button type="button" (click)="toggleMobileMenu()" class="md:hidden relative w-12 h-12 flex items-center justify-center
+                   text-[var(--primary-100)] hover:text-[var(--primary-300)]
+                   hover:bg-[var(--primary-800)]/20 rounded-xl transition-all duration-300
+                   focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]
+                   focus:ring-offset-2 focus:ring-offset-[var(--primary-900)]" [attr.aria-expanded]="isMobileMenuOpen"
+      [attr.aria-label]="isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'">
+
+      <!-- Hamburger Icon -->
+      <svg class="w-6 h-6 transition-transform duration-300" [class.rotate-45]="isMobileMenuOpen" fill="none"
+        stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          [attr.d]="isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'" />
+      </svg>
     </button>
+
+    <!-- Theme Toggle -->
+    <div class="w-12 h-12 flex items-center justify-end">
+      <button type="button" (click)="themeService.toggleTheme()" class="relative w-12 h-12 min-w-12 min-h-12 max-w-12 max-h-12
+                     flex items-center justify-center overflow-hidden
+                     rounded-full bg-[var(--primary-800)]/20 hover:bg-[var(--primary-700)]/30
+                     text-[var(--primary-100)] transition-all duration-300
+                     focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]
+                     focus:ring-offset-2 focus:ring-offset-[var(--primary-900)]"
+        [attr.aria-label]="themeService.getTheme() === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'">
+
+        <!-- Dark Mode Icon (Moon) -->
+        @if (themeService.getTheme() === 'dark') {
+        <img ngSrc="moon-50.ico" width="32" height="32" alt="Cambiar a tema claro" class="absolute w-8 h-8 min-w-8 min-h-8 max-w-8 max-h-8
+                      top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                      transition-opacity duration-300 will-change-[opacity]" />
+        } @else {
+        <!-- Light Mode Icon (Sun) -->
+        <img ngSrc="sun-50.ico" width="32" height="32" alt="Cambiar a tema oscuro" class="absolute w-8 h-8 min-w-8 min-h-8 max-w-8 max-h-8
+                      top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                      transition-opacity duration-300 will-change-[opacity]" />
+        }
+      </button>
+    </div>
   </header>
 
-  <main class="flex-grow">
-    <router-outlet></router-outlet>
+  <!-- Mobile Navigation Overlay -->
+  @if (isMobileMenuOpen) {
+  <div class="md:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm" (click)="closeMobileMenu()" [@fadeInOut]>
+
+    <!-- Mobile Menu Panel -->
+    <nav class="absolute top-20 left-0 right-0 mx-4 
+                  bg-[var(--background-primary)] border border-[var(--primary-300)]/20
+                  rounded-2xl shadow-2xl overflow-hidden" [@slideInOut] (click)="$event.stopPropagation()">
+
+      <div class="p-6 space-y-4">
+        <a routerLink="/projects"
+          routerLinkActive="!bg-[var(--primary-500)]/20 !text-[var(--primary-600)] !border-l-[var(--primary-500)]"
+          (click)="closeMobileMenu()" class="mobile-nav-link block py-4 px-6 rounded-xl
+                    text-[var(--text-primary)] hover:text-[var(--primary-600)]
+                    hover:bg-[var(--primary-100)]/20 transition-all duration-300
+                    border-l-4 border-transparent hover:border-l-[var(--primary-500)]
+                    focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]">
+          <span class="font-medium">Proyectos</span>
+          <span class="block text-sm text-[var(--text-secondary)] mt-1">
+            Explora mi portafolio de desarrollo
+          </span>
+        </a>
+
+        <a routerLink="/articles"
+          routerLinkActive="!bg-[var(--primary-500)]/20 !text-[var(--primary-600)] !border-l-[var(--primary-500)]"
+          (click)="closeMobileMenu()" class="mobile-nav-link block py-4 px-6 rounded-xl
+                    text-[var(--text-primary)] hover:text-[var(--primary-600)]
+                    hover:bg-[var(--primary-100)]/20 transition-all duration-300
+                    border-l-4 border-transparent hover:border-l-[var(--primary-500)]
+                    focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]">
+          <span class="font-medium">Artículos</span>
+          <span class="block text-sm text-[var(--text-secondary)] mt-1">
+            Lee mis publicaciones técnicas
+          </span>
+        </a>
+      </div>
+    </nav>
+  </div>
+  }
+
+  <!-- Main Content -->
+  <main class="flex-1 bg-[var(--background-secondary)] text-[var(--text-primary)]
+              min-h-[calc(100vh-5rem)]">
+    <router-outlet />
   </main>
 
-  <!-- Footer with improved dark mode support -->
-  <footer class="py-12" style="background-color: var(--footer-bg) !important; color: var(--footer-text) !important;">
-    <div class="container mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- Brand -->
-        <div>
-          <h3 class="text-2xl font-bold mb-4" style="color: var(--footer-text) !important;">AzottoDev</h3>
-          <p class="mb-4" style="color: var(--footer-text-secondary) !important;">
-            Desarrollador Full Stack especializado en crear experiencias digitales excepcionales.
-          </p>
-          <div class="flex space-x-4">
+  <!-- Footer optimizado con Tailwind -->
+  <footer class="bg-[var(--footer-bg)] text-[var(--footer-text)]
+                min-h-[25rem] h-auto py-12 
+                border-t border-[var(--primary-800)]/20">
+
+    <div class="container mx-auto px-6 min-h-[21.25rem] 
+                flex flex-col justify-between">
+
+      <!-- Main Footer Content -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 flex-1 min-h-[12.5rem]">
+
+        <!-- Brand Section -->
+        <div class="min-h-[9.375rem] space-y-6">
+          <div>
+            <h3 class="text-2xl font-bold text-[var(--footer-text)] mb-4">
+              AzottoDev
+            </h3>
+            <p class="text-[var(--footer-text-secondary)] leading-relaxed max-w-sm">
+              Desarrollador Full Stack especializado en crear experiencias digitales
+              excepcionales que combinan innovación técnica con usabilidad perfecta.
+            </p>
+          </div>
+
+          <!-- Social Links -->
+          <div class="flex items-center space-x-4">
             @for (social of socialLinks; track social.name) {
-              <a 
-                [href]="social.url" 
-                target="_blank" 
-                class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center 
-                       hover:bg-white/20 transition-colors duration-300"
-                style="color: var(--footer-link) !important;"
-                [attr.aria-label]="social.name">
-                
-                <!-- GitHub Icon -->
-                @if (social.name === 'GitHub') {
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                  </svg>
+            <a [href]="social.url" target="_blank" rel="noopener noreferrer" class="group w-12 h-12 rounded-xl flex items-center justify-center 
+                        bg-white/10 hover:bg-white/20 text-[var(--footer-link)] 
+                        hover:text-[var(--footer-link-hover)] transition-all duration-300 
+                        transform hover:scale-110 hover:-translate-y-1
+                        focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)] 
+                        focus:ring-offset-2 focus:ring-offset-[var(--footer-bg)]"
+              [attr.aria-label]="'Visitar ' + social.name">
+
+              <!-- Dynamic SVG Icons -->
+              <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-110" fill="currentColor"
+                viewBox="0 0 24 24" aria-hidden="true">
+
+                @switch (social.name) {
+                @case ('GitHub') {
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 }
-                
-                <!-- LinkedIn Icon -->
-                @if (social.name === 'LinkedIn') {
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
+                @case ('LinkedIn') {
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 }
-                
-                <!-- Twitter Icon -->
-                @if (social.name === 'Twitter') {
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                  </svg>
+                @case ('Twitter') {
+                <path
+                  d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                 }
-                
-                <!-- Email Icon -->
-                @if (social.name === 'Email') {
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/>
-                    <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/>
-                  </svg>
+                @case ('Email') {
+                <g>
+                  <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                  <path
+                    d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                </g>
                 }
-              </a>
+                }
+              </svg>
+            </a>
             }
           </div>
         </div>
 
         <!-- Quick Links -->
-        <div>
-          <h4 class="text-lg font-semibold mb-4" style="color: var(--footer-text) !important;">Enlaces Rápidos</h4>
-          <nav class="space-y-2">
+        <div class="min-h-[9.375rem]">
+          <h4 class="text-lg font-semibold text-[var(--footer-text)] mb-6 
+                     relative before:content-[''] before:absolute before:bottom-0 
+                     before:left-0 before:w-8 before:h-0.5 
+                     before:bg-gradient-to-r before:from-[var(--primary-500)] 
+                     before:to-[var(--accent-500)] before:-mb-2">
+            Enlaces Rápidos
+          </h4>
+
+          <nav class="space-y-3" aria-label="Enlaces rápidos">
             @for (link of quickLinks; track link.label) {
-              <a 
-                [href]="link.href" 
-                class="block transition-colors duration-300 hover:opacity-80"
-                style="color: var(--footer-link) !important;">
-                {{ link.label }}
-              </a>
+            <a [href]="link.href" class="group flex items-center py-2 text-[var(--footer-link)] 
+                        hover:text-[var(--footer-link-hover)] transition-all duration-300 
+                        hover:translate-x-2 focus:outline-none focus:translate-x-2
+                        focus:text-[var(--footer-link-hover)]">
+
+              <svg class="w-4 h-4 mr-3 opacity-60 group-hover:opacity-100 
+                           transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+
+              <span class="font-medium">{{ link.label }}</span>
+            </a>
             }
           </nav>
         </div>
 
         <!-- Portfolio Stats -->
-        <div>
-          <h4 class="text-lg font-semibold mb-4" style="color: var(--footer-text) !important;">Estadísticas</h4>
-          <div class="space-y-3">
+        <div class="min-h-[11.25rem]">
+          <h4 class="text-lg font-semibold text-[var(--footer-text)] mb-6
+                     relative before:content-[''] before:absolute before:bottom-0 
+                     before:left-0 before:w-8 before:h-0.5 
+                     before:bg-gradient-to-r before:from-[var(--primary-500)] 
+                     before:to-[var(--accent-500)] before:-mb-2">
+            Estadísticas del Portfolio
+          </h4>
+
+          <!-- Stats Grid -->
+          <div class="space-y-4 mb-8">
             @for (stat of portfolioStats; track stat.label) {
-              <div class="flex justify-between">
-                <span style="color: var(--footer-text-secondary) !important;">{{ stat.label }}</span>
-                <span class="font-semibold" style="color: var(--footer-text) !important;">{{ stat.value }}</span>
-              </div>
+            <div class="flex items-center justify-between py-3 px-4 
+                          bg-white/5 rounded-lg border border-white/10 
+                          hover:bg-white/10 transition-colors duration-300 group">
+              <span class="text-[var(--footer-text-secondary)] text-sm font-medium 
+                             group-hover:text-[var(--footer-text)] transition-colors duration-300">
+                {{ stat.label }}
+              </span>
+              <span class="font-bold text-lg text-[var(--footer-text)]">
+                {{ stat.value }}
+              </span>
+            </div>
             }
           </div>
-          
-          <!-- Version Info -->
-          <div class="mt-6 pt-6 border-t border-white/10">
-            <div class="text-sm">
-              <p style="color: var(--footer-text-secondary) !important;">Portfolio v{{ portfolioVersion }}</p>
-              <p style="color: var(--footer-text-secondary) !important;">Última actualización: {{ lastUpdate | date:'dd/MM/yyyy' }}</p>
-              <p style="color: var(--footer-text-secondary) !important;">Built with Angular {{ angularVersion }}</p>
+
+          <!-- Tech Stack Info -->
+          <div class="p-4 bg-gradient-to-br from-[var(--primary-500)]/10 to-[var(--accent-500)]/10 
+                      rounded-xl border border-[var(--primary-500)]/20">
+            <div class="text-sm space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[var(--footer-text-secondary)] font-medium">Portfolio</span>
+                <span class="text-[var(--footer-text)] font-semibold">v{{ portfolioVersion }}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-[var(--footer-text-secondary)] font-medium">Actualizado</span>
+                <span class="text-[var(--footer-text)] font-semibold">{{ lastUpdate | date:'dd/MM/yyyy' }}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-[var(--footer-text-secondary)] font-medium">Angular</span>
+                <span class="text-[var(--footer-text)] font-semibold">{{ angularVersion }}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Copyright -->
-      <div class="border-t border-white/10 mt-8 pt-8 text-center">
-        <p style="color: var(--footer-text-secondary) !important;">
+      <!-- Copyright Section -->
+      <div class="border-t border-white/10 pt-8 mt-8 text-center space-y-3">
+        <p class="text-[var(--footer-text-secondary)] font-medium">
           &copy; {{ currentYear }} Luis Hernández. Todos los derechos reservados.
         </p>
-        <p class="text-sm mt-2" style="color: var(--footer-text-secondary) !important;">
-          Desarrollado con ❤️ usando Angular {{ angularVersion }} + Tailwind CSS
-        </p>
+        <div class="flex items-center justify-center space-x-2 text-sm text-[var(--footer-text-secondary)]">
+          <span>Desarrollado con</span>
+          <span class="text-red-500 text-lg animate-pulse" aria-label="amor">❤️</span>
+          <span>usando</span>
+          <span class="font-semibold text-[var(--primary-400)]">Angular {{ angularVersion }}</span>
+          <span>+</span>
+          <span class="font-semibold text-[var(--accent-500)]">Tailwind CSS</span>
+        </div>
       </div>
     </div>
   </footer>

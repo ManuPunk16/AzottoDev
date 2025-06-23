@@ -1,73 +1,90 @@
 @use "tailwindcss";
 
+/* ================================
+   VARIABLES GLOBALES
+   ================================ */
+
 :root {
+  /* Colores primarios */
   --primary-100: #f0f0f0;
+  --primary-300: #9CA3AF;
+  --primary-400: #6B7280;
   --primary-500: #808080;
-  --primary-600: #606060; /* Agregar esta variable que faltaba */
+  --primary-600: #606060;
   --primary-700: #606060;
-  --primary-800: #404040; /* Agregar esta variable que faltaba */
+  --primary-800: #404040;
   --primary-900: #1a1a1a;
 
+  /* Colores secundarios */
   --secondary-100: #e0e0e0;
   --secondary-500: #a0a0a0;
   --secondary-900: #2a2a2a;
 
+  /* Colores terciarios */
   --tertiary-100: #f8f8f8;
   --tertiary-500: #909090;
   --tertiary-900: #333333;
 
-  --text-primary: #444444; /* Gris oscuro en lugar de negro */
-  --text-secondary: #666666;
-  --background-primary: #e7e7e7; /* Gris muy claro en lugar de blanco */
-  --background-secondary: #e0e0e0; /* Gris ligeramente más oscuro */
+  /* Colores de acento */
+  --accent-500: #8B5CF6;
+  --accent-600: #7C3AED;
 
-  /* Variables específicas para footer */
+  /* Texto y fondos base */
+  --text-primary: #444444;
+  --text-secondary: #666666;
+  --background-primary: #e7e7e7;
+  --background-secondary: #e0e0e0;
+
+  /* Footer específico - siempre oscuro */
   --footer-bg: #1a1a1a;
   --footer-text: #ffffff;
   --footer-text-secondary: #cccccc;
   --footer-link: #cccccc;
   --footer-link-hover: #ffffff;
 
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  /* Nuevas variables para código y elementos markdown */
-  --primary-700: #606060; /* Para código inline en tema claro */
-  --code-background: var(--secondary-100);
+  /* Variables para código y markdown */
   --link-color: var(--primary-500);
   --link-hover-color: var(--primary-700);
 
-  /* Paleta de colores suaves para categorías */
+  /* Categorías de contenido */
   --category-web-bg: #e6f2ff;
   --category-web-text: #0066cc;
-
   --category-frontend-bg: #e6f7f2;
   --category-frontend-text: #00997a;
-
   --category-backend-bg: #f2e6ff;
   --category-backend-text: #6600cc;
-
   --category-fullstack-bg: #fff2e6;
   --category-fullstack-text: #cc6600;
-
   --category-design-bg: #ffe6f2;
   --category-design-text: #cc0066;
-
   --category-devops-bg: #f2ffe6;
   --category-devops-text: #33cc00;
 
-  /* Colores para tags y elementos interactivos */
+  /* Tags y elementos interactivos */
   --tag-bg: #f0f0f0;
   --tag-text: #606060;
   --tag-bg-hover: #e0e0e0;
   --tag-text-hover: #404040;
 
-  /* Colores para estados y realces */
+  /* Elementos de metadatos */
+  --meta-bg: #f0f0f0;
+  --meta-text: #666666;
+  --author-badge-bg: #e0e0e0;
+  --author-badge-text: #333333;
+  --featured-badge-bg: #ffefd6;
+  --featured-badge-text: #b37400;
+  --read-time-bg: #e6f7ff;
+  --read-time-text: #0077cc;
+  --date-bg: #f5f5f5;
+  --date-text: #555555;
+
+  /* Estados y realces */
   --highlight-bg: #fff8e6;
   --highlight-border: #ffd966;
   --new-badge-bg: #e6f7ff;
   --new-badge-text: #0099cc;
 
-  /* Colores para bloques de código estilo VS Code - Tema claro */
+  /* Bloques de código - Tema claro (VS Code) */
   --code-bg: #ffffff;
   --code-text: #1e1e1e;
   --code-comment: #6a9955;
@@ -87,109 +104,92 @@
   --code-header-bg: #f3f3f3;
   --code-selection: rgba(135, 163, 237, 0.3);
 
-  /* Paleta de colores para etiquetas sin categoría específica (tema claro) */
-  --tag-color-1-bg: #e6f2ff;
+  /* Colores rotativos para tags */
   --tag-color-1-text: #0066cc;
-  --tag-color-2-bg: #e6f7f2;
   --tag-color-2-text: #00997a;
-  --tag-color-3-bg: #f2e6ff;
   --tag-color-3-text: #6600cc;
-  --tag-color-4-bg: #fff2e6;
   --tag-color-4-text: #cc6600;
-  --tag-color-5-bg: #ffe6f2;
   --tag-color-5-text: #cc0066;
-  --tag-color-6-bg: #f2ffe6;
   --tag-color-6-text: #33cc00;
 
-  /* Elementos de metadatos */
-  --meta-bg: #f0f0f0;
-  --meta-text: #666666;
-  --author-badge-bg: #e0e0e0;
-  --author-badge-text: #333333;
-  --featured-badge-bg: #ffefd6;
-  --featured-badge-text: #b37400;
-  --read-time-bg: #e6f7ff;
-  --read-time-text: #0077cc;
-  --date-bg: #f5f5f5;
-  --date-text: #555555;
-
-  /* Accent color for gradients */
-  --accent-500: #8B5CF6; /* Purple accent */
-  --accent-600: #7C3AED;
-
-  /* Primary color variations */
-  --primary-300: #9CA3AF;
-  --primary-400: #6B7280;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* ================================
+   TEMA OSCURO
+   ================================ */
+
 [data-theme="dark"] {
+  /* Colores primarios en modo oscuro */
   --primary-100: #333333;
+  --primary-300: #D1D5DB;
+  --primary-400: #E5E7EB;
   --primary-500: #a0a0a0;
-  --primary-600: #b0b0b0; /* Más claro para modo oscuro */
+  --primary-600: #b0b0b0;
   --primary-700: #c0c0c0;
-  --primary-800: #d0d0d0; /* Más claro para modo oscuro */
+  --primary-800: #d0d0d0;
   --primary-900: #dddddd;
 
+  /* Colores secundarios en modo oscuro */
   --secondary-100: #2a2a2a;
   --secondary-500: #808080;
   --secondary-900: #e0e0e0;
 
+  /* Colores terciarios en modo oscuro */
   --tertiary-100: #1a1a1a;
   --tertiary-500: #909090;
   --tertiary-900: #f8f8f8;
 
-  --text-primary: #d0d0d0; /* Gris claro en lugar de blanco */
-  --text-secondary: #b3b3b3;
-  --background-primary: #1a1a1a; /* Gris muy oscuro */
-  --background-secondary: #282828; /* Gris ligeramente más claro */
+  /* Colores de acento en modo oscuro */
+  --accent-500: #A78BFA;
+  --accent-600: #8B5CF6;
 
-  /* Variables específicas para footer en modo oscuro */
-  --footer-bg: #0f0f0f;
+  /* Texto y fondos en modo oscuro */
+  --text-primary: #d0d0d0;
+  --text-secondary: #b3b3b3;
+  --background-primary: #1a1a1a;
+  --background-secondary: #282828;
+
+  /* Footer mantiene mismo estilo */
+  --footer-bg: #1a1a1a;
   --footer-text: #ffffff;
   --footer-text-secondary: #cccccc;
   --footer-link: #cccccc;
   --footer-link-hover: #ffffff;
 
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  /* Nuevas variables para código y elementos markdown */
-  --primary-700: #c0c0c0; /* Para código inline en tema oscuro */
-  --code-background: var(--secondary-100);
+  /* Variables para código y markdown en modo oscuro */
   --link-color: var(--primary-500);
   --link-hover-color: var(--primary-300);
 
-  /* Paleta de colores suaves para tema oscuro */
+  /* Categorías en modo oscuro */
   --category-web-bg: #1a2533;
   --category-web-text: #4d94ff;
-
   --category-frontend-bg: #1a2e2b;
   --category-frontend-text: #33ccb3;
-
   --category-backend-bg: #29193d;
   --category-backend-text: #b366ff;
-
   --category-fullstack-bg: #33291a;
   --category-fullstack-text: #ffaa66;
-
   --category-design-bg: #331a29;
   --category-design-text: #ff66b3;
-
   --category-devops-bg: #29331a;
   --category-devops-text: #99ff66;
 
-  /* Colores para tags y elementos interactivos en tema oscuro */
+  /* Tags en modo oscuro */
   --tag-bg: #333333;
   --tag-text: #c0c0c0;
   --tag-bg-hover: #444444;
   --tag-text-hover: #ffffff;
 
-  /* Colores para estados y realces en tema oscuro */
+  /* Estados y realces en modo oscuro */
   --highlight-bg: #332e1a;
   --highlight-border: #806600;
   --new-badge-bg: #1a2e33;
   --new-badge-text: #66ccff;
 
-  /* Colores para bloques de código estilo VS Code - Tema oscuro */
+  /* Bloques de código - Tema oscuro (VS Code) */
   --code-bg: #1e1e1e;
   --code-text: #d4d4d4;
   --code-comment: #6a9955;
@@ -209,126 +209,86 @@
   --code-header-bg: #252526;
   --code-selection: rgba(79, 79, 97, 0.5);
 
-  /* Accent color for gradients in dark mode */
-  --accent-500: #A78BFA;
-  --accent-600: #8B5CF6;
-
-  /* Primary color variations for dark mode */
-  --primary-300: #D1D5DB;
-  --primary-400: #E5E7EB;
-}
-
-/* Añadir estos estilos para mejorar la integración del tema oscuro */
-/* Asegúrate que estas definiciones estén presentes y sin conflictos */
-
-/* Variables específicas para el resaltado de código en tema oscuro */
-[data-theme="dark"] .token.comment {
-  color: var(--code-comment) !important;
-}
-
-[data-theme="dark"] .token.keyword {
-  color: var(--code-keyword) !important;
-}
-
-[data-theme="dark"] .token.string {
-  color: var(--code-string) !important;
-}
-
-[data-theme="dark"] .token.function {
-  color: var(--code-function) !important;
-}
-
-[data-theme="dark"] .token.number {
-  color: var(--code-number) !important;
-}
-
-[data-theme="dark"] .token.operator {
-  color: var(--code-operator) !important;
-}
-
-[data-theme="dark"] .token.class-name,
-[data-theme="dark"] .token.interface {
-  color: var(--code-class-name) !important;
-}
-
-[data-theme="dark"] .token.variable {
-  color: var(--code-variable) !important;
-}
-
-[data-theme="dark"] .token.property {
-  color: var(--code-property) !important;
-}
-
-/* Asegúrate que la transición de tema sea suave */
-.code-body pre,
-.code-body pre code,
-.code-body .absolute {
+  /* Transición en modo oscuro */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* ================================
+   TRANSICIONES OPTIMIZADAS GLOBALES
+   ================================ */
+
+/* Transición base para TODOS los elementos */
+*,
+*::before,
+*::after {
+  transition: background-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Elementos específicos que necesitan transiciones más rápidas */
+button,
+.nav-link,
+.tag {
+  transition: background-color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Body específico para cambio de tema */
 body {
   background-color: var(--background-secondary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-header, footer {
-  background-color: var(--primary-900);
-  color: var(--primary-100);
-  transition: background-color 0.3s ease, color 0.3s ease;
+/* Headers y footers */
+header,
+footer {
+  transition: background-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-button {
-  transition: background-color 0.3s ease;
+/* Imágenes y SVGs */
+img,
+svg {
+  transition: opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-img {
-  transition: opacity 0.3s ease-in-out;
+/* Códigos y bloques especiales */
+.code-body,
+.code-body pre,
+.code-body pre code,
+.code-body .absolute {
+  transition: background-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-.color-sass { background-color: #CF649A; }
-.color-angular { background-color: #DD0031; }
-.color-gulp { background-color: #CF4647; }
-.color-html { background-color: #E34F26; }
-.color-git { background-color: #F34F29; }
-.color-javascript { background-color: #F7DF1E; }
-.color-vuejs { background-color: #41B883; }
-.color-rails { background-color: #CC0000; }
-.color-nodejs { background-color: #5FA04E; }
-.color-bootstrap { background-color: #7952B3; }
-.color-mongodb { background-color: #47A248; }
-.color-typescript { background-color: #3178C6; }
-.color-css { background-color: #1572B6; }
-.color-mysql { background-color: #4479A1; }
-.color-phpmyadmin { background-color: #777BB4; }
-.color-linux { background-color: #FCC624; }
-.color-postman { background-color: #FF6C37; }
-.color-wordpress { background-color: #21759B; }
-.color-firebase { background-color: #DD2C00; }
-
-.color-tailwind { background-color: #06B6D4;}
-.color-github { background-color: #9E95B7;}
-
-a.disabled {
-  pointer-events: none;
-  cursor: default;
+/* Scrollbars */
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
+  transition: background-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-// SweetAlert2 themed styles
-.swal2-popup {
-  background-color: var(--background-primary) !important;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-.swal2-title, .swal2-html-container {
-  color: var(--primary-900) !important;
+/* Focus states globales */
+*:focus {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
 }
 
-.swal2-confirm {
-  background-color: var(--primary-600) !important;
-  &:focus {
-    box-shadow: 0 0 0 3px var(--primary-300) !important;
-  }
-}
+/* ================================
+   CATEGORÍAS Y TAGS
+   ================================ */
 
 /* Clases para categorías */
 .category-web {
@@ -361,52 +321,75 @@ a.disabled {
   color: var(--category-devops-text);
 }
 
-/* Clases para tags */
+/* Tags base */
 .tag {
   background-color: var(--tag-bg);
   color: var(--tag-text);
-  transition: background-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background-color: var(--tag-bg-hover);
+    color: var(--tag-text-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
 }
 
-.tag:hover {
-  background-color: var(--tag-bg-hover);
-  color: var(--tag-text-hover);
-}
-
-/* Colores rotativos para etiquetas sin categoría específica */
+/* Colores rotativos para etiquetas */
 .tag:nth-of-type(6n+1):not([class*="category-"]) {
-  // background-color: var(--tag-color-1-bg);
   color: var(--tag-color-1-text);
 }
 
 .tag:nth-of-type(6n+2):not([class*="category-"]) {
-  // background-color: var(--tag-color-2-bg);
   color: var(--tag-color-2-text);
 }
 
 .tag:nth-of-type(6n+3):not([class*="category-"]) {
-  // background-color: var(--tag-color-3-bg);
   color: var(--tag-color-3-text);
 }
 
 .tag:nth-of-type(6n+4):not([class*="category-"]) {
-  // background-color: var(--tag-color-4-bg);
   color: var(--tag-color-4-text);
 }
 
 .tag:nth-of-type(6n+5):not([class*="category-"]) {
-  // background-color: var(--tag-color-5-bg);
   color: var(--tag-color-5-text);
 }
 
 .tag:nth-of-type(6n+6):not([class*="category-"]) {
-  // background-color: var(--tag-color-6-bg);
   color: var(--tag-color-6-text);
 }
 
-/* Clases para realces */
+/* ================================
+   ELEMENTOS DE METADATOS
+   ================================ */
+
+.meta-item {
+  background-color: var(--meta-bg);
+  color: var(--meta-text);
+}
+
+.author-badge {
+  background-color: var(--author-badge-bg);
+  color: var(--author-badge-text);
+}
+
+.featured-badge {
+  background-color: var(--featured-badge-bg);
+  color: var(--featured-badge-text);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.read-time-badge {
+  background-color: var(--read-time-bg);
+  color: var(--read-time-text);
+}
+
+.date-badge {
+  background-color: var(--date-bg);
+  color: var(--date-text);
+}
+
 .highlight {
-  // background-color: var(--highlight-bg);
   border-left: 3px solid var(--highlight-border);
 }
 
@@ -415,7 +398,10 @@ a.disabled {
   color: var(--new-badge-text);
 }
 
-/* Estilos adicionales para bloques de código */
+/* ================================
+   BLOQUES DE CÓDIGO
+   ================================ */
+
 .code-block {
   position: relative;
   margin: 1.5rem 0;
@@ -441,347 +427,161 @@ a.disabled {
   background-color: var(--code-bg);
   padding: 0;
   overflow: hidden;
+
+  pre {
+    margin: 0;
+    padding: 0.75rem 0;
+    tab-size: 2;
+    -moz-tab-size: 2;
+    overflow-x: auto;
+    line-height: 1.6;
+    font-size: 0.9rem;
+
+    code {
+      display: block;
+      white-space: pre;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      color: var(--code-text);
+    }
+
+    &.pl-12 {
+      padding-left: 3rem;
+    }
+  }
+
+  .absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 3rem;
+    background-color: var(--code-gutter-bg);
+    border-right: 1px solid rgba(128, 128, 128, 0.2);
+    z-index: 5;
+    padding-top: 0.75rem;
+
+    .line-number {
+      text-align: right;
+      padding-right: 0.75rem;
+      font-size: 0.85rem;
+      height: 1.6rem;
+      line-height: 1.6;
+      color: var(--code-line-number);
+      user-select: none;
+    }
+
+    div {
+      height: 1.5rem;
+      line-height: 1.5rem;
+    }
+  }
 }
 
-.code-body pre {
-  margin: 0;
-  padding: 0.75rem 0;
-  tab-size: 2;
-  -moz-tab-size: 2;
-  overflow-x: auto;
-  line-height: 1.6;
-  font-size: 0.9rem;
-}
-
-.code-body pre code {
-  display: block;
-  white-space: pre;
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  color: var(--code-text);
-}
-
-/* Mejora del estilo para los números de línea */
-.code-body .absolute {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 3rem;
-  background-color: var(--code-gutter-bg);
-  border-right: 1px solid rgba(128, 128, 128, 0.2);
-  z-index: 5;
-  padding-top: 0.75rem;
-}
-
-.code-body .absolute .line-number {
-  text-align: right;
-  padding-right: 0.75rem;
-  font-size: 0.85rem;
-  height: 1.6rem;
-  line-height: 1.6;
-  color: var(--code-line-number);
-  user-select: none;
-}
-
-/* Ajustar el padding cuando hay números de línea */
-.code-body pre.pl-12 {
-  padding-left: 3rem;
-}
-
-/* Círculos de colores en la cabecera del código */
+/* Círculos de colores en la cabecera */
 .code-dot {
   height: 0.75rem;
   width: 0.75rem;
   border-radius: 50%;
   display: inline-block;
+
+  &.code-dot-red {
+    background-color: #ff5f57;
+  }
+
+  &.code-dot-yellow {
+    background-color: #febc2e;
+  }
+
+  &.code-dot-green {
+    background-color: #28c840;
+  }
 }
 
-.code-dot-red { background-color: #ff5f57; }
-.code-dot-yellow { background-color: #febc2e; }
-.code-dot-green { background-color: #28c840; }
+/* ================================
+   SINTAXIS DE CÓDIGO (PRISM.JS)
+   ================================ */
 
-/* Alineación de los números de línea */
-.code-body .absolute {
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 10;
-  border-right: 1px solid rgba(120, 120, 120, 0.3);
-}
-
-.code-body .absolute div {
-  height: 1.5rem; /* Misma altura que el line-height */
-  line-height: 1.5rem;
-}
-
-/* Estilos para corregir la alineación del código */
-.code-body pre {
-  tab-size: 2;
-  -moz-tab-size: 2;
-}
-
-.code-body pre code {
-  padding: 0;
-  text-indent: 0;
-  margin: 0;
-}
-
-/* Estilo para diferentes lenguajes */
-.code-js .token.keyword { color: var(--code-keyword); }
-.code-js .token.string { color: var(--code-string); }
-.code-js .token.function { color: var(--code-function); }
-.code-js .token.number { color: var(--code-number); }
-.code-js .token.comment { color: var(--code-comment); }
-
-.code-html .token.tag { color: var(--code-keyword); }
-.code-html .token.attr-name { color: var(--code-variable); }
-.code-html .token.attr-value { color: var(--code-string); }
-
-.code-css .token.property { color: var(--code-property); }
-.code-css .token.value { color: var(--code-string); }
-.code-css .token.selector { color: var(--code-keyword); }
-
-.code-ts .token.keyword { color: var(--code-keyword); }
-.code-ts .token.string { color: var(--code-string); }
-.code-ts .token.class-name { color: var(--code-class-name); }
-.code-ts .token.interface { color: var(--code-class-name); }
-.code-ts .token.decorator { color: var(--code-function); }
-
-/* Estilo específico para TypeScript */
-.code-typescript .token.keyword,
-.code-ts .token.keyword {
-  color: var(--code-keyword);
-}
-
-.code-typescript .token.string,
-.code-ts .token.string {
-  color: var(--code-string);
-}
-
-.code-typescript .token.function,
-.code-ts .token.function {
-  color: var(--code-function);
-}
-
-.code-typescript .token.number,
-.code-ts .token.number {
-  color: var(--code-number);
-}
-
-.code-typescript .token.comment,
-.code-ts .token.comment {
-  color: var(--code-comment);
-}
-
-.code-typescript .token.class-name,
-.code-ts .token.class-name {
-  color: var(--code-class);
-}
-
-.code-typescript .token.operator,
-.code-ts .token.operator {
-  color: var(--code-operator);
-}
-
-.code-typescript .token.punctuation,
-.code-ts .token.punctuation {
-  color: var(--code-punctuation);
-}
-
-/* Clase para evitar selección automática */
-.no-select {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Aplicar color solo cuando el usuario selecciona */
-.no-select::selection,
-.no-select *::selection {
-  background-color: var(--code-selection);
-}
-
-/* Estilos para elementos de metadatos */
-.meta-item {
-  background-color: var(--meta-bg);
-  color: var(--meta-text);
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.author-badge {
-  background-color: var(--author-badge-bg);
-  color: var(--author-badge-text);
-}
-
-.featured-badge {
-  background-color: var(--featured-badge-bg);
-  color: var(--featured-badge-text);
-}
-
-.read-time-badge {
-  background-color: var(--read-time-bg);
-  color: var(--read-time-text);
-}
-
-.date-badge {
-  background-color: var(--date-bg);
-  color: var(--date-text);
-}
-
-/* Añade esta regla para forzar el color de fondo en modo oscuro */
-[data-theme="dark"] .code-body {
-  background-color: var(--code-bg) !important;
-}
-
-[data-theme="dark"] .code-body pre {
-  background-color: var(--code-bg) !important;
-}
-
-[data-theme="dark"] .code-body .absolute {
-  background-color: var(--code-gutter-bg) !important;
-}
-
-/* Estilos para resaltar sintaxis específica por lenguaje */
-/* Javascript */
-.language-javascript .token.keyword,
-.code-js .token.keyword { color: var(--code-keyword); }
-
-.language-javascript .token.string,
-.code-js .token.string { color: var(--code-string); }
-
-.language-javascript .token.function,
-.code-js .token.function { color: var(--code-function); }
-
-.language-javascript .token.number,
-.code-js .token.number { color: var(--code-number); }
-
-.language-javascript .token.comment,
-.code-js .token.comment { color: var(--code-comment); }
-
-.language-javascript .token.operator,
-.code-js .token.operator { color: var(--code-operator); }
-
-/* TypeScript */
-.language-typescript .token.keyword,
-.code-typescript .token.keyword,
-.code-ts .token.keyword { color: var(--code-keyword); }
-
-.language-typescript .token.string,
-.code-typescript .token.string,
-.code-ts .token.string { color: var(--code-string); }
-
-.language-typescript .token.function,
-.code-typescript .token.function,
-.code-ts .token.function { color: var(--code-function); }
-
-.language-typescript .token.number,
-.code-typescript .token.number,
-.code-ts .token.number { color: var(--code-number); }
-
-.language-typescript .token.comment,
-.code-typescript .token.comment,
-.code-ts .token.comment { color: var(--code-comment); }
-
-.language-typescript .token.class-name,
-.code-typescript .token.class-name,
-.code-ts .token.class-name { color: var(--code-class-name); }
-
-.language-typescript .token.interface,
-.code-typescript .token.interface,
-.code-ts .token.interface { color: var(--code-class-name); }
-
-.language-typescript .token.operator,
-.code-typescript .token.operator,
-.code-ts .token.operator { color: var(--code-operator); }
-
-.language-typescript .token.punctuation,
-.code-typescript .token.punctuation,
-.code-ts .token.punctuation { color: var(--code-punctuation); }
-
-/* HTML */
-.language-html .token.tag,
-.code-html .token.tag { color: var(--code-keyword); }
-
-.language-html .token.attr-name,
-.code-html .token.attr-name { color: var(--code-variable); }
-
-.language-html .token.attr-value,
-.code-html .token.attr-value { color: var(--code-string); }
-
-.language-html .token.punctuation,
-.code-html .token.punctuation { color: var(--code-punctuation); }
-
-/* CSS */
-.language-css .token.property,
-.code-css .token.property { color: var(--code-property); }
-
-.language-css .token.value,
-.code-css .token.value { color: var(--code-string); }
-
-.language-css .token.selector,
-.code-css .token.selector { color: var(--code-keyword); }
-
-.language-css .token.punctuation,
-.code-css .token.punctuation { color: var(--code-punctuation); }
-
-/* Bash */
-.language-bash .token.function,
-.code-bash .token.function { color: var(--code-function); }
-
-.language-bash .token.parameter,
-.code-bash .token.parameter { color: var(--code-variable); }
-
-.language-bash .token.string,
-.code-bash .token.string { color: var(--code-string); }
-
-.language-bash .token.punctuation,
-.code-bash .token.punctuation { color: var(--code-punctuation); }
-
-/* Anular los estilos por defecto de Prism.js */
+/* Anular estilos por defecto de Prism.js */
 code[class*="language-"],
 pre[class*="language-"] {
   text-shadow: none !important;
 }
 
-/* Asegurar que no hay text-shadow en tema oscuro */
-[data-theme="dark"] code[class*="language-"],
-[data-theme="dark"] pre[class*="language-"] {
-  text-shadow: none !important;
-  color: var(--code-text);
-}
-
-/* Anular también los estilos tokens específicos */
 .token {
   text-shadow: none !important;
 }
 
-.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
-  color: #9a6e3a;
-  background: none !important;
+/* Forzar colores correctos en modo oscuro */
+[data-theme="dark"] {
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none !important;
+    color: var(--code-text);
+  }
+
+  .code-body {
+    background-color: var(--code-bg) !important;
+
+    pre {
+      background-color: var(--code-bg) !important;
+    }
+
+    .absolute {
+      background-color: var(--code-gutter-bg) !important;
+    }
+  }
+
+  .token {
+    &.comment {
+      color: var(--code-comment) !important;
+    }
+
+    &.keyword {
+      color: var(--code-keyword) !important;
+    }
+
+    &.string {
+      color: var(--code-string) !important;
+    }
+
+    &.function {
+      color: var(--code-function) !important;
+    }
+
+    &.number {
+      color: var(--code-number) !important;
+    }
+
+    &.operator {
+      color: var(--code-operator) !important;
+    }
+
+    &.class-name,
+    &.interface {
+      color: var(--code-class-name) !important;
+    }
+
+    &.variable {
+      color: var(--code-variable) !important;
+    }
+
+    &.property {
+      color: var(--code-property) !important;
+    }
+  }
 }
 
-/* Eliminar efectos de hover y sobresalto en bloques de código */
-
-/* Deshabilitar efectos de hover en tokens de Prism */
+/* Deshabilitar efectos de hover indeseados */
 .token:hover,
 .token:focus,
 .token:active,
-.token.tag:hover,
-.token.tag:focus,
-.token.tag:active,
-.token.attr-name:hover,
-.token.attr-value:hover,
-.token.string:hover,
-.token.punctuation:hover,
-.token.operator:hover,
-.token.keyword:hover,
-.token.function:hover,
-.token.comment:hover {
+pre[class*="language-"]:hover,
+pre[class*="language-"] *:hover,
+code[class*="language-"]:hover,
+code[class*="language-"] *:hover {
   background: transparent !important;
   box-shadow: none !important;
   text-shadow: none !important;
@@ -791,116 +591,385 @@ pre[class*="language-"] {
   outline: none !important;
 }
 
-/* Asegurar que el código no tenga comportamientos indeseados */
-.code-body pre code,
-.code-body pre code * {
-  pointer-events: auto;
-  cursor: text;
-  transform: none !important;
-  transition: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
+/* Sintaxis específica por lenguajes */
+.language-javascript,
+.language-typescript,
+.code-js,
+.code-ts {
+  .token {
+    &.keyword {
+      color: var(--code-keyword);
+    }
+
+    &.string {
+      color: var(--code-string);
+    }
+
+    &.function {
+      color: var(--code-function);
+    }
+
+    &.number {
+      color: var(--code-number);
+    }
+
+    &.comment {
+      color: var(--code-comment);
+    }
+
+    &.operator {
+      color: var(--code-operator);
+    }
+
+    &.class-name,
+    &.interface {
+      color: var(--code-class-name);
+    }
+
+    &.punctuation {
+      color: var(--code-punctuation);
+    }
+  }
 }
 
-/* Evitar cualquier transformación */
-.code-body pre code .token {
-  display: inline-block;
-  position: relative;
-  border: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  background: none !important;
-  box-shadow: none !important;
-  transform: none !important;
-  transition: none !important;
+.language-html,
+.code-html {
+  .token {
+    &.tag {
+      color: var(--code-keyword);
+    }
+
+    &.attr-name {
+      color: var(--code-variable);
+    }
+
+    &.attr-value {
+      color: var(--code-string);
+    }
+
+    &.punctuation {
+      color: var(--code-punctuation);
+    }
+  }
 }
 
-/* Eliminar cualquier comportamiento hover que pueda venir de Prism */
-pre[class*="language-"]:hover,
-pre[class*="language-"] *:hover,
-code[class*="language-"]:hover,
-code[class*="language-"] *:hover,
-.token:hover {
-  text-shadow: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  transform: none !important;
+.language-css,
+.code-css {
+  .token {
+    &.property {
+      color: var(--code-property);
+    }
+
+    &.value {
+      color: var(--code-string);
+    }
+
+    &.selector {
+      color: var(--code-keyword);
+    }
+
+    &.punctuation {
+      color: var(--code-punctuation);
+    }
+  }
 }
 
-/* Solución específica para problemas de navegación en iOS */
+.language-bash,
+.code-bash {
+  .token {
+    &.function {
+      color: var(--code-function);
+    }
+
+    &.parameter {
+      color: var(--code-variable);
+    }
+
+    &.string {
+      color: var(--code-string);
+    }
+
+    &.punctuation {
+      color: var(--code-punctuation);
+    }
+  }
+}
+
+/* ================================
+   COLORES TECNOLÓGICOS
+   ================================ */
+
+.color-sass {
+  background-color: #CF649A;
+}
+
+.color-angular {
+  background-color: #DD0031;
+}
+
+.color-gulp {
+  background-color: #CF4647;
+}
+
+.color-html {
+  background-color: #E34F26;
+}
+
+.color-git {
+  background-color: #F34F29;
+}
+
+.color-javascript {
+  background-color: #F7DF1E;
+}
+
+.color-vuejs {
+  background-color: #41B883;
+}
+
+.color-rails {
+  background-color: #CC0000;
+}
+
+.color-nodejs {
+  background-color: #5FA04E;
+}
+
+.color-bootstrap {
+  background-color: #7952B3;
+}
+
+.color-mongodb {
+  background-color: #47A248;
+}
+
+.color-typescript {
+  background-color: #3178C6;
+}
+
+.color-css {
+  background-color: #1572B6;
+}
+
+.color-mysql {
+  background-color: #4479A1;
+}
+
+.color-phpmyadmin {
+  background-color: #777BB4;
+}
+
+.color-linux {
+  background-color: #FCC624;
+}
+
+.color-postman {
+  background-color: #FF6C37;
+}
+
+.color-wordpress {
+  background-color: #21759B;
+}
+
+.color-firebase {
+  background-color: #DD2C00;
+}
+
+.color-tailwind {
+  background-color: #06B6D4;
+}
+
+.color-github {
+  background-color: #9E95B7;
+}
+
+/* ================================
+   COMPONENTES UI
+   ================================ */
+
+/* SweetAlert2 themed styles */
+.swal2-popup {
+  background-color: var(--background-primary) !important;
+}
+
+.swal2-title,
+.swal2-html-container {
+  color: var(--primary-900) !important;
+}
+
+.swal2-confirm {
+  background-color: var(--primary-600) !important;
+
+  &:focus {
+    box-shadow: 0 0 0 3px var(--primary-300) !important;
+  }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-500);
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--primary-600);
+  }
+}
+
+/* ================================
+   UTILIDADES
+   ================================ */
+
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--primary-500), var(--accent-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &::selection,
+  *::selection {
+    background-color: var(--code-selection);
+  }
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* ================================
+   ANIMACIONES
+   ================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* ================================
+   MEJORAS ESPECÍFICAS PARA MODO OSCURO
+   ================================ */
+
+[data-theme="dark"] {
+  .text-improved-contrast {
+    color: #ffffff !important;
+  }
+
+  .text-secondary-improved {
+    color: #cccccc !important;
+  }
+
+  .bg-white {
+    background-color: var(--background-primary) !important;
+    border-color: #404040 !important;
+  }
+
+  input,
+  select,
+  textarea {
+    background-color: var(--background-secondary) !important;
+    color: #ffffff !important;
+    border-color: #404040 !important;
+
+    &::placeholder {
+      color: #888888 !important;
+    }
+  }
+}
+
+/* ================================
+   SOPORTE PARA iOS
+   ================================ */
+
 @supports (-webkit-touch-callout: none) {
-  /* Resetear eventos touch en los bloques de código */
   .code-block {
     position: relative;
     z-index: 1;
     pointer-events: auto;
   }
 
-  /* Asegurarse que los elementos del artículo reciben eventos */
   .prose a {
     position: relative;
-    z-index: 10 !important; /* Fuerza prioridad */
+    z-index: 10 !important;
     pointer-events: auto !important;
   }
 
-  /* Evitar que los eventos en el bloque de código afecten la navegación */
   .code-body pre,
   .code-body pre code {
     pointer-events: auto;
     touch-action: auto;
   }
 
-  /* Permitir scroll dentro del bloque de código sin afectar navegación */
   .code-body pre {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     max-width: 100%;
   }
 
-  /* Contenedor principal debe tener scroll nativo */
   .container {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Forzar que los enlaces sean clickeables en iOS */
-  a, button {
+  a,
+  button {
     cursor: pointer;
     -webkit-touch-callout: default;
-    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
   }
 }
 
-/* Mejoras específicas para el contraste en modo oscuro */
-[data-theme="dark"] {
-  /* Asegurar que los textos principales sean completamente blancos */
-  .text-improved-contrast {
-    color: #ffffff !important;
-  }
-  
-  /* Textos secundarios con buen contraste */
-  .text-secondary-improved {
-    color: #cccccc !important;
-  }
-  
-  /* Mejorar contraste en cards */
-  .bg-white {
-    background-color: var(--background-primary) !important;
-    border-color: #404040 !important;
-  }
-  
-  /* Inputs y selects en modo oscuro */
-  input, select, textarea {
-    background-color: var(--background-secondary) !important;
-    color: #ffffff !important;
-    border-color: #404040 !important;
-  }
-  
-  input::placeholder, textarea::placeholder {
-    color: #888888 !important;
-  }
-}
+/* ================================
+   ACCESIBILIDAD
+   ================================ */
 
-/* Transiciones suaves para cambios de tema */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

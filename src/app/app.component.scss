@@ -1,9 +1,5 @@
-/* Navigation Styles */
+/* Solo animaciones y pseudo-elementos que Tailwind no puede manejar */
 .nav-link {
-  color: var(--text-primary);
-  position: relative;
-  overflow: hidden;
-  
   &::before {
     content: '';
     position: absolute;
@@ -15,102 +11,51 @@
     transform: translateX(-50%);
     transition: width 0.3s ease;
   }
-  
-  &:hover {
-    color: var(--primary-600);
-    
-    &::before {
-      width: 100%;
-    }
+
+  &:hover::before,
+  &.nav-active::before {
+    width: 100%;
   }
 }
 
-.nav-active {
-  color: var(--primary-600) !important;
-  
-  &::before {
-    width: 100% !important;
-  }
-}
-
-/* Mobile Navigation Styles */
-.mobile-nav-link {
-  color: var(--text-primary);
-  background-color: transparent;
-  
-  &:hover {
-    background-color: var(--primary-100)/20;
-    color: var(--primary-600);
-  }
-}
-
-.mobile-nav-active {
-  background-color: var(--primary-100)/30 !important;
-  color: var(--primary-600) !important;
-  border-left: 3px solid var(--primary-500);
-}
-
-/* Backdrop blur support for older browsers */
-@supports not (backdrop-filter: blur(12px)) {
-  header {
-    background-color: var(--background-primary) !important;
-  }
-}
-
-/* Smooth scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Enhanced focus states for accessibility */
-a:focus,
-button:focus {
-  outline: 2px solid var(--primary-500);
-  outline-offset: 2px;
-  border-radius: 0.375rem;
-}
-
-/* Animation for theme toggle icons */
-button svg {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* Mobile menu animation improvements */
+/* Animación de entrada del menú móvil */
 @media (max-width: 768px) {
   .mobile-nav-link {
-    transform: translateX(-10px);
-    opacity: 0;
     animation: slideInLeft 0.3s ease forwards;
   }
 
-  .mobile-nav-link:nth-child(1) { animation-delay: 0.1s; }
-  .mobile-nav-link:nth-child(2) { animation-delay: 0.2s; }
-  .mobile-nav-link:nth-child(3) { animation-delay: 0.3s; }
-  .mobile-nav-link:nth-child(4) { animation-delay: 0.4s; }
+  .mobile-nav-link:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .mobile-nav-link:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .mobile-nav-link:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .mobile-nav-link:nth-child(4) {
+    animation-delay: 0.4s;
+  }
 }
 
 @keyframes slideInLeft {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+
   to {
     transform: translateX(0);
     opacity: 1;
   }
 }
 
-/* Dark mode specific adjustments */
-[data-theme="dark"] {
-  .nav-link:hover {
-    color: var(--primary-400);
-  }
-  
-  .nav-active {
-    color: var(--primary-400) !important;
-  }
-  
-  .mobile-nav-active {
-    color: var(--primary-400) !important;
-  }
-  
-  .mobile-nav-link:hover {
-    color: var(--primary-400);
+/* Fallback para navegadores sin backdrop-filter */
+@supports not (backdrop-filter: blur(12px)) {
+  header {
+    background-color: var(--background-primary) !important;
   }
 }
