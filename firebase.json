@@ -9,11 +9,24 @@
     ],
     "rewrites": [
       {
+        "source": "/google*.html",
+        "destination": "/assets/google*.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
     ],
     "headers": [
+      {
+        "source": "/google*.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
+        ]
+      },
       {
         "source": "**/*.@(jpg|jpeg|gif|png|svg|webp)",
         "headers": [
