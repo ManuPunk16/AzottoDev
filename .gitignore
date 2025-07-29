@@ -55,10 +55,15 @@ Thumbs.db
 /src/environments/*.ts
 !/src/environments/environment.ts.example
 notes.ts
+src/environments/environment.ts
+src/environments/environment.prod.ts
+src/environments/environment.local.ts
 
 # Firebase configuration
 .firebaserc
 firebase-debug.log
+.env
+.env.local
 
 # Local configuration files
 *.local.ts
@@ -71,3 +76,6 @@ firebase-hosting-*.cache
 >>>>>>> bbb0e7422d75cb60ab425e1535372dfe2fce8c27
 =======
 >>>>>>> 986c8b2eb36f53dad37970eec17e3223e971c506
+
+# Google verification files
+google*.html
