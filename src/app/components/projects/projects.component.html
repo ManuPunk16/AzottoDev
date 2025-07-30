@@ -74,7 +74,8 @@
                 <img 
                   [src]="getImageUrl(project.imageUrl)"
                   [alt]="project.title"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  (error)="onImageError($event, project)">
                 
                 <!-- Overlay gradiente -->
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/20"></div>
@@ -185,7 +186,9 @@
                   <img 
                     [src]="getImageUrl(project.imageUrl)"
                     [alt]="project.title"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    (error)="onImageError($event, project)"
+                    >
                   
                   <div class="absolute top-3 right-3">
                     <span [ngClass]="getStatusBadgeClasses(project.status)">
@@ -263,7 +266,8 @@
                   <img 
                     [src]="getImageUrl(project.imageUrl)"
                     [alt]="project.title"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    (error)="onImageError($event, project)">
                   
                   <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent"></div>
                   
@@ -338,7 +342,8 @@
                   <img 
                     [src]="getImageUrl(project.imageUrl)"
                     [alt]="project.title"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    (error)="onImageError($event, project)">
                   
                   <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent"></div>
                   

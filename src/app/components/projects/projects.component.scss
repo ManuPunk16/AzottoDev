@@ -1,3 +1,171 @@
+/* Estilos para SweetAlert2 personalizado */
+:host ::ng-deep {
+  .swal2-custom-popup {
+    background-color: var(--background-primary) !important;
+    color: var(--text-primary) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  }
+  
+  .swal2-custom-title {
+    color: var(--primary-900) !important;
+    font-size: 1.75rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .swal2-custom-html {
+    color: var(--text-primary) !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+  }
+  
+  .gallery-thumbnail {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // Animaciones suaves para placeholders
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  // Mejoras visuales para componentes del modal
+  .swal2-popup {
+    .space-y-6 > * + * {
+      margin-top: 1.5rem !important;
+    }
+
+    .space-y-4 > * + * {
+      margin-top: 1rem !important;
+    }
+
+    .space-y-3 > * + * {
+      margin-top: 0.75rem !important;
+    }
+
+    .space-y-2 > * + * {
+      margin-top: 0.5rem !important;
+    }
+
+    // Mejores estilos para badges
+    .bg-blue-50 {
+      background-color: rgba(59, 130, 246, 0.1) !important;
+      border-color: rgba(59, 130, 246, 0.2) !important;
+    }
+
+    .dark .bg-blue-900\/30 {
+      background-color: rgba(59, 130, 246, 0.15) !important;
+    }
+
+    // Estilos mejorados para métricas
+    .metric-card {
+      backdrop-filter: blur(10px);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    // Botones de acción mejorados
+    .inline-flex.items-center.gap-2 {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+      }
+
+      &:hover::before {
+        left: 100%;
+      }
+    }
+  }
+  
+  // Mejorar contraste en modo oscuro
+  .swal2-popup.swal2-custom-popup {
+    .dark &,
+    &[data-theme="dark"] {
+      background-color: #111827 !important;
+      border: 1px solid #374151 !important;
+      
+      h4 {
+        color: #f9fafb !important;
+      }
+      
+      .text-gray-700 {
+        color: #d1d5db !important;
+      }
+      
+      .text-gray-600 {
+        color: #9ca3af !important;
+      }
+
+      .text-gray-800 {
+        color: #f3f4f6 !important;
+      }
+
+      .bg-gray-50 {
+        background-color: #374151 !important;
+      }
+
+      .bg-white {
+        background-color: #1f2937 !important;
+      }
+
+      .border-gray-200 {
+        border-color: #4b5563 !important;
+      }
+    }
+  }
+
+  // Scrollbar personalizado para el modal
+  .swal2-custom-html {
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(156, 163, 175, 0.5);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(156, 163, 175, 0.7);
+    }
+  }
+}
+
 :host ::ng-deep {
   .swal2-popup {
     border-radius: 1rem !important;
@@ -306,4 +474,34 @@ a:focus {
   .gallery-controls {
     bottom: 2rem;
   }
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-placeholder {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M20 20c0 5.5-4.5 10-10 10s-10-4.5-10-10 4.5-10 10-10 10 4.5 10 10zm10 0c0 5.5-4.5 10-10 10s-10-4.5-10-10 4.5-10 10-10 10 4.5 10 10z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+  }
+}
+
+// Animaciones suaves para placeholders
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
