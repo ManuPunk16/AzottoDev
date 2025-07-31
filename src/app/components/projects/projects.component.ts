@@ -350,7 +350,9 @@ export class ProjectsComponent implements OnInit {
     section.className = 'prose prose-sm max-w-none';
     
     const description = document.createElement('p');
-    description.className = 'text-gray-700 dark:text-gray-300 leading-relaxed text-sm';
+    // Usar colores CSS variables que respetan el tema
+    description.className = 'leading-relaxed text-sm text-gray-800 dark:text-gray-200';
+    description.style.color = 'var(--text-primary)'; // Forzar el color correcto
     description.textContent = project.longDescription || project.description;
     
     section.appendChild(description);
@@ -362,7 +364,8 @@ export class ProjectsComponent implements OnInit {
     section.className = 'space-y-3';
 
     const title = document.createElement('h4');
-    title.className = 'font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2';
+    title.className = 'font-semibold flex items-center gap-2';
+    title.style.color = 'var(--primary-900)'; // Color principal para títulos
     title.innerHTML = `
       <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -380,7 +383,7 @@ export class ProjectsComponent implements OnInit {
         <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
         </svg>
-        <span class="text-gray-700 dark:text-gray-300">${feature}</span>
+        <span style="color: var(--text-primary)">${feature}</span>
       `;
       list.appendChild(listItem);
     });
@@ -395,7 +398,8 @@ export class ProjectsComponent implements OnInit {
     section.className = 'space-y-3';
 
     const title = document.createElement('h4');
-    title.className = 'font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2';
+    title.className = 'font-semibold flex items-center gap-2';
+    title.style.color = 'var(--primary-900)';
     title.innerHTML = `
       <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
@@ -408,7 +412,11 @@ export class ProjectsComponent implements OnInit {
 
     project.technologies.forEach(tech => {
       const badge = document.createElement('span');
-      badge.className = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-700';
+      // Usar colores CSS variables para badges
+      badge.className = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border';
+      badge.style.backgroundColor = 'var(--secondary-100)';
+      badge.style.color = 'var(--primary-800)';
+      badge.style.borderColor = 'var(--secondary-300)';
       badge.textContent = tech;
       container.appendChild(badge);
     });
@@ -425,7 +433,8 @@ export class ProjectsComponent implements OnInit {
     section.className = 'space-y-3';
 
     const title = document.createElement('h4');
-    title.className = 'font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2';
+    title.className = 'font-semibold flex items-center gap-2';
+    title.style.color = 'var(--primary-900)';
     title.innerHTML = `
       <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
@@ -434,26 +443,26 @@ export class ProjectsComponent implements OnInit {
     `;
 
     const metricsContainer = document.createElement('div');
-    metricsContainer.className = 'bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-4';
+    metricsContainer.className = 'rounded-lg p-4 border';
+    metricsContainer.style.backgroundColor = 'var(--secondary-100)';
+    metricsContainer.style.borderColor = 'var(--secondary-300)';
 
     const grid = document.createElement('div');
     grid.className = 'grid grid-cols-1 md:grid-cols-3 gap-4';
 
-    // Métrica de usuarios
+    // Crear métricas con los colores correctos
     if (project.metrics.users) {
-      const userMetric = this.createMetricCard('👥', 'Usuarios', `${project.metrics.users}+`, 'text-green-600 dark:text-green-400');
+      const userMetric = this.createMetricCard('👥', 'Usuarios', `${project.metrics.users}+`, 'text-green-600');
       grid.appendChild(userMetric);
     }
 
-    // Métrica de performance
     if (project.metrics.performance) {
-      const perfMetric = this.createMetricCard('⚡', 'Performance', project.metrics.performance, 'text-blue-600 dark:text-blue-400');
+      const perfMetric = this.createMetricCard('⚡', 'Performance', project.metrics.performance, 'text-blue-600');
       grid.appendChild(perfMetric);
     }
 
-    // Métrica de uptime
     if (project.metrics.uptime) {
-      const uptimeMetric = this.createMetricCard('🔥', 'Uptime', project.metrics.uptime, 'text-purple-600 dark:text-purple-400');
+      const uptimeMetric = this.createMetricCard('🔥', 'Uptime', project.metrics.uptime, 'text-purple-600');
       grid.appendChild(uptimeMetric);
     }
 
@@ -465,11 +474,14 @@ export class ProjectsComponent implements OnInit {
 
   private createMetricCard(icon: string, label: string, value: string, colorClass: string): HTMLElement {
     const card = document.createElement('div');
-    card.className = 'text-center p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600';
+    card.className = 'text-center p-3 rounded-lg shadow-sm border';
+    card.style.backgroundColor = 'var(--background-primary)';
+    card.style.borderColor = 'var(--secondary-300)';
+    
     card.innerHTML = `
       <div class="text-2xl mb-1">${icon}</div>
       <div class="text-lg font-bold ${colorClass}">${value}</div>
-      <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">${label}</div>
+      <div class="text-xs uppercase tracking-wide" style="color: var(--text-secondary)">${label}</div>
     `;
     return card;
   }
@@ -483,19 +495,18 @@ export class ProjectsComponent implements OnInit {
     section.className = 'space-y-4';
 
     const title = document.createElement('h4');
-    title.className = 'font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2';
+    title.className = 'font-semibold flex items-center gap-2';
+    title.style.color = 'var(--primary-900)';
     title.innerHTML = `
       <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z"/>
       </svg>
-      Capturas del Proyecto <span class="text-sm font-normal text-gray-500 dark:text-gray-400">(${project.gallery.length})</span>
+      Capturas del Proyecto <span class="text-sm font-normal" style="color: var(--text-secondary)">(${project.gallery.length})</span>
     `;
 
-    // Grid de imágenes
     const imageGrid = document.createElement('div');
     imageGrid.className = 'grid grid-cols-3 gap-3';
 
-    // Mostrar hasta 3 imágenes
     project.gallery.slice(0, 3).forEach((image, index) => {
       const imageContainer = this.createImageThumbnail(image, project, index);
       imageGrid.appendChild(imageContainer);
@@ -504,11 +515,13 @@ export class ProjectsComponent implements OnInit {
     section.appendChild(title);
     section.appendChild(imageGrid);
 
-    // Botón "Ver todas las capturas" si hay más de 3
     if (project.gallery.length > 3) {
       const viewAllButton = document.createElement('button');
       viewAllButton.id = 'view-all-gallery';
-      viewAllButton.className = 'w-full px-4 py-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg transition-colors flex items-center justify-center gap-2';
+      viewAllButton.className = 'w-full px-4 py-2 text-sm font-medium rounded-lg transition-colors flex items-center justify-center gap-2 border';
+      viewAllButton.style.backgroundColor = 'var(--secondary-100)';
+      viewAllButton.style.color = 'var(--primary-800)';
+      viewAllButton.style.borderColor = 'var(--secondary-300)';
       viewAllButton.innerHTML = `
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -516,6 +529,15 @@ export class ProjectsComponent implements OnInit {
         </svg>
         Ver todas las capturas (${project.gallery.length})
       `;
+      
+      // Agregar hover effect
+      viewAllButton.addEventListener('mouseenter', () => {
+        viewAllButton.style.backgroundColor = 'var(--secondary-200)';
+      });
+      viewAllButton.addEventListener('mouseleave', () => {
+        viewAllButton.style.backgroundColor = 'var(--secondary-100)';
+      });
+      
       section.appendChild(viewAllButton);
     }
 
@@ -587,9 +609,10 @@ export class ProjectsComponent implements OnInit {
     section.className = 'space-y-3';
 
     const title = document.createElement('h4');
-    title.className = 'font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2';
+    title.className = 'font-semibold flex items-center gap-2';
+    title.style.color = 'var(--primary-900)';
     title.innerHTML = `
-      <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-4 h-4" style="color: var(--text-secondary)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
       Información del Proyecto
@@ -609,8 +632,8 @@ export class ProjectsComponent implements OnInit {
       const infoItem = document.createElement('div');
       infoItem.className = 'space-y-1';
       infoItem.innerHTML = `
-        <div class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">${item.label}</div>
-        <div class="text-gray-700 dark:text-gray-300">${item.value}</div>
+        <div class="text-xs font-medium uppercase tracking-wide" style="color: var(--text-secondary)">${item.label}</div>
+        <div style="color: var(--text-primary)">${item.value}</div>
       `;
       infoGrid.appendChild(infoItem);
     });

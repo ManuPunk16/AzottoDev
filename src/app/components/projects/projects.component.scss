@@ -22,16 +22,58 @@
     overflow-y: auto !important;
   }
   
+  // Específico para tema claro - mejorar contraste
+  .swal2-popup:not([data-theme="dark"]) {
+    .swal2-custom-html {
+      h4 {
+        color: var(--primary-900) !important;
+      }
+      
+      p, span, div {
+        color: var(--primary-800) !important;
+      }
+      
+      .text-gray-700 {
+        color: var(--primary-800) !important;
+      }
+      
+      .text-gray-500 {
+        color: var(--primary-600) !important;
+      }
+      
+      .text-gray-400 {
+        color: var(--primary-500) !important;
+      }
+    }
+  }
+  
+  // Específico para tema oscuro
+  [data-theme="dark"] .swal2-custom-popup {
+    background-color: var(--background-primary) !important;
+    
+    .swal2-custom-html {
+      h4 {
+        color: var(--primary-100) !important;
+      }
+      
+      p, span, div {
+        color: var(--text-primary) !important;
+      }
+    }
+  }
+  
   .gallery-thumbnail {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--secondary-300);
     
     &:hover {
-      transform: scale(1.05) translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-color: var(--primary-400);
     }
     
-    &:active {
-      transform: scale(0.98);
+    img {
+      border-radius: 6px;
     }
   }
 
@@ -50,149 +92,71 @@
     .space-y-6 > * + * {
       margin-top: 1.5rem !important;
     }
-
+    
     .space-y-4 > * + * {
       margin-top: 1rem !important;
     }
-
+    
     .space-y-3 > * + * {
       margin-top: 0.75rem !important;
     }
-
+    
     .space-y-2 > * + * {
       margin-top: 0.5rem !important;
     }
+  }
 
-    // Mejores estilos para badges
-    .bg-blue-50 {
-      background-color: rgba(59, 130, 246, 0.1) !important;
-      border-color: rgba(59, 130, 246, 0.2) !important;
-    }
-
-    .dark .bg-blue-900\/30 {
-      background-color: rgba(59, 130, 246, 0.15) !important;
-    }
-
-    // Estilos mejorados para métricas
-    .metric-card {
-      backdrop-filter: blur(10px);
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-      transition: all 0.3s ease;
-
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      }
-    }
-
-    // Botones de acción mejorados
-    .inline-flex.items-center.gap-2 {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 0.5s;
-      }
-
-      &:hover::before {
-        left: 100%;
-      }
+  // Mejorar legibilidad de badges en tema claro
+  .swal2-popup:not([data-theme="dark"]) {
+    .inline-flex.items-center {
+      background-color: var(--secondary-100) !important;
+      color: var(--primary-800) !important;
+      border: 1px solid var(--secondary-300) !important;
     }
   }
   
-  // Mejorar contraste en modo oscuro
-  .swal2-popup.swal2-custom-popup {
-    .dark &,
-    &[data-theme="dark"] {
-      background-color: #111827 !important;
-      border: 1px solid #374151 !important;
-      
-      h4 {
-        color: #f9fafb !important;
-      }
-      
-      .text-gray-700 {
-        color: #d1d5db !important;
-      }
-      
-      .text-gray-600 {
-        color: #9ca3af !important;
-      }
-
-      .text-gray-800 {
-        color: #f3f4f6 !important;
-      }
-
-      .bg-gray-50 {
-        background-color: #374151 !important;
-      }
-
-      .bg-white {
-        background-color: #1f2937 !important;
-      }
-
-      .border-gray-200 {
-        border-color: #4b5563 !important;
-      }
-    }
-  }
-
-  // Scrollbar personalizado para el modal
+  // Scrollbar del modal
   .swal2-custom-html {
     &::-webkit-scrollbar {
       width: 6px;
     }
-
+    
     &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: rgba(156, 163, 175, 0.5);
+      background: var(--secondary-200);
       border-radius: 3px;
     }
-
-    &::-webkit-scrollbar-thumb:hover {
-      background: rgba(156, 163, 175, 0.7);
+    
+    &::-webkit-scrollbar-thumb {
+      background: var(--primary-400);
+      border-radius: 3px;
+      
+      &:hover {
+        background: var(--primary-500);
+      }
     }
   }
 }
 
-:host ::ng-deep {
-  .swal2-popup {
-    border-radius: 1rem !important;
-    background-color: var(--background-primary) !important;
+// Mejoras específicas para tema claro
+:host ::ng-deep .swal2-popup:not([data-theme="dark"]) {
+  .text-sm {
+    color: var(--primary-700) !important;
   }
-
-  .swal2-title {
+  
+  .text-xs {
+    color: var(--primary-600) !important;
+  }
+  
+  .font-medium {
+    color: var(--primary-800) !important;
+  }
+  
+  .font-semibold {
     color: var(--primary-900) !important;
   }
-
-  .swal2-html-container {
-    color: var(--text-primary) !important;
-  }
-
-  .swal2-close {
-    color: var(--primary-600) !important;
-    &:hover {
-      color: var(--primary-800) !important;
-    }
-  }
-
-  .swal-project-details {
-    max-width: 700px !important;
-  }
 }
 
-// Mejoras para la interactividad de las imágenes
+/* Mejoras para la interactividad de las imágenes */
 .cursor-pointer {
   cursor: pointer;
   

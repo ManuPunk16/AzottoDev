@@ -152,7 +152,7 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
   }
 
   updateMetadata(metadata: any) {
-    this.metadataService.updateMetadata(metadata);
+    this.metadataService.updateArticleMetadata(metadata);
   }
 
   // Nueva función para procesar Markdown básico

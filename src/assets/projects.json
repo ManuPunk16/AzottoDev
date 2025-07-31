@@ -4,23 +4,33 @@
     "title": "AzotoDev Portfolio",
     "description": "Portafolio personal y blog técnico desarrollado con Angular y Tailwind CSS.",
     "longDescription": "Portfolio personal diseñado para exhibir proyectos profesionales y compartir conocimientos técnicos a través de un blog integrado. Desarrollado utilizando Angular 19 con arquitectura basada en componentes standalone para mejorar la eficiencia y mantenibilidad. Implementa un sistema de temas claro/oscuro personalizable que respeta las preferencias del usuario.",
-    "imageUrl": "./assets/images/projects/azottodev.webp",
+    "imageUrl": "./assets/images/projects/azotodev/home-white-theme.webp",
     "gallery": [
       {
-        "url": "./assets/images/projects/azottodev-home.webp",
+        "url": "./assets/images/projects/azotodev/home-white-theme.webp",
         "alt": "Página principal del portfolio",
         "caption": "Vista de la página principal con tema claro",
         "isMain": true
       },
       {
-        "url": "./assets/images/projects/azottodev-dark.webp",
+        "url": "./assets/images/projects/azotodev/home-dark-theme.webp",
         "alt": "Tema oscuro del portfolio",
         "caption": "Interfaz en modo oscuro"
       },
       {
-        "url": "./assets/images/projects/azottodev-mobile.webp",
+        "url": "./assets/images/projects/azotodev/home-dark-theme-mobile.webp",
         "alt": "Vista móvil responsive",
-        "caption": "Diseño responsive en dispositivos móviles"
+        "caption": "Diseño responsive en dispositivos móviles modo oscuro"
+      },
+      {
+        "url": "./assets/images/projects/azotodev/home-white-theme-mobile.webp",
+        "alt": "Vista móvil responsive",
+        "caption": "Diseño responsive en dispositivos móviles modo claro"
+      },
+      {
+        "url": "./assets/images/projects/azotodev/azoto-portafolio.webp",
+        "alt": "Vista móvil responsive",
+        "caption": "Diseño modal del proyecto"
       }
     ],
     "technologies": ["Angular", "TypeScript", "Tailwind CSS", "Firebase"],
