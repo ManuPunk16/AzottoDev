@@ -4,7 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4400 --open",
-    "build": "ng build",
+    "build": "npm run generate:sitemap && ng build",
+    "build:prod": "npm run generate:sitemap && ng build --configuration production",
+    "generate:sitemap": "node scripts/generate-sitemap.js",
+    "deploy": "npm run build:prod && firebase deploy --only hosting",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
