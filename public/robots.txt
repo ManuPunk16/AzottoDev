@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://azotodev.web.app/sitemap.xml
+
+# Optimizaciones específicas
+Crawl-delay: 1
+
+# Bloquear archivos innecesarios
+Disallow: /assets/temp/
+Disallow: /*.json$
+Disallow: /firebase-debug.log
