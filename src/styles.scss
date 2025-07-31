@@ -7,6 +7,7 @@
 :root {
   /* Colores primarios */
   --primary-100: #f0f0f0;
+  --primary-200: #d3d7df;
   --primary-300: #9CA3AF;
   --primary-400: #6B7280;
   --primary-500: #808080;
@@ -16,13 +17,25 @@
   --primary-900: #1a1a1a;
 
   /* Colores secundarios */
-  --secondary-100: #e0e0e0;
+  --secondary-100: #f5f5f5;
+  --secondary-200: #e0e0e0;
+  --secondary-300: #cccccc;
+  --secondary-400: #b8b8b8;
   --secondary-500: #a0a0a0;
+  --secondary-600: #888888;
+  --secondary-700: #707070;
+  --secondary-800: #585858;
   --secondary-900: #2a2a2a;
 
   /* Colores terciarios */
-  --tertiary-100: #f8f8f8;
+  --tertiary-100: #fafafa;
+  --tertiary-200: #f4f4f4;
+  --tertiary-300: #e8e8e8;
+  --tertiary-400: #d4d4d4;
   --tertiary-500: #909090;
+  --tertiary-600: #7a7a7a;
+  --tertiary-700: #646464;
+  --tertiary-800: #4e4e4e;
   --tertiary-900: #333333;
 
   /* Colores de acento */
@@ -134,7 +147,13 @@
 
   /* Colores secundarios en modo oscuro */
   --secondary-100: #2a2a2a;
+  --secondary-200: #353535;
+  --secondary-300: #404040;
+  --secondary-400: #4b4b4b;
   --secondary-500: #808080;
+  --secondary-600: #9a9a9a;
+  --secondary-700: #b4b4b4;
+  --secondary-800: #cecece;
   --secondary-900: #e0e0e0;
 
   /* Colores terciarios en modo oscuro */
