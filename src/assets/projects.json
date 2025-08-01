@@ -1,255 +1,52 @@
 [
   {
-    "id": "azotto-dev",
+    "id": "azotodev",
     "title": "AzotoDev Portfolio",
     "description": "Portafolio personal y blog técnico desarrollado con Angular y Tailwind CSS.",
-    "longDescription": "Portfolio personal diseñado para exhibir proyectos profesionales y compartir conocimientos técnicos a través de un blog integrado. Desarrollado utilizando Angular 19 con arquitectura basada en componentes standalone para mejorar la eficiencia y mantenibilidad. Implementa un sistema de temas claro/oscuro personalizable que respeta las preferencias del usuario.",
     "imageUrl": "./assets/images/projects/azotodev/home-white-theme.webp",
-    "gallery": [
-      {
-        "url": "./assets/images/projects/azotodev/home-white-theme.webp",
-        "alt": "Página principal del portfolio",
-        "caption": "Vista de la página principal con tema claro",
-        "isMain": true
-      },
-      {
-        "url": "./assets/images/projects/azotodev/home-dark-theme.webp",
-        "alt": "Tema oscuro del portfolio",
-        "caption": "Interfaz en modo oscuro"
-      },
-      {
-        "url": "./assets/images/projects/azotodev/home-dark-theme-mobile.webp",
-        "alt": "Vista móvil responsive",
-        "caption": "Diseño responsive en dispositivos móviles modo oscuro"
-      },
-      {
-        "url": "./assets/images/projects/azotodev/home-white-theme-mobile.webp",
-        "alt": "Vista móvil responsive",
-        "caption": "Diseño responsive en dispositivos móviles modo claro"
-      },
-      {
-        "url": "./assets/images/projects/azotodev/azoto-portafolio.webp",
-        "alt": "Vista móvil responsive",
-        "caption": "Diseño modal del proyecto"
-      }
-    ],
-    "technologies": ["Angular", "TypeScript", "Tailwind CSS", "Firebase"],
-    "features": [
-      "Sistema de temas claro/oscuro",
-      "Diseño responsive",
-      "Blog integrado con markdown",
-      "Optimización SEO",
-      "Progressive Web App"
-    ],
+    "technologies": ["Angular 20", "TypeScript", "Tailwind CSS", "Firebase"],
     "category": "Web",
     "status": "completed",
     "privacy": "public",
-    "demoUrl": "https://azotodev.web.app",
-    "repoUrl": "https://github.com/azotto/portfolio",
     "featured": true,
     "date": "2024-12-26",
-    "lastUpdated": "2025-07-29",
-    "team": {
-      "size": 1,
-      "role": "Full Stack Developer",
-      "duration": "7 meses"
-    },
-    "metrics": {
-      "performance": "95/100",
-      "uptime": "99.9%",
-      "responseTime": "< 200ms"
-    },
-    "challenges": [
-      "Optimización de rendimiento para PWA",
-      "Implementación de sistema de temas dinámico",
-      "SEO para SPA con Angular Universal"
-    ],
-    "results": [
-      "Incremento del 40% en tiempo de permanencia",
-      "Reducción del 60% en tiempo de carga",
-      "100% accesibilidad WCAG 2.1"
-    ],
-    "hasScreenshots": true,
-    "isResponsive": true,
-    "hasDocumentation": true
+    "demoUrl": "https://azotodev.web.app",
+    "repoUrl": "https://github.com/ManuPunk16/AzottoDev"
   },
   {
     "id": "control-inventario",
     "title": "Sistema de Control de Inventario",
     "description": "Aplicación integral de gestión de inventarios con módulos de reportería y análisis.",
-    "longDescription": "Sistema desarrollado para optimizar la gestión de inventarios con funcionalidades avanzadas de seguimiento, alertas automáticas y generación de reportes. Incluye dashboard ejecutivo con métricas en tiempo real y sistema de roles para diferentes niveles de acceso.",
     "imageUrl": "./assets/images/projects/inventario-main.webp",
-    "gallery": [
-      {
-        "url": "./assets/images/projects/inventario-dashboard.webp",
-        "alt": "Dashboard principal del sistema",
-        "caption": "Vista del panel de control con métricas anonimizadas",
-        "isMain": true
-      },
-      {
-        "url": "./assets/images/projects/inventario-reports.webp",
-        "alt": "Módulo de reportes",
-        "caption": "Sistema de reportería con datos de ejemplo"
-      },
-      {
-        "url": "./assets/images/projects/inventario-mobile.webp",
-        "alt": "Interfaz móvil",
-        "caption": "Aplicación responsive para dispositivos móviles"
-      }
-    ],
-    "technologies": ["Angular", "Node.js", "Express", "MongoDB", "Chart.js"],
-    "features": [
-      "Gestión completa de productos",
-      "Múltiples roles de usuario",
-      "API REST documentada"
-    ],
+    "technologies": ["Angular 19", "Node.js", "MongoDB"],
     "category": "Fullstack",
     "status": "completed",
     "privacy": "internal",
     "featured": true,
-    "date": "2025-03-31",
-    "lastUpdated": "2025-07-15",
-    "team": {
-      "size": 1,
-      "role": "Full Stack Developer",
-      "duration": "4 meses"
-    },
-    "metrics": {
-      "users": 6,
-      "performance": "92/100",
-      "uptime": "99.8%"
-    },
-    "challenges": [
-      "Optimización de consultas complejas",
-      "Implementación de notificaciones en tiempo real",
-      "Migración de sistema legacy"
-    ],
-    "results": [
-      "Reducción del 70% en tiempo de procesamiento",
-      "Automatización de 85% de procesos manuales",
-      "Mejora del 90% en precisión de inventarios"
-    ],
-    "hasScreenshots": true,
-    "isResponsive": true,
-    "hasDocumentation": true
+    "date": "2024-03-31"
   },
   {
     "id": "gestion-documental",
     "title": "Plataforma de Gestión Documental",
     "description": "Sistema de recepción y procesamiento de documentos con flujos de trabajo automatizados.",
-    "longDescription": "Plataforma digital que automatiza la recepción, clasificación y distribución de documentos institucionales. Implementa flujos de trabajo configurables, seguimiento de estado en tiempo real y sistema de notificaciones automáticas.",
     "imageUrl": "./assets/images/projects/documental-main.webp",
-    "gallery": [
-      {
-        "url": "./assets/images/projects/documental-workflow.webp",
-        "alt": "Sistema de flujos de trabajo",
-        "caption": "Vista del diseñador de flujos con datos anonimizados",
-        "isMain": true
-      },
-      {
-        "url": "./assets/images/projects/documental-tracking.webp",
-        "alt": "Seguimiento de documentos",
-        "caption": "Panel de seguimiento en tiempo real"
-      },
-      {
-        "url": "./assets/images/projects/documental-analytics.webp",
-        "alt": "Dashboard de analytics",
-        "caption": "Métricas y reportes del sistema"
-      }
-    ],
-    "technologies": ["Angular", "Node.js", "MongoDB", "Express", "Chart.js"],
-    "features": [
-      "Recepción digital automática",
-      "Flujos de trabajo configurables",
-      "Seguimiento en tiempo real",
-      "Sistema de notificaciones",
-      "Reportería avanzada"
-    ],
+    "technologies": ["Angular 19", "Node.js", "MongoDB"],
     "category": "Fullstack",
     "status": "completed",
     "privacy": "internal",
     "featured": true,
-    "date": "2023-01-09",
-    "lastUpdated": "2025-03-31",
-    "team": {
-      "size": 1,
-      "role": "Full Stack Developer",
-      "duration": "3 años"
-    },
-    "metrics": {
-      "users": 20,
-      "performance": "88/100",
-      "responseTime": "< 300ms"
-    },
-    "challenges": [
-      "Diseño de interfaz intuitiva para usuarios no técnicos",
-      "Optimización de carga de documentos pesados",
-      "Integración con sistemas externos"
-    ],
-    "results": [
-      "Reducción del 80% en tiempo de tramitación",
-      "Eliminación del 95% de documentos en papel",
-      "Mejora del 85% en satisfacción de usuarios"
-    ],
-    "hasScreenshots": true,
-    "isResponsive": true,
-    "hasDocumentation": true
+    "date": "2023-01-09"
   },
   {
     "id": "tickets-soporte",
     "title": "Sistema de Tickets de Soporte",
     "description": "Plataforma de gestión de incidencias con priorización automática y SLA tracking.",
-    "longDescription": "Sistema especializado para la gestión eficiente de tickets de soporte técnico con clasificación automática, asignación inteligente y monitoreo de SLA. Incluye dashboard para supervisores y métricas de rendimiento del equipo.",
     "imageUrl": "./assets/images/projects/tickets-main.webp",
-    "gallery": [
-      {
-        "url": "./assets/images/projects/tickets-dashboard.webp",
-        "alt": "Dashboard de tickets",
-        "caption": "Vista principal con tickets anonimizados",
-        "isMain": true
-      },
-      {
-        "url": "./assets/images/projects/tickets-sla.webp",
-        "alt": "Monitoreo de SLA",
-        "caption": "Panel de seguimiento de acuerdos de nivel de servicio"
-      }
-    ],
-    "technologies": ["Angular", "Firebase"],
-    "features": [
-      "Clasificación automática de prioridades",
-      "Asignación inteligente de técnicos",
-      "Monitoreo de SLA en tiempo real",
-      "Chat interno integrado",
-      "Reportes de rendimiento"
-    ],
+    "technologies": ["Angular 20", "Firebase"],
     "category": "Web",
     "status": "maintenance",
     "privacy": "internal",
     "featured": false,
-    "date": "2024-11-15",
-    "lastUpdated": "2025-03-10",
-    "team": {
-      "size": 1,
-      "role": "Full Stack Developer",
-      "duration": "3 meses"
-    },
-    "metrics": {
-      "users": 10,
-      "performance": "90/100",
-      "uptime": "99.5%"
-    },
-    "challenges": [
-      "Implementación de notificaciones en tiempo real",
-      "Optimización de consultas complejas de reportes",
-      "Integración con sistema de autenticación LDAP"
-    ],
-    "results": [
-      "Reducción del 50% en tiempo de resolución",
-      "Mejora del 40% en satisfacción del cliente",
-      "Automatización del 60% de procesos de clasificación"
-    ],
-    "hasScreenshots": true,
-    "isResponsive": true,
-    "hasDocumentation": false
+    "date": "2024-11-15"
   }
 ]

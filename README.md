@@ -1,61 +1,111 @@
-# Azottodev
+# 🌟 AzottoDev - Portfolio Personal
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+> Portfolio profesional desarrollado con Angular 20, TypeScript y Tailwind CSS
 
-## Development server
+[![Demo Live](https://img.shields.io/badge/Demo-Live-success)](https://azotodev.web.app)
+[![Angular](https://img.shields.io/badge/Angular-20-red)](https://angular.io)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org)
 
-To start a local development server, run:
+## 🎨 Características
 
-```bash
-ng serve
+- ⚡ **Angular 20** con Standalone Components
+- 🎭 **Tema dual** (claro/oscuro) con persistencia
+- 📱 **100% Responsive** con Tailwind CSS
+- 🔍 **SEO Optimizado** con meta tags dinámicos
+- 📊 **Performance** 95+ en Lighthouse
+- 🖼️ **Galería de proyectos** con modal interactivo
+- 🎯 **TypeScript** estricto
+- 🚀 **PWA** completa
+
+## 🛠️ Stack Tecnológico
+
+- **Frontend**: Angular 20, TypeScript, Tailwind CSS
+- **Hosting**: Firebase Hosting
+- **Build**: Angular CLI + esbuild
+- **Styling**: SCSS + CSS Variables para temas
+
+## 🚀 Demo Live
+
+👉 **[Ver Portfolio](https://azotodev.web.app)**
+
+## 📁 Estructura del Proyecto
+
+```
+src/
+├── app/
+│   ├── components/     # Componentes standalone
+│   ├── services/       # Servicios (metadata, sitemap)
+│   ├── models/         # Interfaces TypeScript
+│   └── app.routes.ts   # Routing configuration
+├── assets/
+│   ├── projects.json   # Datos de proyectos
+│   ├── projects/       # JSONs individuales para SEO
+│   └── images/         # Imágenes optimizadas WebP
+└── styles.scss         # Sistema de temas CSS
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 💻 Desarrollo Local
 
 ```bash
-ng generate component component-name
+# Clonar e instalar
+git clone https://github.com/azottodev/portfolio.git
+cd portfolio
+npm install
+
+# Desarrollo
+npm start  # Puerto 4400
+
+# Build de producción
+npm run build:prod
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🎯 Características Técnicas Destacadas
 
-```bash
-ng generate --help
+### Sistema de Temas Dinámico
+```scss
+:root {
+  --primary-500: #8B5CF6;
+  --background-primary: #FFFFFF;
+}
+
+[data-theme="dark"] {
+  --primary-500: #A855F7; 
+  --background-primary: #1F2937;
+}
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
+### Componentes Standalone
+```typescript
+@Component({
+  selector: 'app-projects',
+  standalone: true,
+  imports: [CommonModule, RouterLink],
+  // ...
+})
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### SEO Optimizado
+- Meta tags dinámicos por proyecto
+- Sitemap automático
+- Open Graph completo
+- Schema.org JSON-LD
 
-## Running unit tests
+## 📈 Performance
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- **Lighthouse Score**: 95+
+- **First Contentful Paint**: < 1.2s
+- **Largest Contentful Paint**: < 2.5s
+- **Cumulative Layout Shift**: < 0.1
 
-```bash
-ng test
-```
+## 👨‍💻 Autor
 
-## Running end-to-end tests
+**Luis Hernández** - Desarrollador Full Stack
+- 🌐 Portfolio: [azotodev.web.app](https://azotodev.web.app)
+- 💼 LinkedIn: [linkedin.com/in/azotodev](https://linkedin.com/in/azotodev)
+- 📧 Email: azzoto@icloud.com
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+⭐ **¿Te gusta el proyecto? ¡Dale una estrella!**
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-<!-- firebase deploy --only hosting:azotodev -->
+*Desarrollado con ❤️ usando Angular 20*

@@ -1,0 +1,93 @@
+{
+  "id": "azotodev",
+  "title": "AzotoDev Portfolio",
+  "description": "Portafolio personal y blog técnico desarrollado con Angular y Tailwind CSS.",
+  "longDescription": "Portfolio personal diseñado para exhibir proyectos profesionales y compartir conocimientos técnicos a través de un blog integrado. Desarrollado utilizando Angular 19 con arquitectura basada en componentes standalone para mejorar la eficiencia y mantenibilidad. Implementa un sistema de temas claro/oscuro personalizable que respeta las preferencias del usuario.",
+  "imageUrl": "./assets/images/projects/azotodev/home-white-theme.webp",
+  "gallery": [
+      {
+        "url": "./assets/images/projects/azotodev/home-white-theme.webp",
+        "alt": "Página principal del portfolio",
+        "caption": "Vista de la página principal con tema claro",
+        "isMain": true
+      },
+      {
+        "url": "./assets/images/projects/azotodev/home-dark-theme.webp",
+        "alt": "Tema oscuro del portfolio",
+        "caption": "Interfaz en modo oscuro"
+      },
+      {
+        "url": "./assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+        "alt": "Vista móvil responsive",
+        "caption": "Diseño responsive en dispositivos móviles modo oscuro"
+      },
+      {
+        "url": "./assets/images/projects/azotodev/home-white-theme-mobile.webp",
+        "alt": "Vista móvil responsive",
+        "caption": "Diseño responsive en dispositivos móviles modo claro"
+      }
+    ],
+  "technologies": ["Angular 19", "TypeScript", "Tailwind CSS", "Firebase", "SCSS"],
+  "features": [
+    "Sistema de temas claro/oscuro dinámico",
+    "Diseño responsive y accesible",
+    "Blog integrado con soporte Markdown",
+    "Optimización SEO avanzada",
+    "Progressive Web App (PWA)",
+    "Lazy loading de imágenes",
+    "Componentes standalone",
+    "Análisis de performance integrado"
+  ],
+  "category": "Web",
+  "status": "completed",
+  "privacy": "public",
+  "featured": true,
+  "date": "2024-12-26",
+  "lastUpdated": "2025-01-31",
+  "demoUrl": "https://azotodev.web.app",
+  "repoUrl": "https://github.com/ManuPunk16/AzottoDev",
+  "team": {
+    "size": 1,
+    "role": "Full Stack Developer & UI/UX Designer",
+    "duration": "7 meses"
+  },
+  "metrics": {
+    "performance": "95+ Lighthouse",
+    "uptime": "99.9%",
+    "responseTime": "< 200ms"
+  },
+  "results": [
+    "Incremento del 40% en tiempo de permanencia",
+    "Reducción del 60% en tiempo de carga",
+    "100% accesibilidad WCAG 2.1",
+    "95+ puntuación en Lighthouse",
+    "Optimización SEO completa"
+  ],
+  "challenges": [
+    "Implementación de SSR para mejor SEO",
+    "Optimización de imágenes WebP con fallbacks",
+    "Sistema de temas dinámico sin flicker",
+    "Lazy loading inteligente de componentes"
+  ],
+  "learnings": [
+    "Arquitectura de componentes standalone en Angular",
+    "Técnicas avanzadas de optimización web",
+    "Implementación de PWA con Service Workers",
+    "Best practices de SEO técnico"
+  ],
+  "hasScreenshots": true,
+  "isResponsive": true,
+  "hasDocumentation": true,
+  "documentation": {
+    "readme": true,
+    "apiDocs": false,
+    "userGuide": true,
+    "techSpecs": true
+  },
+  "seo": {
+    "metaTitle": "AzotoDev Portfolio | Desarrollo Web Angular & TypeScript",
+    "metaDescription": "Portfolio profesional de Luis Hernández, desarrollador Full Stack especializado en Angular, TypeScript y sistemas web modernos. Proyectos, blog técnico y experiencia.",
+    "keywords": ["portfolio desarrollador", "angular developer", "typescript", "desarrollo web", "full stack", "luis hernández"],
+    "ogImage": "./assets/images/projects/azotodev/og-image.webp"
+  }
+}

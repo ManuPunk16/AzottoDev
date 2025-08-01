@@ -1,0 +1,111 @@
+{
+  "id": "control-inventario",
+  "title": "Sistema de Control de Inventario",
+  "description": "Aplicación integral de gestión de inventarios con módulos de reportería y análisis.",
+  "longDescription": "Sistema desarrollado para optimizar la gestión de inventarios con funcionalidades avanzadas de seguimiento, alertas automáticas y generación de reportes. Incluye dashboard ejecutivo con métricas en tiempo real y sistema de roles para diferentes niveles de acceso.",
+  "imageUrl": "./assets/images/projects/inventario-main.webp",
+  "gallery": [
+    {
+      "url": "./assets/images/projects/inventario-dashboard.webp",
+      "alt": "Dashboard principal del sistema de inventario",
+      "caption": "Vista del panel de control con métricas de rendimiento anonimizadas",
+      "isMain": true
+    },
+    {
+      "url": "./assets/images/projects/inventario-reports.webp",
+      "alt": "Módulo de reportes avanzados",
+      "caption": "Sistema de reportería con análisis de datos y exportación"
+    },
+    {
+      "url": "./assets/images/projects/inventario-mobile.webp",
+      "alt": "Interfaz móvil responsive",
+      "caption": "Aplicación completamente adaptativa para dispositivos móviles"
+    },
+    {
+      "url": "./assets/images/projects/inventario-alerts.webp",
+      "alt": "Sistema de alertas automáticas",
+      "caption": "Configuración de notificaciones y alertas de stock bajo"
+    },
+    {
+      "url": "./assets/images/projects/inventario-analytics.webp",
+      "alt": "Analytics y métricas del sistema",
+      "caption": "Dashboard de análisis con tendencias y predicciones"
+    }
+  ],
+  "technologies": ["Angular 19", "Node.js", "Express.js", "MongoDB", "Chart.js", "JWT"],
+  "features": [
+    "Gestión completa de productos y categorías",
+    "Sistema de múltiples roles y permisos",
+    "API REST completamente documentada",
+    "Alertas automáticas de stock bajo",
+    "Reportes en tiempo real con exportación",
+    "Dashboard ejecutivo con métricas KPI",
+    "Seguimiento de movimientos de inventario",
+    "Integración con códigos de barras",
+    "Sistema de auditoría completo",
+    "Backup automático de datos"
+  ],
+  "category": "Fullstack",
+  "status": "completed",
+  "privacy": "internal",
+  "featured": true,
+  "date": "2024-03-31",
+  "lastUpdated": "2024-07-15",
+  "team": {
+    "size": 1,
+    "role": "Full Stack Developer & System Architect",
+    "duration": "4 meses",
+    "responsibilities": [
+      "Arquitectura de base de datos NoSQL",
+      "Desarrollo del backend con Node.js",
+      "Implementación del frontend con Angular",
+      "Diseño de API RESTful",
+      "Testing e implementación"
+    ]
+  },
+  "metrics": {
+    "users": 6,
+    "performance": "92/100 Lighthouse",
+    "uptime": "99.8%",
+    "responseTime": "< 150ms",
+    "dataProcessed": "10,000+ registros",
+    "reportsGenerated": "500+ mensuales"
+  },
+  "challenges": [
+    "Optimización de consultas complejas en MongoDB para reportes en tiempo real",
+    "Implementación de notificaciones push en tiempo real con Socket.io",
+    "Migración segura desde sistema legacy sin pérdida de datos",
+    "Diseño de arquitectura escalable para futuro crecimiento",
+    "Integración con múltiples formatos de códigos de barras"
+  ],
+  "results": [
+    "Reducción del 70% en tiempo de procesamiento de inventarios",
+    "Automatización del 85% de procesos manuales anteriores",
+    "Mejora del 90% en precisión de inventarios",
+    "Reducción del 60% en errores de stock",
+    "Aumento del 40% en productividad del equipo"
+  ],
+  "learnings": [
+    "Implementación de arquitecturas escalables con Node.js y MongoDB",
+    "Optimización de consultas NoSQL para reportes complejos",
+    "Desarrollo de sistemas de notificaciones en tiempo real",
+    "Best practices para migración de datos legacy",
+    "Técnicas avanzadas de testing para aplicaciones fullstack"
+  ],
+  "hasScreenshots": true,
+  "isResponsive": true,
+  "hasDocumentation": true,
+  "documentation": {
+    "readme": true,
+    "apiDocs": true,
+    "userGuide": true,
+    "techSpecs": true,
+    "deploymentGuide": true
+  },
+  "seo": {
+    "metaTitle": "Sistema de Control de Inventario | Desarrollo Fullstack Angular Node.js",
+    "metaDescription": "Sistema integral de gestión de inventarios desarrollado con Angular y Node.js. Incluye dashboard en tiempo real, alertas automáticas y reportería avanzada.",
+    "keywords": ["sistema inventario", "angular nodejs", "gestión stock", "dashboard tiempo real", "fullstack developer", "luis hernández"],
+    "ogImage": "./assets/images/projects/inventario-main.webp"
+  }
+}

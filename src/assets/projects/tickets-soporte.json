@@ -1,0 +1,111 @@
+{
+  "id": "tickets-soporte",
+  "title": "Sistema de Tickets de Soporte",
+  "description": "Plataforma de gestión de incidencias con priorización automática y SLA tracking.",
+  "longDescription": "Sistema especializado para la gestión eficiente de tickets de soporte técnico con clasificación automática por IA, asignación inteligente de técnicos y monitoreo exhaustivo de SLA. Incluye dashboard ejecutivo para supervisores y métricas detalladas de rendimiento del equipo de soporte.",
+  "imageUrl": "./assets/images/projects/tickets-main.webp",
+  "gallery": [
+    {
+      "url": "./assets/images/projects/tickets-dashboard.webp",
+      "alt": "Dashboard principal de gestión de tickets",
+      "caption": "Vista principal del sistema con tickets anonimizados y métricas en tiempo real",
+      "isMain": true
+    },
+    {
+      "url": "./assets/images/projects/tickets-sla.webp",
+      "alt": "Panel de monitoreo de SLA y métricas",
+      "caption": "Dashboard de seguimiento de acuerdos de nivel de servicio y KPIs"
+    },
+    {
+      "url": "./assets/images/projects/tickets-chat.webp",
+      "alt": "Sistema de chat interno integrado",
+      "caption": "Herramienta de comunicación interna para coordinación del equipo"
+    },
+    {
+      "url": "./assets/images/projects/tickets-mobile.webp",
+      "alt": "Aplicación móvil para técnicos",
+      "caption": "App móvil para gestión de tickets en campo y notificaciones push"
+    },
+    {
+      "url": "./assets/images/projects/tickets-reports.webp",
+      "alt": "Reportes y analytics avanzados",
+      "caption": "Sistema de reportería con análisis predictivo y tendencias"
+    }
+  ],
+  "technologies": ["Angular 18", "Firebase", "Cloud Functions", "Firestore", "Chart.js", "PWA", "FCM"],
+  "features": [
+    "Clasificación automática de prioridades con ML",
+    "Asignación inteligente de técnicos basada en especialización",
+    "Monitoreo de SLA en tiempo real con alertas",
+    "Chat interno integrado para coordinación del equipo",
+    "Reportes de rendimiento y analytics predictivos",
+    "Sistema de escalamiento automático de tickets",
+    "Notificaciones push multicanal (email, SMS, app)",
+    "Base de conocimientos integrada con IA",
+    "Dashboard ejecutivo con métricas de negocio",
+    "API REST para integraciones con sistemas externos"
+  ],
+  "category": "Web",
+  "status": "maintenance",
+  "privacy": "internal",
+  "featured": false,
+  "date": "2024-11-15",
+  "lastUpdated": "2025-03-10",
+  "team": {
+    "size": 1,
+    "role": "Full Stack Developer & UX Designer",
+    "duration": "3 meses",
+    "responsibilities": [
+      "Análisis de procesos de soporte existentes",
+      "Diseño UX optimizado para eficiencia del equipo",
+      "Desarrollo con Angular y Firebase",
+      "Implementación de algoritmos de clasificación",
+      "Setup de CI/CD y monitoreo en producción"
+    ]
+  },
+  "metrics": {
+    "users": 10,
+    "performance": "90/100 Lighthouse",
+    "uptime": "99.5%",
+    "ticketsProcessed": "2,000+ mensuales",
+    "avgResolutionTime": "4.2 horas vs 8.5 horas anteriores",
+    "customerSatisfaction": "94% satisfaction rate"
+  },
+  "challenges": [
+    "Implementación de notificaciones en tiempo real sin saturar al equipo",
+    "Optimización de consultas complejas para reportes de rendimiento",
+    "Integración segura con sistema de autenticación LDAP corporativo",
+    "Desarrollo de algoritmo de clasificación de prioridades preciso",
+    "Balanceamiento de carga automática entre técnicos disponibles"
+  ],
+  "results": [
+    "Reducción del 50% en tiempo promedio de resolución",
+    "Mejora del 40% en satisfacción del cliente interno",
+    "Automatización del 60% de procesos de clasificación inicial",
+    "Reducción del 35% en tickets escalados incorrectamente",
+    "Aumento del 25% en productividad del equipo de soporte"
+  ],
+  "learnings": [
+    "Implementación de sistemas de ML básicos para clasificación",
+    "Técnicas de optimización para aplicaciones en tiempo real",
+    "Estrategias de UX para herramientas de productividad",
+    "Integración con servicios empresariales de autenticación",
+    "Metodologías ágiles para desarrollos con feedback rápido"
+  ],
+  "hasScreenshots": true,
+  "isResponsive": true,
+  "hasDocumentation": false,
+  "documentation": {
+    "readme": true,
+    "apiDocs": false,
+    "userGuide": true,
+    "techSpecs": false,
+    "deploymentGuide": true
+  },
+  "seo": {
+    "metaTitle": "Sistema de Tickets de Soporte | Gestión de Incidencias con IA y SLA",
+    "metaDescription": "Plataforma de tickets de soporte técnico con clasificación automática, asignación inteligente y monitoreo de SLA. Desarrollado con Angular y Firebase.",
+    "keywords": ["sistema tickets", "soporte técnico", "gestión incidencias", "SLA monitoring", "firebase angular", "luis hernández"],
+    "ogImage": "./assets/images/projects/tickets-main.webp"
+  }
+}

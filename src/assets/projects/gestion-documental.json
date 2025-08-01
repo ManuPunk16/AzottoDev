@@ -1,0 +1,112 @@
+{
+  "id": "gestion-documental",
+  "title": "Plataforma de Gestión Documental",
+  "description": "Sistema de recepción y procesamiento de documentos con flujos de trabajo automatizados.",
+  "longDescription": "Plataforma digital que automatiza la recepción, clasificación y distribución de documentos institucionales. Implementa flujos de trabajo configurables, seguimiento de estado en tiempo real y sistema de notificaciones automáticas para optimizar los procesos administrativos.",
+  "imageUrl": "./assets/images/projects/documental-main.webp",
+  "gallery": [
+    {
+      "url": "./assets/images/projects/documental-workflow.webp",
+      "alt": "Sistema de flujos de trabajo configurables",
+      "caption": "Vista del diseñador de flujos de trabajo con datos anonimizados",
+      "isMain": true
+    },
+    {
+      "url": "./assets/images/projects/documental-tracking.webp",
+      "alt": "Panel de seguimiento de documentos",
+      "caption": "Sistema de seguimiento en tiempo real del estado de documentos"
+    },
+    {
+      "url": "./assets/images/projects/documental-analytics.webp",
+      "alt": "Dashboard de analytics y métricas",
+      "caption": "Reportes analíticos y métricas de rendimiento del sistema"
+    },
+    {
+      "url": "./assets/images/projects/documental-mobile.webp",
+      "alt": "Interfaz móvil para seguimiento",
+      "caption": "Aplicación móvil para consulta y seguimiento de documentos"
+    },
+    {
+      "url": "./assets/images/projects/documental-notifications.webp",
+      "alt": "Sistema de notificaciones",
+      "caption": "Centro de notificaciones y alertas automáticas"
+    }
+  ],
+  "technologies": ["Angular 16", "Node.js", "Express.js", "MongoDB", "Chart.js", "PDF.js", "WebSocket", "Multer"],
+  "features": [
+    "Recepción digital automática de documentos",
+    "Flujos de trabajo configurables y personalizables",
+    "Seguimiento en tiempo real del estado de trámites",
+    "Sistema de notificaciones automáticas multicanal",
+    "Reportería avanzada con métricas de rendimiento",
+    "Gestión de usuarios con roles y permisos",
+    "Archivo digital con búsqueda inteligente",
+    "Generación automática de códigos de seguimiento",
+    "Dashboard ejecutivo con KPIs institucionales",
+    "API REST para integraciones externas"
+  ],
+  "category": "Fullstack",
+  "status": "completed",
+  "privacy": "internal",
+  "featured": true,
+  "date": "2023-01-09",
+  "lastUpdated": "2024-03-31",
+  "team": {
+    "size": 1,
+    "role": "Full Stack Developer & Business Analyst",
+    "duration": "3 años",
+    "responsibilities": [
+      "Análisis de procesos y requisitos institucionales",
+      "Diseño de arquitectura de sistema complejo",
+      "Desarrollo full stack con Angular y Node.js",
+      "Implementación de workflows automatizados",
+      "Capacitación y soporte a usuarios finales"
+    ]
+  },
+  "metrics": {
+    "users": 20,
+    "performance": "88/100 Lighthouse",
+    "responseTime": "< 300ms",
+    "documentsProcessed": "50,000+ anuales",
+    "workflowsActive": "15+ flujos configurados",
+    "avgProcessingTime": "3.2 días vs 16 días anteriores"
+  },
+  "challenges": [
+    "Diseño de interfaz intuitiva para usuarios no técnicos de diferentes generaciones",
+    "Optimización de carga y procesamiento de documentos PDF de gran tamaño",
+    "Integración seamless con sistemas gubernamentales externos",
+    "Implementación de workflows complejos con múltiples puntos de decisión",
+    "Migración gradual desde procesos 100% en papel"
+  ],
+  "results": [
+    "Reducción del 80% en tiempo promedio de tramitación",
+    "Eliminación del 95% de documentos físicos en papel",
+    "Mejora del 85% en satisfacción de usuarios internos",
+    "Reducción del 90% en pérdida de documentos",
+    "Ahorro estimado de $50,000 anuales en papel y almacenamiento"
+  ],
+  "learnings": [
+    "Metodologías de análisis de procesos institucionales",
+    "Técnicas de change management para transformación digital",
+    "Optimización de aplicaciones web para documentos pesados",
+    "Diseño UX para usuarios con diferentes niveles técnicos",
+    "Arquitecturas resilientes para sistemas críticos de gobierno"
+  ],
+  "hasScreenshots": true,
+  "isResponsive": true,
+  "hasDocumentation": true,
+  "documentation": {
+    "readme": true,
+    "apiDocs": true,
+    "userGuide": true,
+    "techSpecs": true,
+    "processGuide": true,
+    "trainingMaterials": true
+  },
+  "seo": {
+    "metaTitle": "Plataforma de Gestión Documental | Sistema de Flujos de Trabajo Automatizados",
+    "metaDescription": "Sistema de gestión documental con flujos automatizados desarrollado con Angular y Node.js. Transforma procesos institucionales digitalizando la gestión de documentos.",
+    "keywords": ["gestión documental", "flujos trabajo", "automatización procesos", "transformación digital", "angular nodejs", "luis hernández"],
+    "ogImage": "./assets/images/projects/documental-main.webp"
+  }
+}
