@@ -54,16 +54,19 @@ import { Subject, takeUntil } from 'rxjs';
   `,
   styles: [`
     /* ================================
-       BREADCRUMB COMPONENT - TAILWIND + SCSS
+       BREADCRUMB COMPONENT - TAILWIND V4 COMPATIBLE
        ================================ */
     
     .breadcrumb-nav {
-      /* Usando Tailwind para layout base */
-      @apply sticky top-0 z-40 py-3 border-b;
+      /* ✅ CORREGIDO: No usar @apply para clases que requieren referencia */
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--secondary-300);
       
       /* Variables CSS del tema para colores */
       background-color: var(--background-primary);
-      border-color: var(--secondary-300);
       
       /* Glassmorphism effect */
       backdrop-filter: blur(16px);
@@ -98,8 +101,8 @@ import { Subject, takeUntil } from 'rxjs';
       }
       
       &:focus {
-        ring-color: var(--accent-500);
-        ring-offset-color: var(--background-primary);
+        --tw-ring-color: var(--accent-500);
+        --tw-ring-offset-color: var(--background-primary);
         background-color: var(--secondary-100);
       }
       
@@ -172,21 +175,24 @@ import { Subject, takeUntil } from 'rxjs';
     
     @media (max-width: 640px) {
       .breadcrumb-nav {
-        @apply py-2;
+        padding: 0.5rem 0;
       }
       
       .breadcrumb-link,
       .breadcrumb-current {
-        @apply text-xs px-2 py-1;
+        font-size: 0.75rem;
+        padding: 0.5rem 0.25rem;
       }
       
       .breadcrumb-separator {
-        @apply mx-2 w-3 h-3;
+        margin: 0 0.5rem;
+        width: 0.75rem;
+        height: 0.75rem;
       }
       
       /* Truncar breadcrumbs en móvil si son muy largos */
       ol {
-        @apply overflow-x-auto;
+        overflow-x: auto;
         scrollbar-width: none;
         -ms-overflow-style: none;
         
@@ -198,14 +204,15 @@ import { Subject, takeUntil } from 'rxjs';
       /* Ocultar elementos intermedios en pantallas muy pequeñas */
       @media (max-width: 480px) {
         li:not(:first-child):not(:last-child):not(:nth-last-child(2)) {
-          @apply hidden;
+          display: none;
         }
         
         /* Mostrar indicador de elementos ocultos */
         li:nth-child(2)::after {
           content: '...';
-          @apply text-gray-500 mx-2 font-bold;
           color: var(--secondary-500);
+          margin: 0 0.5rem;
+          font-weight: bold;
         }
       }
     }
