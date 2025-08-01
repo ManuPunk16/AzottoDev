@@ -40,37 +40,9 @@
   <!-- Project Content -->
   @if (project && !loading) {
     <div class="container mx-auto px-4 py-8 max-w-7xl">
-      
-      <!-- Breadcrumbs -->
-      <nav class="mb-8" aria-label="Breadcrumb">
-        <ol class="flex items-center space-x-2 text-sm">
-          <li>
-            <a routerLink="/home" 
-               class="hover:text-purple-600 transition-colors" style="color: var(--text-secondary);">
-              Inicio
-            </a>
-          </li>
-          <li style="color: var(--text-secondary);">→</li>
-          <li>
-            <a routerLink="/projects" 
-               class="hover:text-purple-600 transition-colors" style="color: var(--text-secondary);">
-              Proyectos
-            </a>
-          </li>
-          <li style="color: var(--text-secondary);">→</li>
-          <li class="text-purple-600 font-medium">{{ project.title }}</li>
-        </ol>
-      </nav>
 
       <!-- Header con botón de regreso -->
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-        <button 
-          (click)="goBack()"
-          class="inline-flex items-center gap-2 px-4 py-2 hover:text-purple-600 transition-colors self-start" 
-          style="color: var(--text-secondary);">
-          ← Volver a Proyectos
-        </button>
-        
         <div class="flex flex-wrap gap-3">
           @if (project.demoUrl) {
             <a [href]="project.demoUrl" 

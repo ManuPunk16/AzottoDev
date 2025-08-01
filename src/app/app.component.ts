@@ -12,6 +12,7 @@ import {
   animate,
 } from '@angular/animations';
 import { ThemeService } from './services/theme.service';
+import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.component";
 
 interface SocialLink {
   readonly name: string;
@@ -37,7 +38,8 @@ interface Stat {
     MarkdownModule,
     DatePipe,
     CommonModule,
-  ],
+    BreadcrumbComponent
+],
   animations: [
     trigger('fadeInOut', [
       state('in', style({ opacity: 1 })),
@@ -71,9 +73,9 @@ export class AppComponent implements OnInit {
 
   // Data con readonly para inmutabilidad
   readonly socialLinks: readonly SocialLink[] = [
-    { name: 'GitHub', url: 'https://github.com/luishernandezdev1' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/luis-hernandez-dev' },
-    { name: 'Twitter', url: 'https://twitter.com/luishernandezdev' },
+    { name: 'GitHub', url: 'https://github.com/ManuPunk16' },
+    { name: 'LinkedIn', url: 'https://linkedin.com/in/azotodev' },
+    { name: 'Twitter', url: 'https://twitter.com/azotodev' },
     { name: 'Email', url: 'mailto:contacto@azottodev.com' },
   ] as const;
 

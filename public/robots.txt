@@ -1,13 +1,27 @@
 User-agent: *
 Allow: /
 
+# Bloquear archivos sensibles
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*?
+Disallow: /api/
+
+# Permitir específicamente
+Allow: /assets/
+Allow: /projects/
+Allow: /articles/
+
 # Sitemap
 Sitemap: https://azotodev.web.app/sitemap.xml
+Sitemap: https://azotodev.web.app/sitemap-index.xml
 
-# Optimizaciones específicas
+# Crawl-delay para evitar sobrecarga
 Crawl-delay: 1
 
-# Bloquear archivos innecesarios
-Disallow: /assets/temp/
-Disallow: /*.json$
-Disallow: /firebase-debug.log
+# Específico para bots
+User-agent: Googlebot
+Crawl-delay: 0
+
+User-agent: Bingbot
+Crawl-delay: 1

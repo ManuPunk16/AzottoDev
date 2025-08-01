@@ -26,48 +26,66 @@ export class MetadataService {
   }) {
     // Title
     const pageTitle = data.title ? `${data.title} | ${this.baseTitle}` : this.baseTitle;
-    this.title.setTitle(pageTitle);
-
-    // Description
     const description = data.description || this.baseDescription;
+    
+    this.title.setTitle(pageTitle);
     this.meta.updateTag({ name: 'description', content: description });
-
-    // Keywords
+    this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({ name: 'twitter:description', content: description });
+    
+    // ✅ NUEVO: Keywords dinámicas
     if (data.keywords) {
       this.meta.updateTag({ name: 'keywords', content: data.keywords });
     }
+    
+    // ✅ NUEVO: Hreflang para internacionalización futura
+    this.meta.updateTag({ property: 'og:locale', content: 'es_ES' });
+    
+    // ✅ NUEVO: Structured data más detallado
+    this.updateStructuredData(data);
+  }
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: pageTitle });
-    this.meta.updateTag({ property: 'og:description', content: description });
-    this.meta.updateTag({ property: 'og:url', content: data.url || this.baseUrl });
-    this.meta.updateTag({ property: 'og:type', content: data.type || 'website' });
-
-    if (data.image) {
-      this.meta.updateTag({ property: 'og:image', content: data.image });
-    }
-
-    // Twitter Cards
-    this.meta.updateTag({ name: 'twitter:title', content: pageTitle });
-    this.meta.updateTag({ name: 'twitter:description', content: description });
-
-    if (data.image) {
-      this.meta.updateTag({ name: 'twitter:image', content: data.image });
-    }
-
-    // Article específico
-    if (data.type === 'article') {
-      if (data.publishedDate) {
-        this.meta.updateTag({ property: 'article:published_time', content: data.publishedDate });
+  private updateStructuredData(data: any) {
+    const structuredData: any = {
+      "@context": "https://schema.org",
+      "@type": data.type === 'article' ? 'Article' : 'WebPage',
+      "headline": data.title,
+      "description": data.description,
+      "author": {
+        "@type": "Person",
+        "name": "Luis Hernández",
+        "url": "https://azotodev.web.app",
+        "sameAs": [
+          "https://linkedin.com/in/azotodev",
+          "https://github.com/azottodev"
+        ]
+      },
+      "publisher": {
+        "@type": "Organization", 
+        "name": "AzottoDev",
+        "url": "https://azotodev.web.app"
       }
-      if (data.modifiedDate) {
-        this.meta.updateTag({ property: 'article:modified_time', content: data.modifiedDate });
-      }
-      this.meta.updateTag({ property: 'article:author', content: 'Luis Hernández' });
+    };
+    
+    if (data.image) {
+      structuredData["image"] = data.image;
     }
-
-    // Canonical
-    this.meta.updateTag({ rel: 'canonical', href: data.url || this.baseUrl });
+    
+    if (data.publishedDate) {
+      structuredData["datePublished"] = data.publishedDate;
+      structuredData["dateModified"] = data.modifiedDate || data.publishedDate;
+    }
+    
+    // Remover script anterior y agregar nuevo
+    const existingScript = document.querySelector('script[type="application/ld+json"]');
+    if (existingScript) {
+      existingScript.remove();
+    }
+    
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
   }
 
   updateProjectMetadata(project: any) {
