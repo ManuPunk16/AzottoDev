@@ -15,6 +15,7 @@ interface Article {
   readTime: number;
   featured: boolean;
   excerpt: string;
+  views?: number;
 }
 
 @Component({

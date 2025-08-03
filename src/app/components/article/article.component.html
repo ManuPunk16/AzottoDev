@@ -38,7 +38,7 @@
         }
       </div>
     </div>
-    
+
     <!-- Imagen destacada -->
     @if (articleMetadata?.image) {
       <div class="mb-10 rounded-xl overflow-hidden shadow-lg">
@@ -47,7 +47,7 @@
           class="w-full h-auto object-cover">
       </div>
     }
-    
+
     <!-- Contenido del artículo -->
     <div class="prose prose-lg max-w-none text-[var(--text-primary)]">
       <!-- Renderizamos cada bloque según su tipo -->
@@ -73,14 +73,14 @@
             {{ block.text }}
           </h4>
         }
-        
+
         <!-- Párrafos con soporte para Markdown -->
         @if (block.type === 'paragraph') {
           <p class="mb-6 leading-relaxed text-[var(--text-primary)]"
              [innerHTML]="renderMarkdown(block.text || '')">
           </p>
         }
-        
+
         <!-- Listas con estilo mejorado -->
         @if (block.type === 'list') {
           <div class="mb-6">
@@ -94,7 +94,7 @@
             </ul>
           </div>
         }
-        
+
         <!-- Imágenes -->
         @if (block.type === 'image') {
           <figure class="my-8">
@@ -108,7 +108,7 @@
             }
           </figure>
         }
-        
+
         <!-- Enlaces destacados -->
         @if (block.type === 'link') {
           <div class="my-6 p-4 border-l-4 border-[var(--primary-500)] bg-[var(--highlight-bg)] rounded-r">
@@ -122,7 +122,7 @@
             </a>
           </div>
         }
-        
+
         <!-- Bloques de código con Prism.js -->
         @if (block.type === 'code') {
           <div class="code-block my-6"
