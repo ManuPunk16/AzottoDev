@@ -6,22 +6,67 @@ Disallow: /admin/
 Disallow: /*.json$
 Disallow: /*?
 Disallow: /api/
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.firebase/
 
 # Permitir específicamente
 Allow: /assets/
 Allow: /projects/
 Allow: /articles/
+Allow: /sitemap*.xml
+Allow: /robots.txt
+Allow: /manifest.webmanifest
+Allow: /favicon.ico
 
-# Sitemap
+# Sitemap URLs
 Sitemap: https://azotodev.web.app/sitemap.xml
 Sitemap: https://azotodev.web.app/sitemap-index.xml
 
-# Crawl-delay para evitar sobrecarga
-Crawl-delay: 1
-
-# Específico para bots
+# Específico para Googlebot (SIN crawl-delay)
 User-agent: Googlebot
-Crawl-delay: 0
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*?
+Disallow: /api/
+Allow: /assets/
+Allow: /projects/
+Allow: /articles/
 
+# Específico para Bingbot (CON crawl-delay)
 User-agent: Bingbot
 Crawl-delay: 1
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*?
+Disallow: /api/
+
+# Específico para otros bots
+User-agent: YandexBot
+Crawl-delay: 2
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# Bloquear bots maliciosos
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
