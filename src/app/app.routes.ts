@@ -4,13 +4,11 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () => import('../app/components/home/home.component').then(c => c.HomeComponent),
-    title: 'Luis Hernández | Desarrollador Full Stack Angular & TypeScript',
     pathMatch: 'full'
   },
   {
     path: 'projects',
     loadComponent: () => import('../app/components/projects/projects.component').then(c => c.ProjectsComponent),
-    title: 'Proyectos | Portfolio de Desarrollo Web',
     pathMatch: 'full'
   },
   {
@@ -21,7 +19,6 @@ export const routes: Routes = [
   {
     path: 'articles',
     loadComponent: () => import('../app/components/article-list/article-list.component').then(c => c.ArticleListComponent),
-    title: 'Artículos Técnicos | Blog de Desarrollo Web',
     pathMatch: 'full'
   },
   {

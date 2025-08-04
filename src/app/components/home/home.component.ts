@@ -3,6 +3,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren, 
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { MetaService } from '../../services/meta.service';
 
 // Interfaces
 interface Particle {
@@ -486,10 +487,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
 
   constructor(
+    private metaService: MetaService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
+    this.metaService.updateMeta(this.metaService.generateHomeMeta());
+    
     this.generateParticles();
     this.generateLogoParticles();
     if (isPlatformBrowser(this.platformId)) {

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { MetadataService } from '../../services/metadata.service';
+import { MetaService } from '../../services/meta.service';
 import { Project } from '../../models/project.model';
 
 @Component({
@@ -29,6 +30,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     private router: Router,
     private http: HttpClient,
     private metadataService: MetadataService,
+    private metaService: MetaService,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -73,6 +75,9 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         this.updateSEOMetadata();
         this.loadRelatedProjects();
         this.loading = false;
+
+        // Actualizar meta tags específicos del proyecto
+        this.metaService.updateMeta(this.metaService.generateProjectMeta(this.project));
       },
       error: () => {
         this.error = true;

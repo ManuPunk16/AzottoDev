@@ -19,10 +19,6 @@
     <lastmod>2024-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://azotodev.web.app/assets/images/projects/azotodev/preview.webp</image:loc>
-      <image:caption>Imagen del contenido - projects</image:caption>
-    </image:image>
   </url>
   <url>
     <loc>https://azotodev.web.app/articles</loc>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { DatePipe, NgClass } from '@angular/common';
+import { MetaService } from '../../services/meta.service';
 
 interface Article {
   slug: string;
@@ -35,7 +36,10 @@ export class ArticleListComponent implements OnInit {
   loading: boolean = true;
   error: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private metaService: MetaService
+  ) {}
 
   ngOnInit(): void {
     this.http.get<Article[]>('/assets/articles.json').subscribe({
@@ -44,6 +48,7 @@ export class ArticleListComponent implements OnInit {
         // Filtra los artículos destacados
         this.featuredArticles = data.filter(article => article.featured);
         this.loading = false;
+        this.metaService.updateMeta(this.metaService.generateProjectMeta(this.articles));
       },
       error: (err) => {
         console.error('Error cargando artículos', err);

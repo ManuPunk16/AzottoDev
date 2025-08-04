@@ -2,128 +2,100 @@ const fs = require("fs");
 const path = require("path");
 
 function generateAdvancedSitemap() {
-  const baseUrl = "https://azotodev.web.app";
-  const currentDate = new Date().toISOString().split("T")[0];
+  console.log("🚀 Generando sitemap avanzado...");
 
+  // Leer datos
   const projectsPath = path.join(__dirname, "../src/assets/projects.json");
   const articlesPath = path.join(__dirname, "../src/assets/articles.json");
 
   let projects = [];
   let articles = [];
 
-  // Leer proyectos
   try {
     projects = JSON.parse(fs.readFileSync(projectsPath, "utf8"));
-    console.log(`📂 Proyectos cargados: ${projects.length}`);
   } catch (error) {
-    console.warn("⚠️ Error leyendo projects.json:", error.message);
+    console.warn("⚠️ No se encontró projects.json, usando array vacío");
   }
 
-  // ✅ NUEVO: Leer artículos
   try {
     articles = JSON.parse(fs.readFileSync(articlesPath, "utf8"));
-    console.log(`📰 Artículos cargados: ${articles.length}`);
   } catch (error) {
-    console.warn("⚠️ Error leyendo articles.json:", error.message);
+    console.warn("⚠️ No se encontró articles.json, usando array vacío");
   }
 
-  // FUNCIÓN HELPER para limpiar rutas de imágenes
-  function cleanImageUrl(imageUrl) {
-    if (!imageUrl) return null;
+  // URLs estáticas
+  const baseUrl = "https://azotodev.web.app";
+  const currentDate = new Date().toISOString().split("T")[0];
 
-    // Remover './' del inicio si existe
-    const cleanUrl = imageUrl.startsWith("./")
-      ? imageUrl.substring(2)
-      : imageUrl;
-
-    // Asegurar que comience con '/'
-    const finalUrl = cleanUrl.startsWith("/") ? cleanUrl : "/" + cleanUrl;
-
-    return `${baseUrl}${finalUrl}`;
-  }
-
-  // URLs estáticas con prioridades inteligentes
   const staticUrls = [
     {
       loc: baseUrl,
       lastmod: currentDate,
       changefreq: "weekly",
       priority: "1.0",
-      images: [`${baseUrl}/assets/images/og-image.webp`],
+      images: [],
     },
     {
       loc: `${baseUrl}/home`,
       lastmod: currentDate,
       changefreq: "weekly",
       priority: "0.9",
-      images: [`${baseUrl}/assets/images/home-hero.webp`],
+      images: [],
     },
     {
       loc: `${baseUrl}/projects`,
-      lastmod:
-        projects.length > 0 ? getLastProjectUpdate(projects) : currentDate,
+      lastmod: getLastProjectUpdate(projects),
       changefreq: "weekly",
       priority: "0.9",
       images:
         projects.length > 0
-          ? projects
-              .slice(0, 3)
-              .map((p) => cleanImageUrl(p.imageUrl))
-              .filter((img) => img !== null)
+          ? [
+              `${baseUrl}/assets/images/projects/${
+                projects[0].id
+              }/${projects[0].images?.[0] || "preview.webp"}`,
+            ]
           : [],
     },
     {
       loc: `${baseUrl}/articles`,
-      lastmod:
-        articles.length > 0 ? getLastArticleUpdate(articles) : currentDate,
+      lastmod: getLastArticleUpdate(articles),
       changefreq: "weekly",
       priority: "0.8",
       images:
         articles.length > 0
           ? articles
-              .slice(0, 3)
-              .map((a) => cleanImageUrl(a.image))
-              .filter((img) => img !== null)
+              .slice(0, 2)
+              .map((a) => `${baseUrl}/assets/images/articles/${a.image}`)
           : [],
     },
   ];
 
-  // URLs de proyectos con prioridades dinámicas
+  // URLs de proyectos
   const projectUrls = projects.map((project) => {
     const priority = calculateProjectPriority(project);
     const lastmod = project.lastUpdated || project.date;
-
-    // Procesar imágenes correctamente
-    let images = [];
-    if (project.gallery && project.gallery.length > 0) {
-      images = project.gallery
-        .slice(0, 5)
-        .map((img) => cleanImageUrl(img.url))
-        .filter((img) => img !== null);
-    } else if (project.imageUrl) {
-      const cleanImg = cleanImageUrl(project.imageUrl);
-      if (cleanImg) images = [cleanImg];
-    }
+    const images = project.images
+      ? project.images.map(
+          (img) => `${baseUrl}/assets/images/projects/${project.id}/${img}`
+        )
+      : [];
 
     return {
       loc: `${baseUrl}/projects/${project.id}`,
       lastmod: lastmod.split("T")[0],
-      changefreq: project.status === "maintenance" ? "monthly" : "quarterly",
+      changefreq: project.featured ? "weekly" : "quarterly",
       priority: priority.toFixed(1),
       images: images,
     };
   });
 
+  // URLs de artículos
   const articleUrls = articles.map((article) => {
     const priority = calculateArticlePriority(article);
     const lastmod = article.lastUpdated || article.date;
-
-    // Procesar imágenes del artículo
-    let images = [];
-    if (article.image) {
-      const cleanImg = cleanImageUrl(article.image);
-      if (cleanImg) images = [cleanImg];
-    }
+    const images = article.image
+      ? [`${baseUrl}/assets/images/articles/${article.image}`]
+      : [];
 
     return {
       loc: `${baseUrl}/articles/${article.slug}`,
@@ -145,9 +117,7 @@ function generateAdvancedSitemap() {
             (img) => `
     <image:image>
       <image:loc>${img}</image:loc>
-      <image:caption>Imagen del contenido - ${url.loc
-        .split("/")
-        .pop()}</image:caption>
+      <image:caption>Imagen del contenido - ${url.loc.split("/").pop()}</image:caption>
     </image:image>`
           )
           .join("");
@@ -169,9 +139,20 @@ function generateAdvancedSitemap() {
 ${urlsXml}
 </urlset>`;
 
-  // Escribir sitemap
-  const outputPath = path.join(__dirname, "../public/sitemap.xml");
-  fs.writeFileSync(outputPath, sitemapXml);
+  // Escribir en múltiples ubicaciones
+  const locations = [
+    path.join(__dirname, "../public/sitemap.xml"),
+    path.join(__dirname, "../src/sitemap.xml"),
+  ];
+
+  // Crear directorios si no existen
+  locations.forEach((location) => {
+    const dir = path.dirname(location);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(location, sitemapXml);
+  });
 
   generateSitemapIndex();
 
@@ -179,34 +160,17 @@ ${urlsXml}
   console.log(
     `📊 Proyectos: ${projectUrls.length} | Artículos: ${articleUrls.length} | URLs estáticas: ${staticUrls.length}`
   );
-  console.log(
-    `🖼️ Total de imágenes indexadas: ${allUrls.reduce(
-      (total, url) => total + (url.images?.length || 0),
-      0
-    )}`
-  );
-
-  // Verificar URLs de imágenes
-  const allImages = allUrls.flatMap((url) => url.images || []);
-  console.log("🔍 Verificando rutas de imágenes...");
-  allImages.forEach((img) => {
-    if (img.includes("azotodev.web.app./") || img.includes("./")) {
-      console.warn(`⚠️ URL problemática detectada: ${img}`);
-    }
-  });
-  console.log("✅ Verificación de imágenes completada");
 }
 
 function calculateProjectPriority(project) {
-  let priority = 0.7; // Base
+  let priority = 0.7; // Base para proyectos
 
-  if (project.featured) priority += 0.1;
-  if (project.privacy === "public") priority += 0.05;
-  if (project.status === "completed") priority += 0.05;
-  if (project.demoUrl) priority += 0.05;
-  if (project.repoUrl) priority += 0.05;
+  if (project.featured) priority += 0.2;
+  if (project.status === "completed") priority += 0.1;
+  if (project.technologies && project.technologies.includes("Angular"))
+    priority += 0.05;
 
-  return Math.min(priority, 0.9); // Máximo 0.9
+  return Math.min(priority, 0.9); // Máximo 0.9 para proyectos
 }
 
 function calculateArticlePriority(article) {
@@ -215,12 +179,15 @@ function calculateArticlePriority(article) {
   if (article.featured) priority += 0.15;
   if (article.category === "tutorial") priority += 0.1;
   if (article.tags && article.tags.includes("angular")) priority += 0.05;
-  if (article.readTime && article.readTime < 10) priority += 0.05; // Artículos cortos
+  if (article.readTime && article.readTime < 10) priority += 0.05;
 
-  return Math.min(priority, 0.8); // Máximo 0.8 para artículos
+  return Math.min(priority, 0.8);
 }
 
 function getLastProjectUpdate(projects) {
+  if (projects.length === 0)
+    return new Date().toISOString().split("T")[0];
+
   const dates = projects
     .map((p) => p.lastUpdated || p.date)
     .sort((a, b) => new Date(b) - new Date(a));
@@ -231,6 +198,9 @@ function getLastProjectUpdate(projects) {
 }
 
 function getLastArticleUpdate(articles) {
+  if (articles.length === 0)
+    return new Date().toISOString().split("T")[0];
+
   const dates = articles
     .map((a) => a.lastUpdated || a.date)
     .sort((a, b) => new Date(b) - new Date(a));
@@ -249,8 +219,17 @@ function generateSitemapIndex() {
   </sitemap>
 </sitemapindex>`;
 
-  const indexPath = path.join(__dirname, "../public/sitemap-index.xml");
-  fs.writeFileSync(indexPath, sitemapIndex);
+  // Escribir en múltiples ubicaciones
+  const locations = [
+    path.join(__dirname, "../public/sitemap-index.xml"),
+    path.join(__dirname, "../src/sitemap-index.xml"),
+  ];
+
+  locations.forEach((location) => {
+    const dir = path.dirname(location);
+    if (!fs.existsSync(dir, { recursive: true }));
+    fs.writeFileSync(location, sitemapIndex);
+  });
 }
 
 generateAdvancedSitemap();
