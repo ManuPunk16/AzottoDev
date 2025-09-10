@@ -24,9 +24,10 @@ interface ArticleData {
   providedIn: 'root'
 })
 export class BreadcrumbService {
+  private readonly baseUrl = 'https://azotodev.com';
   private breadcrumbs$ = new BehaviorSubject<Breadcrumb[]>([]);
   
-  // ✅ Cache para evitar múltiples requests
+  // Cache para evitar múltiples requests
   private projectsCache: Map<string, string> = new Map();
   private articlesCache: Map<string, string> = new Map();
   private cacheLoaded = false;
@@ -36,7 +37,6 @@ export class BreadcrumbService {
     private activatedRoute: ActivatedRoute,
     private http: HttpClient
   ) {
-    // Inicializar cache al arrancar
     this.loadCache();
     
     this.router.events
@@ -50,7 +50,6 @@ export class BreadcrumbService {
     return this.breadcrumbs$.asObservable();
   }
 
-  // ✅ NUEVO: Cargar cache de títulos una sola vez
   private loadCache(): void {
     const projects$ = this.http.get<ProjectData[]>('/assets/projects.json');
     const articles$ = this.http.get<ArticleData[]>('/assets/articles.json');
@@ -58,37 +57,28 @@ export class BreadcrumbService {
     combineLatest([projects$, articles$]).pipe(
       catchError(error => {
         console.warn('Error cargando cache de breadcrumbs:', error);
-        return [[], []]; // Fallback vacío
+        return [[], []];
       })
     ).subscribe(([projects, articles]) => {
-      // Llenar cache de proyectos
       projects.forEach(project => {
         this.projectsCache.set(project.id, project.title);
       });
       
-      // Llenar cache de artículos
       articles.forEach(article => {
         this.articlesCache.set(article.slug, article.title);
       });
       
       this.cacheLoaded = true;
-    //   console.log('📦 Cache de breadcrumbs cargado:', {
-    //     projects: this.projectsCache.size,
-    //     articles: this.articlesCache.size
-    //   });
-      
-      // Rebuild breadcrumbs si ya estamos en una página
       this.buildBreadcrumbs();
     });
   }
   
   private buildBreadcrumbs(): void {
     const breadcrumbs: Breadcrumb[] = [
-      { label: 'Inicio', url: '/home', isActive: false }
+      { label: 'Inicio', url: '/', isActive: false }
     ];
     
     const url = this.router.url;
-    // console.log('🔄 Construyendo breadcrumbs para:', url);
     
     if (url.startsWith('/projects')) {
       breadcrumbs.push({ label: 'Proyectos', url: '/projects', isActive: false });
@@ -126,18 +116,15 @@ export class BreadcrumbService {
       breadcrumbs[0].isActive = true;
     }
     
-    // console.log('✅ Breadcrumbs construidos:', breadcrumbs);
     this.breadcrumbs$.next(breadcrumbs);
     this.updateBreadcrumbStructuredData(breadcrumbs);
   }
   
-  // ✅ MEJORADO: Obtener título con cache
   private getProjectTitle(projectId: string): string {
     if (this.cacheLoaded && this.projectsCache.has(projectId)) {
       return this.projectsCache.get(projectId)!;
     }
     
-    // ✅ Fallback temporal mientras carga el cache
     const fallbackTitles: { [key: string]: string } = {
       'azotodev': 'AzotoDev Portfolio',
       'control-inventario': 'Sistema de Control de Inventario',
@@ -148,13 +135,11 @@ export class BreadcrumbService {
     return fallbackTitles[projectId] || 'Proyecto';
   }
   
-  // ✅ MEJORADO: Obtener título de artículo con cache
   private getArticleTitle(slug: string): string {
     if (this.cacheLoaded && this.articlesCache.has(slug)) {
       return this.articlesCache.get(slug)!;
     }
     
-    // ✅ Fallback temporal
     const fallbackTitles: { [key: string]: string } = {
       'introduccion-a-angular': 'Introducción a Angular',
       'componentes-accesibles-angular-tailwind': 'Componentes Accesibles con Angular y Tailwind'
@@ -171,11 +156,10 @@ export class BreadcrumbService {
         "@type": "ListItem",
         "position": index + 1,
         "name": crumb.label,
-        "item": `https://azotodev.web.app${crumb.url}`
+        "item": `${this.baseUrl}${crumb.url}`
       }))
     };
     
-    // Remover breadcrumb script anterior
     const existingScript = document.querySelector('script[data-breadcrumb="true"]');
     if (existingScript) {
       existingScript.remove();
@@ -188,22 +172,10 @@ export class BreadcrumbService {
     document.head.appendChild(script);
   }
   
-  // ✅ NUEVO: Método público para actualizar cache manualmente
   public refreshCache(): void {
     this.cacheLoaded = false;
     this.projectsCache.clear();
     this.articlesCache.clear();
     this.loadCache();
-  }
-  
-  // ✅ NUEVO: Método para precargar título específico
-  public preloadProjectTitle(projectId: string): void {
-    if (!this.projectsCache.has(projectId)) {
-      this.http.get<ProjectData>(`/assets/projects/${projectId}.json`).pipe(
-        catchError(() => [{ id: projectId, title: 'Proyecto' }])
-      ).subscribe(project => {
-        this.projectsCache.set(project.id, project.title);
-      });
-    }
   }
 }

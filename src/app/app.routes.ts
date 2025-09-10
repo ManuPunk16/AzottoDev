@@ -4,6 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('../app/components/home/home.component').then(c => c.HomeComponent),
+    title: 'Luis Hernández (AzotoDev) - Desarrollador Full Stack | Portfolio Angular & TypeScript',
     pathMatch: 'full'
   },
   {
@@ -14,6 +15,7 @@ export const routes: Routes = [
   {
     path: 'projects',
     loadComponent: () => import('../app/components/projects/projects.component').then(c => c.ProjectsComponent),
+    title: 'Proyectos | AzotoDev - Portfolio de Desarrollo Web Angular & TypeScript',
     pathMatch: 'full'
   },
   {
@@ -24,6 +26,7 @@ export const routes: Routes = [
   {
     path: 'articles',
     loadComponent: () => import('../app/components/article-list/article-list.component').then(c => c.ArticleListComponent),
+    title: 'Artículos Técnicos | AzotoDev - Blog Angular, TypeScript y Desarrollo Web',
     pathMatch: 'full'
   },
   {
@@ -45,6 +48,7 @@ export const routes: Routes = [
   // },
   {
     path: '**',
-    loadComponent: () => import('../app/components/error/error.component').then(c => c.ErrorComponent)
+    loadComponent: () => import('../app/components/error/error.component').then(c => c.ErrorComponent),
+    title: 'Página no encontrada - 404 | AzotoDev'
   }
 ];

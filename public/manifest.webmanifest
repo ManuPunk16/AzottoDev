@@ -1,15 +1,33 @@
 {
-  "name": "Luis Hernández - Desarrollador Full Stack Portfolio",
-  "short_name": "AzottoDev",
-  "description": "Portfolio profesional de Luis Hernández, desarrollador Full Stack especializado en Angular y TypeScript",
+  "name": "AzotoDev - Luis Hernández | Portfolio Desarrollador Full Stack",
+  "short_name": "AzotoDev",
+  "description": "Portfolio profesional de Luis Hernández (AzotoDev), desarrollador Full Stack especializado en Angular, TypeScript y desarrollo web moderno",
   "theme_color": "#8B5CF6",
   "background_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
+  "id": "azotodev-portfolio",
   "lang": "es",
-  "categories": ["productivity", "business", "developer"],
+  "dir": "ltr",
+  "categories": ["productivity", "business", "developer", "portfolio"],
+  "screenshots": [
+    {
+      "src": "/assets/images/screenshot-desktop.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Vista de escritorio del portfolio"
+    },
+    {
+      "src": "/assets/images/screenshot-mobile.webp",
+      "sizes": "375x812",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Vista móvil del portfolio"
+    }
+  ],
   "icons": [
     {
       "src": "/icons/icon-72x72.png",
@@ -58,6 +76,22 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver Proyectos",
+      "short_name": "Proyectos",
+      "description": "Explorar mis proyectos de desarrollo web",
+      "url": "/projects",
+      "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Leer Artículos",
+      "short_name": "Blog",
+      "description": "Leer artículos técnicos sobre desarrollo",
+      "url": "/articles",
+      "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96" }]
     }
   ]
 }

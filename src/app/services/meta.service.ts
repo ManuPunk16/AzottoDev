@@ -15,7 +15,9 @@ export interface MetaConfig {
   providedIn: 'root'
 })
 export class MetaService {
-  private readonly baseUrl = 'https://azotodev.web.app';
+  private readonly baseUrl = 'https://azotodev.com';
+  private readonly siteName = 'AzotoDev - Luis Hernández';
+  private readonly twitterHandle = '@azotodev';
 
   constructor(
     private meta: Meta,
@@ -27,10 +29,10 @@ export class MetaService {
     // Actualizar título
     this.title.setTitle(config.title);
 
-    // Meta description
+    // Meta básicos
     this.meta.updateTag({ name: 'description', content: config.description });
+    this.meta.updateTag({ name: 'author', content: 'Luis Hernández (AzotoDev)' });
 
-    // Keywords
     if (config.keywords) {
       this.meta.updateTag({ name: 'keywords', content: config.keywords });
     }
@@ -38,24 +40,32 @@ export class MetaService {
     // Open Graph
     this.meta.updateTag({ property: 'og:title', content: config.title });
     this.meta.updateTag({ property: 'og:description', content: config.description });
+    this.meta.updateTag({ property: 'og:site_name', content: this.siteName });
     this.meta.updateTag({ 
       property: 'og:url', 
       content: config.canonical || `${this.baseUrl}${this.router.url}` 
     });
 
     if (config.ogImage) {
-      this.meta.updateTag({ property: 'og:image', content: config.ogImage });
+      const imageUrl = config.ogImage.startsWith('http') ? config.ogImage : `${this.baseUrl}${config.ogImage}`;
+      this.meta.updateTag({ property: 'og:image', content: imageUrl });
+      this.meta.updateTag({ property: 'og:image:width', content: '1200' });
+      this.meta.updateTag({ property: 'og:image:height', content: '630' });
     }
 
     // Twitter Cards
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: config.title });
     this.meta.updateTag({ name: 'twitter:description', content: config.description });
+    this.meta.updateTag({ name: 'twitter:creator', content: this.twitterHandle });
+    this.meta.updateTag({ name: 'twitter:site', content: this.twitterHandle });
     
     if (config.ogImage) {
-      this.meta.updateTag({ name: 'twitter:image', content: config.ogImage });
+      const imageUrl = config.ogImage.startsWith('http') ? config.ogImage : `${this.baseUrl}${config.ogImage}`;
+      this.meta.updateTag({ name: 'twitter:image', content: imageUrl });
     }
 
-    // Canonical URL - DINÁMICO
+    // Canonical URL
     this.updateCanonical(config.canonical);
 
     // Robots
@@ -69,67 +79,64 @@ export class MetaService {
   private updateCanonical(customCanonical?: string): void {
     const canonicalUrl = customCanonical || `${this.baseUrl}${this.router.url}`;
     
-    // Remover canonical existente
     const existingCanonical = document.querySelector('link[rel="canonical"]');
     if (existingCanonical) {
       existingCanonical.remove();
     }
 
-    // Agregar nuevo canonical
     const link = document.createElement('link');
     link.setAttribute('rel', 'canonical');
     link.setAttribute('href', canonicalUrl);
     document.head.appendChild(link);
   }
 
-  // Helper para generar meta tags específicos por tipo de página
-  generateProjectMeta(project: any): MetaConfig {
-    return {
-      title: `${project.title} | Proyecto de Desarrollo Web | AzottoDev`,
-      description: project.seo?.metaDescription || project.description,
-      keywords: project.seo?.keywords?.join(', ') || project.keywords?.join(', '),
-      ogImage: project.seo?.ogImage || project.imageUrl,
-      canonical: `${this.baseUrl}/projects/${project.id}`
-    };
-  }
-
-  generateArticleMeta(article: any): MetaConfig {
-    return {
-      title: `${article.title} | Blog Técnico | AzottoDev`,
-      description: article.excerpt || article.description,
-      keywords: article.tags?.join(', '),
-      ogImage: article.image,
-      canonical: `${this.baseUrl}/articles/${article.slug}`
-    };
-  }
-
   generateHomeMeta(): MetaConfig {
     return {
-      title: 'Luis Hernández | Desarrollador Full Stack Angular & TypeScript | Portfolio Profesional',
-      description: 'Portfolio de Luis Hernández, desarrollador Full Stack especializado en Angular, TypeScript y Tailwind CSS. Sistemas de inventario, control de gestión y aplicaciones web modernas. Más de 5 años de experiencia.',
-      keywords: 'desarrollador full stack, angular developer, typescript, tailwind css, sistemas inventario, control gestión, portfolio desarrollador, luis hernández, desarrollo web, frontend backend',
-      ogImage: `${this.baseUrl}/assets/images/og-image.webp`,
+      title: 'Luis Hernández (AzotoDev) - Desarrollador Full Stack | Portfolio Angular & TypeScript',
+      description: 'Portfolio profesional de Luis Hernández (AzotoDev), desarrollador Full Stack especializado en Angular, TypeScript y Tailwind CSS. Sistemas de inventario, control de gestión y aplicaciones web modernas.',
+      keywords: 'Luis Hernández, AzotoDev, desarrollador full stack, angular developer, typescript, tailwind css, portfolio desarrollador, desarrollo web, sistemas inventario',
+      ogImage: `${this.baseUrl}/assets/images/og-home.webp`,
       canonical: this.baseUrl
     };
   }
 
   generateProjectsPageMeta(): MetaConfig {
     return {
-      title: 'Proyectos | Portfolio de Desarrollo Web | AzottoDev',
-      description: 'Explora mis proyectos de desarrollo web: sistemas de inventario, control de gestión, aplicaciones Angular y más. Cada proyecto incluye tecnologías utilizadas, desafíos superados y resultados obtenidos.',
-      keywords: 'proyectos desarrollo web, portfolio angular, sistemas inventario, control gestión, aplicaciones web, typescript projects',
-      ogImage: `${this.baseUrl}/assets/images/projects-hero.webp`,
+      title: 'Proyectos | AzotoDev - Portfolio de Desarrollo Web Angular & TypeScript',
+      description: 'Explora mis proyectos de desarrollo web: sistemas de inventario, control de gestión, plataformas documentales y aplicaciones Angular. Cada proyecto incluye tecnologías utilizadas y casos de estudio.',
+      keywords: 'proyectos angular, portfolio typescript, sistemas inventario, control gestión, aplicaciones web, casos de estudio',
+      ogImage: `${this.baseUrl}/assets/images/og-projects.webp`,
       canonical: `${this.baseUrl}/projects`
     };
   }
 
   generateArticlesPageMeta(): MetaConfig {
     return {
-      title: 'Artículos Técnicos | Blog de Desarrollo Web | AzottoDev',
-      description: 'Blog técnico sobre desarrollo web moderno: Angular, TypeScript, mejores prácticas, tutoriales y guías para desarrolladores.',
-      keywords: 'blog desarrollo web, angular tutorials, typescript tips, desarrollo frontend, mejores prácticas',
-      ogImage: `${this.baseUrl}/assets/images/blog-hero.webp`,
+      title: 'Artículos Técnicos | AzotoDev - Blog Angular, TypeScript y Desarrollo Web',
+      description: 'Blog técnico sobre desarrollo web moderno: tutoriales Angular, guías TypeScript, mejores prácticas de desarrollo y las últimas tendencias en tecnología web.',
+      keywords: 'blog desarrollo web, tutoriales angular, guías typescript, mejores prácticas, artículos técnicos',
+      ogImage: `${this.baseUrl}/assets/images/og-articles.webp`,
       canonical: `${this.baseUrl}/articles`
+    };
+  }
+
+  generateProjectMeta(project: any): MetaConfig {
+    return {
+      title: `${project.title} | AzotoDev - Proyecto de Desarrollo Web`,
+      description: project.description || `Proyecto ${project.title} desarrollado con ${project.technologies?.join(', ') || 'tecnologías modernas'}. Explora el caso de estudio completo.`,
+      keywords: `${project.title}, ${project.technologies?.join(', ') || ''}, proyecto angular, desarrollo web, azotodev`,
+      ogImage: project.images?.[0] ? `${this.baseUrl}/assets/images/projects/${project.id}/${project.images[0]}` : `${this.baseUrl}/assets/images/og-projects.webp`,
+      canonical: `${this.baseUrl}/projects/${project.id}`
+    };
+  }
+
+  generateArticleMeta(article: any): MetaConfig {
+    return {
+      title: `${article.title} | AzotoDev - Blog Técnico`,
+      description: article.description || article.summary || `Artículo técnico sobre ${article.title}. Aprende sobre desarrollo web moderno.`,
+      keywords: `${article.title}, ${article.tags?.join(', ') || ''}, tutorial, desarrollo web, azotodev`,
+      ogImage: article.image ? `${this.baseUrl}/assets/images/articles/${article.image}` : `${this.baseUrl}/assets/images/og-articles.webp`,
+      canonical: `${this.baseUrl}/articles/${article.slug}`
     };
   }
 }

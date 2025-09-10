@@ -3,14 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4400 --open",
+    "start": "ng serve",
+    "start:dev": "ng serve --port 4400 --open",
     "build": "npm run generate:sitemap && ng build --configuration production",
     "build:vercel": "npm run generate:sitemap && ng build --configuration production",
     "generate:sitemap": "node scripts/generate-sitemap.js",
     "deploy:firebase": "npm run build && firebase deploy --only hosting",
     "deploy:vercel": "vercel --prod",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "serve": "ng serve",
+    "serve:prod": "ng serve --configuration production"
   },
   "private": true,
   "dependencies": {

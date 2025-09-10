@@ -1,25 +1,28 @@
 const fs = require('fs');
 const path = require('path');
 
-const baseUrl = 'https://azotodev.vercel.app'; // URL correcta de Vercel
+const baseUrl = 'https://azotodev.com'; // ✅ Dominio personalizado correcto
 const today = new Date().toISOString().split('T')[0];
 
-// Leer datos reales
-const projectsData = JSON.parse(
-  fs.readFileSync(path.join(__dirname, '../src/assets/projects.json'), 'utf8')
-);
-const articlesData = JSON.parse(
-  fs.readFileSync(path.join(__dirname, '../src/assets/articles.json'), 'utf8')
-);
+console.log('🚀 Generando sitemap para azotodev.com...');
 
-// Generar sitemap optimizado
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+try {
+  // Leer datos reales con manejo de errores
+  const projectsData = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '../src/assets/projects.json'), 'utf8')
+  );
+  const articlesData = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '../src/assets/articles.json'), 'utf8')
+  );
+
+  // Generar sitemap optimizado para SEO
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <!-- Página principal -->
   <url>
-    <loc>${baseUrl}/</loc>
+    <loc>${baseUrl}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -40,15 +43,15 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <priority>0.8</priority>
   </url>
 
-  <!-- Proyectos individuales -->
+  <!-- Proyectos individuales con imágenes -->
   ${projectsData
     .map(
       (project) => `
   <url>
     <loc>${baseUrl}/projects/${project.id}</loc>
-    <lastmod>${project.lastUpdated || today}</lastmod>
+    <lastmod>${project.lastUpdated || project.date || today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>${project.featured ? '0.9' : '0.8'}</priority>
     ${
       project.images && project.images.length > 0
         ? project.images
@@ -57,7 +60,8 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
               (img) => `
     <image:image>
       <image:loc>${baseUrl}/assets/images/projects/${project.id}/${img}</image:loc>
-      <image:caption>Proyecto ${project.title}</image:caption>
+      <image:caption>Proyecto ${project.title} - ${project.description}</image:caption>
+      <image:title>${project.title}</image:title>
     </image:image>`
             )
             .join('')
@@ -67,21 +71,22 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     )
     .join('')}
 
-  <!-- Artículos individuales -->
+  <!-- Artículos individuales con imágenes -->
   ${articlesData
     .map(
       (article) => `
   <url>
     <loc>${baseUrl}/articles/${article.slug}</loc>
-    <lastmod>${article.publishDate || today}</lastmod>
+    <lastmod>${article.publishDate || article.date || today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>${article.featured ? '0.8' : '0.7'}</priority>
     ${
       article.image
         ? `
     <image:image>
       <image:loc>${baseUrl}/assets/images/articles/${article.image}</image:loc>
       <image:caption>Artículo: ${article.title}</image:caption>
+      <image:title>${article.title}</image:title>
     </image:image>`
         : ''
     }
@@ -91,11 +96,11 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 
 </urlset>`;
 
-// Robots.txt optimizado
-const robots = `User-agent: *
+  // Robots.txt optimizado para Vercel y SEO
+  const robots = `User-agent: *
 Allow: /
 
-# Sitemaps
+# Sitemap principal
 Sitemap: ${baseUrl}/sitemap.xml
 
 # Optimización para crawlers
@@ -106,14 +111,43 @@ Allow: /projects/
 Allow: /articles/
 Allow: /assets/images/
 
-# Bloquear archivos innecesarios
+# Bloquear archivos innecesarios para SEO
 Disallow: /*.json$
-Disallow: /assets/articles/
-Disallow: /assets/projects/`;
+Disallow: /assets/articles/*.json
+Disallow: /assets/projects/*.json
+Disallow: /_next/
+Disallow: /api/
+Disallow: /.vercel/
+Disallow: /.angular/
 
-// Escribir archivos
-fs.writeFileSync(path.join(__dirname, '../public/sitemap.xml'), sitemap);
-fs.writeFileSync(path.join(__dirname, '../public/robots.txt'), robots);
+# Archivos técnicos
+Disallow: /manifest.webmanifest
+Disallow: /ngsw-worker.js
+Disallow: /ngsw.json
+Disallow: /firebase-messaging-sw.js
 
-console.log('✅ Sitemap y robots.txt generados para Vercel');
-console.log(`📊 URLs: ${3 + projectsData.length + articlesData.length}`);
+# Permitir específicamente imágenes para Google Images
+Allow: /assets/images/*.webp
+Allow: /assets/images/*.png
+Allow: /assets/images/*.jpg
+Allow: /assets/images/*.jpeg`;
+
+  // Escribir archivos
+  const outputDir = path.join(__dirname, '../public');
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  fs.writeFileSync(path.join(outputDir, 'sitemap.xml'), sitemap);
+  fs.writeFileSync(path.join(outputDir, 'robots.txt'), robots);
+
+  console.log('✅ Sitemap y robots.txt generados exitosamente');
+  console.log(`🌐 Base URL: ${baseUrl}`);
+  console.log(`📊 URLs totales: ${5 + projectsData.length + articlesData.length}`);
+  console.log(`📁 Proyectos: ${projectsData.length}`);
+  console.log(`📝 Artículos: ${articlesData.length}`);
+  
+} catch (error) {
+  console.error('❌ Error generando sitemap:', error.message);
+  process.exit(1);
+}

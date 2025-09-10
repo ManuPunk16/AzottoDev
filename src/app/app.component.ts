@@ -17,6 +17,7 @@ import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.componen
 interface SocialLink {
   readonly name: string;
   readonly url: string;
+  readonly icon: string;
 }
 
 interface QuickLink {
@@ -39,7 +40,7 @@ interface Stat {
     DatePipe,
     CommonModule,
     BreadcrumbComponent
-],
+  ],
   animations: [
     trigger('fadeInOut', [
       state('in', style({ opacity: 1 })),
@@ -65,44 +66,52 @@ interface Stat {
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  // Inyección moderna de Angular 20
   readonly themeService = inject(ThemeService);
 
   // Estado del menú móvil
   isMobileMenuOpen = false;
 
-  // Data con readonly para inmutabilidad
+  // Enlaces sociales actualizados
   readonly socialLinks: readonly SocialLink[] = [
-    { name: 'GitHub', url: 'https://github.com/ManuPunk16' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/azotodev' },
-    { name: 'Twitter', url: 'https://twitter.com/azotodev' },
-    { name: 'Email', url: 'mailto:contacto@azottodev.com' },
+    { name: 'GitHub', url: 'https://github.com/ManuPunk16', icon: 'github' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/azotodev/', icon: 'linkedin' },
+    { name: 'X (Twitter)', url: 'https://x.com/azotodev', icon: 'twitter' },
+    { name: 'Email', url: 'mailto:azzoto@icloud.com', icon: 'email' },
   ] as const;
 
   readonly quickLinks: readonly QuickLink[] = [
-    { label: 'Sobre mí', href: '/#about' },
+    { label: 'Inicio', href: '/' },
     { label: 'Proyectos', href: '/projects' },
     { label: 'Artículos', href: '/articles' },
-    { label: 'Contacto', href: '/#contact' },
-    { label: 'CV', href: '/assets/cv-luis-hernandez.pdf' },
+    { label: 'GitHub', href: 'https://github.com/ManuPunk16' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/azotodev/' },
   ] as const;
 
   readonly portfolioStats: readonly Stat[] = [
-    { label: 'Proyectos', value: '10+' },
-    { label: 'Commits', value: '1,200+' },
-    { label: 'Código', value: '20K+' },
-    { label: 'Horas', value: '5,000+' },
+    { label: 'Proyectos', value: '15+' },
+    { label: 'Commits', value: '2,500+' },
+    { label: 'Líneas de Código', value: '50K+' },
+    { label: 'Años de Experiencia', value: '5+' },
   ] as const;
 
-  // Portfolio metadata con readonly
-  readonly portfolioVersion = '2.1.0' as const;
-  readonly angularVersion = '20.0' as const;
+  // Información del portfolio
+  readonly portfolioInfo = {
+    version: '2.1.0',
+    angularVersion: '20.1',
+    author: 'Luis Hernández (AzotoDev)',
+    email: 'azzoto@icloud.com',
+    github: 'https://github.com/ManuPunk16',
+    twitter: 'https://x.com/azotodev',
+    linkedin: 'https://www.linkedin.com/in/azotodev/',
+    domain: 'https://azotodev.com'
+  } as const;
+
   readonly lastUpdate = new Date();
   readonly currentYear = new Date().getFullYear();
 
   ngOnInit(): void {
-    // Configuración inicial si es necesaria
     this.setupKeyboardNavigation();
+    this.setupAnalytics();
   }
 
   // Métodos para el menú móvil
@@ -116,7 +125,7 @@ export class AppComponent implements OnInit {
     this.enableBodyScroll();
   }
 
-  // Métodos privados con mejor encapsulación
+  // Métodos privados
   private toggleBodyScroll(): void {
     document.body.style.overflow = this.isMobileMenuOpen ? 'hidden' : '';
   }
@@ -126,7 +135,6 @@ export class AppComponent implements OnInit {
   }
 
   private setupKeyboardNavigation(): void {
-    // Cerrar menú móvil con ESC
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && this.isMobileMenuOpen) {
         this.closeMobileMenu();
@@ -134,9 +142,15 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // TrackBy functions para optimización de rendimiento
-  trackBySocialName = (index: number, social: SocialLink): string =>
-    social.name;
+  private setupAnalytics(): void {
+    // Configuración de analytics para Vercel
+    if (typeof window !== 'undefined' && window.location.hostname === 'azotodev.com') {
+      console.log('🚀 AzotoDev Portfolio iniciado');
+    }
+  }
+
+  // TrackBy functions para optimización
+  trackBySocialName = (index: number, social: SocialLink): string => social.name;
   trackByLinkLabel = (index: number, link: QuickLink): string => link.label;
   trackByStatLabel = (index: number, stat: Stat): string => stat.label;
 }

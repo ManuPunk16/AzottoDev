@@ -26,13 +26,13 @@ interface Article {
     RouterLink,
     DatePipe,
     NgClass
-],
+  ],
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.scss',
 })
 export class ArticleListComponent implements OnInit {
   articles: Article[] = [];
-  featuredArticles: Article[] = []; // Añade esta propiedad
+  featuredArticles: Article[] = [];
   loading: boolean = true;
   error: boolean = false;
 
@@ -42,13 +42,15 @@ export class ArticleListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.metaService.updateMeta(this.metaService.generateArticlesPageMeta());
+
+    // Luego cargar los datos
     this.http.get<Article[]>('/assets/articles.json').subscribe({
       next: (data) => {
         this.articles = data;
         // Filtra los artículos destacados
         this.featuredArticles = data.filter(article => article.featured);
         this.loading = false;
-        this.metaService.updateMeta(this.metaService.generateProjectMeta(this.articles));
       },
       error: (err) => {
         console.error('Error cargando artículos', err);

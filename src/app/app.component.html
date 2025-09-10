@@ -254,7 +254,7 @@
             <div class="text-sm space-y-2">
               <div class="flex items-center justify-between">
                 <span class="text-[var(--footer-text-secondary)] font-medium">Portfolio</span>
-                <span class="text-[var(--footer-text)] font-semibold">v{{ portfolioVersion }}</span>
+                <span class="text-[var(--footer-text)] font-semibold">v{{ portfolioInfo.version }}</span>
               </div>
               <div class="flex items-center justify-between">
                 <span class="text-[var(--footer-text-secondary)] font-medium">Actualizado</span>
@@ -262,7 +262,7 @@
               </div>
               <div class="flex items-center justify-between">
                 <span class="text-[var(--footer-text-secondary)] font-medium">Angular</span>
-                <span class="text-[var(--footer-text)] font-semibold">{{ angularVersion }}</span>
+                <span class="text-[var(--footer-text)] font-semibold">{{ portfolioInfo.angularVersion }}</span>
               </div>
             </div>
           </div>
@@ -278,7 +278,7 @@
           <span>Desarrollado con</span>
           <span class="text-red-500 text-lg animate-pulse" aria-label="amor">❤️</span>
           <span>usando</span>
-          <span class="font-semibold text-[var(--primary-400)]">Angular {{ angularVersion }}</span>
+          <span class="font-semibold text-[var(--primary-400)]">Angular {{ portfolioInfo.angularVersion }}</span>
           <span>+</span>
           <span class="font-semibold text-[var(--accent-500)]">Tailwind CSS</span>
         </div>
