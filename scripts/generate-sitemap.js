@@ -1,15 +1,15 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
-const baseUrl = "https://azotodev.vercel.app"; // Cambiar URL
-const today = new Date().toISOString().split("T")[0];
+const baseUrl = 'https://azotodev.vercel.app'; // URL correcta de Vercel
+const today = new Date().toISOString().split('T')[0];
 
 // Leer datos reales
 const projectsData = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "../src/assets/projects.json"), "utf8")
+  fs.readFileSync(path.join(__dirname, '../src/assets/projects.json'), 'utf8')
 );
 const articlesData = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "../src/assets/articles.json"), "utf8")
+  fs.readFileSync(path.join(__dirname, '../src/assets/articles.json'), 'utf8')
 );
 
 // Generar sitemap optimizado
@@ -60,12 +60,12 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
       <image:caption>Proyecto ${project.title}</image:caption>
     </image:image>`
             )
-            .join("")
-        : ""
+            .join('')
+        : ''
     }
   </url>`
     )
-    .join("")}
+    .join('')}
 
   <!-- Artículos individuales -->
   ${articlesData
@@ -83,11 +83,11 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
       <image:loc>${baseUrl}/assets/images/articles/${article.image}</image:loc>
       <image:caption>Artículo: ${article.title}</image:caption>
     </image:image>`
-        : ""
+        : ''
     }
   </url>`
     )
-    .join("")}
+    .join('')}
 
 </urlset>`;
 
@@ -112,8 +112,8 @@ Disallow: /assets/articles/
 Disallow: /assets/projects/`;
 
 // Escribir archivos
-fs.writeFileSync(path.join(__dirname, "../public/sitemap.xml"), sitemap);
-fs.writeFileSync(path.join(__dirname, "../public/robots.txt"), robots);
+fs.writeFileSync(path.join(__dirname, '../public/sitemap.xml'), sitemap);
+fs.writeFileSync(path.join(__dirname, '../public/robots.txt'), robots);
 
-console.log("✅ Sitemap y robots.txt generados para Vercel");
+console.log('✅ Sitemap y robots.txt generados para Vercel');
 console.log(`📊 URLs: ${3 + projectsData.length + articlesData.length}`);

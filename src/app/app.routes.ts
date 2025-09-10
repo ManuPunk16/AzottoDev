@@ -2,8 +2,13 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     loadComponent: () => import('../app/components/home/home.component').then(c => c.HomeComponent),
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    redirectTo: '',
     pathMatch: 'full'
   },
   {
@@ -38,11 +43,6 @@ export const routes: Routes = [
   //   title: 'Contacto | Luis Hernández - Desarrollador Full Stack',
   //   pathMatch: 'full'
   // },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
   {
     path: '**',
     loadComponent: () => import('../app/components/error/error.component').then(c => c.ErrorComponent)
