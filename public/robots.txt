@@ -2,13 +2,12 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://azotodev.web.app/sitemap.xml
-Sitemap: https://azotodev.web.app/sitemap-index.xml
+Sitemap: https://azotodev.vercel.app/sitemap.xml
 
 # Optimización para crawlers
 Crawl-delay: 1
 
-# URLs específicas
+# URLs específicas permitidas
 Allow: /projects/
 Allow: /articles/
 Allow: /assets/images/

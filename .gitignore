@@ -79,3 +79,4 @@ firebase-hosting-*.cache
 
 # Google verification files
 google*.html
+.vercel

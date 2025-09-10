@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4400 --open",
-    "build": "npm run generate:sitemap && ng build",
-    "build:prod": "npm run generate:sitemap && ng build --configuration production",
+    "build": "npm run generate:sitemap && ng build --configuration production",
+    "build:vercel": "npm run generate:sitemap && ng build --configuration production",
     "generate:sitemap": "node scripts/generate-sitemap.js",
-    "deploy": "npm run build:prod && firebase deploy --only hosting",
+    "deploy:firebase": "npm run build && firebase deploy --only hosting",
+    "deploy:vercel": "vercel --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
