@@ -8,7 +8,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 import { routes } from './app.routes';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+// import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import {
   getAnalytics,
   provideAnalytics,
@@ -17,6 +17,9 @@ import {
 // import { environment } from '../environments/environment';
 import { provideServiceWorker } from '@angular/service-worker';
 import { BreadcrumbService } from './services/breadcrumb.service';
+import { inject } from '@vercel/analytics';
+ 
+inject();
 
 export const appConfig: ApplicationConfig = {
   providers: [
