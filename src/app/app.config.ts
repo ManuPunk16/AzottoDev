@@ -14,7 +14,7 @@ import {
   provideAnalytics,
   ScreenTrackingService,
 } from '@angular/fire/analytics';
-import { environment } from '../environments/environment';
+// import { environment } from '../environments/environment';
 import { provideServiceWorker } from '@angular/service-worker';
 import { BreadcrumbService } from './services/breadcrumb.service';
 
@@ -34,7 +34,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    // provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     ScreenTrackingService,
     provideServiceWorker('ngsw-worker.js', {
