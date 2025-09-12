@@ -19,9 +19,11 @@
           {{ articleMetadata?.readTime }} min de lectura
         </span>
       </div>
+      
       <!-- Título y descripción -->
       <h1 class="text-4xl font-bold text-[var(--primary-900)] mb-4">{{ articleMetadata?.title }}</h1>
-      <p class="text-xl text-[var(--text-primary)] mb-6 highlight p-4 rounded-md">{{ articleMetadata?.description }}</p>
+      <p class="text-xl text-[var(--accent-600)] mb-6 highlight p-4 rounded-md">{{ articleMetadata?.description }} aaaaaa</p>
+      
       <!-- Autor -->
       <div class="flex items-center gap-3 mb-6">
         <div class="w-10 h-10 author-badge rounded-full flex items-center justify-center text-lg font-semibold">
@@ -29,6 +31,7 @@
         </div>
         <span class="text-[var(--text-secondary)]">Por <span class="font-medium text-[var(--primary-900)]">{{ articleMetadata?.author }}</span></span>
       </div>
+      
       <!-- Etiquetas -->
       <div class="flex flex-wrap gap-2 mb-8">
         @for (tag of articleMetadata?.tags; track tag) {
@@ -44,13 +47,13 @@
       <div class="mb-10 rounded-xl overflow-hidden shadow-lg">
         <img [src]="articleMetadata?.image"
           [alt]="articleMetadata?.title"
-          class="w-full h-auto object-cover">
+          class="w-full h-auto object-cover"
+          loading="lazy">
       </div>
     }
 
     <!-- Contenido del artículo -->
     <div class="prose prose-lg max-w-none text-[var(--text-primary)]">
-      <!-- Renderizamos cada bloque según su tipo -->
       @for (block of articleContent; track $index) {
         <!-- Encabezados -->
         @if (block.type === 'heading' && block.level === 1) {
@@ -74,14 +77,14 @@
           </h4>
         }
 
-        <!-- Párrafos con soporte para Markdown -->
+        <!-- Párrafos -->
         @if (block.type === 'paragraph') {
           <p class="mb-6 leading-relaxed text-[var(--text-primary)]"
              [innerHTML]="renderMarkdown(block.text || '')">
           </p>
         }
 
-        <!-- Listas con estilo mejorado -->
+        <!-- Listas -->
         @if (block.type === 'list') {
           <div class="mb-6">
             <ul class="space-y-4">
@@ -100,7 +103,8 @@
           <figure class="my-8">
             <img [src]="block.src"
               [alt]="block.alt || ''"
-              class="w-full h-auto rounded-lg shadow">
+              class="w-full h-auto rounded-lg shadow"
+              loading="lazy">
             @if (block.alt) {
               <figcaption class="text-center text-sm text-[var(--text-secondary)] mt-2">
                 {{ block.alt }}
@@ -114,7 +118,8 @@
           <div class="my-6 p-4 border-l-4 border-[var(--primary-500)] bg-[var(--highlight-bg)] rounded-r">
             <a [href]="block.url"
               target="_blank"
-              class="text-[var(--link-color)] hover:text-[var(--link-hover-color)] font-medium flex items-center">
+              rel="noopener noreferrer"
+              class="text-[var(--link-color)] hover:text-[var(--link-hover-color)] font-medium flex items-center touch-action-manipulation">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
@@ -123,10 +128,9 @@
           </div>
         }
 
-        <!-- Bloques de código con Prism.js -->
+        <!-- ✅ Bloques de código mejorados -->
         @if (block.type === 'code') {
-          <div class="code-block my-6"
-               (click)="$event.target === $event.currentTarget && preventClickCapture($event)">
+          <div class="code-block my-6">
             <div class="code-header">
               <div class="flex items-center gap-3">
                 <div class="flex gap-1.5">
@@ -134,11 +138,12 @@
                   <span class="code-dot code-dot-yellow"></span>
                   <span class="code-dot code-dot-green"></span>
                 </div>
-                <span class="font-mono text-sm font-medium">{{ block.language || 'texto plano' }}</span>
+                <span class="font-mono text-sm font-medium text-gray-300">{{ block.language || 'texto plano' }}</span>
               </div>
               <div class="code-actions">
                 <button (click)="copyCode(block.code || '')"
-                  class="flex items-center gap-1 px-2 py-1 rounded text-xs font-medium hover:bg-opacity-20 hover:bg-[var(--primary-500)] transition-colors"
+                  class="flex items-center gap-1 px-3 py-1.5 rounded text-xs font-medium hover:bg-opacity-20 hover:bg-[var(--primary-500)] transition-colors"
+                  type="button"
                   aria-label="Copiar código">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
@@ -150,7 +155,7 @@
             <div class="code-body" [ngClass]="'code-' + (block.language || 'plain')">
               <!-- Números de línea -->
               @if (showLineNumbers) {
-                <div class="absolute" aria-hidden="true">
+                <div class="absolute left-0 top-0 py-4 pl-2" aria-hidden="true">
                   @for (line of getCodeLines(block.code); track $index) {
                     <div class="line-number">
                       {{ $index + 1 }}
@@ -158,15 +163,11 @@
                   }
                 </div>
               }
-              <!-- Código con mejor estructura -->
+              <!-- ✅ Código optimizado -->
               <pre [attr.data-language]="block.language || 'plain'"
                 [ngClass]="{'pl-12': showLineNumbers}"
-                class="relative"
-                tabindex="0">
-                <code [className]="'language-' + (block.language || 'plain')"
-                  (touchstart)="$event.stopPropagation()"
-                  (touchmove)="$event.stopPropagation()">{{ block.code }}</code>
-              </pre>
+                class="relative overflow-x-auto"
+                tabindex="0"><code [className]="'language-' + (block.language || 'plain')">{{ block.code }}</code></pre>
             </div>
           </div>
         }
@@ -175,15 +176,14 @@
   </div>
 }
 
-<!-- Estado de carga -->
+<!-- Estados de carga y error sin cambios -->
 @if (loading) {
   <div class="flex flex-col items-center justify-center min-h-[50vh] py-20">
-    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[var(--primary-500)] mb-4"></div>
+    <div class="loading-spinner h-16 w-16 border-[var(--primary-500)] mb-4"></div>
     <p class="text-[var(--text-secondary)] text-xl">Cargando artículo...</p>
   </div>
 }
 
-<!-- Estado de error -->
 @if (error) {
   <div class="text-center py-20 max-w-md mx-auto">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-red-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -192,6 +192,7 @@
     <h2 class="text-2xl font-bold text-[var(--primary-900)] mb-2">No se pudo cargar el artículo</h2>
     <p class="text-[var(--text-secondary)] mb-6">Lo sentimos, ha ocurrido un error al intentar cargar el contenido.</p>
     <button (click)="loadArticleContent()"
+      type="button"
       class="px-4 py-2 bg-[var(--primary-500)] text-[var(--primary-100)] rounded-lg hover:bg-[var(--primary-600)] transition-colors">
       Intentar nuevamente
     </button>

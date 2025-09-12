@@ -342,7 +342,7 @@ html {
 
 /* Tags base */
 .tag {
-  background-color: var(--tag-bg);
+  // background-color: var(--tag-bg);
   color: var(--tag-text);
 
   &:hover {
@@ -991,4 +991,31 @@ a.disabled {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ================================
+   SOBRESCRIBIR PRISM.CSS BACKGROUNDS
+   ================================ */
+
+/* ✅ Sobrescribir backgrounds problemáticos de Prism.css */
+.token.operator,
+.token.entity, 
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  background: transparent !important;
+}
+
+/* ✅ Asegurar que todos los tokens tengan background transparente */
+.token {
+  background: transparent !important;
+}
+
+/* ✅ Específico para bloques de código */
+pre[class*="language-"] .token {
+  background: transparent !important;
+}
+
+code[class*="language-"] .token {
+  background: transparent !important;
 }

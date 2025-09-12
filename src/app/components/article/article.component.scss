@@ -4,142 +4,416 @@
   margin: 1.5rem 0;
   border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   z-index: 1;
+  background: #1e293b;
+  
+  /* Optimizaciones críticas para móviles */
+  -webkit-overflow-scrolling: touch;
+  will-change: transform;
+  
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: #334155;
+    border-bottom: 1px solid #475569;
+    
+    .code-actions button {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #d1d5db;
+      transition: all 0.15s ease-in-out;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      
+      /* Crítico para móviles */
+      touch-action: manipulation;
+      min-height: 40px;
+      min-width: 40px;
+      position: relative;
+      z-index: 1001;
+      
+      &:hover {
+        color: white;
+        background-color: rgba(107, 114, 128, 0.2);
+      }
+    }
+  }
+  
+  .code-body {
+    position: relative;
+    background: #1e293b;
+    
+    /* Scroll horizontal crítico para móviles */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-text-size-adjust: 100%;
+    
+    /* Números de línea */
+    .absolute {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 3rem;
+      background-color: #0f172a;
+      border-right: 1px solid rgba(148, 163, 184, 0.3);
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      padding-top: 0.75rem;
+      z-index: 2;
+      
+      div {
+        padding-right: 0.75rem;
+        height: 1.375rem;
+        line-height: 1.375rem;
+        font-size: 0.875rem;
+        color: #6b7280;
+        user-select: none;
+        -webkit-user-select: none;
+        pointer-events: none;
+      }
+    }
+    
+    pre {
+      margin: 0;
+      padding: 0.75rem 1rem;
+      tab-size: 2;
+      -moz-tab-size: 2;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+      background: #1e293b;
+      
+      /* Optimizaciones críticas para móviles */
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x pan-y;
+      transform: translateZ(0);
+      
+      code {
+        display: block;
+        white-space: pre;
+        color: #e2e8f0;
+        background: transparent;
+        
+        /* Asegurar que el código no interfiera con touch */
+        pointer-events: none;
+        user-select: text;
+        -webkit-user-select: text;
+      }
+      
+      &.pl-12 {
+        padding-left: 4rem;
+      }
+    }
+  }
 }
 
-/* Header del bloque de código */
-.code-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: var(--code-header-bg);
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+/* ✅ Estilos de sintaxis Prism.js - TEMA OSCURO SIEMPRE */
+:host ::ng-deep {
+  /* Base del código */
+  pre[class*="language-"] {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+  }
+  
+  code[class*="language-"] {
+    background: transparent !important;
+    color: #e2e8f0 !important;
+  }
+  
+  /* ✅ Tokens de sintaxis con colores consistentes */
+  .token.punctuation {
+    color: #94a3b8 !important; /* Gris claro para { } [ ] ( ) , ; : */
+  }
+  
+  .token.operator {
+    color: #f1f5f9 !important; /* Blanco grisáceo para = + - * / */
+  }
+  
+  .token.string {
+    color: #86efac !important; /* Verde claro para strings */
+  }
+  
+  .token.number {
+    color: #fbbf24 !important; /* Amarillo para números */
+  }
+  
+  .token.keyword {
+    color: #c084fc !important; /* Púrpura para palabras clave */
+  }
+  
+  .token.function {
+    color: #60a5fa !important; /* Azul para funciones */
+  }
+  
+  .token.class-name {
+    color: #fde047 !important; /* Amarillo brillante para clases */
+  }
+  
+  .token.comment {
+    color: #64748b !important; /* Gris oscuro para comentarios */
+    font-style: italic;
+  }
+  
+  .token.variable {
+    color: #fb7185 !important; /* Rosa para variables */
+  }
+  
+  .token.property {
+    color: #34d399 !important; /* Verde para propiedades */
+  }
+  
+  .token.selector {
+    color: #fbbf24 !important; /* Amarillo para selectores CSS */
+  }
+  
+  .token.attr-name {
+    color: #60a5fa !important; /* Azul para atributos */
+  }
+  
+  .token.attr-value {
+    color: #86efac !important; /* Verde claro para valores de atributos */
+  }
+  
+  .token.tag {
+    color: #f87171 !important; /* Rojo claro para tags HTML */
+  }
+  
+  .token.tag .token.punctuation {
+    color: #94a3b8 !important; /* Gris para < > / en tags */
+  }
+  
+  .token.boolean {
+    color: #fbbf24 !important; /* Amarillo para booleanos */
+  }
+  
+  .token.null,
+  .token.undefined {
+    color: #94a3b8 !important; /* Gris para null/undefined */
+  }
+  
+  .token.builtin {
+    color: #c084fc !important; /* Púrpura para tipos built-in */
+  }
+  
+  .token.module {
+    color: #60a5fa !important; /* Azul para módulos */
+  }
+  
+  .token.regex {
+    color: #fb7185 !important; /* Rosa para regex */
+  }
+  
+  .token.url {
+    color: #60a5fa !important; /* Azul para URLs */
+    text-decoration: underline;
+  }
 }
 
-/* Cuerpo principal del código */
-.code-body {
+/* ✅ Contenedor principal optimizado para móviles */
+.ios-fix-container {
   position: relative;
-  background-color: var(--code-bg);
-  overflow: hidden;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  z-index: 1;
+  -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
+  
+  a, button, [role="button"] {
+    position: relative;
+    z-index: 1000;
+    touch-action: manipulation;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      z-index: -1;
+    }
+  }
 }
 
-/* Números de línea - alineación corregida */
-.code-body .absolute {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 3rem !important; /* Ancho fijo */
-  background-color: var(--code-gutter-bg);
-  border-right: 1px solid rgba(120, 120, 120, 0.3);
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-  padding-top: 0.75rem;
-  z-index: 5; /* Asegúrate que esté detrás del código */
+/* ✅ Estilos para badges y categorías */
+.category-frontend {
+  background-color: rgb(219 234 254);
+  color: rgb(30 64 175);
 }
 
-.code-body .absolute div {
-  padding-right: 0.75rem;
-  height: 1.38rem;
-  line-height: 1.5rem;
-  font-size: 0.85rem;
-  color: var(--code-line-number);
-  /* Evitar selección */
-  user-select: none;
+.category-diseño-web {
+  background-color: rgb(243 232 255);
+  color: rgb(107 33 168);
 }
 
-/* Estilos del código */
-.code-body pre {
-  margin: 0;
-  padding: 0rem 0;
-  tab-size: 2;
-  -moz-tab-size: 2;
-  overflow-x: auto;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.9rem;
-  line-height: 1.5rem;
+.date-badge {
+  background-color: rgb(243 244 246);
+  color: rgb(55 65 81);
 }
 
-.code-body pre code {
-  display: block;
-  white-space: pre;
-  padding-left: 1rem; /* Espacio adicional a la izquierda */
-  padding-right: 1rem;
-  margin-left: 0;
-  color: var(--code-text);
+.read-time-badge {
+  background-color: rgb(220 252 231);
+  color: rgb(21 128 61);
 }
 
-/* Ajuste cuando hay números de línea */
-.code-body pre.pl-12 {
-  padding-left: 3rem !important; /* Asegura que haya suficiente espacio */
+.highlight {
+  background: linear-gradient(to right, rgb(249 250 251), rgb(239 246 255));
+  border-left: 4px solid rgb(168 85 247);
 }
 
-/* Ajustes para los puntos de colores en la cabecera */
+.author-badge {
+  background: linear-gradient(to right, rgb(168 85 247), rgb(59 130 246));
+  color: white;
+}
+
+.tag {
+  background-color: rgb(243 244 246);
+  color: rgb(55 65 81);
+  transition: colors 0.15s ease-in-out;
+  
+  &:hover {
+    background-color: rgb(229 231 235);
+  }
+}
+
+/* ✅ Dots del header del código */
 .code-dot {
   height: 12px;
   width: 12px;
   border-radius: 50%;
   display: inline-block;
-}
-
-/* Añade estas reglas para forzar los colores correctos en modo oscuro */
-.code-body.theme-dark {
-  background-color: var(--code-bg);
-
-  pre {
-    background-color: var(--code-bg);
+  
+  &.code-dot-red {
+    background: #ef4444;
   }
-
-  pre code {
-    color: var(--code-text);
+  
+  &.code-dot-yellow {
+    background: #f59e0b;
   }
-
-  .absolute {
-    background-color: var(--code-gutter-bg);
-    border-right: 1px solid rgba(120, 120, 120, 0.5);
-  }
-
-  .line-number {
-    color: var(--code-line-number);
+  
+  &.code-dot-green {
+    background: #10b981;
   }
 }
 
-/* Corregir problemas de interacción */
-:host {
-  /* Asegurar que los eventos touch funcionen correctamente */
-  touch-action: manipulation;
-
-  ::ng-deep {
-    /* Prevenir que elementos dentro del artículo capturen eventos incorrectamente */
-    .prose * {
-      touch-action: manipulation;
+/* ✅ Prose styling */
+.prose {
+  a, button, [role="button"] {
+    touch-action: manipulation;
+    min-height: 44px;
+    position: relative;
+    z-index: 100;
+    
+    &:focus {
+      outline: 2px solid #8b5cf6;
+      outline-offset: 2px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    h1, h2, h3, h4 {
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
     }
   }
 }
 
-/* Otra opción es usar un contenedor que garantice el scrolling */
-.container {
-  -webkit-overflow-scrolling: touch;
-  // overflow-scrolling: touch;
+/* ✅ Loading spinner */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+  border-radius: 50%;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 }
 
-/* Solución para iOS */
-.ios-fix-container {
-  isolation: isolate; /* Crea nuevo contexto de apilamiento */
-
-  a, button {
-    position: relative;
-    z-index: 5;
+/* ✅ Dark mode adaptaciones para elementos UI (NO código) */
+[data-theme="dark"] {
+  .date-badge {
+    background-color: rgb(55 65 81);
+    color: rgb(209 213 219);
   }
-
-  .code-block {
-    position: relative;
-    z-index: 1;
+  
+  .tag {
+    background-color: rgb(55 65 81);
+    color: rgb(209 213 219);
+    
+    &:hover {
+      background-color: rgb(75 85 99);
+    }
   }
+  
+  .category-frontend {
+    background-color: rgba(30, 64, 175, 0.2);
+    color: rgb(147 197 253);
+  }
+  
+  .category-diseño-web {
+    background-color: rgba(107, 33, 168, 0.2);
+    color: rgb(196 181 253);
+  }
+}
+
+/* ✅ Optimizaciones iOS */
+@supports (-webkit-touch-callout: none) {
+  .ios-fix-container {
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-overflow-scrolling: touch;
+    isolation: isolate;
+  }
+  
+  .code-body pre {
+    -webkit-overflow-scrolling: touch;
+    transform: translateZ(0);
+    will-change: scroll-position;
+  }
+  
+  a, button, [role="button"] {
+    -webkit-tap-highlight-color: rgba(168, 85, 247, 0.1);
+    -webkit-touch-callout: none;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      z-index: -1;
+    }
+  }
+}
+
+/* ✅ Correcciones finales */
+.container {
+  touch-action: auto;
+  transform: translateZ(0);
+  -webkit-overflow-scrolling: touch;
+}
+
+:host {
+  isolation: isolate;
 }
