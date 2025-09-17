@@ -1,6 +1,6 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet, RouterLink, Router, NavigationEnd } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
@@ -12,7 +12,10 @@ import {
   animate,
 } from '@angular/animations';
 import { ThemeService } from './services/theme.service';
+import { MetadataService } from './services/metadata.service';
 import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.component";
+import { filter } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 interface SocialLink {
   readonly name: string;
@@ -65,8 +68,13 @@ interface Stat {
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   readonly themeService = inject(ThemeService);
+  private readonly router = inject(Router);
+  private readonly metadataService = inject(MetadataService);
+  
+  // ✅ AGREGADO: Subscription para cleanup
+  private routerSubscription?: Subscription;
 
   // Estado del menú móvil
   isMobileMenuOpen = false;
@@ -112,6 +120,45 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.setupKeyboardNavigation();
     this.setupAnalytics();
+    // ✅ AGREGADO: Setup de rutas SEO
+    this.setupRouterSEO();
+  }
+
+  // ✅ AGREGADO: Cleanup
+  ngOnDestroy(): void {
+    this.routerSubscription?.unsubscribe();
+  }
+
+  // ✅ AGREGADO: Setup automático de SEO en cada ruta
+  private setupRouterSEO(): void {
+    this.routerSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        // Pequeño delay para asegurar que el componente esté listo
+        setTimeout(() => {
+          this.updateSEOForRoute(event.url);
+        }, 100);
+      });
+    
+    // Ejecutar inmediatamente para la ruta inicial
+    setTimeout(() => {
+      this.updateSEOForRoute(this.router.url);
+    }, 100);
+  }
+
+  // ✅ AGREGADO: Lógica SEO por ruta
+  private updateSEOForRoute(url: string): void {
+    if (url === '/' || url === '/home') {
+      this.metadataService.updateHomeMetadata();
+    } else if (url === '/projects') {
+      this.metadataService.updateProjectsMetadata();
+    } else if (url === '/articles') {
+      this.metadataService.updateArticlesMetadata();
+    } else if (url === '/certificates') {
+      this.metadataService.updateCertificatesMetadata();
+    }
+    // Los componentes individuales (project-detail, article, certificate-detail) 
+    // manejan su propio SEO en sus respectivos ngOnInit
   }
 
   // Métodos para el menú móvil

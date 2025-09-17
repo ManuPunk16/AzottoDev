@@ -1,5 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
+
+export interface MetaTagsConfig {
+  title: string;
+  description: string;
+  keywords?: string;
+  image?: string;
+  url?: string;
+  type?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  section?: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -12,21 +27,15 @@ export class MetadataService {
 
   constructor(
     private meta: Meta,
-    private title: Title
+    private title: Title,
+    private router: Router,
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
-  updateMetadata(data: {
-    title: string;
-    description: string;
-    keywords?: string;
-    image?: string;
-    url?: string;
-    type?: string;
-    publishedTime?: string;
-    modifiedTime?: string;
-    author?: string;
-    section?: string;
-  }) {
+  updateMetadata(data: MetaTagsConfig) {
+    // Obtener URL actual correcta
+    const currentUrl = this.getCurrentCanonicalUrl(data.url);
+    
     // Título optimizado para SEO
     this.title.setTitle(data.title);
 
@@ -41,7 +50,7 @@ export class MetadataService {
     this.meta.updateTag({ property: 'og:title', content: data.title });
     this.meta.updateTag({ property: 'og:description', content: data.description });
     this.meta.updateTag({ property: 'og:type', content: data.type || 'website' });
-    this.meta.updateTag({ property: 'og:url', content: data.url || this.baseUrl });
+    this.meta.updateTag({ property: 'og:url', content: currentUrl });
     this.meta.updateTag({ property: 'og:site_name', content: this.siteName });
     this.meta.updateTag({ property: 'og:locale', content: 'es_ES' });
 
@@ -83,28 +92,42 @@ export class MetadataService {
       }
     }
 
-    // Canonical URL
-    this.updateCanonicalUrl(data.url || this.baseUrl);
+    this.updateCanonicalUrl(currentUrl);
 
     // JSON-LD Schema para mejor SEO
-    this.updateStructuredData(data);
+    this.updateStructuredData(data, currentUrl);
+  }
+
+  private getCurrentCanonicalUrl(providedUrl?: string): string {
+    if (providedUrl) {
+      return providedUrl.startsWith('http') ? providedUrl : `${this.baseUrl}${providedUrl}`;
+    }
+    
+    // Obtener URL actual del router
+    const currentRoute = this.router.url;
+    return `${this.baseUrl}${currentRoute}`;
   }
 
   private updateCanonicalUrl(url: string) {
-    let link: HTMLLinkElement = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    
-    if (!link) {
-      link = document.createElement('link');
-      link.setAttribute('rel', 'canonical');
-      document.head.appendChild(link);
+    // Remover canonical existente
+    let existingCanonical = this.document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (existingCanonical) {
+      existingCanonical.remove();
     }
-    
-    link.setAttribute('href', url);
+
+    // Crear nuevo canonical
+    const canonical = this.document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    canonical.setAttribute('href', url);
+    this.document.head.appendChild(canonical);
+
+    // Log para debugging (remover en producción)
+    // console.log(`✅ Canonical URL actualizada: ${url}`);
   }
 
-  private updateStructuredData(data: any) {
+  private updateStructuredData(data: any, currentUrl: string) {
     // Remover script anterior
-    const existingScript = document.querySelector('script[data-schema="person"]');
+    const existingScript = this.document.querySelector('script[data-schema="person"]');
     if (existingScript) {
       existingScript.remove();
     }
@@ -131,11 +154,11 @@ export class MetadataService {
       "email": "azzoto@icloud.com"
     };
 
-    const script = document.createElement('script');
+    const script = this.document.createElement('script');
     script.type = 'application/ld+json';
     script.setAttribute('data-schema', 'person');
     script.textContent = JSON.stringify(schema);
-    document.head.appendChild(script);
+    this.document.head.appendChild(script);
   }
 
   updateHomeMetadata() {
@@ -171,19 +194,132 @@ export class MetadataService {
     });
   }
 
-  updateArticleMetadata(metadata: any) {
+  updateCertificatesMetadata() {
     this.updateMetadata({
-      title: metadata.title,
-      description: metadata.description,
-      keywords: metadata.keywords,
-      image: metadata.image,
-      url: metadata.url,
-      type: 'article',
-      publishedTime: metadata.publishedTime,
-      modifiedTime: metadata.modifiedTime,
-      author: metadata.author,
-      section: metadata.section
+      title: 'Certificaciones Técnicas | AzotoDev - Formación Continua en Desarrollo Web',
+      description: 'Certificaciones técnicas y formación especializada en desarrollo web, frameworks JavaScript, bases de datos y herramientas de desarrollo. Aprendizaje continuo en tecnologías modernas.',
+      keywords: 'certificaciones, formación técnica, desarrollo web, Angular, TypeScript, MongoDB, Visual Studio Code, cursos online, Udemy, especialización, AzotoDev',
+      image: '/assets/images/og-certificates.webp',
+      url: `${this.baseUrl}/certificates`,
+      type: 'website'
     });
+  }
+
+  updateCertificateMetadata(certificate: any) {
+    const title = `${certificate.title} | Certificación ${certificate.institution} - AzotoDev`;
+    const description = `Certificación "${certificate.title}" obtenida en ${certificate.institution}. ${certificate.description} Especialización en ${certificate.category} con ${certificate.duration} de formación.`;
+    const keywords = [
+      certificate.title,
+      certificate.institution,
+      certificate.category,
+      certificate.platform,
+      'certificación',
+      'formación técnica',
+      'desarrollo web',
+      'AzotoDev',
+      'Luis Hernández'
+    ].join(', ');
+
+    this.updateMetadata({
+      title,
+      description,
+      keywords,
+      image: certificate.image,
+      url: `${this.baseUrl}/certificates/${certificate.id}`,
+      type: 'article',
+      publishedTime: certificate.issueDate,
+      section: certificate.category
+    });
+
+    this.addCertificateStructuredData(certificate);
+  }
+
+  updateProjectMetadata(project: any) {
+    const title = `${project.title} | Proyecto ${project.category} - AzotoDev`;
+    const description = `${project.description} Desarrollado con ${project.technologies.join(', ')}. Caso de estudio completo del proyecto ${project.title}.`;
+    const keywords = [
+      project.title,
+      ...project.technologies,
+      project.category,
+      'proyecto',
+      'caso de estudio',
+      'desarrollo web',
+      'AzotoDev',
+      'Luis Hernández'
+    ].join(', ');
+
+    this.updateMetadata({
+      title,
+      description,
+      keywords,
+      image: project.imageUrl,
+      url: `${this.baseUrl}/projects/${project.id}`,
+      type: 'article',
+      publishedTime: project.date,
+      section: project.category
+    });
+  }
+
+  updateArticleMetadata(article: any) {
+    this.updateMetadata({
+      title: `${article.title} | AzotoDev Blog`,
+      description: article.description,
+      keywords: article.tags ? article.tags.join(', ') : '',
+      image: article.image,
+      url: `${this.baseUrl}/articles/${article.slug}`,
+      type: 'article',
+      publishedTime: article.date,
+      modifiedTime: article.lastModified || article.date,
+      author: article.author || this.authorName,
+      section: article.category || 'Artículos Técnicos'
+    });
+  }
+
+  private addCertificateStructuredData(certificate: any) {
+    const existingScript = this.document.querySelector('script[data-schema="certificate"]');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "EducationalCredential",
+      "name": certificate.title,
+      "description": certificate.description,
+      "credentialCategory": certificate.category,
+      "dateCreated": certificate.issueDate,
+      "issuedBy": {
+        "@type": "EducationalOrganization",
+        "name": certificate.institution,
+        "url": this.getInstitutionUrl(certificate.platform)
+      },
+      "holder": {
+        "@type": "Person",
+        "name": "Luis Hernández",
+        "alternateName": "AzotoDev",
+        "url": this.baseUrl
+      },
+      "image": `${this.baseUrl}${certificate.image}`,
+      "url": certificate.verificationUrl,
+      "educationalCredentialAwarded": certificate.title,
+      "timeRequired": certificate.duration
+    };
+
+    const script = this.document.createElement('script');
+    script.type = 'application/ld+json';
+    script.setAttribute('data-schema', 'certificate');
+    script.textContent = JSON.stringify(schema);
+    this.document.head.appendChild(script);
+  }
+
+  private getInstitutionUrl(platform: string): string {
+    const urls: Record<string, string> = {
+      'udemy': 'https://www.udemy.com',
+      'coursera': 'https://www.coursera.org',
+      'edx': 'https://www.edx.org',
+      'platzi': 'https://platzi.com'
+    };
+    return urls[platform] || '';
   }
 
   updatePageMetadata(metadata: any) {
@@ -207,5 +343,15 @@ export class MetadataService {
 
   getAuthorName(): string {
     return this.authorName;
+  }
+
+  clearStructuredData(): void {
+    const schemas = ['certificate', 'person'];
+    schemas.forEach(schema => {
+      const script = this.document.querySelector(`script[data-schema="${schema}"]`);
+      if (script) {
+        script.remove();
+      }
+    });
   }
 }
