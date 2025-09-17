@@ -37,7 +37,6 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // ✅ CRÍTICO: Escuchar cambios de parámetros para evitar problemas de cache
     this.route.params.pipe(
       takeUntil(this.destroy$)
     ).subscribe(params => {
@@ -59,7 +58,6 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     this.metadataService.clearStructuredData();
   }
 
-  // ✅ AGREGADO: Reset del componente para evitar cache
   private resetComponent(): void {
     this.loading = true;
     this.error = false;
@@ -79,13 +77,11 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.error = false;
 
-    // Cargar proyecto específico
     this.http.get<Project>(`/assets/projects/${id}.json`).pipe(
       takeUntil(this.destroy$)
     ).subscribe({
       next: (project) => {
         this.project = project;
-        // ✅ CRÍTICO: Configurar SEO específico del proyecto
         this.metadataService.updateProjectMetadata(project);
         this.loadRelatedProjects();
         this.loading = false;

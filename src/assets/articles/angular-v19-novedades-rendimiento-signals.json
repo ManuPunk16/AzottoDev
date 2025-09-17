@@ -1,6 +1,5 @@
 {
   "metadata": {
-    "slug": "introduccion-angular-v19",
     "title": "Novedades Clave de Angular v19: Rendimiento, DX y Reactividad Mejorados",
     "description": "Explora las características destacadas de Angular v19, incluyendo hidratación incremental (preview), HMR mejorado, APIs de señales estables y nuevas herramientas para desarrolladores.",
     "date": "2024-11-25",

@@ -1,6 +1,8 @@
-import { Component, OnInit, AfterViewChecked, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 import { MarkdownModule } from 'ngx-markdown';
 import { DatePipe, NgClass } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -28,6 +30,7 @@ interface ArticleMetadata {
   readTime: number;
   featured?: boolean;
   excerpt?: string;
+  slug?: string;
 }
 
 interface ArticleContentBlock {
@@ -54,91 +57,100 @@ interface Article {
 
 @Component({
   selector: 'app-article',
-  imports: [
-    MarkdownModule,
-    DatePipe,
-    NgClass
-  ],
   standalone: true,
+  imports: [CommonModule, MarkdownModule, DatePipe, NgClass],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'
 })
-export class ArticleComponent implements OnInit, AfterViewChecked, OnDestroy {
-  articleSlug: string | null = '';
-  articleContent: ArticleContentBlock[] = [];
-  articleMetadata: ArticleMetadata | null = null;
-  loading: boolean = true;
-  error: boolean = false;
-  
+export class ArticleComponent implements OnInit, OnDestroy {
   article: Article | null = null;
-  showLineNumbers: boolean = true;
+  loading = true;
+  error = false;
+  showLineNumbers = true;
   codeBlocksProcessed = false;
-
-  private isProcessingTouch = false;
+  
+  private destroy$ = new Subject<void>();
+  private isBrowser: boolean;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private http: HttpClient,
     private metadataService: MetadataService,
     private sanitizer: DomSanitizer,
-    private cdr: ChangeDetectorRef
-  ) {}
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.articleSlug = params['slug'];
-      if (this.articleSlug) {
+  ngOnInit() {
+    this.route.params.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(params => {
+      const articleSlug = params['slug'];
+      // console.log(articleSlug);
+      if (articleSlug) {
         this.resetComponent();
-        this.loadArticleDirectly();
+        this.loadArticle(articleSlug);
+        this.scrollToTop();
       }
     });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
     this.metadataService.clearStructuredData();
   }
 
   private resetComponent(): void {
     this.loading = true;
     this.error = false;
-    this.articleContent = [];
-    this.articleMetadata = null;
     this.article = null;
     this.codeBlocksProcessed = false;
   }
 
-  public loadArticleDirectly(): void {
-    this.http
-      .get<ArticleData>(`/assets/articles/${this.articleSlug}.json`)
-      .subscribe({
-        next: (data) => {
-          if (data.metadata) {
-            this.articleMetadata = data.metadata;
-            const articleForSEO = {
-              ...this.articleMetadata,
-              slug: this.articleSlug
-            };
-            this.metadataService.updateArticleMetadata(articleForSEO);
-          }
+  private scrollToTop() {
+    if (this.isBrowser) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
 
-          this.articleContent = data.content || [];
-          this.article = {
-            metadata: this.articleMetadata!,
-            content: this.articleContent
+  private loadArticle(slug: string) {
+    this.loading = true;
+    this.error = false;
+
+    // Cargar artículo específico
+    this.http.get<ArticleData>(`/assets/articles/${slug}.json`).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe({
+      next: (data) => {
+        if (data.metadata) {
+          // console.log(data.metadata);
+          const articleForSEO = {
+            ...data.metadata,
+            slug: slug
           };
-
+          
+          this.article = {
+            metadata: articleForSEO,
+            content: data.content || []
+          };
+          
+          this.metadataService.updateArticleMetadata(articleForSEO);
           this.loading = false;
           
+          // Procesar código después de un delay
           setTimeout(() => {
             this.processCodeBlocks();
           }, 100);
-        },
-        error: (err) => {
-          console.error('Error cargando contenido del artículo', err);
-          this.error = true;
-          this.loading = false;
         }
-      });
+      },
+      error: () => {
+        this.error = true;
+        this.loading = false;
+      }
+    });
   }
 
   renderMarkdown(text: string): SafeHtml {
@@ -173,14 +185,8 @@ export class ArticleComponent implements OnInit, AfterViewChecked, OnDestroy {
       });
   }
 
-  ngAfterViewChecked() {
-    if (!this.loading && this.articleContent.length > 0 && !this.codeBlocksProcessed) {
-      this.processCodeBlocks();
-    }
-  }
-
   private processCodeBlocks(): void {
-    if (this.codeBlocksProcessed) return;
+    if (this.codeBlocksProcessed || !this.isBrowser) return;
 
     requestAnimationFrame(() => {
       const codeBlocks = document.querySelectorAll('pre code');
@@ -199,13 +205,14 @@ export class ArticleComponent implements OnInit, AfterViewChecked, OnDestroy {
         });
 
         this.codeBlocksProcessed = true;
-        this.cdr.detectChanges();
         this.setupSafeTouchHandling();
       }
     });
   }
 
   private setupSafeTouchHandling(): void {
+    if (!this.isBrowser) return;
+    
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
@@ -251,11 +258,16 @@ export class ArticleComponent implements OnInit, AfterViewChecked, OnDestroy {
     return this.sanitizer.bypassSecurityTrustHtml(code);
   }
 
-  // ✅ Método simplificado para prevenir captura de clicks
-  preventClickCapture(event: MouseEvent): void {
-    // Solo prevenir propagación si realmente es necesario
-    if (this.isProcessingTouch) {
-      event.stopPropagation();
-    }
+  goBack() {
+    this.router.navigate(['/articles']);
+  }
+
+  onImageError(event: any) {
+    event.target.style.display = 'none';
+    console.warn('Error cargando imagen:', event.target.src);
+  }
+
+  trackByFn(index: number, item: any): any {
+    return item?.id || index;
   }
 }
