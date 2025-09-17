@@ -69,16 +69,11 @@ export class ArticleComponent implements OnInit, AfterViewChecked, OnDestroy {
   articleMetadata: ArticleMetadata | null = null;
   loading: boolean = true;
   error: boolean = false;
-
-  ngOnDestroy(): void {
-    this.metadataService.clearStructuredData();
-  }
   
   article: Article | null = null;
   showLineNumbers: boolean = true;
   codeBlocksProcessed = false;
 
-  // ✅ Variables simplificadas para touch
   private isProcessingTouch = false;
 
   constructor(
@@ -90,36 +85,40 @@ export class ArticleComponent implements OnInit, AfterViewChecked, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.articleSlug = this.route.snapshot.paramMap.get('slug');
-    if (this.articleSlug) {
-      this.http.get<any[]>('/assets/articles.json').subscribe({
-        next: (articles) => {
-          const article = articles.find(a => a.slug === this.articleSlug);
-          if (article) {
-            this.articleMetadata = article;
-            this.loadArticleContent();
-          } else {
-            this.error = true;
-            this.loading = false;
-          }
-        },
-        error: (err) => {
-          console.error('Error cargando metadatos del artículo', err);
-          this.error = true;
-          this.loading = false;
-        }
-      });
-    }
+    this.route.params.subscribe(params => {
+      this.articleSlug = params['slug'];
+      if (this.articleSlug) {
+        this.resetComponent();
+        this.loadArticleDirectly();
+      }
+    });
   }
 
-  loadArticleContent(): void {
+  ngOnDestroy(): void {
+    this.metadataService.clearStructuredData();
+  }
+
+  private resetComponent(): void {
+    this.loading = true;
+    this.error = false;
+    this.articleContent = [];
+    this.articleMetadata = null;
+    this.article = null;
+    this.codeBlocksProcessed = false;
+  }
+
+  public loadArticleDirectly(): void {
     this.http
       .get<ArticleData>(`/assets/articles/${this.articleSlug}.json`)
       .subscribe({
         next: (data) => {
           if (data.metadata) {
             this.articleMetadata = data.metadata;
-            this.metadataService.updateArticleMetadata(this.articleMetadata);
+            const articleForSEO = {
+              ...this.articleMetadata,
+              slug: this.articleSlug
+            };
+            this.metadataService.updateArticleMetadata(articleForSEO);
           }
 
           this.articleContent = data.content || [];
@@ -130,7 +129,6 @@ export class ArticleComponent implements OnInit, AfterViewChecked, OnDestroy {
 
           this.loading = false;
           
-          // ✅ Procesar código después de un pequeño delay
           setTimeout(() => {
             this.processCodeBlocks();
           }, 100);
@@ -176,13 +174,11 @@ export class ArticleComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   ngAfterViewChecked() {
-    // ✅ Procesamiento más controlado
     if (!this.loading && this.articleContent.length > 0 && !this.codeBlocksProcessed) {
       this.processCodeBlocks();
     }
   }
 
-  // ✅ Método mejorado para procesar bloques de código
   private processCodeBlocks(): void {
     if (this.codeBlocksProcessed) return;
 
@@ -204,36 +200,28 @@ export class ArticleComponent implements OnInit, AfterViewChecked, OnDestroy {
 
         this.codeBlocksProcessed = true;
         this.cdr.detectChanges();
-        
-        // ✅ Configurar eventos touch de manera segura
         this.setupSafeTouchHandling();
       }
     });
   }
 
-  // ✅ Configuración segura de eventos touch
   private setupSafeTouchHandling(): void {
-    // Detectar si es dispositivo móvil
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
       setTimeout(() => {
-        // ✅ Solo configurar lo esencial
         this.ensureLinkAccessibility();
-      }, 100); // Reducido de 200ms a 100ms
+      }, 100);
     }
   }
 
-  // ✅ Asegurar accesibilidad de enlaces - SIMPLIFICADO
   private ensureLinkAccessibility(): void {
     const links = document.querySelectorAll('a, button, [role="button"]');
     links.forEach((link: any) => {
-      // ✅ Solo las propiedades esenciales
       link.style.touchAction = 'manipulation';
       link.style.position = 'relative';
       link.style.zIndex = '100';
       
-      // ✅ Solo si realmente es necesario el área de toque
       if (link.offsetHeight < 44) {
         link.style.minHeight = '44px';
         link.style.display = 'inline-flex';
@@ -242,7 +230,6 @@ export class ArticleComponent implements OnInit, AfterViewChecked, OnDestroy {
     });
   }
 
-  // ✅ Métodos simplificados para manejo de eventos
   getLanguageClass(language: string | undefined): string {
     if (!language) return 'language-plain';
     return `language-${language}`;

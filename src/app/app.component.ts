@@ -73,7 +73,6 @@ export class AppComponent implements OnInit, OnDestroy {
   private readonly router = inject(Router);
   private readonly metadataService = inject(MetadataService);
   
-  // ✅ AGREGADO: Subscription para cleanup
   private routerSubscription?: Subscription;
 
   // Estado del menú móvil
@@ -120,45 +119,41 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.setupKeyboardNavigation();
     this.setupAnalytics();
-    // ✅ AGREGADO: Setup de rutas SEO
     this.setupRouterSEO();
   }
 
-  // ✅ AGREGADO: Cleanup
   ngOnDestroy(): void {
     this.routerSubscription?.unsubscribe();
   }
 
-  // ✅ AGREGADO: Setup automático de SEO en cada ruta
   private setupRouterSEO(): void {
     this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        // Pequeño delay para asegurar que el componente esté listo
+        // ✅ MODIFICADO: Solo manejar rutas principales, no individuales
         setTimeout(() => {
           this.updateSEOForRoute(event.url);
-        }, 100);
+        }, 50); // Reducido delay
       });
     
     // Ejecutar inmediatamente para la ruta inicial
     setTimeout(() => {
       this.updateSEOForRoute(this.router.url);
-    }, 100);
+    }, 50);
   }
 
-  // ✅ AGREGADO: Lógica SEO por ruta
   private updateSEOForRoute(url: string): void {
+    // ✅ CRÍTICO: NO interferir con rutas individuales
     if (url === '/' || url === '/home') {
       this.metadataService.updateHomeMetadata();
-    } else if (url === '/projects') {
+    } else if (url === '/projects' && !url.includes('/projects/')) {
       this.metadataService.updateProjectsMetadata();
-    } else if (url === '/articles') {
+    } else if (url === '/articles' && !url.includes('/articles/')) {
       this.metadataService.updateArticlesMetadata();
-    } else if (url === '/certificates') {
+    } else if (url === '/certificates' && !url.includes('/certificates/')) {
       this.metadataService.updateCertificatesMetadata();
     }
-    // Los componentes individuales (project-detail, article, certificate-detail) 
-    // manejan su propio SEO en sus respectivos ngOnInit
+    // ✅ Las rutas individuales (/projects/id, /articles/slug) son manejadas por sus componentes
   }
 
   // Métodos para el menú móvil

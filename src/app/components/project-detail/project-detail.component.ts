@@ -37,11 +37,13 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.route.paramMap.pipe(
+    // ✅ CRÍTICO: Escuchar cambios de parámetros para evitar problemas de cache
+    this.route.params.pipe(
       takeUntil(this.destroy$)
     ).subscribe(params => {
-      const projectId = params.get('id');
+      const projectId = params['id'];
       if (projectId) {
+        this.resetComponent();
         this.loadProject(projectId);
         this.scrollToTop();
       }
@@ -55,6 +57,16 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
       document.body.style.overflow = 'auto';
     }
     this.metadataService.clearStructuredData();
+  }
+
+  // ✅ AGREGADO: Reset del componente para evitar cache
+  private resetComponent(): void {
+    this.loading = true;
+    this.error = false;
+    this.project = null;
+    this.relatedProjects = [];
+    this.isGalleryOpen = false;
+    this.currentGalleryIndex = 0;
   }
 
   private scrollToTop() {
@@ -73,6 +85,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: (project) => {
         this.project = project;
+        // ✅ CRÍTICO: Configurar SEO específico del proyecto
         this.metadataService.updateProjectMetadata(project);
         this.loadRelatedProjects();
         this.loading = false;
