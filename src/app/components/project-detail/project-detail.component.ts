@@ -54,6 +54,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     if (this.isBrowser) {
       document.body.style.overflow = 'auto';
     }
+    this.metadataService.clearStructuredData();
   }
 
   private scrollToTop() {
@@ -72,12 +73,9 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: (project) => {
         this.project = project;
-        this.updateSEOMetadata();
+        this.metadataService.updateProjectMetadata(project);
         this.loadRelatedProjects();
         this.loading = false;
-
-        // Actualizar meta tags específicos del proyecto
-        this.metaService.updateMeta(this.metaService.generateProjectMeta(this.project));
       },
       error: () => {
         this.error = true;
@@ -99,21 +97,6 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
           .slice(0, 3);
       },
       error: (err) => console.warn('Error cargando proyectos relacionados:', err)
-    });
-  }
-
-  private updateSEOMetadata() {
-    if (!this.project) return;
-
-    this.metadataService.updatePageMetadata({
-      title: `${this.project.title} | Proyecto de ${this.project.category}`,
-      description: this.project.longDescription || this.project.description,
-      keywords: `${this.project.technologies.join(', ')}, ${this.project.category}, desarrollo web, ${this.project.title}, Luis Hernández`,
-      image: `https://azotodev.web.app${this.project.imageUrl}`,
-      url: `https://azotodev.web.app/projects/${this.project.id}`,
-      type: 'website',
-      publishedDate: this.project.date,
-      modifiedDate: this.project.lastUpdated || this.project.date
     });
   }
 

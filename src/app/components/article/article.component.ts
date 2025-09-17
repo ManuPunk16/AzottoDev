@@ -63,12 +63,17 @@ interface Article {
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'
 })
-export class ArticleComponent implements OnInit, AfterViewChecked {
+export class ArticleComponent implements OnInit, AfterViewChecked, OnDestroy {
   articleSlug: string | null = '';
   articleContent: ArticleContentBlock[] = [];
   articleMetadata: ArticleMetadata | null = null;
   loading: boolean = true;
   error: boolean = false;
+
+  ngOnDestroy(): void {
+    this.metadataService.clearStructuredData();
+  }
+  
   article: Article | null = null;
   showLineNumbers: boolean = true;
   codeBlocksProcessed = false;
@@ -114,7 +119,7 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
         next: (data) => {
           if (data.metadata) {
             this.articleMetadata = data.metadata;
-            this.updateMetadata(this.articleMetadata);
+            this.metadataService.updateArticleMetadata(this.articleMetadata);
           }
 
           this.articleContent = data.content || [];
@@ -136,10 +141,6 @@ export class ArticleComponent implements OnInit, AfterViewChecked {
           this.loading = false;
         }
       });
-  }
-
-  updateMetadata(metadata: any) {
-    this.metadataService.updateArticleMetadata(metadata);
   }
 
   renderMarkdown(text: string): SafeHtml {
