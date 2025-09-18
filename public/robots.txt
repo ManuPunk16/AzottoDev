@@ -1,0 +1,39 @@
+User-agent: *
+Allow: /
+
+# Sitemap principal
+Sitemap: https://azotodev.com/sitemap.xml
+
+# Permitir archivos JSON necesarios para la aplicación
+Allow: /assets/projects.json
+Allow: /assets/articles.json
+Allow: /assets/certificates.json
+Allow: /assets/projects/*.json
+Allow: /assets/articles/*.json
+
+# Permitir rutas principales
+Allow: /projects/
+Allow: /articles/
+Allow: /certificates/
+Allow: /assets/images/
+
+# Bloquear solo archivos innecesarios
+Disallow: /_next/
+Disallow: /api/
+Disallow: /.vercel/
+Disallow: /.angular/
+Disallow: /node_modules/
+
+# Archivos técnicos que pueden ser bloqueados
+Disallow: /manifest.webmanifest
+Disallow: /ngsw-worker.js
+Disallow: /ngsw.json
+
+# Optimización
+Crawl-delay: 1
+
+# Permitir específicamente imágenes
+Allow: /assets/images/*.webp
+Allow: /assets/images/*.png
+Allow: /assets/images/*.jpg
+Allow: /assets/images/*.jpeg
