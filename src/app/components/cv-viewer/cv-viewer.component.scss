@@ -1,0 +1,55 @@
+:host {
+  display: inline-block;
+}
+
+// Custom scrollbar for dropdown if needed
+.dropdown-content {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-300) transparent;
+  
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--primary-300);
+    border-radius: 2px;
+  }
+}
+
+// Flag emoji positioning
+.flag-emoji {
+  font-size: 1.2em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Ripple effect on button click
+.button-ripple {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  &:active::before {
+    width: 300px;
+    height: 300px;
+  }
+}

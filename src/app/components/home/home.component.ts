@@ -1,8 +1,8 @@
 import { NgClass, DatePipe, CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren, OnDestroy, ViewChild, Inject, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren, OnDestroy, ViewChild, Inject, PLATFORM_ID, inject, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { MetaService } from '../../services/meta.service';
 
 // Interfaces
@@ -86,14 +86,14 @@ interface PersonalInterest {
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    // Remove CvViewerComponent from here
   ],
-  standalone: true,
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren('animatedElement') animatedElements!: QueryList<ElementRef>;
@@ -486,6 +486,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     { name: 'Fitness', icon: 'fas fa-dumbbell', color: '#EF4444' }
   ];
 
+  // Lazy import for CV Viewer
+  private cdr = inject(ChangeDetectorRef);
+  cvViewerLoaded = false;
+  cvViewerComponent: any = null;
+  showCVLoader = false;
+  isPreloading!: boolean;
+
   constructor(
     private metaService: MetaService,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -501,13 +508,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit() {
     this.animateElements();
     
     // Start skills animation after delay
     setTimeout(() => {
       this.animatedSkills = true;
     }, 1000);
+
+    // Preload CV Viewer component after 2 seconds
+    setTimeout(() => {
+      this.preloadCVViewer();
+    }, 2000);
   }
 
   ngOnDestroy(): void {
@@ -623,7 +635,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   showTechInfo(tech: TechIcon): void {
     // Implement modal or tooltip with tech info
-    console.log(`Info about ${tech.name}`);
+    // console.log(`Info about ${tech.name}`);
   }
 
   showTechTooltip(tech: TechIcon, event: MouseEvent): void {
@@ -650,6 +662,87 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       case 'linkedin':
         window.open(`https://${contact.value}`, '_blank');
         break;
+    }
+  }
+
+  // Lazy load CV Viewer when user clicks
+  async loadCVViewer() {
+    if (this.cvViewerLoaded) {
+      return; // Ya está cargado
+    }
+    
+    if (this.showCVLoader) {
+      return; // Ya está cargando
+    }
+    
+    this.showCVLoader = true;
+    this.cdr.detectChanges();
+    
+    try {
+      // Dynamic import con timeout para mejor UX
+      const modulePromise = import('../cv-viewer/cv-viewer.component');
+      const timeoutPromise = new Promise(resolve => setTimeout(resolve, 500)); // Mínimo 500ms para mostrar loading
+      
+      const [module] = await Promise.all([modulePromise, timeoutPromise]);
+      
+      const CVViewerComponent = module.CvViewerComponent;
+      this.cvViewerComponent = CVViewerComponent;
+      this.cvViewerLoaded = true;
+      
+      // Trigger change detection
+      this.cdr.detectChanges();
+      
+      // console.log('✅ CV Viewer cargado exitosamente');
+      
+    } catch (error) {
+      // console.error('❌ Error loading CV Viewer component:', error);
+      this.showFallbackMessage();
+    } finally {
+      this.showCVLoader = false;
+      this.cdr.detectChanges();
+    }
+  }
+
+  // Preload in background for better UX (silent)
+  private async preloadCVViewer() {
+    if (this.cvViewerLoaded || this.isPreloading) {
+      return;
+    }
+    
+    this.isPreloading = true;
+    
+    try {
+      // console.log('🔄 Precargando CV Viewer en background...');
+      
+      const module = await import('../cv-viewer/cv-viewer.component');
+      const CVViewerComponent = module.CvViewerComponent;
+      this.cvViewerComponent = CVViewerComponent;
+      this.cvViewerLoaded = true;
+      
+      this.cdr.detectChanges();
+      // console.log('✅ CV Viewer precargado exitosamente');
+      
+    } catch (error) {
+      console.debug('⚠️ CV Viewer preload failed (no crítico):', error);
+    } finally {
+      this.isPreloading = false;
+    }
+  }
+
+  // Fallback para errores de carga
+  private showFallbackMessage() {
+    // Usar SweetAlert2 o un toast para mostrar error
+    console.warn('Funcionalidad temporalmente no disponible');
+  }
+
+  // Method to trigger CV viewer functionality manually
+  async triggerCVAction() {
+    if (!this.cvViewerLoaded) {
+      await this.loadCVViewer();
+    }
+    
+    if (this.cvViewerLoaded) {
+      // console.log('CV Viewer listo para usar');
     }
   }
 }
