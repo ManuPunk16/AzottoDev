@@ -1,6 +1,8 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, inject, TemplateRef, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { Overlay, OverlayRef, OverlayModule } from '@angular/cdk/overlay';
+import { TemplatePortal } from '@angular/cdk/portal';
 import Swal from 'sweetalert2';
 
 // Declare gtag for Google Analytics
@@ -22,10 +24,8 @@ interface CVAnalytics {
 
 @Component({
   selector: 'app-cv-viewer',
-  standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, OverlayModule],
   animations: [
-    // Animación corregida sin pointerEvents
     trigger('dropdownAnimation', [
       state('closed', style({
         opacity: 0,
@@ -38,7 +38,7 @@ interface CVAnalytics {
         visibility: 'visible'
       })),
       transition('closed => open', [
-        style({ visibility: 'visible' }), // Establecer visibility inmediatamente
+        style({ visibility: 'visible' }),
         animate('200ms ease-out', style({
           opacity: 1,
           transform: 'translateY(0) scale(1)'
@@ -49,11 +49,9 @@ interface CVAnalytics {
           opacity: 0,
           transform: 'translateY(-10px) scale(0.95)'
         })),
-        style({ visibility: 'hidden' }) // Ocultar al final
+        style({ visibility: 'hidden' })
       ])
     ]),
-    
-    // Animación mejorada para el botón
     trigger('buttonPulse', [
       transition('* => pulse', [
         animate('600ms ease-in-out', keyframes([
@@ -63,8 +61,6 @@ interface CVAnalytics {
         ]))
       ])
     ]),
-    
-    // Nueva animación para el dropdown backdrop
     trigger('backdropAnimation', [
       transition(':enter', [
         style({ opacity: 0 }),
@@ -79,13 +75,18 @@ interface CVAnalytics {
   styleUrls: ['./cv-viewer.component.scss']
 })
 export class CvViewerComponent implements OnInit, OnDestroy {
-  @ViewChild('dropdownContainer', { static: true }) dropdownContainer!: ElementRef;
+  @ViewChild('buttonElement', { static: true }) buttonElement!: ElementRef;
+  @ViewChild('dropdownTemplate', { static: true }) dropdownTemplate!: TemplateRef<any>;
 
-  isDropdownOpen = false;
-  pulseState = '';
-  selectedLang: 'es' | 'en' = 'es';
+  private overlay = inject(Overlay);
+  private viewContainerRef = inject(ViewContainerRef);
   
-  cvOptions: CVOption[] = [
+  protected isDropdownOpen = false;
+  protected pulseState = '';
+  private overlayRef: OverlayRef | null = null;
+  private portal: TemplatePortal | null = null;
+
+  protected cvOptions: CVOption[] = [
     {
       label: 'Español',
       flag: '🇪🇸',
@@ -102,36 +103,81 @@ export class CvViewerComponent implements OnInit, OnDestroy {
 
   private clickOutsideListener?: (event: Event) => void;
 
-  ngOnInit() {
-    // Pulse animation on component load
+  ngOnInit(): void {
     setTimeout(() => {
       this.pulseState = 'pulse';
+      setTimeout(() => {
+        this.pulseState = '';
+      }, 600);
     }, 1000);
   }
 
-  ngOnDestroy() {
-    if (this.clickOutsideListener) {
-      document.removeEventListener('click', this.clickOutsideListener);
-    }
+  ngOnDestroy(): void {
+    this.closeDropdown();
+    this.removeClickOutsideListener();
   }
 
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-    
+  toggleDropdown(): void {
     if (this.isDropdownOpen) {
-      this.setupClickOutsideListener();
+      this.closeDropdown();
     } else {
-      this.removeClickOutsideListener();
+      this.openDropdown();
     }
   }
 
-  closeDropdown() {
+  private openDropdown(): void {
+    if (!this.buttonElement) return;
+
+    const buttonRect = this.buttonElement.nativeElement.getBoundingClientRect();
+
+    const positionStrategy = this.overlay
+      .position()
+      .flexibleConnectedTo(this.buttonElement)
+      .withPositions([
+        {
+          originX: 'start',
+          originY: 'bottom',
+          overlayX: 'start',
+          overlayY: 'top',
+          offsetY: 8
+        }
+      ]);
+
+    this.overlayRef = this.overlay.create({
+      positionStrategy,
+      hasBackdrop: true,
+      backdropClass: 'cdk-overlay-transparent-backdrop',
+      scrollStrategy: this.overlay.scrollStrategies.reposition()
+    });
+
+    this.portal = new TemplatePortal(
+      this.dropdownTemplate,
+      this.viewContainerRef
+    );
+
+    this.overlayRef.attach(this.portal);
+    this.isDropdownOpen = true;
+
+    this.overlayRef.backdropClick().subscribe(() => {
+      this.closeDropdown();
+    });
+
+    setTimeout(() => {
+      this.setupClickOutsideListener();
+    }, 100);
+  }
+
+  closeDropdown(): void {
+    if (this.overlayRef) {
+      this.overlayRef.dispose();
+      this.overlayRef = null;
+      this.portal = null;
+    }
     this.isDropdownOpen = false;
     this.removeClickOutsideListener();
   }
 
-  selectCV(option: CVOption) {
-    // Download the PDF
+  selectCV(option: CVOption): void {
     const link = document.createElement('a');
     link.href = option.url;
     link.download = `luis-hernandez-cv-${option.lang}.pdf`;
@@ -139,66 +185,46 @@ export class CvViewerComponent implements OnInit, OnDestroy {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
-    // Track analytics
+
     this.trackCVAnalytics(option.lang, 'download');
-    
     this.closeDropdown();
-    
-    // Show success feedback
     this.showDownloadFeedback(option.label);
   }
 
-  async viewOnline() {
+  async viewOnline(): Promise<void> {
     this.closeDropdown();
-    
-    // Show language selection modal first
-    const languageResult = await this.showLanguageSelectionModal();
-    
+
+    const languageResult = await Swal.fire({
+      title: 'Selecciona el idioma',
+      icon: 'question',
+      input: 'radio',
+      inputOptions: {
+        'es': '🇪🇸 Español',
+        'en': '🇺🇸 English'
+      },
+      inputValue: 'es',
+      showCancelButton: true,
+      confirmButtonText: 'Ver CV',
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        confirmButton: 'bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg',
+        cancelButton: 'bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-6 rounded-lg ml-2'
+      },
+      buttonsStyling: false
+    });
+
     if (languageResult.isConfirmed) {
       const selectedOption = this.cvOptions.find(opt => opt.lang === languageResult.value);
       if (selectedOption) {
-        // Track analytics
         this.trackCVAnalytics(selectedOption.lang, 'view');
-        this.showPDFModal(selectedOption);
+        await this.showPDFModal(selectedOption);
       }
     }
   }
 
-  private async showLanguageSelectionModal() {
-    return await Swal.fire({
-      title: 'Selecciona el idioma',
-      text: 'Choose your preferred language',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Español 🇪🇸',
-      cancelButtonText: 'English 🇺🇸',
-      reverseButtons: true,
-      customClass: {
-        popup: 'rounded-2xl border-0 shadow-2xl',
-        title: 'text-xl font-bold text-gray-800',
-        htmlContainer: 'text-gray-600',
-        confirmButton: 'bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-xl mr-2 transition-all duration-300 transform hover:scale-105',
-        cancelButton: 'bg-gray-500 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-xl ml-2 transition-all duration-300 transform hover:scale-105',
-        actions: 'gap-4'
-      },
-      buttonsStyling: false,
-      backdrop: `rgba(0,0,0,0.8)`,
-      allowOutsideClick: true,
-      allowEscapeKey: true,
-      preConfirm: () => 'es',
-      preDeny: () => 'en'
-    }).then((result) => {
-      if (result.dismiss === Swal.DismissReason.cancel) {
-        return { isConfirmed: true, value: 'en' };
-      }
-      return result;
-    });
-  }
-
-  private async showPDFModal(option: CVOption) {
+  private async showPDFModal(option: CVOption): Promise<void> {
     const pdfUrl = option.url;
-    
+
     await Swal.fire({
       title: `CV - ${option.label}`,
       html: `
@@ -267,70 +293,66 @@ export class CvViewerComponent implements OnInit, OnDestroy {
     });
   }
 
-  private setupModalEventListeners(option: CVOption) {
+  private setupModalEventListeners(option: CVOption): void {
     const downloadBtn = document.getElementById('download-btn');
-    downloadBtn?.addEventListener('click', () => {
-      this.selectCV(option);
-      Swal.close();
-    });
-
     const printBtn = document.getElementById('print-btn');
-    printBtn?.addEventListener('click', () => {
-      this.printPDF(option.url);
-    });
-
     const fullscreenBtn = document.getElementById('fullscreen-btn');
-    fullscreenBtn?.addEventListener('click', () => {
-      this.openFullscreen(option.url);
-    });
+
+    downloadBtn?.addEventListener('click', () => this.selectCV(option));
+    printBtn?.addEventListener('click', () => this.printPDF(option.url));
+    fullscreenBtn?.addEventListener('click', () => this.openFullscreen(option.url));
   }
 
-  private printPDF(url: string) {
-    const printWindow = window.open(url, '_blank');
-    if (printWindow) {
-      printWindow.onload = () => {
-        printWindow.print();
-      };
-    }
+  private printPDF(url: string): void {
+    const iframe = document.getElementById('pdf-iframe') as HTMLIFrameElement;
+    iframe?.contentWindow?.print();
   }
 
-  private openFullscreen(url: string) {
-    window.open(url, '_blank', 'fullscreen=yes,scrollbars=yes,resizable=yes');
+  private openFullscreen(url: string): void {
+    window.open(url, '_blank', 'fullscreen=yes');
   }
 
-  private setupClickOutsideListener() {
+  private setupClickOutsideListener(): void {
     setTimeout(() => {
       this.clickOutsideListener = (event: Event) => {
-        if (!this.dropdownContainer.nativeElement.contains(event.target as Node)) {
-          this.closeDropdown();
+        const target = event.target as HTMLElement;
+        const button = this.buttonElement?.nativeElement;
+
+        if (button && !button.contains(target)) {
+          const overlayContainer = document.querySelector('.cdk-overlay-container');
+          if (overlayContainer && !overlayContainer.contains(target)) {
+            this.closeDropdown();
+          }
         }
       };
+
       document.addEventListener('click', this.clickOutsideListener);
-    }, 0);
+    }, 100);
   }
 
-  private removeClickOutsideListener() {
+  private removeClickOutsideListener(): void {
     if (this.clickOutsideListener) {
       document.removeEventListener('click', this.clickOutsideListener);
       this.clickOutsideListener = undefined;
     }
   }
 
-  private showDownloadFeedback(language: string) {
+  private showDownloadFeedback(language: string): void {
     Swal.fire({
       icon: 'success',
       title: '¡Descarga iniciada!',
       text: `CV en ${language} descargándose...`,
       timer: 2000,
-      timerProgressBar: true,
       showConfirmButton: false,
       toast: true,
-      position: 'top-end',
+      position: 'bottom-end',
+      customClass: {
+        popup: 'rounded-xl shadow-xl'
+      }
     });
   }
 
-  // Analytics methods
-  private trackCVAnalytics(lang: 'es' | 'en', action: 'download' | 'view') {
+  private trackCVAnalytics(lang: 'es' | 'en', action: 'download' | 'view'): void {
     const analyticsData: CVAnalytics = {
       lang,
       action,
@@ -338,81 +360,21 @@ export class CvViewerComponent implements OnInit, OnDestroy {
       userAgent: navigator.userAgent
     };
 
-    this.saveToLocalStorage(analyticsData);
-    this.sendToAnalytics(analyticsData);
-    console.log('CV Analytics:', analyticsData);
-  }
-
-  private saveToLocalStorage(data: CVAnalytics) {
     try {
-      const existingData = localStorage.getItem('cv-analytics');
-      const analytics = existingData ? JSON.parse(existingData) : [];
-      analytics.push(data);
-      
-      if (analytics.length > 100) {
-        analytics.splice(0, analytics.length - 100);
-      }
-      
-      localStorage.setItem('cv-analytics', JSON.stringify(analytics));
+      const existingData = JSON.parse(localStorage.getItem('cv_analytics_data') || '[]');
+      const updatedData = [...existingData, analyticsData].slice(-50);
+      localStorage.setItem('cv_analytics_data', JSON.stringify(updatedData));
     } catch (error) {
-      console.error('Error saving analytics to localStorage:', error);
+      console.error('Error al guardar analíticas:', error);
     }
-  }
 
-  private sendToAnalytics(data: CVAnalytics) {
     if (typeof gtag !== 'undefined') {
-      gtag('event', 'cv_action', {
+      gtag('event', `cv_${action}`, {
         event_category: 'CV',
-        event_label: `${data.action}_${data.lang}`,
-        custom_parameter_1: data.lang,
-        custom_parameter_2: data.action
+        event_label: lang,
+        language: lang,
+        action_type: action
       });
     }
-
-    if (typeof window !== 'undefined' && (window as any).va) {
-      (window as any).va('track', 'CV Action', {
-        action: data.action,
-        language: data.lang,
-        timestamp: data.timestamp
-      });
-    }
-  }
-
-  getAnalyticsData(): CVAnalytics[] {
-    try {
-      const data = localStorage.getItem('cv-analytics');
-      return data ? JSON.parse(data) : [];
-    } catch (error) {
-      console.error('Error retrieving analytics data:', error);
-      return [];
-    }
-  }
-
-  getAnalyticsSummary() {
-    const data = this.getAnalyticsData();
-    
-    const summary = {
-      total: data.length,
-      downloads: {
-        es: data.filter(d => d.action === 'download' && d.lang === 'es').length,
-        en: data.filter(d => d.action === 'download' && d.lang === 'en').length
-      },
-      views: {
-        es: data.filter(d => d.action === 'view' && d.lang === 'es').length,
-        en: data.filter(d => d.action === 'view' && d.lang === 'en').length
-      },
-      mostPopular: this.getMostPopularVersion(data)
-    };
-
-    return summary;
-  }
-
-  private getMostPopularVersion(data: CVAnalytics[]) {
-    const esCount = data.filter(d => d.lang === 'es').length;
-    const enCount = data.filter(d => d.lang === 'en').length;
-    
-    if (esCount > enCount) return 'es';
-    if (enCount > esCount) return 'en';
-    return 'equal';
   }
 }

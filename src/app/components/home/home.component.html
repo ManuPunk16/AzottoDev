@@ -84,7 +84,7 @@
           </p>
 
           <!-- Action Buttons -->
-          <div class="flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-4 z-50">
             <button 
               (click)="scrollToSection('projects')"
               [routerLink]="['/projects']" routerLinkActive="router-link-active" 
@@ -97,78 +97,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
               </svg>
             </button>
-            
-            <!-- CV Viewer con estados mejorados -->
-            <div class="relative">
-              @if (cvViewerLoaded && cvViewerComponent && !showCVLoader) {
-                <!-- Componente completamente cargado -->
-                <ng-container *ngComponentOutlet="cvViewerComponent"></ng-container>
-              } @else {
-                <!-- Estados de carga y botón placeholder -->
-                <button 
-                  (click)="loadCVViewer()"
-                  [disabled]="showCVLoader || isPreloading"
-                  class="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--primary-500)] to-[var(--primary-600)] 
-                         text-white rounded-xl font-semibold shadow-lg hover:shadow-xl 
-                         transform transition-all duration-300 relative overflow-hidden
-                         disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none
-                         disabled:hover:shadow-lg"
-                  [class.hover:scale-105]="!showCVLoader && !isPreloading"
-                  [attr.aria-label]="showCVLoader ? 'Cargando componente CV' : 'Cargar opciones de CV'">
-                  
-                  <!-- Background gradient animation (solo cuando no está loading) -->
-                  <div class="absolute inset-0 bg-gradient-to-r from-[var(--primary-600)] to-[var(--primary-700)] 
-                              opacity-0 transition-opacity duration-300"
-                       [class.group-hover:opacity-100]="!showCVLoader && !isPreloading"></div>
-                  
-                  <!-- Content with different states -->
-                  <div class="relative z-10 flex items-center gap-3">
-                    @if (showCVLoader) {
-                      <!-- Loading state -->
-                      <div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Cargando...</span>
-                    } @else if (isPreloading) {
-                      <!-- Preloading state (subtle) -->
-                      <svg class="w-5 h-5 animate-pulse transition-transform duration-300" 
-                           fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                      </svg>
-                      <span>Descargar CV</span>
-                      <div class="w-2 h-2 bg-yellow-300 rounded-full animate-pulse"></div>
-                    } @else {
-                      <!-- Default state -->
-                      <svg class="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" 
-                           fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                      </svg>
-                      <span>Descargar CV</span>
-                      <svg class="w-4 h-4 transition-transform duration-300" 
-                           fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                      </svg>
-                    }
-                  </div>
-                  
-                  <!-- Loading progress bar (optional) -->
-                  @if (showCVLoader) {
-                    <div class="absolute bottom-0 left-0 h-1 bg-white/30 w-full">
-                      <div class="h-full bg-white/60 animate-pulse" style="width: 100%"></div>
-                    </div>
-                  }
-                </button>
-                
-                <!-- Tooltip informativo (opcional) -->
-                @if (isPreloading) {
-                  <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 
-                              bg-black/80 text-white text-xs px-2 py-1 rounded whitespace-nowrap
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    Precargando componente...
-                  </div>
-                }
-              }
-            </div>
+
+            <app-cv-viewer></app-cv-viewer>
           </div>
 
           <!-- Social Links -->
@@ -221,7 +151,7 @@
         </div>
 
         <!-- Right Content - Code Terminal -->
-        <div class="relative mb-16 lg:mb-0" #animatedElement>
+        <div class="relative mb-16 lg:mb-0 z-0" #animatedElement>
           <div class="space-y-6">
             
             <!-- Terminal Window -->

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { MetaService } from '../../services/meta.service';
+import { CvViewerComponent } from '../cv-viewer/cv-viewer.component';
 
 // Interfaces
 interface Particle {
@@ -90,7 +91,7 @@ interface PersonalInterest {
   imports: [
     CommonModule,
     RouterLink,
-    // Remove CvViewerComponent from here
+    CvViewerComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']

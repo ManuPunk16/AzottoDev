@@ -1,9 +1,14 @@
-<div class="relative inline-block" #dropdownContainer>
+<div class="relative inline-block">
     <!-- Main CV Button -->
-    <button (click)="toggleDropdown()" [@buttonPulse]="pulseState" class="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--primary-500)] to-[var(--primary-600)] 
+    <button 
+        #buttonElement
+        (click)="toggleDropdown()" 
+        [@buttonPulse]="pulseState" 
+        class="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--primary-500)] to-[var(--primary-600)] 
                text-white rounded-xl font-semibold shadow-lg hover:shadow-xl 
                transform hover:scale-105 transition-all duration-300 relative overflow-hidden"
-        [class.ring-4]="isDropdownOpen" [class.ring-primary-300]="isDropdownOpen">
+        [class.ring-4]="isDropdownOpen" 
+        [class.ring-primary-300]="isDropdownOpen">
 
         <!-- Background gradient animation -->
         <div class="absolute inset-0 bg-gradient-to-r from-[var(--primary-600)] to-[var(--primary-700)] 
@@ -25,14 +30,16 @@
             </svg>
         </div>
     </button>
+</div>
 
-    <!-- Dropdown Menu -->
-    <div [@dropdownAnimation]="isDropdownOpen ? 'open' : 'closed'" class="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-[var(--background-primary)] 
-               rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden">
+<ng-template #dropdownTemplate>
+    <div 
+        [@dropdownAnimation]="isDropdownOpen ? 'open' : 'closed'" 
+        class="w-64 bg-white dark:bg-[var(--background-primary)] 
+               rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
 
         <!-- Header -->
-        <div
-            class="px-4 py-3 bg-gradient-to-r from-[var(--primary-50)] to-[var(--primary-100)] 
+        <div class="px-4 py-3 bg-gradient-to-r from-[var(--primary-50)] to-[var(--primary-100)] 
                     dark:from-[var(--primary-900)]/20 dark:to-[var(--primary-800)]/20 border-b border-gray-200 dark:border-gray-700">
             <h3 class="text-sm font-semibold text-[var(--primary-700)] dark:text-[var(--primary-300)]">
                 Selecciona el idioma
@@ -42,9 +49,10 @@
         <!-- CV Options -->
         <div class="py-2">
             @for (option of cvOptions; track option.lang) {
-            <button (click)="selectCV(option)" class="w-full flex items-center gap-3 px-4 py-3 text-left 
-                     hover:bg-[var(--primary-50)] dark:hover:bg-[var(--primary-900)]/10 
-                     transition-colors duration-200 group">
+            <button (click)="selectCV(option)" 
+                    class="w-full flex items-center gap-3 px-4 py-3 text-left 
+                           hover:bg-[var(--primary-50)] dark:hover:bg-[var(--primary-900)]/10 
+                           transition-colors duration-200 group">
 
                 <!-- Flag -->
                 <div class="w-8 h-6 rounded-sm overflow-hidden shadow-sm flex-shrink-0">
@@ -63,8 +71,8 @@
 
                 <!-- Download icon -->
                 <svg class="w-4 h-4 text-[var(--text-secondary)] group-hover:text-[var(--primary-500)] 
-                          opacity-0 group-hover:opacity-100 transition-all duration-200" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
+                          opacity-0 group-hover:opacity-100 transition-all duration-200" 
+                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
@@ -74,9 +82,10 @@
 
         <!-- View Online Option -->
         <div class="border-t border-gray-200 dark:border-gray-700 p-2">
-            <button (click)="viewOnline()" class="w-full flex items-center gap-3 px-3 py-2 text-sm 
-                   bg-[var(--primary-500)] text-white rounded-lg 
-                   hover:bg-[var(--primary-600)] transition-colors duration-200">
+            <button (click)="viewOnline()" 
+                    class="w-full flex items-center gap-3 px-3 py-2 text-sm 
+                           bg-[var(--primary-500)] text-white rounded-lg 
+                           hover:bg-[var(--primary-600)] transition-colors duration-200">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -87,7 +96,7 @@
             </button>
         </div>
     </div>
-</div>
+</ng-template>
 
 <!-- Backdrop -->
 @if (isDropdownOpen) {
