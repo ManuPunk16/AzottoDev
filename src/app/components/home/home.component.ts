@@ -331,7 +331,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     // },
     { 
       name: 'Email', 
-      url: 'mailto:azzoto@icloud.com', 
+      url: 'mailto:azzotto@icloud.com', 
       icon: 'fas fa-envelope',
       svg: ''
     }
@@ -342,7 +342,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       type: 'email',
       label: 'Email',
-      value: 'azzoto@icloud.com',
+      value: 'azzotto@icloud.com',
       action: 'Enviar email',
       icon: 'fas fa-envelope',
       color: '#EA4335',

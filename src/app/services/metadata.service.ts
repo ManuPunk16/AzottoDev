@@ -151,7 +151,7 @@ export class MetadataService {
         "name": "Freelance"
       },
       "knowsAbout": ["Angular", "TypeScript", "JavaScript", "Node.js", "Tailwind CSS", "Firebase", "Vercel"],
-      "email": "azzoto@icloud.com"
+      "email": "azzotto@icloud.com"
     };
 
     const script = this.document.createElement('script');

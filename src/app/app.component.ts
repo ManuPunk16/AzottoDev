@@ -83,7 +83,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { name: 'GitHub', url: 'https://github.com/ManuPunk16', icon: 'github' },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/azotodev/', icon: 'linkedin' },
     { name: 'X (Twitter)', url: 'https://x.com/azotodev', icon: 'twitter' },
-    { name: 'Email', url: 'mailto:azzoto@icloud.com', icon: 'email' },
+    { name: 'Email', url: 'mailto:azzotto@icloud.com', icon: 'email' },
   ] as const;
 
   readonly quickLinks: readonly QuickLink[] = [
@@ -106,7 +106,7 @@ export class AppComponent implements OnInit, OnDestroy {
     version: '2.1.0',
     angularVersion: '20.1',
     author: 'Luis Hernández (AzotoDev)',
-    email: 'azzoto@icloud.com',
+    email: 'azzotto@icloud.com',
     github: 'https://github.com/ManuPunk16',
     twitter: 'https://x.com/azotodev',
     linkedin: 'https://www.linkedin.com/in/azotodev/',
