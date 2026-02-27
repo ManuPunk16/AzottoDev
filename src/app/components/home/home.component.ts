@@ -1,4 +1,4 @@
-import { NgClass, DatePipe, CommonModule } from '@angular/common';
+import { NgClass, DatePipe } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren, OnDestroy, ViewChild, Inject, PLATFORM_ID, inject, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
@@ -89,10 +89,9 @@ interface PersonalInterest {
   selector: 'app-home',
   standalone: true,
   imports: [
-    CommonModule,
     RouterLink,
     CvViewerComponent
-  ],
+],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

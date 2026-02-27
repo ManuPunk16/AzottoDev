@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 import { BreadcrumbService, Breadcrumb } from '../../services/breadcrumb.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -7,7 +7,7 @@ import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-breadcrumb',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   template: `
     <nav class="breadcrumb-nav">
       <div class="container mx-auto px-4">

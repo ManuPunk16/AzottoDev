@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild, inject, TemplateRef, ViewContainerRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { Overlay, OverlayRef, OverlayModule } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
@@ -24,7 +24,7 @@ interface CVAnalytics {
 
 @Component({
   selector: 'app-cv-viewer',
-  imports: [CommonModule, OverlayModule],
+  imports: [OverlayModule],
   animations: [
     trigger('dropdownAnimation', [
       state('closed', style({
