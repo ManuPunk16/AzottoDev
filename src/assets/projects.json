@@ -1,17 +1,30 @@
 [
   {
     "id": "azotodev",
-    "title": "AzotoDev Portfolio",
-    "description": "Portafolio personal y blog técnico desarrollado con Angular y Tailwind CSS.",
+    "title": "AzotoDev Portafolio",
+    "description": "Portfolio personal y blog técnico que combina confianza técnica con humor dev. Performance 95+, SEO 100/100 y PWA completa.",
     "imageUrl": "./assets/images/projects/azotodev/home-white-theme.webp",
-    "technologies": ["Angular 20", "TypeScript", "Tailwind CSS", "Firebase"],
+    "technologies": ["Angular 21", "TypeScript", "Tailwind CSS 4.x", "Vercel"],
     "category": "Web",
     "status": "completed",
     "privacy": "public",
     "featured": true,
     "date": "2024-12-26",
-    "demoUrl": "https://azotodev.web.app",
+    "demoUrl": "https://azotodev.com",
     "repoUrl": "https://github.com/ManuPunk16/AzottoDev"
+  },
+  {
+    "id": "venta-simple",
+    "title": "VentaSimple — Micro-POS SaaS",
+    "description": "Plataforma SaaS de punto de venta multi-sucursal para micro-emprendedores. Flujo de venta en 2 taps, gestión de inventario y reportes en tiempo real.",
+    "imageUrl": "./assets/images/projects/venta-simple-main.webp",
+    "technologies": ["Angular 21", "Node.js", "MongoDB", "Vercel", "Firebase Auth"],
+    "category": "Fullstack",
+    "status": "in-progress",
+    "privacy": "public",
+    "featured": true,
+    "date": "2025-04-10",
+    "demoUrl": "https://miventasimple.com/"
   },
   {
     "id": "control-inventario",
@@ -42,7 +55,7 @@
     "title": "Sistema de Tickets de Soporte",
     "description": "Plataforma de gestión de incidencias con priorización automática y SLA tracking.",
     "imageUrl": "./assets/images/projects/tickets-main.webp",
-    "technologies": ["Angular 20", "Firebase"],
+    "technologies": ["Angular 21", "Node.js", "MongoDB"],
     "category": "Web",
     "status": "maintenance",
     "privacy": "internal",

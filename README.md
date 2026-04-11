@@ -1,33 +1,40 @@
-# 🌟 AzotoDev - Portfolio Personal
+# 🌟 AzottoDev — Portfolio Personal de Luis Hernández
 
-> Portfolio profesional de Luis Hernández (AzotoDev) desarrollado con Angular 20, TypeScript y Tailwind CSS
+> Vitrina técnica, generador de confianza y máquina de leads. Desarrollado con Angular 21, TypeScript y Tailwind CSS 4.x, desplegado en Vercel.
 
 [![Demo Live](https://img.shields.io/badge/Demo-azotodev.com-success)](https://azotodev.com)
-[![Angular](https://img.shields.io/badge/Angular-20.1-red)](https://angular.io)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue)](https://www.typescriptlang.org)
+[![Angular](https://img.shields.io/badge/Angular-21.x-red)](https://angular.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.x-38BDF8)](https://tailwindcss.com)
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://vercel.com)
 
 ## 🎨 Características
 
-- ⚡ **Angular 20** con Standalone Components
-- 🎭 **Tema dual** (claro/oscuro) con persistencia
-- 📱 **100% Responsive** con Tailwind CSS 4.0
-- 🔍 **SEO Optimizado** con meta tags dinámicos y Schema.org
-- 📊 **Performance** 95+ en Lighthouse
-- 🖼️ **Galería de proyectos** con modal interactivo
-- 📚 **Blog técnico** con Markdown y syntax highlighting
-- 🎯 **TypeScript** estricto
-- 🚀 **PWA** completa con Service Worker
-- 🌐 **Dominio personalizado** en Vercel
+- ⚡ **Angular 21** — Standalone Components, Signals, `@if/@for/@switch`, `inject()`
+- 🎭 **Tema dual** (claro/oscuro) con persistencia en `localStorage`
+- 📱 **100% Mobile-First** con Tailwind CSS 4.x y CSS Variables
+- 🔍 **SEO 100/100** — meta tags dinámicos, Schema.org, Open Graph, Twitter Cards
+- 📊 **Performance 95+** en Lighthouse + Core Web Vitals verdes
+- 🖼️ **Galería de proyectos** con detalle individual por ruta
+- 📚 **Blog técnico** con artículos en Markdown y syntax highlighting (Prism.js)
+- 🎯 **TypeScript strict** sin `any`
+- 🚀 **PWA** completa con Angular Service Worker
+- 📈 **Analytics** con Vercel Analytics (sin Firebase)
+- ♿ **Accesibilidad WCAG 2.1 AA**
 
 ## 🛠️ Stack Tecnológico
 
-- **Frontend**: Angular 20.1, TypeScript 5.8, Tailwind CSS 4.0
-- **Hosting**: Vercel con dominio personalizado
-- **Build**: Angular CLI + esbuild
-- **Styling**: SCSS + CSS Variables para temas
-- **Analytics**: Vercel Analytics
-- **PWA**: Angular Service Worker
+| Capa | Tecnología |
+|------|-----------|
+| Framework | Angular 21.x (Standalone, Signals) |
+| Lenguaje | TypeScript 5.9 (strict) |
+| Estilos | Tailwind CSS 4.x + CSS Variables |
+| Hosting | Vercel (Static + Edge Network) |
+| Analytics | Vercel Analytics |
+| Contenido | Markdown + gray-matter + ngx-markdown |
+| Syntax highlighting | Prism.js |
+| Build | Angular CLI + esbuild |
+| PWA | Angular Service Worker |
 
 ## 🚀 Demo Live
 
@@ -38,128 +45,157 @@
 ```
 src/
 ├── app/
-│   ├── components/     # Componentes standalone
-│   ├── services/       # Servicios (metadata, sitemap, theme)
-│   ├── models/         # Interfaces TypeScript
-│   └── app.routes.ts   # Configuración de rutas
+│   ├── components/           # Standalone components (lazy loaded)
+│   │   ├── home/             # Hero, terminal widget, stats
+│   │   ├── projects/         # Galería de proyectos
+│   │   ├── project-detail/   # Detalle por ID
+│   │   ├── article-list/     # Índice del blog
+│   │   ├── article/          # Artículo individual (lee .md)
+│   │   ├── breadcrumb/       # Navegación estructurada
+│   │   ├── cv-viewer/        # Visor de CV en PDF
+│   │   └── error/            # 404
+│   ├── services/
+│   │   ├── metadata.service.ts   # SEO: meta, OG, Twitter, Schema.org
+│   │   ├── theme.service.ts      # Dark/light mode
+│   │   └── breadcrumb.service.ts
+│   └── models/
+│       └── project.model.ts
 ├── assets/
-│   ├── projects.json   # Datos de proyectos
-│   ├── articles.json   # Datos de artículos
-│   ├── projects/       # JSONs individuales para SEO
-│   ├── articles/       # Contenido Markdown
-│   └── images/         # Imágenes optimizadas WebP
+│   ├── articles.json         # Índice de artículos (solo metadatos)
+│   ├── projects.json         # Datos de proyectos
+│   ├── articles/             # Artículos en .md con frontmatter
+│   └── images/               # WebP optimizadas (1200x630 para OG)
 ├── public/
-│   ├── sitemap.xml     # Generado automáticamente
-│   ├── robots.txt      # Optimizado para SEO
+│   ├── sitemap.xml           # Generado automáticamente
+│   ├── robots.txt
 │   └── manifest.webmanifest
-└── styles.scss         # Sistema de temas CSS
+└── styles.scss               # @use "tailwindcss" + CSS variables de tema
 ```
 
 ## 💻 Desarrollo Local
 
 ```bash
 # Clonar e instalar
-git clone https://github.com/ManuPunk16/azotodev-portfolio.git
-cd azotodev-portfolio
+git clone https://github.com/ManuPunk16/AzottoDev.git
+cd AzottoDev
 npm install
 
 # Desarrollo
-npm start  # Puerto 4400
+npm start           # ng serve
 
 # Generar sitemap
 npm run generate:sitemap
 
 # Build de producción
-npm run build
+npm run build       # genera sitemap + build optimizado
 
 # Deploy a Vercel
 npm run deploy:vercel
 ```
 
-## 🎯 Características Técnicas Destacadas
+## 🎯 Características Técnicas
 
-### SEO Optimizado
-- ✅ Meta tags dinámicos por página
-- ✅ Sitemap XML automático
-- ✅ Robots.txt optimizado
-- ✅ Schema.org JSON-LD
-- ✅ Open Graph completo
-- ✅ Twitter Cards
-- ✅ Canonical URLs
-- ✅ Breadcrumbs estructurados
+### Angular 21 Moderno
 
-### Sistema de Temas Dinámico
-```scss
-:root {
-  --primary-500: #8B5CF6;
-  --background-primary: #FFFFFF;
-}
+```typescript
+// Signals + inject() + OnPush — el estándar del proyecto
+@Component({
+  selector: 'app-projects',
+  templateUrl: './projects.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProjectsComponent {
+  private readonly http = inject(HttpClient);
 
-[data-theme="dark"] {
-  --primary-500: #A855F7; 
-  --background-primary: #1F2937;
+  protected readonly loading = signal(true);
+  protected readonly projects = signal<Project[]>([]);
+  protected readonly featured = computed(() =>
+    this.projects().filter(p => p.featured)
+  );
 }
 ```
 
-### Componentes Standalone (Angular 20)
-```typescript
-@Component({
-  selector: 'app-projects',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  // ...
-})
+### Sistema de Artículos en Markdown
+
+```markdown
+---
+slug: "angular-signals-tutorial"
+title: "Angular Signals: el fin de Zone.js (y cómo sobrevivirlo)"
+description: "Aprende Signals desde cero en Angular 21."
+date: "2026-04-10"
+author: "Luis Hernández"
+category: "Frontend"
+tags: ["Angular", "Signals", "TypeScript"]
+image: "/assets/images/articles/angular-signals.webp"
+readTime: 8
+featured: true
+---
+
+# Contenido del artículo aquí...
+```
+
+### SEO y Schema.org
+
+- Meta tags dinámicos por ruta con `MetadataService`
+- Schema.org `Person` en Home, `BlogPosting` en artículos
+- Sitemap XML generado automáticamente con `npm run generate:sitemap`
+- Canonical URLs correctas en todas las páginas
+- OG Images 1200x630 WebP por artículo
+
+### Tailwind CSS 4.x + CSS Variables
+
+```scss
+/* styles.scss */
+@use "tailwindcss";
+
+:root {
+  --accent: #8B5CF6;
+  --bg-primary: #e7e7e7;
+  --text-primary: #111827;
+}
+
+[data-theme="dark"] {
+  --accent: #A855F7;
+  --bg-primary: #111827;
+  --text-primary: #F9FAFB;
+}
 ```
 
 ## 📈 Performance & SEO
 
-- **Lighthouse Score**: 95+
-- **First Contentful Paint**: < 1.2s
-- **Largest Contentful Paint**: < 2.5s
-- **Cumulative Layout Shift**: < 0.1
-- **Core Web Vitals**: ✅ Todas verdes
-- **SEO Score**: 100/100
+| Métrica | Objetivo |
+|---------|---------|
+| Lighthouse Performance | > 95 |
+| SEO Score | 100/100 |
+| First Contentful Paint | < 1.2s |
+| Largest Contentful Paint | < 2.5s |
+| Cumulative Layout Shift | < 0.1 |
+| Core Web Vitals | ✅ Todas verdes |
 
-## 🔧 Scripts Disponibles
+## 🔧 Scripts
 
-```json
-{
-  "start": "ng serve --port 4400 --open",
-  "build": "npm run generate:sitemap && ng build --configuration production",
-  "generate:sitemap": "node scripts/generate-sitemap.js",
-  "deploy:vercel": "vercel --prod"
-}
+```bash
+npm start                   # Servidor de desarrollo
+npm run build               # Build producción (genera sitemap)
+npm run generate:sitemap    # Genera sitemap.xml
+npm run deploy:vercel       # Deploy a producción
+npm test                    # Tests unitarios
 ```
 
-## 🌟 Funcionalidades
+## 🤖 Sistema de Agentes (`.claude/`)
 
-### 🏠 Página Principal
-- Hero section con animaciones
-- Resumen de proyectos destacados
-- Enlaces a redes sociales
-- CTA para contacto
+El proyecto usa un sistema de agentes AI especializados para mantener consistencia:
 
-### 📁 Proyectos
-- Galería interactiva
-- Filtros por tecnología
-- Modal con detalles completos
-- Enlaces a GitHub y demos
-
-### 📝 Blog Técnico
-- Artículos en Markdown
-- Syntax highlighting con Prism.js
-- Sistema de tags
-- Compartir en redes sociales
-
-### 🎨 Diseño
-- Tema claro/oscuro
-- Animaciones suaves
-- Responsive design
-- Tipografía optimizada
+| Agente | Archivo | Dominio |
+|--------|---------|---------|
+| 🏗️ Senior Full Stack Dev | `agent_architect.md` | Angular, TypeScript, arquitectura |
+| 📈 SEO & Growth Manager | `agent_seo_content.md` | SEO, AEO, keywords, Schema.org |
+| ✍️ Marketing & Copywriter | `agent_marketing_copy.md` | Copy, tono de marca, microtextos |
+| 🎨 UX/UI Strategist | `agent_ui_ux.md` | Tailwind, WCAG, Mobile-First |
 
 ## 👨‍💻 Autor
 
-**Luis Hernández (AzotoDev)** - Desarrollador Full Stack
+**Luis Hernández (AzotoDev)** — Desarrollador Full Stack
 
 - 🌐 Portfolio: [azotodev.com](https://azotodev.com)
 - 💼 LinkedIn: [linkedin.com/in/azotodev](https://www.linkedin.com/in/azotodev/)
@@ -169,10 +205,8 @@ npm run deploy:vercel
 
 ## 📄 Licencia
 
-Este proyecto está bajo la licencia MIT. Ver el archivo `LICENSE` para más detalles.
+MIT — ver `LICENSE` para más detalles.
 
 ---
 
-⭐ **¿Te gusta el proyecto? ¡Dale una estrella en GitHub!**
-
-*Desarrollado con ❤️ usando Angular 20 y desplegado en Vercel*
+*Construido con Angular 21, desplegado en Vercel. Performance 95+, SEO 100/100, sin excusas.*

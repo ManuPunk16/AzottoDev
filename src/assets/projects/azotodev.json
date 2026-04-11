@@ -1,8 +1,8 @@
 {
   "id": "azotodev",
   "title": "AzotoDev Portfolio",
-  "description": "Portafolio personal y blog técnico desarrollado con Angular y Tailwind CSS.",
-  "longDescription": "Portfolio personal diseñado para exhibir proyectos profesionales y compartir conocimientos técnicos a través de un blog integrado. Desarrollado utilizando Angular 19 con arquitectura basada en componentes standalone para mejorar la eficiencia y mantenibilidad. Implementa un sistema de temas claro/oscuro personalizable que respeta las preferencias del usuario.",
+  "description": "Portafolio personal y blog técnico que combina confianza técnica con humor dev. Performance 95+, SEO 100/100 y PWA completa.",
+  "longDescription": "Portfolio personal diseñado como vitrina técnica y generador de leads. Desarrollado con Angular 21, signals, componentes standalone y Tailwind CSS 4.x. Implementa SEO 100/100, Schema.org, PWA completa, sistema de temas claro/oscuro y un blog técnico con artículos en Markdown. Desplegado en Vercel con Edge Network para máximo rendimiento global.",
   "imageUrl": "./assets/images/projects/azotodev/home-white-theme.webp",
   "gallery": [
       {
@@ -27,7 +27,7 @@
         "caption": "Diseño responsive en dispositivos móviles modo claro"
       }
     ],
-  "technologies": ["Angular 19", "TypeScript", "Tailwind CSS", "Firebase", "SCSS"],
+  "technologies": ["Angular 21", "TypeScript", "Tailwind CSS 4.x", "Vercel", "SCSS"],
   "features": [
     "Sistema de temas claro/oscuro dinámico",
     "Diseño responsive y accesible",
@@ -44,7 +44,7 @@
   "featured": true,
   "date": "2024-12-26",
   "lastUpdated": "2025-01-31",
-  "demoUrl": "https://azotodev.web.app",
+  "demoUrl": "https://azotodev.com",
   "repoUrl": "https://github.com/ManuPunk16/AzottoDev",
   "team": {
     "size": 1,

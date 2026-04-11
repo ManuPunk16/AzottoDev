@@ -1,0 +1,63 @@
+{
+  "id": "venta-simple",
+  "title": "VentaSimple — Micro-POS SaaS",
+  "description": "Plataforma SaaS de punto de venta multi-sucursal para micro-emprendedores.",
+  "longDescription": "VentaSimple es un Micro-POS SaaS Mobile-First diseñado para micro-emprendedores y negocios con 2-5 sucursales. Resuelve el problema real de los pequeños negocios que necesitan un sistema de ventas rápido, accesible y económico. El flujo principal está optimizado para cerrar una venta en 2 taps desde cualquier dispositivo. Incluye gestión multi-sucursal, corte de caja, reportes de ventas, transferencias de inventario y un sistema de planes escalable.",
+  "imageUrl": "./assets/images/projects/venta-simple-main.webp",
+  "gallery": [],
+  "technologies": ["Angular 21", "TypeScript", "Tailwind CSS 4.x", "Node.js", "MongoDB", "Vercel", "Firebase Auth"],
+  "features": [
+    "POS con flujo de venta en 2 taps",
+    "Multi-sucursal (hasta 15 sucursales)",
+    "Corte de caja con apertura y cierre de turno",
+    "Gestión de inventario por sucursal",
+    "Transferencias de inventario entre sucursales",
+    "Reportes: ventas hoy / semana / mes",
+    "Tickets digitales: imprimir / PNG / portapapeles",
+    "Sistema de planes SaaS escalable",
+    "Pago mixto: efectivo + tarjeta/transferencia",
+    "Auditoría de actividad",
+    "Alertas de stock bajo por email",
+    "Exportación CSV",
+    "Arquitectura multi-tenant segura"
+  ],
+  "category": "Fullstack",
+  "status": "in-progress",
+  "privacy": "public",
+  "featured": true,
+  "date": "2025-01-15",
+  "lastUpdated": "2026-04-10",
+  "demoUrl": "https://miventasimple.com",
+  "team": {
+    "size": 1,
+    "role": "Full Stack Developer & Product Designer",
+    "duration": "En desarrollo activo"
+  },
+  "metrics": {
+    "performance": "Mobile-First",
+    "architecture": "Multi-tenant SaaS",
+    "plans": "4 planes (Gratis → Negocio $159 MXN/mes)"
+  },
+  "results": [
+    "Venta completada en menos de 10 segundos",
+    "Soporte para hasta 15 sucursales simultáneas",
+    "Aislamiento total por tenant (seguridad multi-tenant)",
+    "100% serverless en Vercel Free Tier"
+  ],
+  "challenges": [
+    "Arquitectura multi-tenant con aislamiento completo por tenantId",
+    "UX Mobile-First para cajeros en contextos de alta velocidad",
+    "Sistema de planes con validación fail-closed en backend",
+    "Rate limiting y seguridad en Vercel Serverless Functions"
+  ],
+  "learnings": [
+    "Diseño de SaaS multi-tenant escalable con MongoDB",
+    "Optimización de Vercel Free Tier para APIs serverless",
+    "Firebase Auth como capa de identidad sin base de datos propia de usuarios",
+    "Angular 21 Signals para estado reactivo en POS de alta frecuencia"
+  ],
+  "hasScreenshots": false,
+  "isResponsive": true,
+  "hasDocumentation": true,
+  "tags": ["SaaS", "POS", "Multi-tenant", "Mobile-First", "Serverless"]
+}
