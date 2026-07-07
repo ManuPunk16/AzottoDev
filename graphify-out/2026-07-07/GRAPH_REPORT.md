@@ -1,16 +1,16 @@
-# Graph Report - AzottoDev  (2026-07-07)
+# Graph Report - AzottoDev  (2026-07-06)
 
 ## Corpus Check
-- 62 files · ~123,440 words
+- 64 files · ~92,257 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 658 nodes · 707 edges · 51 communities (30 shown, 21 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.89)
+- 672 nodes · 742 edges · 54 communities (29 shown, 25 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.89)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c71d100a`
+- Built from commit: `b00070c0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -62,21 +62,24 @@
 - [[_COMMUNITY_Community 44|Community 44]]
 - [[_COMMUNITY_Community 45|Community 45]]
 - [[_COMMUNITY_Community 46|Community 46]]
+- [[_COMMUNITY_Community 47|Community 47]]
+- [[_COMMUNITY_Community 48|Community 48]]
 - [[_COMMUNITY_Community 49|Community 49]]
+- [[_COMMUNITY_Community 50|Community 50]]
 - [[_COMMUNITY_Community 51|Community 51]]
 - [[_COMMUNITY_Community 52|Community 52]]
 - [[_COMMUNITY_Community 53|Community 53]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `MetadataService` - 31 edges
-2. `ProjectDetailComponent` - 23 edges
-3. `ArticleComponent` - 21 edges
-4. `MetaService` - 21 edges
-5. `HomeComponent` - 19 edges
+2. `HomeComponent` - 24 edges
+3. `ProjectDetailComponent` - 23 edges
+4. `ArticleComponent` - 21 edges
+5. `MetaService` - 21 edges
 6. `output` - 18 edges
-7. `ProjectsComponent` - 17 edges
-8. `AzottoDev — Style Reference` - 17 edges
-9. `AppComponent` - 16 edges
+7. `AzottoDev — Style Reference` - 17 edges
+8. `CvViewerComponent` - 16 edges
+9. `ProjectsComponent` - 16 edges
 10. `BreadcrumbService` - 16 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -99,19 +102,19 @@
 - **Fullstack Portfolio Projects** — projects_control_inventario, projects_gestion_documental, projects_venta_simple [INFERRED 0.85]
 - **WCAG Conformance Levels Hierarchy** — articles_wcag_levels_wcag_level_a, articles_wcag_levels_wcag_level_aa, articles_wcag_levels_wcag_level_aaa [EXTRACTED 1.00]
 
-## Communities (51 total, 21 thin omitted)
+## Communities (54 total, 25 thin omitted)
 
 ### Community 0 - "Core Components & Meta Services"
 Cohesion: 0.06
 Nodes (6): Project, ProjectImage, ProjectMetrics, ProjectTeam, ProjectDetailComponent, ProjectsComponent
 
 ### Community 1 - "Project Registry & Theme Management"
-Cohesion: 0.33
-Nodes (6): Projects Registry, AzottoDev Portfolio, Sistema de Control de Inventario, Plataforma de Gestión Documental, Sistema de Tickets de Soporte, VentaSimple — Micro-POS SaaS
+Cohesion: 0.16
+Nodes (7): Projects Registry, AzottoDev Portfolio, Sistema de Control de Inventario, Plataforma de Gestión Documental, Sistema de Tickets de Soporte, VentaSimple — Micro-POS SaaS, ThemeService
 
 ### Community 2 - "AI Agent Roles & Roadmap"
-Cohesion: 0.08
-Nodes (26): 🚀 ROADMAP POR SPRINTS, 🔴 SPRINT 0 — Hotfix (COMPLETADO HOY), 🟠 SPRINT 1 — Modernización Angular 21 + Artículos MD, 🟡 SPRINT 2 — Nuevo Proyecto VentaSimple + Imagen, 🟢 SPRINT 3 — SEO 100/100 + AEO, 🔵 SPRINT 4 — UX/Performance + PWA, ⚪ SPRINT 5 — Contacto + CV + Growth, Tarea 1.1 — Migrar `article.component.ts` a leer `.md` (+18 more)
+Cohesion: 0.05
+Nodes (42): Senior Full Stack Dev Agent, Copywriter & Marketing Strategist Agent, Growth Product Manager & SEO Manager Agent, UX/UI Strategist & Product Designer Agent, Principal Engineer Orchestrator, Artículos — estado de migración, 🔴 BUGS CRÍTICOS (corregidos en esta sesión), Componentes y su estado actual (+34 more)
 
 ### Community 3 - "Routing, Bootstrap & Navigation"
 Cohesion: 0.08
@@ -166,8 +169,8 @@ Cohesion: 0.05
 Nodes (36): includeDiffs, includeLogs, includeLogsCount, sortByChanges, sortByChangesMaxCommits, ignore, customPatterns, useDefaultPatterns (+28 more)
 
 ### Community 35 - "Metadata Config"
-Cohesion: 0.12
-Nodes (16): Senior Full Stack Dev Agent, Copywriter & Marketing Strategist Agent, Growth Product Manager & SEO Manager Agent, UX/UI Strategist & Product Designer Agent, Principal Engineer Orchestrator, Artículos — estado de migración, 🔴 BUGS CRÍTICOS (corregidos en esta sesión), Componentes y su estado actual (+8 more)
+Cohesion: 0.29
+Nodes (3): Article, ArticleListComponent, MetaConfig
 
 ### Community 36 - "SEO Meta Tags Config"
 Cohesion: 0.06
@@ -178,8 +181,8 @@ Cohesion: 0.06
 Nodes (31): AEO (Answer Engine Optimization) — Para IA y LLMs, 📈 Agente SEO & Growth — Growth Product Manager & SEO Manager, Arquitectura de Contenido, Artículos — Article + BlogPosting, Checklist AEO por Artículo, Checklist SEO por Página, Contexto del Mercado, Core Web Vitals — Objetivos (+23 more)
 
 ### Community 39 - "Community 39"
-Cohesion: 0.12
-Nodes (15): name, private, scripts, build, build:vercel, deploy:vercel, generate:sitemap, ng (+7 more)
+Cohesion: 0.07
+Nodes (29): devDependencies, @angular/build, @angular/cli, @angular/compiler-cli, jasmine-core, karma, karma-chrome-launcher, karma-coverage (+21 more)
 
 ### Community 40 - "Community 40"
 Cohesion: 0.10
@@ -193,21 +196,17 @@ Nodes (18): ✍️ Agente Marketing & Copywriter, Bio estándar (para LinkedIn, 
 Cohesion: 0.12
 Nodes (16): Angular 21 Moderno, 👨‍💻 Autor, 🌟 AzottoDev — Portfolio Personal de Luis Hernández, 🎨 Características, 🎯 Características Técnicas, 🚀 Demo Live, 💻 Desarrollo Local, 📁 Estructura del Proyecto (+8 more)
 
-### Community 43 - "Community 43"
-Cohesion: 0.05
-Nodes (16): Article, ArticleListComponent, Achievement, ContactMethod, Experience, HomeComponent, Particle, PersonalInterest (+8 more)
-
 ### Community 44 - "Community 44"
 Cohesion: 0.13
 Nodes (14): Archivo CSS (.css), Archivo HTML (.html), Archivo TypeScript (.ts), Componentes, Ejemplo de Componente Moderno con Signals, Estructura de Archivos, Gestión de Estado, Mejores Prácticas de Angular (+6 more)
 
-### Community 45 - "Community 45"
-Cohesion: 0.17
-Nodes (11): 1. `projects/gov/` (Gubernamental), 2. `projects/saas/` (SaaS / Comercial), 3. `projects/fintech/` (FinTech), 4. `projects/edu/` (E-Learning / Educación), 5. `projects/logos/` (Logos de Proyectos), 🏛️ Categorización por Nicho y Contenido, ✏️ Convención de Nombres (Kebab-Case), 📁 Estructura de Directorios (+3 more)
-
 ### Community 46 - "Community 46"
-Cohesion: 0.07
-Nodes (28): prefix, projectType, root, schematics, sourceRoot, cli, analytics, newProjectRoot (+20 more)
+Cohesion: 0.15
+Nodes (12): prefix, projectType, root, schematics, sourceRoot, newProjectRoot, projects, azottodev (+4 more)
+
+### Community 47 - "Community 47"
+Cohesion: 0.15
+Nodes (11): Achievement, ContactMethod, Experience, Particle, PersonalInterest, ProfessionalValue, QuickLink, Skill (+3 more)
 
 ### Community 49 - "Community 49"
 Cohesion: 0.20
@@ -222,24 +221,24 @@ Cohesion: 0.50
 Nodes (3): builds, routes, version
 
 ## Knowledge Gaps
-- **371 isolated node(s):** `$schema`, `version`, `newProjectRoot`, `projectType`, `style` (+366 more)
+- **364 isolated node(s):** `$schema`, `version`, `newProjectRoot`, `projectType`, `style` (+359 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **21 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **25 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `MetadataService` connect `SEO Meta Tags Config` to `Core Components & Meta Services`, `Community 43`, `Routing, Bootstrap & Navigation`?**
-  _High betweenness centrality (0.042) - this node is a cross-community bridge._
-- **Why does `MetaService` connect `Community 43` to `Core Components & Meta Services`, `SEO Meta Tags Config`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
-- **Why does `ProjectDetailComponent` connect `Core Components & Meta Services` to `Community 43`, `SEO Meta Tags Config`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+- **Why does `MetadataService` connect `SEO Meta Tags Config` to `Core Components & Meta Services`, `Community 48`, `Routing, Bootstrap & Navigation`?**
+  _High betweenness centrality (0.056) - this node is a cross-community bridge._
+- **Why does `MetaService` connect `Community 48` to `Core Components & Meta Services`, `Metadata Config`, `SEO Meta Tags Config`, `Community 43`, `Community 47`?**
+  _High betweenness centrality (0.043) - this node is a cross-community bridge._
+- **Why does `HomeComponent` connect `Community 43` to `Community 48`, `Community 50`, `Community 45`, `Community 47`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `$schema`, `version`, `newProjectRoot` to the rest of the system?**
-  _372 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _365 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Core Components & Meta Services` be split into smaller, more focused modules?**
-  _Cohesion score 0.06039488966318235 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06219512195121951 - nodes in this community are weakly interconnected._
 - **Should `AI Agent Roles & Roadmap` be split into smaller, more focused modules?**
-  _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.046511627906976744 - nodes in this community are weakly interconnected._
 - **Should `Routing, Bootstrap & Navigation` be split into smaller, more focused modules?**
-  _Cohesion score 0.08170731707317073 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08461538461538462 - nodes in this community are weakly interconnected._

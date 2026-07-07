@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, Router, NavigationEnd } from '@angular/router';
-import { NgOptimizedImage } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
 import {
@@ -11,7 +10,6 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { ThemeService } from './services/theme.service';
 import { MetadataService } from './services/metadata.service';
 import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.component";
 import { filter } from 'rxjs/operators';
@@ -38,7 +36,6 @@ interface Stat {
   imports: [
     RouterOutlet,
     RouterLink,
-    NgOptimizedImage,
     MarkdownModule,
     DatePipe,
     CommonModule,
@@ -69,14 +66,21 @@ interface Stat {
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, OnDestroy {
-  readonly themeService = inject(ThemeService);
   private readonly router = inject(Router);
   private readonly metadataService = inject(MetadataService);
   
   private routerSubscription?: Subscription;
 
-  // Estado del menú móvil
-  isMobileMenuOpen = false;
+  // Estado del scroll y menú móvil
+  isScrolled: boolean = false;
+  isMobileMenuOpen: boolean = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    if (typeof window !== 'undefined') {
+      this.isScrolled = window.scrollY > 20;
+    }
+  }
 
   // Enlaces sociales actualizados
   readonly socialLinks: readonly SocialLink[] = [

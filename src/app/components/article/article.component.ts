@@ -126,10 +126,20 @@ export class ArticleComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: (data) => {
         if (data.metadata) {
-          // console.log(data.metadata);
+          let localViews = 0;
+          if (this.isBrowser) {
+            const viewsKey = `views_${slug}`;
+            const currentViews = parseInt(localStorage.getItem(viewsKey) || '150', 10);
+            localViews = currentViews + 1;
+            localStorage.setItem(viewsKey, localViews.toString());
+          } else {
+            localViews = 150;
+          }
+
           const articleForSEO = {
             ...data.metadata,
-            slug: slug
+            slug: slug,
+            views: localViews
           };
           
           this.article = {

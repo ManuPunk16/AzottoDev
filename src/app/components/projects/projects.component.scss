@@ -1,252 +1,29 @@
-/* Usar variables CSS del styles.scss */
 :host {
-  /* Clamp para limitar líneas de texto */
-  .line-clamp-1 {
-    display: -webkit-box;
-    line-clamp: 1;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  /* FadeIn animation for the progressive disclosure technical panel */
+  .animate-fadeIn {
+    animation: fadeIn 0.25s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   }
 
-  .line-clamp-2 {
-    display: -webkit-box;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    line-clamp: 3;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* Animaciones para cards usando variables CSS */
-  article.project-card {
-    background-color: var(--background-primary);
-    border-color: var(--secondary-300);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    &:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-500);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-
-      .project-title {
-        color: var(--accent-600);
-      }
-    }
-
-    /* Efecto de brillo en hover usando variables */
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
+  @keyframes fadeIn {
+    from {
       opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-      border-radius: inherit;
+      transform: translateY(-8px);
     }
-
-    &:hover::before {
+    to {
       opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  /* Badges usando paleta personalizada */
-  .status-badge {
-    &.completed {
-      background-color: var(--category-frontend-bg);
-      color: var(--category-frontend-text);
-    }
-
-    &.in-progress {
-      background-color: var(--category-web-bg);
-      color: var(--category-web-text);
-    }
-
-    &.planned {
-      background-color: var(--category-backend-bg);
-      color: var(--category-backend-text);
-    }
+  .project-title {
+    color: #ffffff !important;
   }
 
-  .privacy-badge {
-    &.public {
-      background-color: var(--category-devops-bg);
-      color: var(--category-devops-text);
-    }
-
-    &.private {
-      background-color: var(--category-design-bg);
-      color: var(--category-design-text);
-    }
-
-    &.internal {
-      background-color: var(--category-fullstack-bg);
-      color: var(--category-fullstack-text);
-    }
-  }
-
-  /* Tech tags usando variables */
-  .tech-tag {
-    background-color: var(--tag-bg);
-    color: var(--tag-text);
-    transition: all 0.2s ease;
-
-    &:hover {
-      background-color: var(--tag-bg-hover);
-      color: var(--tag-text-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-  }
-
-  /* Mejoras para placeholders usando gradientes personalizados */
-  .loading-placeholder {
-    animation: shimmer 1.2s ease-in-out infinite;
-    background: linear-gradient(90deg, 
-      var(--background-primary) 25%, 
-      var(--background-secondary) 50%, 
-      var(--background-primary) 75%);
-    background-size: 400% 100%;
-  }
-
-  @keyframes shimmer {
-    0% {
-      background-position: -468px 0;
-    }
-    100% {
-      background-position: 468px 0;
-    }
-  }
-
-  /* Animación para badges destacados */
-  .featured-badge {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    background: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-600) 100%);
-    color: white;
-    font-weight: 600;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.8;
-    }
-  }
-
-  /* Efectos de hover para imágenes */
-  img {
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Loading spinner usando colores personalizados */
-  .custom-spinner {
-    border-color: var(--secondary-300);
-    border-top-color: var(--accent-500);
-  }
-
-  /* Focus states usando paleta personalizada */
+  /* Custom outline focus overrides */
   button:focus,
   a:focus {
-    outline: 2px solid var(--accent-500);
+    outline: 2px solid var(--color-azoto-blue-solid);
     outline-offset: 2px;
-    border-radius: 0.5rem;
+    border-radius: 8px;
   }
-
-  /* Responsive adjustments */
-  @media (max-width: 640px) {
-    .project-card {
-      margin-bottom: 1rem;
-      
-      &:hover {
-        transform: none; // Disable hover effects on mobile
-      }
-    }
-    
-    .featured-badge {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.5rem;
-    }
-  }
-}
-
-/* SweetAlert2 usando variables personalizadas */
-:host ::ng-deep {
-  .swal2-custom-popup {
-    background-color: var(--background-primary) !important;
-    color: var(--text-primary) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-    border: 1px solid var(--secondary-300) !important;
-  }
-  
-  .swal2-custom-title {
-    color: var(--primary-900) !important;
-    font-size: 1.75rem !important;
-    font-weight: 800 !important;
-    margin-bottom: 1rem !important;
-  }
-  
-  .swal2-custom-html {
-    color: var(--text-primary) !important;
-    margin: 0 !important;
-    padding: 1rem !important;
-    max-height: 70vh !important;
-    overflow-y: auto !important;
-
-    h4 {
-      color: var(--primary-900) !important;
-    }
-    
-    p, span, div {
-      color: var(--text-primary) !important;
-    }
-  }
-
-  /* Scrollbar del modal usando variables */
-  .swal2-custom-html {
-    &::-webkit-scrollbar {
-      width: 6px;
-    }
-    
-    &::-webkit-scrollbar-track {
-      background: var(--secondary-200);
-      border-radius: 3px;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background: var(--accent-500);
-      border-radius: 3px;
-      
-      &:hover {
-        background: var(--accent-600);
-      }
-    }
-  }
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Transiciones globales usando variables CSS */
-* {
-  transition: background-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              border-color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }

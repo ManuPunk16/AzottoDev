@@ -3,7 +3,7 @@
     "id": "azotodev",
     "title": "AzotoDev Portafolio",
     "description": "Portafolio personal y blog técnico que combina confianza técnica con humor dev. Performance 95+, SEO 100/100 y PWA completa.",
-    "imageUrl": "./assets/images/projects/azotodev/home-white-theme.webp",
+    "imageUrl": "./assets/images/projects/saas/azotodev-main.webp",
     "technologies": ["Angular 21", "TypeScript", "Tailwind CSS 4.x", "Vercel"],
     "category": "Web",
     "status": "completed",
@@ -11,55 +11,70 @@
     "featured": true,
     "date": "2024-12-26",
     "demoUrl": "https://azotodev.com",
-    "repoUrl": "https://github.com/ManuPunk16/AzottoDev"
+    "repoUrl": "https://github.com/ManuPunk16/AzottoDev",
+    "role": "Lead Architect",
+    "impact": "Performance 95+, SEO 100/100",
+    "businessProblem": "Marca personal rápida, accesible y libre de fricciones de temas."
   },
   {
     "id": "venta-simple",
     "title": "VentaSimple — Micro-POS SaaS",
     "description": "Plataforma SaaS de punto de venta multi-sucursal para micro-emprendedores. Flujo de venta en 2 taps, gestión de inventario y reportes en tiempo real.",
-    "imageUrl": "./assets/images/projects/venta-simple-main.webp",
+    "imageUrl": "./assets/images/projects/saas/venta-simple-main.webp",
     "technologies": ["Angular 21", "Node.js", "MongoDB", "Vercel", "Firebase Auth"],
     "category": "Fullstack",
     "status": "in-progress",
     "privacy": "public",
     "featured": true,
     "date": "2026-03-31",
-    "demoUrl": "https://miventasimple.com/"
+    "demoUrl": "https://miventasimple.com/",
+    "role": "Tech Lead & Architect",
+    "impact": "Flujo de venta en 2 taps, 99.9% uptime",
+    "businessProblem": "Los micro-comerciantes perdían ventas por sistemas POS lentos y complejos."
   },
   {
     "id": "control-inventario",
     "title": "Sistema de Control de Inventario",
     "description": "Aplicación integral de gestión de inventarios con módulos de reportería y análisis.",
-    "imageUrl": "./assets/images/projects/inventario-main.webp",
+    "imageUrl": "./assets/images/projects/gov/inventario-main.webp",
     "technologies": ["Angular 19", "Node.js", "MongoDB"],
     "category": "Fullstack",
     "status": "completed",
     "privacy": "internal",
     "featured": true,
-    "date": "2024-03-31"
+    "date": "2024-03-31",
+    "role": "Senior Fullstack Developer",
+    "impact": "Redujo diferencias de stock a < 1%",
+    "businessProblem": "Pérdidas económicas por falta de conciliación de inventario manual."
   },
   {
     "id": "gestion-documental",
     "title": "Plataforma de Gestión Documental",
     "description": "Sistema de recepción y procesamiento de documentos con flujos de trabajo automatizados.",
-    "imageUrl": "./assets/images/projects/documental-main.webp",
+    "imageUrl": "./assets/images/projects/gov/documental-main.webp",
     "technologies": ["Angular 19", "Node.js", "MongoDB"],
     "category": "Fullstack",
     "status": "completed",
     "privacy": "internal",
     "featured": true,
-    "date": "2023-01-09"
+    "date": "2023-01-09",
+    "role": "Senior Developer",
+    "impact": "Automatizó firmas digitales en 3 oficinas",
+    "businessProblem": "Recepción y firmas de documentos físicos demoraban hasta 10 días hábiles."
   },
   {
     "id": "tickets-soporte",
     "title": "Sistema de Tickets de Soporte",
     "description": "Plataforma de gestión de incidencias con priorización automática y SLA tracking.",
-    "imageUrl": "./assets/images/projects/tickets-main.webp",
+    "imageUrl": "./assets/images/projects/saas/tickets-main.webp",
     "technologies": ["Angular 21", "Node.js", "MongoDB"],
     "category": "Web",
     "status": "maintenance",
     "privacy": "internal",
     "featured": false,
-    "date": "2024-11-15"
+    "date": "2024-11-15",
+    "role": "Fullstack Developer",
+    "impact": "Resolución de tickets en SLA al 95%",
+    "businessProblem": "Retraso en soporte técnico de servidores por falta de visibilidad."
   }
 ]

@@ -1,432 +1,330 @@
-<div class="min-h-screen transition-colors duration-300" style="background: linear-gradient(to bottom right, var(--background-primary), var(--tertiary-200), var(--background-secondary));">
+<div class="min-h-screen bg-[var(--color-canvas-white)] text-[var(--color-ink)] pt-12 pb-24">
   
   <!-- Loading State -->
   @if (loading) {
-    <div class="flex justify-center items-center min-h-screen">
-      <div class="relative">
-        <div class="animate-spin rounded-full h-16 w-16 border-4 border-purple-200 border-t-purple-600"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="animate-pulse text-purple-600">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-        </div>
-      </div>
+    <div class="flex justify-center items-center min-h-[500px]">
+      <div class="w-10 h-10 border-4 border-[var(--color-azoto-blue-solid)] border-t-transparent rounded-full animate-spin"></div>
     </div>
   }
   
   <!-- Error State -->
   @if (error && !loading) {
-    <div class="container mx-auto px-4 py-16 text-center">
-      <div class="max-w-md mx-auto">
-        <div class="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center" 
-             style="background-color: var(--secondary-200);">
-          <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.664-.833-2.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/>
-          </svg>
-        </div>
-        <h1 class="text-3xl font-bold mb-4 transition-colors duration-300" style="color: var(--primary-900);">Proyecto no encontrado</h1>
-        <p class="mb-8 text-lg transition-colors duration-300" style="color: var(--text-secondary);">El proyecto que buscas no existe o ha sido removido.</p>
-        <button 
-          (click)="goBack()"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg font-medium">
-          ← Volver a Proyectos
-        </button>
+    <div class="container mx-auto px-6 py-16 text-center max-w-md">
+      <div class="w-16 h-16 mx-auto mb-6 bg-[var(--color-cream-wash)] rounded-full flex items-center justify-center border border-[rgba(17,17,17,0.08)]">
+        <span class="text-2xl">⚠️</span>
       </div>
+      <h1 class="text-2xl font-bold mb-2">Proyecto no encontrado</h1>
+      <p class="mb-8 text-[var(--color-ash)]">El proyecto solicitado no existe o ha sido retirado.</p>
+      <button (click)="goBack()" class="px-5 py-2.5 bg-[var(--color-ink)] text-white rounded-[8px] font-medium hover:opacity-90 transition-all duration-200 cursor-pointer">
+        ← Volver a Proyectos
+      </button>
     </div>
   }
   
   <!-- Project Content -->
   @if (project && !loading) {
-    <div class="container mx-auto px-4 py-8 max-w-7xl">
+    <div class="container mx-auto px-6 max-w-[1200px]">
 
-      <!-- Header con botón de regreso -->
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-        <div class="flex flex-wrap gap-3">
-          @if (project.demoUrl) {
-            <a [href]="project.demoUrl" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg font-medium">
-              🚀 Ver Demo
-            </a>
-          }
-          @if (project.repoUrl) {
-            <a [href]="project.repoUrl" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg font-medium"
-               style="background-color: var(--background-primary); border-color: var(--secondary-300); color: var(--text-primary);"
-               onmouseover="this.style.backgroundColor='var(--secondary-100)'"
-               onmouseout="this.style.backgroundColor='var(--background-primary)'">
-              📁 Ver Código
-            </a>
-          }
-        </div>
+      <!-- Navigation Header -->
+      <div class="mb-10">
+        <button (click)="goBack()" class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.5px] font-semibold text-[var(--color-ash)] hover:text-[var(--color-ink)] transition-colors cursor-pointer">
+          ← Volver a Proyectos
+        </button>
       </div>
 
-      <!-- Hero Section -->
-      <div class="rounded-3xl shadow-2xl overflow-hidden mb-12 border transition-all duration-300" 
-           style="background-color: var(--background-primary); border-color: var(--secondary-300);">
-        <div class="grid lg:grid-cols-2 gap-0">
+      <!-- Main Project Intro Header -->
+      <header class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 items-center mb-16 pb-16 border-b border-[rgba(17,17,17,0.08)]">
+        <div>
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2.5 mb-6">
+            <span class="px-2.5 py-1 rounded-[6px] text-[10px] uppercase tracking-[0.5px] font-semibold bg-cyan-50 text-cyan-700 border border-cyan-100">
+              {{ getCategoryIcon(project.category) }} {{ project.category }}
+            </span>
+            <span class="px-2.5 py-1 rounded-[6px] text-[10px] uppercase tracking-[0.5px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100">
+              {{ getStatusText(project.status) }}
+            </span>
+            <span class="px-2.5 py-1 rounded-[6px] text-[10px] uppercase tracking-[0.5px] font-semibold bg-[var(--color-pearl)] text-[var(--color-ink)] border border-[rgba(17,17,17,0.08)]">
+              🔒 {{ project.privacy }}
+            </span>
+          </div>
+
+          <!-- Main Title -->
+          <h1 class="text-4xl md:text-5xl font-black uppercase tracking-[-2px] text-[var(--color-ink)] leading-tight mb-6">
+            {{ project.title }}
+          </h1>
+
+          <!-- Role -->
+          <div class="mb-6 flex items-center gap-2">
+            <span class="text-xs text-[var(--color-ash)]">Mi rol en el proyecto:</span>
+            <span class="text-xs font-semibold uppercase tracking-[0.3px] text-[var(--color-ink)]">{{ project.team.role }}</span>
+          </div>
+
+          <!-- Lead Introduction -->
+          <p class="text-lg md:text-xl text-[var(--color-ash)] leading-relaxed font-normal">
+            {{ project.description }}
+          </p>
+        </div>
+
+        <!-- Project Hero Image / Mockup Card -->
+        <div class="relative overflow-hidden rounded-[12px] border border-[rgba(17,17,17,0.08)] bg-[var(--color-cream-wash)] aspect-video">
+          <img 
+            [src]="project.imageUrl" 
+            [alt]="project.title"
+            (error)="onImageError($event)"
+            class="w-full h-full object-cover">
+        </div>
+      </header>
+
+      <!-- Detailed Layout Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-12 items-start">
+        
+        <!-- Left Column: Story, Features & Captures -->
+        <div class="space-y-12">
           
-          <!-- Imagen principal -->
-          <div class="relative order-2 lg:order-1">
-            <div class="aspect-video lg:aspect-square relative overflow-hidden" style="background-color: var(--secondary-100);">
-              <img 
-                [src]="project.imageUrl" 
-                [alt]="project.title"
-                (error)="onImageError($event)"
-                class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
-              
-              <!-- Overlay con botón de galería -->
-              @if (project.gallery && project.gallery.length > 1) {
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                  <button 
-                    (click)="openGallery(0)"
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-md text-white rounded-xl hover:bg-white/30 transition-all duration-200 font-medium">
-                    📸 Ver Galería ({{ project.gallery.length }})
-                  </button>
-                </div>
+          <!-- Long Narrative Description -->
+          @if (project.longDescription) {
+            <section class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6 md:p-8">
+              <h2 class="text-2xl font-bold uppercase tracking-[-1px] text-[var(--color-ink)] mb-4">
+                Descripción del Proyecto
+              </h2>
+              <div class="text-sm text-[var(--color-ash)] leading-relaxed space-y-4">
+                <p>{{ project.longDescription }}</p>
+              </div>
+            </section>
+          }
+
+          <!-- Features (Características) -->
+          @if (project.features && project.features.length > 0) {
+            <section class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6 md:p-8">
+              <h2 class="text-2xl font-bold uppercase tracking-[-1px] text-[var(--color-ink)] mb-6">
+                Características Clave
+              </h2>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                @for (feature of project.features; track feature) {
+                  <div class="flex items-start gap-3 p-3 bg-[var(--color-cream-wash)] rounded-[8px] border border-[rgba(17,17,17,0.04)]">
+                    <span class="text-emerald-600 font-bold">✓</span>
+                    <span class="text-xs text-[var(--color-ink)] leading-normal">{{ feature }}</span>
+                  </div>
+                }
+              </div>
+            </section>
+          }
+
+          <!-- Results Obtained (Resultados) -->
+          @if (project.results && project.results.length > 0) {
+            <section class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6 md:p-8">
+              <h2 class="text-2xl font-bold uppercase tracking-[-1px] text-[var(--color-ink)] mb-6">
+                Resultados & Impacto Comercial
+              </h2>
+              <div class="space-y-3">
+                @for (result of project.results; track result) {
+                  <div class="flex items-center gap-3 p-3.5 bg-emerald-50/50 border border-emerald-100 rounded-[8px]">
+                    <span class="text-lg">📈</span>
+                    <span class="text-xs font-semibold text-emerald-800">{{ result }}</span>
+                  </div>
+                }
+              </div>
+            </section>
+          }
+
+          <!-- Screenshot Gallery (Capturas) -->
+          @if (project.gallery && project.gallery.length > 0) {
+            <section class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6 md:p-8">
+              <h2 class="text-2xl font-bold uppercase tracking-[-1px] text-[var(--color-ink)] mb-6">
+                Galería de Capturas
+              </h2>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                @for (image of project.gallery; track image.url; let i = $index) {
+                  <div 
+                    (click)="openGallery(i)"
+                    class="group relative overflow-hidden rounded-[8px] border border-[rgba(17,17,17,0.08)] aspect-video cursor-pointer bg-[var(--color-cream-wash)]">
+                    <img 
+                      [src]="image.url" 
+                      [alt]="image.alt || 'Captura de pantalla'"
+                      (error)="onImageError($event)"
+                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                      <span class="text-white text-xs font-semibold bg-black/60 px-3 py-1.5 rounded-[6px] backdrop-blur-sm">Ampliar Imagen</span>
+                    </div>
+                  </div>
+                }
+              </div>
+            </section>
+          }
+
+        </div>
+
+        <!-- Right Column: Sidebar (Metrics, Stack & Actions) -->
+        <div class="space-y-8">
+          
+          <!-- Actions & Links Panel -->
+          <div class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6">
+            <h3 class="text-xs uppercase tracking-[0.5px] font-bold text-[var(--color-ink)] mb-4">Acciones</h3>
+            <div class="flex flex-col gap-3">
+              @if (project.demoUrl) {
+                <a [href]="project.demoUrl" target="_blank" rel="noopener noreferrer" 
+                   class="w-full text-center px-4 py-2.5 bg-[var(--color-ink)] text-white text-xs font-bold uppercase tracking-[0.5px] rounded-[8px] hover:opacity-90 transition-all duration-200">
+                  🚀 Lanzar Demo
+                </a>
+              }
+              @if (project.repoUrl && project.privacy === 'public') {
+                <a [href]="project.repoUrl" target="_blank" rel="noopener noreferrer" 
+                   class="w-full text-center px-4 py-2.5 bg-[var(--color-pearl)] text-[var(--color-ink)] text-xs font-bold uppercase tracking-[0.5px] border border-[rgba(17,17,17,0.08)] rounded-[8px] hover:bg-gray-50 transition-all duration-200">
+                  📁 Explorar Código
+                </a>
               }
             </div>
           </div>
 
-          <!-- Información del proyecto -->
-          <div class="p-8 lg:p-12 space-y-8 order-1 lg:order-2">
-            
-            <!-- Badges y título -->
-            <div class="space-y-6">
-              <div class="flex flex-wrap items-center gap-3">
-                <span class="text-3xl">{{ getCategoryIcon(project.category) }}</span>
-                <span class="px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-300" 
-                      style="background-color: var(--secondary-200); color: var(--primary-800);">
-                  {{ project.category }}
-                </span>
-                <span [ngClass]="getStatusClasses(project.status)">
-                  {{ getStatusText(project.status) }}
-                </span>
-                <span [ngClass]="getPrivacyClasses(project.privacy)">
-                  {{ project.privacy }}
-                </span>
-              </div>
-              
-              <h1 class="text-4xl lg:text-5xl font-bold leading-tight transition-colors duration-300" 
-                  style="color: var(--primary-900);">
-                {{ project.title }}
-              </h1>
-              
-              <p class="text-xl leading-relaxed transition-colors duration-300" 
-                 style="color: var(--text-primary);">
-                {{ project.longDescription || project.description }}
-              </p>
-            </div>
-
-            <!-- Tecnologías -->
-            <div class="space-y-4">
-              <h3 class="text-lg font-semibold flex items-center gap-2 transition-colors duration-300" 
-                  style="color: var(--primary-900);">
-                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                </svg>
-                Tecnologías utilizadas
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                @for (tech of project.technologies; track tech) {
-                  <span class="px-4 py-2 rounded-xl text-sm font-medium border transition-colors duration-300" 
-                        style="background-color: var(--secondary-200); color: var(--primary-800); border-color: var(--secondary-300);">
-                    {{ tech }}
-                  </span>
-                }
-              </div>
-            </div>
-
-            <!-- Métricas rápidas -->
-            @if (project.metrics) {
-              <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <!-- Project Metrics (Métricas) -->
+          @if (project.metrics) {
+            <div class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6">
+              <h3 class="text-xs uppercase tracking-[0.5px] font-bold text-[var(--color-ink)] mb-4">Métricas del Sistema</h3>
+              <div class="space-y-4">
                 @if (project.metrics.performance) {
-                  <div class="text-center p-4 rounded-xl border transition-colors duration-300" 
-                       style="background-color: var(--secondary-100); border-color: var(--secondary-300);">
-                    <div class="text-2xl font-bold text-green-600">{{ project.metrics.performance }}</div>
-                    <div class="text-xs font-medium" style="color: var(--text-secondary);">Performance</div>
+                  <div class="flex justify-between items-center p-3 bg-emerald-50/50 border border-emerald-100 rounded-[8px]">
+                    <span class="text-xs font-medium text-emerald-800">Performance</span>
+                    <span class="text-sm font-bold text-emerald-900">{{ project.metrics.performance }}</span>
                   </div>
                 }
                 @if (project.metrics.uptime) {
-                  <div class="text-center p-4 rounded-xl border transition-colors duration-300" 
-                       style="background-color: var(--secondary-100); border-color: var(--secondary-300);">
-                    <div class="text-2xl font-bold text-purple-600">{{ project.metrics.uptime }}</div>
-                    <div class="text-xs font-medium" style="color: var(--text-secondary);">Uptime</div>
+                  <div class="flex justify-between items-center p-3 bg-cyan-50/50 border border-cyan-100 rounded-[8px]">
+                    <span class="text-xs font-medium text-cyan-800">Uptime</span>
+                    <span class="text-sm font-bold text-cyan-900">{{ project.metrics.uptime }}</span>
                   </div>
                 }
                 @if (project.metrics.users) {
-                  <div class="text-center p-4 rounded-xl border transition-colors duration-300" 
-                       style="background-color: var(--secondary-100); border-color: var(--secondary-300);">
-                    <div class="text-2xl font-bold text-orange-600">{{ project.metrics.users }}+</div>
-                    <div class="text-xs font-medium" style="color: var(--text-secondary);">Usuarios</div>
+                  <div class="flex justify-between items-center p-3 bg-blue-50/50 border border-blue-100 rounded-[8px]">
+                    <span class="text-xs font-medium text-blue-800">Usuarios Activos</span>
+                    <span class="text-sm font-bold text-blue-900">{{ project.metrics.users }}+</span>
                   </div>
                 }
               </div>
-            }
-          </div>
-        </div>
-      </div>
-
-      <!-- Características principales -->
-      @if (project.features && project.features.length > 0) {
-        <div class="rounded-3xl shadow-xl p-8 mb-12 border transition-all duration-300" 
-             style="background-color: var(--background-primary); border-color: var(--secondary-300);">
-          <h2 class="text-3xl font-bold mb-8 flex items-center gap-3 transition-colors duration-300" 
-              style="color: var(--primary-900);">
-            <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
             </div>
-            Características principales
-          </h2>
-          
-          <div class="grid md:grid-cols-2 gap-4">
-            @for (feature of project.features; track feature) {
-              <div class="flex items-start gap-3 p-4 rounded-xl border transition-colors duration-300" 
-                   style="background-color: var(--secondary-100); border-color: var(--secondary-300);">
-                <div class="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-                <span style="color: var(--text-primary);">{{ feature }}</span>
-              </div>
-            }
-          </div>
-        </div>
-      }
+          }
 
-      <!-- Galería en grid -->
-      @if (project.gallery && project.gallery.length > 0) {
-        <div class="rounded-3xl shadow-xl p-8 mb-12 border transition-all duration-300" 
-             style="background-color: var(--background-primary); border-color: var(--secondary-300);">
-          <h2 class="text-3xl font-bold mb-8 flex items-center gap-3 transition-colors duration-300" 
-              style="color: var(--primary-900);">
-            <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            Capturas del proyecto
-            <span class="text-lg font-normal" style="color: var(--text-secondary);">({{ project.gallery.length }})</span>
-          </h2>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            @for (image of project.gallery; track image.url; let i = $index) {
-              <div 
-                class="group relative cursor-pointer overflow-hidden rounded-2xl aspect-video border hover:border-purple-300 transition-all duration-300"
-                style="background-color: var(--secondary-100); border-color: var(--secondary-300);"
-                (click)="openGallery(i)">
-                
-                <img 
-                  [src]="image.url" 
-                  [alt]="image.alt || 'Captura del proyecto'"
-                  (error)="onImageError($event)"
-                  class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110">
-                
-                <!-- Overlay con efecto hover -->
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                  <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <div class="bg-white/20 backdrop-blur-sm rounded-full p-4">
-                      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Caption -->
-                @if (image.caption) {
-                  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p class="text-white text-sm font-medium">{{ image.caption }}</p>
-                  </div>
-                }
-              </div>
-            }
-          </div>
-        </div>
-      }
-
-      <!-- Información del proyecto y resultados -->
-      <div class="grid lg:grid-cols-2 gap-8 mb-12">
-        
-        <!-- Información del equipo -->
-        @if (project.team) {
-          <div class="rounded-3xl shadow-xl p-8 border transition-all duration-300" 
-               style="background-color: var(--background-primary); border-color: var(--secondary-300);">
-            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3 transition-colors duration-300" 
-                style="color: var(--primary-900);">
-              <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-              Información del proyecto
-            </h3>
-            
-            <div class="space-y-6">
-              <div class="flex justify-between items-center p-4 rounded-xl transition-colors duration-300" 
-                   style="background-color: var(--secondary-100);">
-                <span class="font-medium" style="color: var(--text-secondary);">Duración</span>
-                <span class="font-semibold" style="color: var(--primary-900);">{{ project.team.duration }}</span>
-              </div>
-              <div class="flex justify-between items-center p-4 rounded-xl transition-colors duration-300" 
-                   style="background-color: var(--secondary-100);">
-                <span class="font-medium" style="color: var(--text-secondary);">Tamaño del equipo</span>
-                <span class="font-semibold" style="color: var(--primary-900);">{{ project.team.size }} persona{{ project.team.size > 1 ? 's' : '' }}</span>
-              </div>
-              <div class="flex justify-between items-center p-4 rounded-xl transition-colors duration-300" 
-                   style="background-color: var(--secondary-100);">
-                <span class="font-medium" style="color: var(--text-secondary);">Mi rol</span>
-                <span class="font-semibold" style="color: var(--primary-900);">{{ project.team.role }}</span>
-              </div>
-              <div class="flex justify-between items-center p-4 rounded-xl transition-colors duration-300" 
-                   style="background-color: var(--secondary-100);">
-                <span class="font-medium" style="color: var(--text-secondary);">Fecha</span>
-                <span class="font-semibold" style="color: var(--primary-900);">{{ project.date | date:'MMM yyyy' }}</span>
-              </div>
-            </div>
-          </div>
-        }
-
-        <!-- Resultados -->
-        @if (project.results && project.results.length > 0) {
-          <div class="rounded-3xl shadow-xl p-8 border transition-all duration-300" 
-               style="background-color: var(--background-primary); border-color: var(--secondary-300);">
-            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3 transition-colors duration-300" 
-                style="color: var(--primary-900);">
-              <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                </svg>
-              </div>
-              Resultados obtenidos
-            </h3>
-            
-            <div class="space-y-4">
-              @for (result of project.results; track result) {
-                <div class="flex items-start gap-3 p-4 rounded-xl border transition-colors duration-300" 
-                     style="background-color: var(--secondary-100); border-color: var(--secondary-300);">
-                  <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                  </svg>
-                  <span class="font-medium" style="color: var(--primary-800);">{{ result }}</span>
-                </div>
+          <!-- Tech Stack Panel -->
+          <div class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6">
+            <h3 class="text-xs uppercase tracking-[0.5px] font-bold text-[var(--color-ink)] mb-4">Tecnologías</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (tech of project.technologies; track tech) {
+                <span class="px-2.5 py-1 bg-[#e6fffb] text-[#08979c] border border-[#b5f5ec]/50 rounded-[6px] text-xs font-medium">
+                  {{ tech }}
+                </span>
               }
             </div>
           </div>
-        }
-      </div>
 
-      <!-- Proyectos relacionados -->
-      @if (relatedProjects.length > 0) {
-        <div class="rounded-3xl shadow-xl p-8 border transition-all duration-300" 
-             style="background-color: var(--background-primary); border-color: var(--secondary-300);">
-          <h2 class="text-3xl font-bold mb-8 flex items-center gap-3 transition-colors duration-300" 
-              style="color: var(--primary-900);">
-            <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-              </svg>
+          <!-- Project Details Panel -->
+          @if (project.team) {
+            <div class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6">
+              <h3 class="text-xs uppercase tracking-[0.5px] font-bold text-[var(--color-ink)] mb-4">Detalles Técnicos</h3>
+              <table class="w-full text-xs text-left text-[var(--color-ash)]">
+                <tbody>
+                  <tr class="border-b border-[rgba(17,17,17,0.04)]">
+                    <th scope="row" class="py-3 font-medium">Duración</th>
+                    <td class="py-3 text-right font-semibold text-[var(--color-ink)]">{{ project.team.duration }}</td>
+                  </tr>
+                  <tr class="border-b border-[rgba(17,17,17,0.04)]">
+                    <th scope="row" class="py-3 font-medium">Equipo</th>
+                    <td class="py-3 text-right font-semibold text-[var(--color-ink)]">{{ project.team.size }} persona{{ project.team.size > 1 ? 's' : '' }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="py-3 font-medium">Fecha de Lanzamiento</th>
+                    <td class="py-3 text-right font-semibold text-[var(--color-ink)]">{{ project.date | date:'MMMM yyyy' }}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            Proyectos relacionados
-          </h2>
-          
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            @for (relatedProject of relatedProjects; track relatedProject.id) {
-              <a [routerLink]="['/projects', relatedProject.id]" 
-                 class="group block rounded-2xl overflow-hidden border hover:border-purple-300 transition-all duration-300 hover:shadow-lg"
-                 style="background-color: var(--secondary-100); border-color: var(--secondary-300);">
-                
-                <div class="aspect-video overflow-hidden">
-                  <img 
-                    [src]="relatedProject.imageUrl" 
-                    [alt]="relatedProject.title"
-                    (error)="onImageError($event)"
-                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                </div>
-                
-                <div class="p-6">
-                  <h3 class="font-semibold mb-2 group-hover:text-purple-600 transition-colors" 
-                      style="color: var(--primary-900);">
-                    {{ relatedProject.title }}
-                  </h3>
-                  <p class="text-sm line-clamp-2" style="color: var(--text-secondary);">
-                    {{ relatedProject.description }}
-                  </p>
-                </div>
-              </a>
-            }
-          </div>
-        </div>
-      }
-    </div>
-
-    <!-- Modal de galería -->
-    @if (isGalleryOpen && project.gallery) {
-      <div class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4" 
-           (click)="closeGallery()"
-           (keydown.escape)="closeGallery()">
-        
-        <div class="relative max-w-6xl max-h-full w-full" (click)="$event.stopPropagation()">
-          
-          <!-- Imagen principal -->
-          <div class="relative">
-            <img 
-              [src]="project.gallery[currentGalleryIndex].url"
-              [alt]="project.gallery[currentGalleryIndex].alt || 'Imagen del proyecto'"
-              (error)="onImageError($event)"
-              class="max-w-full max-h-[85vh] object-contain mx-auto rounded-xl shadow-2xl">
-          </div>
-          
-          <!-- Controles -->
-          <div class="absolute top-4 right-4 flex gap-2">
-            <button 
-              (click)="closeGallery()"
-              class="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-              </svg>
-            </button>
-          </div>
-          
-          <!-- Navegación -->
-          @if (project.gallery.length > 1) {
-            <button 
-              (click)="previousImage()"
-              class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-              </svg>
-            </button>
-            
-            <button 
-              (click)="nextImage()"
-              class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-200 hover:scale-110">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </button>
           }
-          
-          <!-- Indicadores y caption -->
-          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center space-y-2">
-            @if (project.gallery.length > 1) {
-              <div class="bg-black/50 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm">
-                {{ currentGalleryIndex + 1 }} / {{ project.gallery.length }}
+
+          <!-- Related Projects -->
+          @if (relatedProjects.length > 0) {
+            <div class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6">
+              <h3 class="text-xs uppercase tracking-[0.5px] font-bold text-[var(--color-ink)] mb-4">Relacionados</h3>
+              <div class="space-y-4">
+                @for (relatedProject of relatedProjects; track relatedProject.id) {
+                  <a [routerLink]="['/projects', relatedProject.id]" class="group flex gap-3 items-center">
+                    <div class="w-16 h-12 rounded-[6px] overflow-hidden border border-[rgba(17,17,17,0.08)] flex-shrink-0">
+                      <img [src]="relatedProject.imageUrl" [alt]="relatedProject.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200">
+                    </div>
+                    <div>
+                      <h4 class="text-xs font-bold text-[var(--color-ink)] group-hover:text-[var(--color-azoto-blue-solid)] transition-colors line-clamp-1">
+                        {{ relatedProject.title }}
+                      </h4>
+                      <span class="text-[10px] text-[var(--color-ash)] uppercase tracking-[0.3px]">{{ relatedProject.category }}</span>
+                    </div>
+                  </a>
+                }
               </div>
-            }
-            
-            @if (project.gallery[currentGalleryIndex].caption) {
-              <div class="bg-black/50 text-white px-6 py-3 rounded-xl text-sm backdrop-blur-sm max-w-md">
-                {{ project.gallery[currentGalleryIndex].caption }}
-              </div>
-            }
-          </div>
+            </div>
+          }
+
         </div>
+
       </div>
-    }
+
+    </div>
   }
+
+  <!-- Gallery Lightbox Modal -->
+  @if (isGalleryOpen && project && project.gallery) {
+    <div class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4" 
+         (click)="closeGallery()"
+         (keydown.escape)="closeGallery()">
+      
+      <div class="relative max-w-5xl max-h-full w-full" (click)="$event.stopPropagation()">
+        
+        <!-- Large Image -->
+        <div class="relative">
+          <img 
+            [src]="project.gallery[currentGalleryIndex].url"
+            [alt]="project.gallery[currentGalleryIndex].alt || 'Imagen de pantalla completa'"
+            (error)="onImageError($event)"
+            class="max-w-full max-h-[85vh] object-contain mx-auto rounded-[8px] shadow-2xl">
+        </div>
+        
+        <!-- Top Close Button -->
+        <div class="absolute top-4 right-4">
+          <button 
+            (click)="closeGallery()"
+            class="bg-black/55 hover:bg-black/75 text-white p-2.5 rounded-full backdrop-blur-md transition-all cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Navigation Controls -->
+        @if (project.gallery.length > 1) {
+          <button 
+            (click)="previousImage()"
+            class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/55 hover:bg-black/75 text-white p-2.5 rounded-full backdrop-blur-md transition-all cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          
+          <button 
+            (click)="nextImage()"
+            class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/55 hover:bg-black/75 text-white p-2.5 rounded-full backdrop-blur-md transition-all cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        }
+        
+        <!-- Indicators & Caption -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center space-y-2">
+          @if (project.gallery.length > 1) {
+            <div class="bg-black/60 text-white px-3.5 py-1.5 rounded-full text-xs backdrop-blur-md inline-block">
+              {{ currentGalleryIndex + 1 }} / {{ project.gallery.length }}
+            </div>
+          }
+        </div>
+
+      </div>
+    </div>
+  }
+
 </div>

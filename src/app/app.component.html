@@ -1,116 +1,110 @@
-<div class="min-h-screen flex flex-col">
+<div class="min-h-screen flex flex-col bg-[var(--color-canvas-white)] text-[var(--color-ink)]">
 
-  <!-- Header con todas las clases de Tailwind -->
-  <header class="sticky top-0 z-50 h-20 min-h-20 max-h-20
-                 flex items-center justify-between px-4
-                 bg-[var(--primary-900)] text-[var(--primary-100)]
-                 backdrop-blur-xl supports-[backdrop-filter]:bg-[var(--primary-900)]/90
-                 border-b border-[var(--primary-800)]/20">
+  <!-- Header con todas las clases de Tailwind (Mobile First) -->
+  <header [class.scrolled]="isScrolled"
+          class="sticky top-0 z-50 h-16 md:h-20 min-h-16 md:min-h-20 max-h-16 md:max-h-20
+                 flex items-center justify-between px-4 sm:px-6 md:px-12
+                 bg-transparent border-b border-transparent
+                 transition-all duration-300">
 
     <!-- Logo Section -->
-    <div class="w-30 min-w-30 max-w-30">
-      <a routerLink="/" class="text-xl font-bold text-[var(--primary-100)]
-                hover:text-[var(--primary-500)] transition-colors duration-300
-                focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]
-                focus:ring-offset-2 focus:ring-offset-[var(--primary-900)] rounded-lg px-1">
-        AzotoDev
+    <div class="flex-shrink-0">
+      <a routerLink="/" class="flex items-center gap-2 text-xl font-bold text-[var(--color-ink)]
+                hover:text-[var(--color-azoto-blue-solid)] transition-colors duration-300
+                focus:outline-none focus:ring-2 focus:ring-[var(--color-azoto-blue-solid)]
+                focus:ring-offset-2 focus:ring-offset-[var(--color-canvas-white)] rounded-lg px-1">
+        <img src="assets/images/brands/logo-symbol.png" alt="AzotoDev Logo" class="h-6 w-auto object-contain">
+        <span>AzotoDev</span>
       </a>
     </div>
 
     <!-- Navigation -->
-    <nav class="hidden md:flex items-center justify-center w-60 space-x-8" role="navigation"
+    <nav class="hidden md:flex items-center justify-center space-x-6" role="navigation"
       aria-label="Navegación principal">
 
-      <a routerLink="/projects" routerLinkActive="!text-[var(--primary-400)] nav-active" class="nav-link relative overflow-hidden text-center block w-20
-                text-[var(--primary-100)] hover:text-[var(--primary-500)]
-                transition-colors duration-300 py-2 px-3 rounded-lg
-                focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]
-                focus:ring-offset-2 focus:ring-offset-[var(--primary-900)]">
+      <a routerLink="/projects" routerLinkActive="!text-[var(--color-azoto-blue-solid)] nav-active" class="nav-link relative overflow-hidden text-center block
+                text-[var(--color-ink)] hover:text-[var(--color-azoto-blue-solid)]
+                transition-colors duration-300 py-2 px-4 rounded-lg
+                focus:outline-none focus:ring-2 focus:ring-[var(--color-azoto-blue-solid)]
+                focus:ring-offset-2 focus:ring-offset-[var(--color-canvas-white)]">
         Proyectos
       </a>
 
-      <a routerLink="/articles" routerLinkActive="!text-[var(--primary-400)] nav-active" class="nav-link relative overflow-hidden text-center block w-20
-                text-[var(--primary-100)] hover:text-[var(--primary-500)]
-                transition-colors duration-300 py-2 px-3 rounded-lg
-                focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]
-                focus:ring-offset-2 focus:ring-offset-[var(--primary-900)]">
+      <a routerLink="/articles" routerLinkActive="!text-[var(--color-azoto-blue-solid)] nav-active" class="nav-link relative overflow-hidden text-center block
+                text-[var(--color-ink)] hover:text-[var(--color-azoto-blue-solid)]
+                transition-colors duration-300 py-2 px-4 rounded-lg
+                focus:outline-none focus:ring-2 focus:ring-[var(--color-azoto-blue-solid)]
+                focus:ring-offset-2 focus:ring-offset-[var(--color-canvas-white)]">
         Artículos
       </a>
     </nav>
 
-    <!-- Mobile Menu Button -->
-    <button type="button" (click)="toggleMobileMenu()" class="md:hidden relative w-12 h-12 flex items-center justify-center
-                   text-[var(--primary-100)] hover:text-[var(--primary-300)]
-                   hover:bg-[var(--primary-800)]/20 rounded-xl transition-all duration-300
-                   focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]
-                   focus:ring-offset-2 focus:ring-offset-[var(--primary-900)]" [attr.aria-expanded]="isMobileMenuOpen"
-      [attr.aria-label]="isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'">
+    <!-- Right Side Actions: Ghost + Primary Filled Buttons (Desktop) / Hamburger (Mobile) -->
+    <div class="flex items-center space-x-4">
+      <!-- Action Cluster Desktop -->
+      <div class="hidden md:flex items-center space-x-3">
+        <!-- Ghost Navigation Button -->
+        <a href="https://github.com/ManuPunk16" target="_blank" rel="noopener noreferrer" 
+           class="px-4 py-2.5 text-[var(--color-ink)] hover:bg-[var(--color-pearl)] rounded-[8px] font-medium transition-all duration-250 ease-in-out">
+          GitHub
+        </a>
+        <!-- Primary Filled Button -->
+        <a routerLink="/projects" 
+           class="px-4 py-2.5 bg-[var(--color-ink)] text-[var(--color-canvas-white)] hover:opacity-90 rounded-[8px] font-medium transition-all duration-250 ease-in-out">
+          Proyectos
+        </a>
+      </div>
 
-      <!-- Hamburger Icon -->
-      <svg class="w-6 h-6 transition-transform duration-300" [class.rotate-45]="isMobileMenuOpen" fill="none"
-        stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          [attr.d]="isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'" />
-      </svg>
-    </button>
+      <!-- Mobile Menu Button -->
+      <button type="button" (click)="toggleMobileMenu()" class="md:hidden relative w-11 h-11 flex items-center justify-center
+                     text-[var(--color-ink)] hover:text-[var(--color-azoto-blue-solid)]
+                     hover:bg-[var(--color-pearl)] rounded-xl transition-all duration-300
+                     focus:outline-none focus:ring-2 focus:ring-[var(--color-azoto-blue-solid)]
+                     focus:ring-offset-2 focus:ring-offset-[var(--color-canvas-white)]" [attr.aria-expanded]="isMobileMenuOpen"
+        [attr.aria-label]="isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'">
 
-    <!-- Theme Toggle -->
-    <div class="w-12 h-12 flex items-center justify-end">
-      <button type="button" (click)="themeService.toggleTheme()" class="relative w-12 h-12 min-w-12 min-h-12 max-w-12 max-h-12
-                     flex items-center justify-center overflow-hidden
-                     rounded-full bg-[var(--primary-800)]/20 hover:bg-[var(--primary-700)]/30
-                     text-[var(--primary-100)] transition-all duration-300
-                     focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]
-                     focus:ring-offset-2 focus:ring-offset-[var(--primary-900)]"
-        [attr.aria-label]="themeService.getTheme() === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'">
-
-        <!-- Dark Mode Icon (Moon) -->
-        @if (themeService.getTheme() === 'dark') {
-        <img ngSrc="moon-50.ico" width="24" height="24" alt="Cambiar a tema claro" class="absolute w-8 h-8 min-w-8 min-h-8 max-w-8 max-h-8
-                      top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                      transition-opacity duration-300 will-change-[opacity]" />
-        } @else {
-        <!-- Light Mode Icon (Sun) -->
-        <img ngSrc="sun-50.ico" width="24" height="24" alt="Cambiar a tema oscuro" class="absolute w-8 h-8 min-w-8 min-h-8 max-w-8 max-h-8
-                      top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                      transition-opacity duration-300 will-change-[opacity]" />
-        }
+        <!-- Hamburger Icon -->
+        <svg class="w-6 h-6 transition-transform duration-300" [class.rotate-45]="isMobileMenuOpen" fill="none"
+          stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            [attr.d]="isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'" />
+        </svg>
       </button>
     </div>
   </header>
 
   <!-- Mobile Navigation Overlay -->
   @if (isMobileMenuOpen) {
-  <div class="md:hidden fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm" (click)="closeMobileMenu()" [@fadeInOut]>
+  <div class="md:hidden fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm" (click)="closeMobileMenu()" [@fadeInOut]>
 
-    <!-- Mobile Menu Panel -->
-    <nav class="absolute top-20 left-0 right-0 mx-4
-                  bg-[var(--background-primary)] border border-[var(--primary-300)]/20
+    <!-- Mobile Menu Panel (Positioned cleanly under mobile header) -->
+    <nav class="absolute top-16 md:top-20 left-0 right-0 mx-4
+                  bg-[var(--color-canvas-white)] border border-[var(--color-stone)]/20
                   rounded-2xl shadow-2xl overflow-hidden z-[61]" [@slideInOut] (click)="$event.stopPropagation()">
 
       <div class="p-6 space-y-4">
         <a routerLink="/projects"
-          routerLinkActive="!bg-[var(--primary-500)]/20 !text-[var(--primary-600)] !border-l-[var(--primary-500)]"
+          routerLinkActive="!bg-[var(--color-pearl)] !text-[var(--color-azoto-blue-solid)] !border-l-[var(--color-azoto-blue-solid)]"
           (click)="closeMobileMenu()" class="mobile-nav-link block py-4 px-6 rounded-xl
-                    text-[var(--text-primary)] hover:text-[var(--primary-600)]
-                    hover:bg-[var(--primary-100)]/20 transition-all duration-300
-                    border-l-4 border-transparent hover:border-l-[var(--primary-500)]
-                    focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]">
+                    text-[var(--color-ink)] hover:text-[var(--color-azoto-blue-solid)]
+                    hover:bg-[var(--color-pearl)] transition-all duration-300
+                    border-l-4 border-transparent hover:border-l-[var(--color-azoto-blue-solid)]
+                    focus:outline-none focus:ring-2 focus:ring-[var(--color-azoto-blue-solid)]">
           <span class="font-medium">Proyectos</span>
-          <span class="block text-sm text-[var(--text-secondary)] mt-1">
+          <span class="block text-sm text-[var(--color-ash)] mt-1">
             Explora mi portafolio de desarrollo
           </span>
         </a>
 
         <a routerLink="/articles"
-          routerLinkActive="!bg-[var(--primary-500)]/20 !text-[var(--primary-600)] !border-l-[var(--primary-500)]"
+          routerLinkActive="!bg-[var(--color-pearl)] !text-[var(--color-azoto-blue-solid)] !border-l-[var(--color-azoto-blue-solid)]"
           (click)="closeMobileMenu()" class="mobile-nav-link block py-4 px-6 rounded-xl
-                    text-[var(--text-primary)] hover:text-[var(--primary-600)]
-                    hover:bg-[var(--primary-100)]/20 transition-all duration-300
-                    border-l-4 border-transparent hover:border-l-[var(--primary-500)]
-                    focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)]">
+                    text-[var(--color-ink)] hover:text-[var(--color-azoto-blue-solid)]
+                    hover:bg-[var(--color-pearl)] transition-all duration-300
+                    border-l-4 border-transparent hover:border-l-[var(--color-azoto-blue-solid)]
+                    focus:outline-none focus:ring-2 focus:ring-[var(--color-azoto-blue-solid)]">
           <span class="font-medium">Artículos</span>
-          <span class="block text-sm text-[var(--text-secondary)] mt-1">
+          <span class="block text-sm text-[var(--color-ash)] mt-1">
             Lee mis publicaciones técnicas
           </span>
         </a>
@@ -128,10 +122,10 @@
     <router-outlet />
   </main>
 
-  <!-- Footer optimizado con Tailwind -->
   <footer class="bg-[var(--footer-bg)] text-[var(--footer-text)]
                 min-h-[25rem] h-auto py-12
-                border-t border-[var(--primary-800)]/20">
+                border-t border-white/10
+                dark-section-panel">
 
     <div class="container mx-auto px-6 min-h-[21.25rem]
                 flex flex-col justify-between">
@@ -142,9 +136,9 @@
         <!-- Brand Section -->
         <div class="min-h-[9.375rem] space-y-6">
           <div>
-            <h3 class="text-2xl font-bold text-[var(--footer-text)] mb-4">
-              AzotoDev
-            </h3>
+            <div class="mb-4 bg-white px-4 py-2.5 rounded-[12px] inline-block border border-white/10">
+              <img src="assets/images/brands/logo-full.png" alt="AzotoDev Logo" class="h-10 w-auto object-contain">
+            </div>
             <p class="text-[var(--footer-text-secondary)] leading-relaxed max-w-sm">
               Desarrollador Full Stack especializado en crear experiencias digitales
               excepcionales que combinan innovación técnica con usabilidad perfecta.
@@ -175,7 +169,7 @@
                 <path
                   d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 }
-                @case ('Twitter') {
+                @case ('X (Twitter)') {
                 <path
                   d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                 }
@@ -198,8 +192,7 @@
           <h4 class="text-lg font-semibold text-[var(--footer-text)] mb-6
                      relative before:content-[''] before:absolute before:bottom-0
                      before:left-0 before:w-8 before:h-0.5
-                     before:bg-gradient-to-r before:from-[var(--primary-500)]
-                     before:to-[var(--accent-500)] before:-mb-2">
+                     before:bg-[var(--color-azoto-blue-solid)] before:-mb-2">
             Enlaces Rápidos
           </h4>
 
@@ -226,8 +219,7 @@
           <h4 class="text-lg font-semibold text-[var(--footer-text)] mb-6
                      relative before:content-[''] before:absolute before:bottom-0
                      before:left-0 before:w-8 before:h-0.5
-                     before:bg-gradient-to-r before:from-[var(--primary-500)]
-                     before:to-[var(--accent-500)] before:-mb-2">
+                     before:bg-[var(--color-azoto-blue-solid)] before:-mb-2">
             Estadísticas del Portfolio
           </h4>
 
@@ -235,8 +227,8 @@
           <div class="space-y-4 mb-8">
             @for (stat of portfolioStats; track stat.label) {
             <div class="flex items-center justify-between py-3 px-4
-                          bg-white/5 rounded-lg border border-white/10
-                          hover:bg-white/10 transition-colors duration-300 group">
+                           bg-white/5 rounded-lg border border-white/10
+                           hover:bg-white/10 transition-colors duration-300 group">
               <span class="text-[var(--footer-text-secondary)] text-sm font-medium
                              group-hover:text-[var(--footer-text)] transition-colors duration-300">
                 {{ stat.label }}
@@ -249,8 +241,7 @@
           </div>
 
           <!-- Tech Stack Info -->
-          <div class="p-4 bg-gradient-to-br from-[var(--primary-500)]/10 to-[var(--accent-500)]/10
-                      rounded-xl border border-[var(--primary-500)]/20">
+          <div class="p-4 bg-white/5 rounded-xl border border-white/10">
             <div class="text-sm space-y-2">
               <div class="flex items-center justify-between">
                 <span class="text-[var(--footer-text-secondary)] font-medium">Portfolio</span>
@@ -278,9 +269,9 @@
           <span>Desarrollado con</span>
           <span class="text-red-500 text-lg animate-pulse" aria-label="amor">❤️</span>
           <span>usando</span>
-          <span class="font-semibold text-[var(--primary-400)]">Angular {{ portfolioInfo.angularVersion }}</span>
+          <span class="font-semibold text-[var(--color-azoto-blue-solid)]">Angular {{ portfolioInfo.angularVersion }}</span>
           <span>+</span>
-          <span class="font-semibold text-[var(--accent-500)]">Tailwind CSS</span>
+          <span class="font-semibold text-[var(--color-soft-violet)]">Tailwind CSS</span>
         </div>
       </div>
     </div>

@@ -1,328 +1,125 @@
-<div class="min-h-screen transition-colors duration-300" style="background: linear-gradient(to bottom right, var(--background-primary), var(--background-secondary));">
-
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden border-b transition-colors duration-300" style="background-color: var(--background-primary); border-color: var(--secondary-300);">
-    <div class="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-blue-600/10"></div>
-    <div class="relative container mx-auto px-4 py-16">
-      <div class="text-center max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6 transition-colors duration-300" style="color: var(--primary-900);">
-          Mis <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Artículos</span>
-        </h1>
-        <p class="text-xl mb-8 leading-relaxed transition-colors duration-300" style="color: var(--text-secondary);">
-          Explora mis últimos artículos sobre desarrollo web, tecnologías modernas y mejores prácticas.
-          Cada artículo representa conocimiento compartido y experiencias del mundo del desarrollo.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4 text-sm" style="color: var(--text-secondary);">
-          <span class="flex items-center gap-2">
-            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-            Desarrollo Web
-          </span>
-          <span class="flex items-center gap-2">
-            <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
-            Tutoriales
-          </span>
-          <span class="flex items-center gap-2">
-            <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
-            Mejores Prácticas
-          </span>
-        </div>
+<div class="min-h-screen bg-[var(--color-canvas-white)] text-[var(--color-ink)] pt-12 pb-24">
+  <div class="container mx-auto px-4 max-w-[1200px]">
+    
+    <!-- Page Header (Cyan Core Editorial Style) -->
+    <header class="mb-16 text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-[9999px] bg-[var(--color-pearl)] border border-[rgba(17,17,17,0.08)] mb-6">
+        <span class="text-[10px] uppercase tracking-[0.3px] font-semibold text-[var(--color-azoto-blue-solid)]">Blog Técnico</span>
       </div>
-    </div>
-  </section>
-
-  <div class="container mx-auto px-4 py-12">
+      <h1 class="text-4xl md:text-6xl font-black uppercase tracking-[-2px] text-[var(--color-ink)] mb-6">
+        Artículos
+      </h1>
+      <p class="text-lg text-[var(--color-ash)] font-normal leading-relaxed">
+        Explora mis últimas publicaciones sobre ingeniería de software, arquitectura en la nube, tutoriales técnicos y mejores prácticas.
+      </p>
+    </header>
 
     <!-- Loading State -->
     @if (loading) {
-      <div class="flex justify-center items-center min-h-96">
-        <div class="relative">
-          <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-purple-600"></div>
-          <div class="absolute inset-0 rounded-full border-2" style="border-color: var(--secondary-300);"></div>
-        </div>
+      <div class="flex justify-center items-center min-h-[300px]">
+        <div class="w-10 h-10 border-4 border-[var(--color-azoto-blue-solid)] border-t-transparent rounded-full animate-spin"></div>
       </div>
     }
 
     <!-- Error State -->
     @if (error && !loading) {
-      <div class="text-center py-16">
-        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background-color: var(--secondary-200);">
-          <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"/>
-          </svg>
-        </div>
-        <h2 class="text-2xl font-bold mb-2 transition-colors duration-300" style="color: var(--primary-900);">Error al cargar artículos</h2>
-        <p class="mb-6 transition-colors duration-300" style="color: var(--text-secondary);">Ocurrió un problema al cargar la información de los artículos.</p>
-        <!-- <button
-          (click)="loadArticles()"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-          </svg>
-          Reintentar
-        </button> -->
+      <div class="text-center py-16 bg-[var(--color-cream-wash)] rounded-[12px] border border-[rgba(17,17,17,0.08)] max-w-xl mx-auto p-8">
+        <h2 class="text-xl font-bold mb-2">Error al cargar artículos</h2>
+        <p class="text-[var(--color-ash)] mb-6">No pudimos conectar con el repositorio de datos de artículos. Por favor, reintenta.</p>
       </div>
     }
 
-    <!-- Articles Content -->
+    <!-- Content -->
     @if (!loading && !error && articles.length > 0) {
-
-      <!-- Featured Articles -->
-      @if (featuredArticles.length > 0) {
-        <section class="mb-16">
-          <div class="flex items-center gap-3 mb-8">
-            <div class="w-1 h-8 bg-gradient-to-b from-purple-600 to-blue-600 rounded-full"></div>
-            <h2 class="text-3xl font-bold transition-colors duration-300" style="color: var(--primary-900);">Artículos Destacados</h2>
-            <span class="px-3 py-1 rounded-full text-sm font-medium transition-colors duration-300" style="background-color: var(--secondary-200); color: var(--primary-800);">
-              {{ featuredArticles.length }}
-            </span>
-          </div>
-
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            @for (article of featuredArticles; track article.slug) {
-              <article class="article-card group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border hover:border-purple-300"
-                       style="background-color: var(--background-primary); border-color: var(--secondary-300);">
-
-                <!-- Article Image -->
-                <div class="relative h-64 overflow-hidden" style="background-color: var(--secondary-100);">
-                  <img
-                    [src]="article.image || '/assets/images/default-article.webp'"
-                    [alt]="article.title"
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-
-                  <!-- Overlay with badges -->
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                  <!-- Top badges -->
-                  <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-                    <span [ngClass]="'category-' + article.category.toLowerCase().replace(' ', '-')"
-                          class="px-3 py-1 rounded-full text-sm font-medium">
-                      {{ article.category }}
-                    </span>
-                    <span class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                      ⭐ Destacado
-                    </span>
-                  </div>
-
-                  <!-- Read time badge -->
-                  <div class="absolute top-4 right-4">
-                    <span class="bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
-                      🕐 {{ article.readTime }} min
-                    </span>
-                  </div>
-
-                  <!-- Quick action button -->
-                  <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <a
-                      [routerLink]="['/articles', article.slug]"
-                      class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors">
-                      📖 Leer Artículo
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Article Content -->
-                <div class="p-6">
-                  <div class="flex items-start justify-between mb-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-8 h-8 author-badge rounded-full flex items-center justify-center text-sm font-bold">
-                        {{ article.author.charAt(0) }}
-                      </div>
-                      <div>
-                        <h3 class="text-xl font-bold group-hover:text-purple-600 transition-colors" style="color: var(--primary-900);">
-                          <a [routerLink]="['/articles', article.slug]">{{ article.title }}</a>
-                        </h3>
-                        <span class="text-sm transition-colors duration-300" style="color: var(--text-secondary);">Por {{ article.author }}</span>
-                      </div>
-                    </div>
-                    <time class="text-sm transition-colors duration-300" style="color: var(--text-secondary);">
-                      {{ article.date | date:'dd MMM yyyy' }}
-                    </time>
-                  </div>
-
-                  <p class="mb-4 line-clamp-3 transition-colors duration-300" style="color: var(--text-primary);">
-                    {{ article.description }}
-                  </p>
-
-                  <!-- Tags -->
-                  <div class="flex flex-wrap gap-2 mb-4">
-                    @for (tag of article.tags.slice(0, 4); track tag) {
-                      <span class="px-2 py-1 rounded-md text-xs font-medium transition-colors duration-300"
-                            style="background-color: var(--secondary-200); color: var(--primary-800);">
-                        #{{ tag }}
-                      </span>
-                    }
-                    @if (article.tags.length > 4) {
-                      <span class="px-2 py-1 rounded-md text-xs transition-colors duration-300"
-                            style="background-color: var(--secondary-100); color: var(--text-secondary);">
-                        +{{ article.tags.length - 4 }} más
-                      </span>
-                    }
-                  </div>
-
-                  <!-- Actions -->
-                  <div class="flex items-center justify-between pt-4 border-t transition-colors duration-300"
-                       style="border-color: var(--secondary-300);">
-                    <div class="flex gap-3">
-                      <span class="inline-flex items-center gap-1 text-sm transition-colors duration-300"
-                            style="color: var(--text-primary);">
-                        👁️ {{ article.views || 0 }} vistas
-                      </span>
-                      @if (article.featured) {
-                        <span class="inline-flex items-center gap-1 text-sm text-purple-600">
-                          ⭐ Destacado
-                        </span>
-                      }
-                    </div>
-
-                    <a
-                      [routerLink]="['/articles', article.slug]"
-                      class="inline-flex items-center gap-2 text-sm font-medium text-purple-600 hover:text-purple-700 transition-colors">
-                      Leer más
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </article>
-            }
-          </div>
-        </section>
-      }
-
-      <!-- All Articles Grid -->
-      <section>
-        <div class="flex items-center justify-between mb-8">
-          <div class="flex items-center gap-3">
-            <div class="w-1 h-8 bg-gradient-to-b from-blue-600 to-cyan-600 rounded-full"></div>
-            <h2 class="text-3xl font-bold transition-colors duration-300" style="color: var(--primary-900);">Todos los Artículos</h2>
-            <span class="px-3 py-1 rounded-full text-sm font-medium transition-colors duration-300"
-                  style="background-color: var(--secondary-200); color: var(--primary-800);">
-              {{ articles.length }}
-            </span>
-          </div>
-
-          <!-- Filter buttons -->
-          <div class="hidden md:flex gap-2">
-            <button class="px-4 py-2 rounded-lg text-sm hover:opacity-80 transition-all duration-300"
-                    style="background-color: var(--secondary-200); color: var(--primary-800);">
-              Todos
-            </button>
-            <button class="px-4 py-2 rounded-lg text-sm hover:opacity-80 transition-all duration-300"
-                    style="color: var(--text-secondary); background-color: transparent;"
-                    onmouseover="this.style.backgroundColor='var(--secondary-100)'"
-                    onmouseout="this.style.backgroundColor='transparent'">
-              Tutoriales
-            </button>
-            <button class="px-4 py-2 rounded-lg text-sm hover:opacity-80 transition-all duration-300"
-                    style="color: var(--text-secondary); background-color: transparent;"
-                    onmouseover="this.style.backgroundColor='var(--secondary-100)'"
-                    onmouseout="this.style.backgroundColor='transparent'">
-              Desarrollo Web
-            </button>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          @for (article of articles; track article.slug) {
-            <article class="article-card group rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border hover:border-purple-300"
-                     style="background-color: var(--background-primary); border-color: var(--secondary-300);">
-
-              <!-- Article Image -->
-              <div class="relative h-48 overflow-hidden" style="background-color: var(--secondary-100);">
-                <img
-                  [src]="article.image || '/assets/images/default-article.webp'"
-                  [alt]="article.title"
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-
-                <!-- Category badge -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        @for (article of articles; track article.slug) {
+          <article class="h-full flex flex-col bg-[#111c2a] border border-[#09111a] rounded-[12px] overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,190,255,0.12)] text-white">
+            
+            <!-- Article Image Cover -->
+            @if (article.image) {
+              <div class="relative h-48 w-full overflow-hidden bg-gray-900 border-b border-[#09111a]">
+                <img [src]="article.image" [alt]="article.title" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                 <div class="absolute top-3 left-3">
-                  <span [ngClass]="'category-' + article.category.toLowerCase().replace(' ', '-')"
-                        class="px-2 py-1 rounded-md text-xs font-medium backdrop-blur-sm">
+                  <span class="px-2.5 py-1 rounded-[6px] text-[10px] uppercase tracking-[0.5px] font-semibold bg-cyan-950/80 border border-cyan-800/40 text-cyan-300 backdrop-blur-sm">
                     {{ article.category }}
                   </span>
                 </div>
-
-                <!-- Featured badge -->
-                @if (article.featured) {
-                  <div class="absolute top-3 right-3">
-                    <span class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-2 py-1 rounded-md text-xs font-medium">
-                      ⭐ Destacado
-                    </span>
-                  </div>
-                }
+                <div class="absolute top-3 right-3">
+                  <span class="px-2.5 py-1 rounded-[6px] text-[10px] uppercase tracking-[0.5px] font-semibold bg-black/60 text-white backdrop-blur-sm">
+                    🕐 {{ article.readTime }} min
+                  </span>
+                </div>
               </div>
+            }
 
-              <!-- Article Content -->
-              <div class="p-5">
-                <div class="flex items-center justify-between mb-3">
-                  <h3 class="text-lg font-semibold group-hover:text-purple-600 transition-colors line-clamp-1"
-                      style="color: var(--primary-900);">
-                    <a [routerLink]="['/articles', article.slug]">{{ article.title }}</a>
-                  </h3>
-                  <span class="read-time-badge text-xs px-2 py-1 rounded-full">
-                    {{ article.readTime }}min
+            <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
+              
+              <div>
+                <!-- Top Meta: Date + Author -->
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs text-gray-400">
+                    Por {{ article.author }}
+                  </span>
+                  <span class="text-xs text-gray-400">
+                    {{ article.date | date:'dd MMM yyyy' }}
                   </span>
                 </div>
 
-                <p class="text-sm mb-4 line-clamp-2 transition-colors duration-300" style="color: var(--text-primary);">
+                <!-- Title -->
+                <h3 class="article-title text-2xl font-black uppercase tracking-[-1px] mb-2 line-clamp-1">
+                  {{ article.title }}
+                </h3>
+
+                <!-- Short Clamped Description -->
+                <p class="text-sm text-gray-400 mb-6 line-clamp-2 leading-relaxed">
                   {{ article.description }}
                 </p>
+              </div>
 
-                <!-- Tags -->
-                <div class="flex flex-wrap gap-1 mb-4">
-                  @for (tag of article.tags.slice(0, 3); track tag) {
-                    <span class="px-2 py-1 rounded text-xs transition-colors duration-300"
-                          style="background-color: var(--secondary-200); color: var(--primary-800);">
+              <div>
+                <!-- Key Excerpt Takeaway (Nested Card) -->
+                @if (article.excerpt) {
+                  <div class="bg-[#09111a] border border-cyan-500/20 p-4 rounded-[8px] mb-6">
+                    <div class="flex items-start gap-2">
+                      <span class="text-lg">💡</span>
+                      <div>
+                        <span class="text-[10px] uppercase tracking-[0.5px] text-gray-400 font-semibold block">Idea principal / Resumen:</span>
+                        <span class="text-xs font-normal text-cyan-300 leading-relaxed block mt-1">{{ article.excerpt }}</span>
+                      </div>
+                    </div>
+                  </div>
+                }
+
+                <!-- Tags list -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                  @for (tag of article.tags; track tag) {
+                    <span class="px-2 py-0.5 rounded-[4px] text-[10px] font-medium bg-[#e6fffb]/10 text-cyan-300 border border-cyan-800/20">
                       #{{ tag }}
                     </span>
                   }
-                  @if (article.tags.length > 3) {
-                    <span class="px-2 py-1 rounded text-xs transition-colors duration-300"
-                          style="background-color: var(--secondary-100); color: var(--text-secondary);">
-                      +{{ article.tags.length - 3 }}
-                    </span>
-                  }
                 </div>
 
-                <!-- Actions -->
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-2 text-xs transition-colors duration-300" style="color: var(--text-secondary);">
-                    <div class="w-5 h-5 author-badge rounded-full flex items-center justify-center text-xs font-bold">
-                      {{ article.author.charAt(0) }}
-                    </div>
-                    <time>{{ article.date | date:'dd MMM' }}</time>
-                  </div>
+                <!-- Action Toolbar -->
+                <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+                  <span class="text-xs text-gray-400 flex items-center gap-1">
+                    <span>👁️</span>
+                    <span>{{ article.views || 0 }} vistas</span>
+                  </span>
 
-                  <a
-                    [routerLink]="['/articles', article.slug]"
-                    class="inline-flex items-center gap-1 px-3 py-1.5 bg-purple-600 text-white rounded-lg text-sm hover:bg-purple-700 transition-colors">
-                    Leer artículo
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
+                  <a [routerLink]="['/articles', article.slug]" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 cursor-pointer">
+                    <span>Leer Artículo</span>
+                    <span>↗</span>
                   </a>
                 </div>
-              </div>
-            </article>
-          }
-        </div>
-      </section>
-    }
 
-    <!-- Empty State -->
-    @if (!loading && !error && articles.length === 0) {
-      <div class="text-center py-16">
-        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4"
-             style="background-color: var(--secondary-200);">
-          <svg class="w-8 h-8" style="color: var(--text-secondary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-          </svg>
-        </div>
-        <h2 class="text-2xl font-bold mb-2 transition-colors duration-300" style="color: var(--primary-900);">No hay artículos disponibles</h2>
-        <p class="transition-colors duration-300" style="color: var(--text-secondary);">Los artículos se mostrarán aquí una vez que estén disponibles.</p>
+              </div>
+
+            </div>
+
+          </article>
+        }
       </div>
     }
+
   </div>
 </div>
-

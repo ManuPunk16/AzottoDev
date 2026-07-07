@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { Project } from '../../models/project.model';
-import { NgClass, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-projects',
-  imports: [DatePipe, NgClass, RouterLink],
+  imports: [RouterLink],
   standalone: true,
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
@@ -19,11 +18,20 @@ export class ProjectsComponent implements OnInit {
   internalProjects: Project[] = [];
   loading: boolean = true;
   error: boolean = false;
+  expandedProjects = new Set<string>();
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) {}
+
+  toggleTechDetails(projectId: string): void {
+    if (this.expandedProjects.has(projectId)) {
+      this.expandedProjects.delete(projectId);
+    } else {
+      this.expandedProjects.add(projectId);
+    }
+  }
 
   ngOnInit(): void {
     this.loadProjects();

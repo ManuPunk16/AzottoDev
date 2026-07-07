@@ -1,200 +1,189 @@
-@if (!loading && !error) {
-  <div class="container mx-auto max-w-4xl px-4 py-8 ios-fix-container">
-    <!-- Header del artículo -->
-    <div class="mb-8">
-      <!-- Meta información -->
-      <div class="flex flex-wrap gap-2 mb-4 text-sm">
-        <!-- Usamos la clase de categoría para el color adecuado -->
-        <span [ngClass]="'category-' + (article?.metadata?.category ? article?.metadata?.category?.toLowerCase()?.replace(' ', '-') : '')"
-          class="px-3 py-1 rounded-full">
-          {{ article?.metadata?.category }}
-        </span>
-        <span class="date-badge px-3 py-1 rounded-full">
-          {{ article?.metadata?.date | date:'dd MMM yyyy' }}
-        </span>
-        <span class="read-time-badge px-3 py-1 rounded-full flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          {{ article?.metadata?.readTime }} min de lectura
-        </span>
-      </div>
-      
-      <!-- Título y descripción -->
-      <h1 class="text-4xl font-bold text-[var(--primary-900)] mb-4">{{ article?.metadata?.title }}</h1>
-      <p class="text-xl text-[var(--accent-600)] mb-6 highlight p-4 rounded-md">{{ article?.metadata?.description }}</p>
-      
-      <!-- Autor -->
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-10 h-10 author-badge rounded-full flex items-center justify-center text-lg font-semibold">
-          {{ article?.metadata?.author?.charAt(0) }}
-        </div>
-        <span class="text-[var(--text-secondary)]">Por <span class="font-medium text-[var(--primary-900)]">{{ article?.metadata?.author }}</span></span>
-      </div>
-      
-      <!-- Etiquetas -->
-      <div class="flex flex-wrap gap-2 mb-8">
-        @for (tag of article?.metadata?.tags; track tag) {
-          <span class="tag text-sm px-3 py-1 rounded-md">
-            #{{ tag }}
-          </span>
-        }
-      </div>
+<!-- Back Navigation -->
+<div class="bg-[var(--color-canvas-white)] min-h-screen pt-12 pb-24 text-[var(--color-ink)]">
+  
+  <!-- Loading State -->
+  @if (loading) {
+    <div class="flex justify-center items-center min-h-[500px]">
+      <div class="w-10 h-10 border-4 border-[var(--color-azoto-blue-solid)] border-t-transparent rounded-full animate-spin"></div>
     </div>
+  }
 
-    <!-- Imagen destacada -->
-    @if (article?.metadata?.image) {
-      <div class="mb-10 rounded-xl overflow-hidden shadow-lg">
-        <img [src]="article?.metadata?.image"
-          [alt]="article?.metadata?.title"
-          class="w-full h-auto object-cover"
-          loading="lazy">
+  <!-- Error State -->
+  @if (error && !loading) {
+    <div class="container mx-auto px-6 py-16 text-center max-w-md">
+      <div class="w-16 h-16 mx-auto mb-6 bg-[var(--color-cream-wash)] rounded-full flex items-center justify-center border border-[rgba(17,17,17,0.08)]">
+        <span class="text-2xl">⚠️</span>
       </div>
-    }
+      <h1 class="text-2xl font-bold mb-2">Artículo no encontrado</h1>
+      <p class="mb-8 text-[var(--color-ash)]">El artículo que estás buscando no existe o fue removido.</p>
+      <button (click)="goBack()" class="px-5 py-2.5 bg-[var(--color-ink)] text-white rounded-[8px] font-medium hover:opacity-90 transition-all duration-200 cursor-pointer">
+        ← Volver a Artículos
+      </button>
+    </div>
+  }
 
-    <!-- Contenido del artículo -->
-    <div class="prose prose-lg max-w-none text-[var(--text-primary)]">
-      @for (block of article?.content; track $index) {
-        <!-- Encabezados -->
-        @if (block.type === 'heading' && block.level === 1) {
-          <h1 class="text-3xl font-bold mt-10 mb-6 text-[var(--primary-900)]">
-            {{ block.text }}
-          </h1>
-        }
-        @if (block.type === 'heading' && block.level === 2) {
-          <h2 class="text-2xl font-semibold mt-8 mb-4 text-[var(--primary-900)]">
-            {{ block.text }}
-          </h2>
-        }
-        @if (block.type === 'heading' && block.level === 3) {
-          <h3 class="text-xl font-semibold mt-6 mb-3 text-[var(--primary-900)]">
-            {{ block.text }}
-          </h3>
-        }
-        @if (block.type === 'heading' && block.level === 4) {
-          <h4 class="text-lg font-semibold mt-5 mb-2 text-[var(--primary-900)]">
-            {{ block.text }}
-          </h4>
-        }
+  <!-- Article Detail -->
+  @if (article && !loading) {
+    <article class="container mx-auto px-6 max-w-[800px] ios-fix-container">
+      
+      <!-- Back Button -->
+      <div class="mb-10">
+        <button (click)="goBack()" class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.5px] font-semibold text-[var(--color-ash)] hover:text-[var(--color-ink)] transition-colors cursor-pointer">
+          ← Volver a Artículos
+        </button>
+      </div>
 
-        <!-- Párrafos -->
-        @if (block.type === 'paragraph') {
-          <p class="mb-6 leading-relaxed text-[var(--text-primary)]"
-             [innerHTML]="renderMarkdown(block.text || '')">
-          </p>
-        }
+      <!-- Article Header -->
+      <header class="mb-12">
+        <div class="flex flex-wrap gap-2.5 mb-6">
+          <span class="px-2.5 py-1 rounded-[6px] text-[10px] uppercase tracking-[0.5px] font-semibold bg-cyan-50 text-cyan-700 border border-cyan-100">
+            📂 {{ article.metadata.category }}
+          </span>
+          <span class="px-2.5 py-1 rounded-[6px] text-[10px] uppercase tracking-[0.5px] font-semibold bg-[var(--color-pearl)] text-[var(--color-ink)] border border-[rgba(17,17,17,0.08)]">
+            📅 {{ article.metadata.date | date:'dd MMM yyyy' }}
+          </span>
+          <span class="px-2.5 py-1 rounded-[6px] text-[10px] uppercase tracking-[0.5px] font-semibold bg-[var(--color-pearl)] text-[var(--color-ink)] border border-[rgba(17,17,17,0.08)]">
+            🕐 {{ article.metadata.readTime }} min lectura
+          </span>
+        </div>
 
-        <!-- Listas -->
-        @if (block.type === 'list') {
-          <div class="mb-6">
-            <ul class="space-y-4">
+        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-[-2px] text-[var(--color-ink)] leading-tight mb-6">
+          {{ article.metadata.title }}
+        </h1>
+
+        <!-- Author Profile -->
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-8 h-8 rounded-full bg-[var(--color-ink)] text-white flex items-center justify-center text-xs font-bold uppercase">
+            {{ article.metadata.author.charAt(0) }}
+          </div>
+          <span class="text-xs text-[var(--color-ash)]">Escrito por <strong class="text-[var(--color-ink)] font-semibold">{{ article.metadata.author }}</strong></span>
+        </div>
+
+        <!-- Highlighted excerpt/description -->
+        <div class="bg-[var(--color-cream-wash)] border-l-4 border-[var(--color-azoto-blue-solid)] p-6 rounded-r-[8px] text-[var(--color-ink)] text-base mb-10 font-normal leading-relaxed">
+          {{ article.metadata.description }}
+        </div>
+      </header>
+
+      <!-- Featured Image -->
+      @if (article.metadata.image) {
+        <div class="mb-12 rounded-[12px] overflow-hidden border border-[rgba(17,17,17,0.08)] bg-[var(--color-cream-wash)] aspect-video">
+          <img [src]="article.metadata.image" [alt]="article.metadata.title" class="w-full h-full object-cover">
+        </div>
+      }
+
+      <!-- Article Content Flow -->
+      <div class="prose prose-lg max-w-none text-[var(--color-ink)]">
+        @for (block of article.content; track $index) {
+          
+          <!-- Headings -->
+          @if (block.type === 'heading' && block.level === 1) {
+            <h2 class="text-3xl font-black uppercase tracking-[-1.5px] mt-12 mb-6 text-[var(--color-ink)]">
+              {{ block.text }}
+            </h2>
+          }
+          @if (block.type === 'heading' && block.level === 2) {
+            <h3 class="text-2xl font-bold uppercase tracking-[-1px] mt-10 mb-4 text-[var(--color-ink)]">
+              {{ block.text }}
+            </h3>
+          }
+          @if (block.type === 'heading' && block.level === 3) {
+            <h4 class="text-xl font-bold uppercase tracking-[-0.5px] mt-8 mb-3 text-[var(--color-ink)]">
+              {{ block.text }}
+            </h4>
+          }
+
+          <!-- Paragraphs -->
+          @if (block.type === 'paragraph') {
+            <p class="text-sm md:text-base text-[var(--color-ash)] leading-relaxed mb-6 font-normal" [innerHTML]="renderMarkdown(block.text || '')"></p>
+          }
+
+          <!-- Lists -->
+          @if (block.type === 'list') {
+            <ul class="my-6 space-y-3.5 pl-1">
               @for (item of block.items; track $index) {
-                <li class="pl-2 flex text-[var(--text-primary)]">
-                  <span class="text-[var(--primary-500)] mr-2">•</span>
+                <li class="flex items-start text-sm md:text-base text-[var(--color-ash)] leading-relaxed">
+                  <span class="text-cyan-500 font-bold mr-2.5 select-none">•</span>
                   <div [innerHTML]="renderMarkdown(item)" class="flex-1"></div>
                 </li>
               }
             </ul>
-          </div>
-        }
+          }
 
-        <!-- Imágenes -->
-        @if (block.type === 'image') {
-          <figure class="my-8">
-            <img [src]="block.src"
-              [alt]="block.alt || ''"
-              class="w-full h-auto rounded-lg shadow"
-              loading="lazy">
-            @if (block.alt) {
-              <figcaption class="text-center text-sm text-[var(--text-secondary)] mt-2">
-                {{ block.alt }}
-              </figcaption>
-            }
-          </figure>
-        }
-
-        <!-- Enlaces destacados -->
-        @if (block.type === 'link') {
-          <div class="my-6 p-4 border-l-4 border-[var(--primary-500)] bg-[var(--highlight-bg)] rounded-r">
-            <a [href]="block.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-[var(--link-color)] hover:text-[var(--link-hover-color)] font-medium flex items-center touch-action-manipulation">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-              {{ block.text }}
-            </a>
-          </div>
-        }
-
-        <!-- ✅ Bloques de código mejorados -->
-        @if (block.type === 'code') {
-          <div class="code-block my-6">
-            <div class="code-header">
-              <div class="flex items-center gap-3">
-                <div class="flex gap-1.5">
-                  <span class="code-dot code-dot-red"></span>
-                  <span class="code-dot code-dot-yellow"></span>
-                  <span class="code-dot code-dot-green"></span>
-                </div>
-                <span class="font-mono text-sm font-medium text-gray-300">{{ block.language || 'texto plano' }}</span>
+          <!-- Embedded Images -->
+          @if (block.type === 'image') {
+            <figure class="my-10">
+              <div class="rounded-[8px] overflow-hidden border border-[rgba(17,17,17,0.08)] bg-[var(--color-cream-wash)]">
+                <img [src]="block.src" [alt]="block.alt || ''" class="w-full h-auto object-cover" (error)="onImageError($event)">
               </div>
-              <div class="code-actions">
-                <button (click)="copyCode(block.code || '')"
-                  class="flex items-center gap-1 px-3 py-1.5 rounded text-xs font-medium hover:bg-opacity-20 hover:bg-[var(--primary-500)] transition-colors"
-                  type="button"
-                  aria-label="Copiar código">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                  </svg>
-                  <span>Copiar</span>
-                </button>
-              </div>
-            </div>
-            <div class="code-body" [ngClass]="'code-' + (block.language || 'plain')">
-              <!-- Números de línea -->
-              @if (showLineNumbers) {
-                <div class="absolute left-0 top-0 py-4 pl-2" aria-hidden="true">
-                  @for (line of getCodeLines(block.code); track $index) {
-                    <div class="line-number">
-                      {{ $index + 1 }}
-                    </div>
-                  }
-                </div>
+              @if (block.alt) {
+                <figcaption class="text-center text-xs text-[var(--color-ash)] mt-3">
+                  {{ block.alt }}
+                </figcaption>
               }
-              <!-- ✅ Código optimizado -->
-              <pre [attr.data-language]="block.language || 'plain'"
-                [ngClass]="{'pl-12': showLineNumbers}"
-                class="relative overflow-x-auto"
-                tabindex="0"><code [className]="'language-' + (block.language || 'plain')">{{ block.code }}</code></pre>
+            </figure>
+          }
+
+          <!-- Custom Link block -->
+          @if (block.type === 'link') {
+            <div class="my-8 p-4 border-l-4 border-cyan-500 bg-cyan-50/50 rounded-r-[8px]">
+              <a [href]="block.url" target="_blank" rel="noopener noreferrer" class="text-cyan-700 hover:text-cyan-800 font-semibold text-sm flex items-center">
+                <span class="mr-2">🔗</span>
+                <span>{{ block.text }}</span>
+              </a>
             </div>
-          </div>
+          }
+
+          <!-- Code Blocks (Visual Mockup Style) -->
+          @if (block.type === 'code') {
+            <div class="code-block my-8 rounded-[8px] border border-[#09111a] overflow-hidden shadow-sm">
+              <div class="code-header bg-[#1e1d1c] px-4 py-3 flex items-center justify-between border-b border-white/5">
+                <div class="flex items-center gap-3">
+                  <div class="flex space-x-1.5">
+                    <span class="code-dot code-dot-red"></span>
+                    <span class="code-dot code-dot-yellow"></span>
+                    <span class="code-dot code-dot-green"></span>
+                  </div>
+                  <span class="font-mono text-xs text-[var(--color-ash)] uppercase tracking-[0.3px]">{{ block.language || 'texto' }}</span>
+                </div>
+                <div class="code-actions">
+                  <button (click)="copyCode(block.code || '')" class="text-[10px] uppercase tracking-[0.5px] font-bold text-gray-300 hover:text-white px-2.5 py-1 bg-white/5 hover:bg-white/10 rounded-[4px] transition-colors cursor-pointer" type="button">
+                    Copiar
+                  </button>
+                </div>
+              </div>
+              <div class="code-body bg-[#111c2a] text-white">
+                <!-- Line Numbers -->
+                @if (showLineNumbers) {
+                  <div class="absolute left-0 top-0 py-4 pl-2 select-none pointer-events-none" aria-hidden="true">
+                    @for (line of getCodeLines(block.code); track $index) {
+                      <div class="line-number text-[var(--color-ash)]/40 font-mono text-xs text-right pr-3 h-[20px] leading-[20px]">
+                        {{ $index + 1 }}
+                      </div>
+                    }
+                  </div>
+                }
+                <!-- Code content -->
+                <pre [attr.data-language]="block.language || 'plain'" [ngClass]="{'pl-12': showLineNumbers}" class="py-4 pr-4 overflow-x-auto text-xs md:text-sm font-mono leading-[20px]"><code [className]="'language-' + (block.language || 'plain')">{{ block.code }}</code></pre>
+              </div>
+            </div>
+          }
+
         }
-      }
-    </div>
-  </div>
-}
+      </div>
 
-<!-- Estados de carga y error -->
-@if (loading) {
-  <div class="flex flex-col items-center justify-center min-h-[50vh] py-20">
-    <div class="loading-spinner h-16 w-16 border-[var(--primary-500)] mb-4"></div>
-    <p class="text-[var(--text-secondary)] text-xl">Cargando artículo...</p>
-  </div>
-}
+      <!-- Footer Tag list -->
+      <footer class="mt-16 pt-8 border-t border-[rgba(17,17,17,0.08)]">
+        <div class="flex flex-wrap gap-2">
+          @for (tag of article.metadata.tags; track tag) {
+            <span class="px-2.5 py-1 rounded-[6px] text-xs font-semibold bg-[var(--color-pearl)] text-[var(--color-ink)] border border-[rgba(17,17,17,0.08)]">
+              #{{ tag }}
+            </span>
+          }
+        </div>
+      </footer>
 
-@if (error) {
-  <div class="text-center py-20 max-w-md mx-auto">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-red-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-    <h2 class="text-2xl font-bold text-[var(--primary-900)] mb-2">No se pudo cargar el artículo</h2>
-    <p class="text-[var(--text-secondary)] mb-6">Lo sentimos, ha ocurrido un error al intentar cargar el contenido.</p>
-    <button (click)="goBack()"
-      type="button"
-      class="px-4 py-2 bg-[var(--primary-500)] text-[var(--primary-100)] rounded-lg hover:bg-[var(--primary-600)] transition-colors">
-      Volver a artículos
-    </button>
-  </div>
-}
+    </article>
+  }
+
+</div>

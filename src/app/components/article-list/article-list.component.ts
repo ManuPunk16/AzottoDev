@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
-import { DatePipe, NgClass } from '@angular/common';
+import { DatePipe, isPlatformBrowser } from '@angular/common';
 import { MetaService } from '../../services/meta.service';
 
 interface Article {
@@ -24,8 +24,7 @@ interface Article {
   standalone: true,
   imports: [
     RouterLink,
-    DatePipe,
-    NgClass
+    DatePipe
   ],
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.scss',
@@ -38,7 +37,8 @@ export class ArticleListComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private metaService: MetaService
+    private metaService: MetaService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
@@ -47,9 +47,26 @@ export class ArticleListComponent implements OnInit {
     // Luego cargar los datos
     this.http.get<Article[]>('/assets/articles.json').subscribe({
       next: (data) => {
-        this.articles = data;
-        // Filtra los artículos destacados
-        this.featuredArticles = data.filter(article => article.featured);
+        const mappedArticles = data.map(article => {
+          let localViews = 0;
+          if (isPlatformBrowser(this.platformId)) {
+            const viewsKey = `views_${article.slug}`;
+            const saved = localStorage.getItem(viewsKey);
+            if (saved) {
+              localViews = parseInt(saved, 10);
+            } else {
+              const seed = Math.abs(article.slug.split('').reduce((a, b) => a + b.charCodeAt(0), 0)) % 120 + 100;
+              localStorage.setItem(viewsKey, seed.toString());
+              localViews = seed;
+            }
+          } else {
+            localViews = 150;
+          }
+          return { ...article, views: localViews };
+        });
+
+        this.articles = mappedArticles;
+        this.featuredArticles = mappedArticles.filter(article => article.featured);
         this.loading = false;
       },
       error: (err) => {

@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { MetaService } from '../../services/meta.service';
-import { CvViewerComponent } from '../cv-viewer/cv-viewer.component';
 
 // Interfaces
 interface Particle {
@@ -89,8 +88,7 @@ interface PersonalInterest {
   selector: 'app-home',
   standalone: true,
   imports: [
-    RouterLink,
-    CvViewerComponent
+    RouterLink
 ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
@@ -486,13 +484,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     { name: 'Fitness', icon: 'fas fa-dumbbell', color: '#EF4444' }
   ];
 
-  // Lazy import for CV Viewer
-  private cdr = inject(ChangeDetectorRef);
-  cvViewerLoaded = false;
-  cvViewerComponent: any = null;
-  showCVLoader = false;
-  isPreloading!: boolean;
-
   constructor(
     private metaService: MetaService,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -515,11 +506,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     setTimeout(() => {
       this.animatedSkills = true;
     }, 1000);
-
-    // Preload CV Viewer component after 2 seconds
-    setTimeout(() => {
-      this.preloadCVViewer();
-    }, 2000);
   }
 
   ngOnDestroy(): void {
@@ -662,87 +648,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       case 'linkedin':
         window.open(`https://${contact.value}`, '_blank');
         break;
-    }
-  }
-
-  // Lazy load CV Viewer when user clicks
-  async loadCVViewer() {
-    if (this.cvViewerLoaded) {
-      return; // Ya está cargado
-    }
-    
-    if (this.showCVLoader) {
-      return; // Ya está cargando
-    }
-    
-    this.showCVLoader = true;
-    this.cdr.detectChanges();
-    
-    try {
-      // Dynamic import con timeout para mejor UX
-      const modulePromise = import('../cv-viewer/cv-viewer.component');
-      const timeoutPromise = new Promise(resolve => setTimeout(resolve, 500)); // Mínimo 500ms para mostrar loading
-      
-      const [module] = await Promise.all([modulePromise, timeoutPromise]);
-      
-      const CVViewerComponent = module.CvViewerComponent;
-      this.cvViewerComponent = CVViewerComponent;
-      this.cvViewerLoaded = true;
-      
-      // Trigger change detection
-      this.cdr.detectChanges();
-      
-      // console.log('✅ CV Viewer cargado exitosamente');
-      
-    } catch (error) {
-      // console.error('❌ Error loading CV Viewer component:', error);
-      this.showFallbackMessage();
-    } finally {
-      this.showCVLoader = false;
-      this.cdr.detectChanges();
-    }
-  }
-
-  // Preload in background for better UX (silent)
-  private async preloadCVViewer() {
-    if (this.cvViewerLoaded || this.isPreloading) {
-      return;
-    }
-    
-    this.isPreloading = true;
-    
-    try {
-      // console.log('🔄 Precargando CV Viewer en background...');
-      
-      const module = await import('../cv-viewer/cv-viewer.component');
-      const CVViewerComponent = module.CvViewerComponent;
-      this.cvViewerComponent = CVViewerComponent;
-      this.cvViewerLoaded = true;
-      
-      this.cdr.detectChanges();
-      // console.log('✅ CV Viewer precargado exitosamente');
-      
-    } catch (error) {
-      console.debug('⚠️ CV Viewer preload failed (no crítico):', error);
-    } finally {
-      this.isPreloading = false;
-    }
-  }
-
-  // Fallback para errores de carga
-  private showFallbackMessage() {
-    // Usar SweetAlert2 o un toast para mostrar error
-    console.warn('Funcionalidad temporalmente no disponible');
-  }
-
-  // Method to trigger CV viewer functionality manually
-  async triggerCVAction() {
-    if (!this.cvViewerLoaded) {
-      await this.loadCVViewer();
-    }
-    
-    if (this.cvViewerLoaded) {
-      // console.log('CV Viewer listo para usar');
     }
   }
 }

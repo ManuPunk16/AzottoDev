@@ -56,4 +56,9 @@ export interface Project {
   hasScreenshots: boolean;
   isResponsive: boolean;
   hasDocumentation: boolean;
+  
+  // Enriquecimiento de Negocio & UX (Steve Krug)
+  role?: string;
+  impact?: string;
+  businessProblem?: string;
 }
