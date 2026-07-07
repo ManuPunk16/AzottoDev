@@ -1,0 +1,467 @@
+{
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.postcssrc.json": {
+    "mtime": 1783355679.840404,
+    "ast_hash": "d8997b164e9f8b10663ab88c151cef29",
+    "semantic_hash": "d8997b164e9f8b10663ab88c151cef29"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.vscode\\extensions.json": {
+    "mtime": 1783355679.8413963,
+    "ast_hash": "66fd9e60d4633b6099fe02e06a7075ea",
+    "semantic_hash": "66fd9e60d4633b6099fe02e06a7075ea"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.vscode\\launch.json": {
+    "mtime": 1783355679.8413963,
+    "ast_hash": "430386a2f03e9d559664c196344c121b",
+    "semantic_hash": "430386a2f03e9d559664c196344c121b"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.vscode\\tasks.json": {
+    "mtime": 1783355679.8413963,
+    "ast_hash": "d2fc2624d783980be281b4cf0acc2455",
+    "semantic_hash": "d2fc2624d783980be281b4cf0acc2455"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\angular.json": {
+    "mtime": 1783355679.842901,
+    "ast_hash": "a2bcdca572c8bf13be5d6e675c4f1133",
+    "semantic_hash": "a2bcdca572c8bf13be5d6e675c4f1133"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\ngsw-config.json": {
+    "mtime": 1783355679.842901,
+    "ast_hash": "699a1eb0df578d4fdffe23cf84013b07",
+    "semantic_hash": "699a1eb0df578d4fdffe23cf84013b07"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\package.json": {
+    "mtime": 1783355854.3547535,
+    "ast_hash": "2e59c37421d170ed1063f48fe1c03f6a",
+    "semantic_hash": "2e59c37421d170ed1063f48fe1c03f6a"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\repomix.config.json": {
+    "mtime": 1783356462.210274,
+    "ast_hash": "caa86d04127abfab69ba4cbc56a98ee5",
+    "semantic_hash": "caa86d04127abfab69ba4cbc56a98ee5"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\scripts\\generate-sitemap.js": {
+    "mtime": 1783355679.8534286,
+    "ast_hash": "ba0e02cdaaa4c15c583f1dd179e073d3",
+    "semantic_hash": "ba0e02cdaaa4c15c583f1dd179e073d3"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\app.component.spec.ts": {
+    "mtime": 1783355679.855438,
+    "ast_hash": "e523964dcc0eb8388d3cf827f0adf2ff",
+    "semantic_hash": "e523964dcc0eb8388d3cf827f0adf2ff"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\app.component.ts": {
+    "mtime": 1783355679.855438,
+    "ast_hash": "80df05a85f093cf36165619fa7ce6c0c",
+    "semantic_hash": "80df05a85f093cf36165619fa7ce6c0c"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\app.config.ts": {
+    "mtime": 1783355679.855438,
+    "ast_hash": "05968f03ce671a01e73b508f3ac2c7df",
+    "semantic_hash": "05968f03ce671a01e73b508f3ac2c7df"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\app.routes.ts": {
+    "mtime": 1783355679.8564389,
+    "ast_hash": "c8f1db5de95771b91ae0a504d57d8f07",
+    "semantic_hash": "c8f1db5de95771b91ae0a504d57d8f07"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\about\\about.component.spec.ts": {
+    "mtime": 1783355679.8574388,
+    "ast_hash": "7a17e00ad27b894ea319c7714ff16841",
+    "semantic_hash": "7a17e00ad27b894ea319c7714ff16841"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\about\\about.component.ts": {
+    "mtime": 1783355679.8574388,
+    "ast_hash": "d0a0ed968de423380f165fffa1c70560",
+    "semantic_hash": "d0a0ed968de423380f165fffa1c70560"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\article-list\\article-list.component.spec.ts": {
+    "mtime": 1783355679.8594387,
+    "ast_hash": "41ca6e128c31fcc0edc334221c7e7974",
+    "semantic_hash": "41ca6e128c31fcc0edc334221c7e7974"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\article-list\\article-list.component.ts": {
+    "mtime": 1783355679.8594387,
+    "ast_hash": "727aa0d94688e3853757aefc44c28ba1",
+    "semantic_hash": "727aa0d94688e3853757aefc44c28ba1"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\article\\article.component.spec.ts": {
+    "mtime": 1783355679.8604388,
+    "ast_hash": "2fde71a912b0053f8ebc75fd5fd0ab3b",
+    "semantic_hash": "2fde71a912b0053f8ebc75fd5fd0ab3b"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\article\\article.component.ts": {
+    "mtime": 1783355679.8604388,
+    "ast_hash": "c910fb92d7a7b96334bf39c8010698ec",
+    "semantic_hash": "c910fb92d7a7b96334bf39c8010698ec"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\breadcrumb\\breadcrumb.component.ts": {
+    "mtime": 1783355679.8614392,
+    "ast_hash": "556a5b0452d4292aa5fcee70e0cf3373",
+    "semantic_hash": "556a5b0452d4292aa5fcee70e0cf3373"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\contact\\contact.component.spec.ts": {
+    "mtime": 1783355679.8629446,
+    "ast_hash": "56613d84a88a001f3cbb818137d319db",
+    "semantic_hash": "56613d84a88a001f3cbb818137d319db"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\contact\\contact.component.ts": {
+    "mtime": 1783355679.8629446,
+    "ast_hash": "adc1b1d2470168553038ab36fee57a68",
+    "semantic_hash": "adc1b1d2470168553038ab36fee57a68"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\cv-viewer\\cv-viewer.component.ts": {
+    "mtime": 1783355679.8649547,
+    "ast_hash": "6f6fbff6cdd1a52a0a2fa302abf4b4d0",
+    "semantic_hash": "6f6fbff6cdd1a52a0a2fa302abf4b4d0"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\error\\error.component.spec.ts": {
+    "mtime": 1783355679.8659554,
+    "ast_hash": "857df032828a046a90fd9cf4020b8851",
+    "semantic_hash": "857df032828a046a90fd9cf4020b8851"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\error\\error.component.ts": {
+    "mtime": 1783355679.8659554,
+    "ast_hash": "49e8e5ef3093283a7d3e682ed5955690",
+    "semantic_hash": "49e8e5ef3093283a7d3e682ed5955690"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\home\\home.component.spec.ts": {
+    "mtime": 1783355679.8669538,
+    "ast_hash": "3c3be944dc544e39451b668744504a7d",
+    "semantic_hash": "3c3be944dc544e39451b668744504a7d"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\home\\home.component.ts": {
+    "mtime": 1783355679.8669538,
+    "ast_hash": "e7f5f45ea39517fa67a47e43df2cee15",
+    "semantic_hash": "e7f5f45ea39517fa67a47e43df2cee15"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\project-detail\\project-detail.component.spec.ts": {
+    "mtime": 1783355679.8689547,
+    "ast_hash": "3007f74c3f88964601b86fac3d2510e5",
+    "semantic_hash": "3007f74c3f88964601b86fac3d2510e5"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\project-detail\\project-detail.component.ts": {
+    "mtime": 1783355679.8689547,
+    "ast_hash": "43e263be340b480c84a28f437c495c3b",
+    "semantic_hash": "43e263be340b480c84a28f437c495c3b"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\projects\\projects.component.spec.ts": {
+    "mtime": 1783355679.8699553,
+    "ast_hash": "d9bfeb39ff9259a53700bff7fefb4c1c",
+    "semantic_hash": "d9bfeb39ff9259a53700bff7fefb4c1c"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\projects\\projects.component.ts": {
+    "mtime": 1783355679.8699553,
+    "ast_hash": "a332413cdf246528be457f22934f196d",
+    "semantic_hash": "a332413cdf246528be457f22934f196d"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\models\\project.model.ts": {
+    "mtime": 1783355679.8709533,
+    "ast_hash": "aadc05799a0e54d0abe1ed99f5c19ed5",
+    "semantic_hash": "aadc05799a0e54d0abe1ed99f5c19ed5"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\services\\breadcrumb.service.ts": {
+    "mtime": 1783355679.8709533,
+    "ast_hash": "0edfe83d3127366c72e32432ea3e6b37",
+    "semantic_hash": "0edfe83d3127366c72e32432ea3e6b37"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\services\\meta.service.ts": {
+    "mtime": 1783355679.8709533,
+    "ast_hash": "63bca15dd4f171b7a85a939ff79c79ba",
+    "semantic_hash": "63bca15dd4f171b7a85a939ff79c79ba"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\services\\metadata.service.spec.ts": {
+    "mtime": 1783355679.8709533,
+    "ast_hash": "c48b6cd8e94f05e93a424c9dcfe622b5",
+    "semantic_hash": "c48b6cd8e94f05e93a424c9dcfe622b5"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\services\\metadata.service.ts": {
+    "mtime": 1783355679.8724606,
+    "ast_hash": "fe558737ddf146044ee7ab3e3993ffab",
+    "semantic_hash": "fe558737ddf146044ee7ab3e3993ffab"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\services\\sitemap.service.ts": {
+    "mtime": 1783355679.8724606,
+    "ast_hash": "6c8c361a5a119a676d1a34322613602e",
+    "semantic_hash": "6c8c361a5a119a676d1a34322613602e"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\services\\theme.service.spec.ts": {
+    "mtime": 1783355679.8724606,
+    "ast_hash": "d973ef06e896b913cbcbcf1dc2230a18",
+    "semantic_hash": "d973ef06e896b913cbcbcf1dc2230a18"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\services\\theme.service.ts": {
+    "mtime": 1783355679.8724606,
+    "ast_hash": "ca1420336bc3df51293b7711ba7ea80c",
+    "semantic_hash": "ca1420336bc3df51293b7711ba7ea80c"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\articles.json": {
+    "mtime": 1783355679.8734672,
+    "ast_hash": "fc987a50bce4dd329e16875563c8a577",
+    "semantic_hash": "fc987a50bce4dd329e16875563c8a577"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\articles\\angular-v19-novedades-rendimiento-signals.json": {
+    "mtime": 1783355679.8734672,
+    "ast_hash": "de862ffabce963ce4a659ddadaf8b813",
+    "semantic_hash": "de862ffabce963ce4a659ddadaf8b813"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\articles\\componentes-accesibles-angular-tailwind.json": {
+    "mtime": 1783355679.8744707,
+    "ast_hash": "d4171d71add56a51f2165c82fa152752",
+    "semantic_hash": "d4171d71add56a51f2165c82fa152752"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\projects.json": {
+    "mtime": 1783355679.8839827,
+    "ast_hash": "03f2b7f296b8f682ade68ded34e8d0f2",
+    "semantic_hash": "03f2b7f296b8f682ade68ded34e8d0f2"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\projects\\azotodev.json": {
+    "mtime": 1783355679.8849862,
+    "ast_hash": "c172331ef52ebdcf39d1aa9068bb5842",
+    "semantic_hash": "c172331ef52ebdcf39d1aa9068bb5842"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\projects\\control-inventario.json": {
+    "mtime": 1783355679.8849862,
+    "ast_hash": "2572265acab60988bd99d8396e6d2b53",
+    "semantic_hash": "2572265acab60988bd99d8396e6d2b53"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\projects\\gestion-documental.json": {
+    "mtime": 1783355679.8859875,
+    "ast_hash": "4a413c97f8bf81da054f5e5c113d9632",
+    "semantic_hash": "4a413c97f8bf81da054f5e5c113d9632"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\projects\\tickets-soporte.json": {
+    "mtime": 1783355679.8859875,
+    "ast_hash": "39377fa418b30e61e00b03c0b9e8bf04",
+    "semantic_hash": "39377fa418b30e61e00b03c0b9e8bf04"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\projects\\venta-simple.json": {
+    "mtime": 1783355679.8859875,
+    "ast_hash": "7fc6a0e045c94f58d5796c8d65a0c1a2",
+    "semantic_hash": "7fc6a0e045c94f58d5796c8d65a0c1a2"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\main.ts": {
+    "mtime": 1783355679.8869877,
+    "ast_hash": "b5c1d106e573fea21ef1ad9e4360e77a",
+    "semantic_hash": "b5c1d106e573fea21ef1ad9e4360e77a"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\tsconfig.app.json": {
+    "mtime": 1783355679.8879864,
+    "ast_hash": "8d99fdcdf658986569ea23b33df685a6",
+    "semantic_hash": "8d99fdcdf658986569ea23b33df685a6"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\tsconfig.json": {
+    "mtime": 1783355679.8879864,
+    "ast_hash": "dd3c8905847764e8a227c8bbb23ffab6",
+    "semantic_hash": "dd3c8905847764e8a227c8bbb23ffab6"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\tsconfig.spec.json": {
+    "mtime": 1783355679.888987,
+    "ast_hash": "fde196cef563197a78958ceaea284638",
+    "semantic_hash": "fde196cef563197a78958ceaea284638"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\vercel.json": {
+    "mtime": 1783355679.888987,
+    "ast_hash": "3a357fa4a32f98b66585af413eeacbe9",
+    "semantic_hash": "3a357fa4a32f98b66585af413eeacbe9"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.agents\\rules\\graphify.md": {
+    "mtime": 1783359180.057193,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": "a0e4d192b9e2e17256124dbfc8e24e6a"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.agents\\workflows\\graphify.md": {
+    "mtime": 1783359180.0578039,
+    "ast_hash": "637776aa6f7496d069afe7520c845c8a",
+    "semantic_hash": "637776aa6f7496d069afe7520c845c8a"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.claude\\CLAUDE.md": {
+    "mtime": 1783355679.8363974,
+    "ast_hash": "36e699fb844970a9df322d5df218145f",
+    "semantic_hash": "36e699fb844970a9df322d5df218145f"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.claude\\ROADMAP.md": {
+    "mtime": 1783355679.8373983,
+    "ast_hash": "2ff8a0b70c290594663ee5d571893a91",
+    "semantic_hash": "2ff8a0b70c290594663ee5d571893a91"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.claude\\agent_architect.md": {
+    "mtime": 1783355679.8373983,
+    "ast_hash": "65f2fadb1ff09e1878ffcc6f006b97ac",
+    "semantic_hash": "65f2fadb1ff09e1878ffcc6f006b97ac"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.claude\\agent_marketing_copy.md": {
+    "mtime": 1783355679.8384047,
+    "ast_hash": "1db314589c8590725c86cfb38a5ee0de",
+    "semantic_hash": "1db314589c8590725c86cfb38a5ee0de"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.claude\\agent_seo_content.md": {
+    "mtime": 1783355679.8384047,
+    "ast_hash": "90386df2180e2faaa195aa105210f588",
+    "semantic_hash": "90386df2180e2faaa195aa105210f588"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.claude\\agent_ui_ux.md": {
+    "mtime": 1783355679.8393965,
+    "ast_hash": "9d3bfc402124e896984cc8b56951f705",
+    "semantic_hash": "9d3bfc402124e896984cc8b56951f705"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\.github\\copilot-instructions.md": {
+    "mtime": 1783355679.8393965,
+    "ast_hash": "5b420ce4394bc54bb6747f2e61b4fd2a",
+    "semantic_hash": "5b420ce4394bc54bb6747f2e61b4fd2a"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\README.md": {
+    "mtime": 1783355679.842396,
+    "ast_hash": "994bc2f3dc6d920635dadc38d62449be",
+    "semantic_hash": "994bc2f3dc6d920635dadc38d62449be"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\public\\robots.txt": {
+    "mtime": 1783355679.85242,
+    "ast_hash": "ed49486be9ce409c51f834f69979840e",
+    "semantic_hash": "ed49486be9ce409c51f834f69979840e"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\app.component.html": {
+    "mtime": 1783355679.854434,
+    "ast_hash": "8448aab1e83fdcbb74273919964dc51e",
+    "semantic_hash": "8448aab1e83fdcbb74273919964dc51e"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\about\\about.component.html": {
+    "mtime": 1783355679.8564389,
+    "ast_hash": "fa5ab3bc9ad6fc45639a4088aa5278da",
+    "semantic_hash": "fa5ab3bc9ad6fc45639a4088aa5278da"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\article-list\\article-list.component.html": {
+    "mtime": 1783355679.8584394,
+    "ast_hash": "5be2265822c619a23d45c63581f585dd",
+    "semantic_hash": "5be2265822c619a23d45c63581f585dd"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\article\\article.component.html": {
+    "mtime": 1783355679.8594387,
+    "ast_hash": "55bace9f41405f36103a060ef4aca383",
+    "semantic_hash": "55bace9f41405f36103a060ef4aca383"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\contact\\contact.component.html": {
+    "mtime": 1783355679.8624396,
+    "ast_hash": "97d01a1f0b14848fb20c95ec3c09fd91",
+    "semantic_hash": "97d01a1f0b14848fb20c95ec3c09fd91"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\cv-viewer\\cv-viewer.component.html": {
+    "mtime": 1783355679.863949,
+    "ast_hash": "d1ac59efd5e9b3b509bee709d5962a5a",
+    "semantic_hash": "d1ac59efd5e9b3b509bee709d5962a5a"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\error\\error.component.html": {
+    "mtime": 1783355679.8649547,
+    "ast_hash": "eb0ce3a675b5a78a751e44d3c2e60493",
+    "semantic_hash": "eb0ce3a675b5a78a751e44d3c2e60493"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\home\\home.component.html": {
+    "mtime": 1783355679.8659554,
+    "ast_hash": "23707bf603ff97fabd7289e74173fcf0",
+    "semantic_hash": "23707bf603ff97fabd7289e74173fcf0"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\project-detail\\project-detail.component.html": {
+    "mtime": 1783355679.867954,
+    "ast_hash": "e0aea45fb861a9aef321e7d5cc3f1ecf",
+    "semantic_hash": "e0aea45fb861a9aef321e7d5cc3f1ecf"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\app\\components\\projects\\projects.component.html": {
+    "mtime": 1783355679.8689547,
+    "ast_hash": "be5d2fefc5a9b2b07f966def3259eadd",
+    "semantic_hash": "be5d2fefc5a9b2b07f966def3259eadd"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\index.html": {
+    "mtime": 1783355679.8869877,
+    "ast_hash": "4324e77d2f5053c52f99a2f6da8bd143",
+    "semantic_hash": "4324e77d2f5053c52f99a2f6da8bd143"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\public\\cv\\luis-hernandez-cv-en.pdf": {
+    "mtime": 1783355679.8469102,
+    "ast_hash": "73fa2af1dc6d9108e7a8961e7eb6e198",
+    "semantic_hash": "73fa2af1dc6d9108e7a8961e7eb6e198"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\public\\cv\\luis-hernandez-cv-es.pdf": {
+    "mtime": 1783355679.84791,
+    "ast_hash": "ae9fe18fe4a73d549e7c76f243593484",
+    "semantic_hash": "ae9fe18fe4a73d549e7c76f243593484"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\public\\icons\\icon-128x128.png": {
+    "mtime": 1783355679.8489099,
+    "ast_hash": "51af1881513c675146ffc7e71532404c",
+    "semantic_hash": "51af1881513c675146ffc7e71532404c"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\public\\icons\\icon-144x144.png": {
+    "mtime": 1783355679.8489099,
+    "ast_hash": "66e8778e74bcd3d576f6e8017f790e37",
+    "semantic_hash": "66e8778e74bcd3d576f6e8017f790e37"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\public\\icons\\icon-152x152.png": {
+    "mtime": 1783355679.8499131,
+    "ast_hash": "73e796b03c858eacba425c4d23ec68a3",
+    "semantic_hash": "73e796b03c858eacba425c4d23ec68a3"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\public\\icons\\icon-192x192.png": {
+    "mtime": 1783355679.8499131,
+    "ast_hash": "fe38d9e1f1de91d8623bd412d4061850",
+    "semantic_hash": "fe38d9e1f1de91d8623bd412d4061850"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\public\\icons\\icon-384x384.png": {
+    "mtime": 1783355679.8499131,
+    "ast_hash": "747d0c4f12a19f93026d55a3f040d536",
+    "semantic_hash": "747d0c4f12a19f93026d55a3f040d536"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\public\\icons\\icon-512x512.png": {
+    "mtime": 1783355679.8509102,
+    "ast_hash": "2cca1ff3051b0d322f30d39a37214e28",
+    "semantic_hash": "2cca1ff3051b0d322f30d39a37214e28"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\public\\icons\\icon-72x72.png": {
+    "mtime": 1783355679.8509102,
+    "ast_hash": "2c80564bda774d59a145f5ce05b0cd4d",
+    "semantic_hash": "2c80564bda774d59a145f5ce05b0cd4d"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\public\\icons\\icon-96x96.png": {
+    "mtime": 1783355679.8509102,
+    "ast_hash": "ad68075f59b101ac4943c78e1fd9198e",
+    "semantic_hash": "ad68075f59b101ac4943c78e1fd9198e"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\images\\articles\\accesibilidad-angular.webp": {
+    "mtime": 1783355679.8804708,
+    "ast_hash": "642cc69e112e110b211b13a472532ab7",
+    "semantic_hash": "642cc69e112e110b211b13a472532ab7"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\images\\articles\\angular19.webp": {
+    "mtime": 1783355679.881471,
+    "ast_hash": "1805c5ab5ea8276a9f63750ecfdd98e3",
+    "semantic_hash": "1805c5ab5ea8276a9f63750ecfdd98e3"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\images\\articles\\wcag-levels.webp": {
+    "mtime": 1783355679.881471,
+    "ast_hash": "3d9e384be76dbdab5e22c16b50146550",
+    "semantic_hash": "3d9e384be76dbdab5e22c16b50146550"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\images\\projects\\azotodev\\azoto-portafolio.webp": {
+    "mtime": 1783355679.882978,
+    "ast_hash": "c5b3bc6a5b03b03ed67b37beaf3478bc",
+    "semantic_hash": "c5b3bc6a5b03b03ed67b37beaf3478bc"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\images\\projects\\azotodev\\home-dark-theme-mobile.webp": {
+    "mtime": 1783355679.882978,
+    "ast_hash": "d77147e1109ae32f4fb66fb6036fb293",
+    "semantic_hash": "d77147e1109ae32f4fb66fb6036fb293"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\images\\projects\\azotodev\\home-dark-theme.webp": {
+    "mtime": 1783355679.8839827,
+    "ast_hash": "07fb944e9d43e4a1f847fd725e470755",
+    "semantic_hash": "07fb944e9d43e4a1f847fd725e470755"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\images\\projects\\azotodev\\home-white-theme-mobile.webp": {
+    "mtime": 1783355679.8839827,
+    "ast_hash": "01d7eebeeffad956ac6ecf1ff95da7f7",
+    "semantic_hash": "01d7eebeeffad956ac6ecf1ff95da7f7"
+  },
+  "C:\\Users\\CONSJUR-946\\Documents\\Proyectos\\AzottoDev\\src\\assets\\images\\projects\\azotodev\\home-white-theme.webp": {
+    "mtime": 1783355679.8839827,
+    "ast_hash": "78670965ce71d3477f0921ba92afff2b",
+    "semantic_hash": "78670965ce71d3477f0921ba92afff2b"
+  }
+}

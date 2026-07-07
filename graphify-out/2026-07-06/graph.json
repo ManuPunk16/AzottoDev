@@ -1,0 +1,1711 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "agent_orchestration_flow",
+        "label": "AI Agents Coordination",
+        "nodes": [
+          "claude_orchestrator",
+          "agent_architect",
+          "agent_ui_ux",
+          "agent_seo_content",
+          "agent_marketing_copy"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": ".claude/CLAUDE.md"
+      },
+      {
+        "id": "fullstack_portfolio_projects",
+        "label": "Fullstack Portfolio Projects",
+        "nodes": [
+          "projects_control_inventario",
+          "projects_gestion_documental",
+          "projects_venta_simple"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "src/assets/projects.json"
+      },
+      {
+        "id": "wcag_conformance_hierarchy",
+        "label": "WCAG Conformance Levels Hierarchy",
+        "nodes": [
+          "articles_wcag_levels_wcag_level_a",
+          "articles_wcag_levels_wcag_level_aa",
+          "articles_wcag_levels_wcag_level_aaa"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "src/assets/images/articles/wcag-levels.webp"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "AppComponent",
+      "file_type": "code",
+      "source_file": "src/app/app.component.ts",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "app_app_component_appcomponent",
+      "community": 3,
+      "norm_label": "appcomponent"
+    },
+    {
+      "label": "AboutComponent",
+      "file_type": "code",
+      "source_file": "src/app/components/about/about.component.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "about_about_component_aboutcomponent",
+      "community": 19,
+      "norm_label": "aboutcomponent"
+    },
+    {
+      "label": "ArticleListComponent",
+      "file_type": "code",
+      "source_file": "src/app/components/article-list/article-list.component.ts",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "article_list_article_list_component_articlelistcomponent",
+      "community": 0,
+      "norm_label": "articlelistcomponent"
+    },
+    {
+      "label": "ArticleComponent",
+      "file_type": "code",
+      "source_file": "src/app/components/article/article.component.ts",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "article_article_component_articlecomponent",
+      "community": 0,
+      "norm_label": "articlecomponent"
+    },
+    {
+      "label": "BreadcrumbComponent",
+      "file_type": "code",
+      "source_file": "src/app/components/breadcrumb/breadcrumb.component.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "breadcrumb_breadcrumb_component_breadcrumbcomponent",
+      "community": 3,
+      "norm_label": "breadcrumbcomponent"
+    },
+    {
+      "label": "ContactComponent",
+      "file_type": "code",
+      "source_file": "src/app/components/contact/contact.component.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "contact_contact_component_contactcomponent",
+      "community": 20,
+      "norm_label": "contactcomponent"
+    },
+    {
+      "label": "CvViewerComponent",
+      "file_type": "code",
+      "source_file": "src/app/components/cv-viewer/cv-viewer.component.ts",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "cv_viewer_cv_viewer_component_cvviewercomponent",
+      "community": 0,
+      "norm_label": "cvviewercomponent"
+    },
+    {
+      "label": "ErrorComponent",
+      "file_type": "code",
+      "source_file": "src/app/components/error/error.component.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "error_error_component_errorcomponent",
+      "community": 23,
+      "norm_label": "errorcomponent"
+    },
+    {
+      "label": "HomeComponent",
+      "file_type": "code",
+      "source_file": "src/app/components/home/home.component.ts",
+      "source_location": "L88",
+      "_origin": "ast",
+      "id": "home_home_component_homecomponent",
+      "community": 0,
+      "norm_label": "homecomponent"
+    },
+    {
+      "label": "ProjectDetailComponent",
+      "file_type": "code",
+      "source_file": "src/app/components/project-detail/project-detail.component.ts",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "project_detail_project_detail_component_projectdetailcomponent",
+      "community": 0,
+      "norm_label": "projectdetailcomponent"
+    },
+    {
+      "label": "ProjectsComponent",
+      "file_type": "code",
+      "source_file": "src/app/components/projects/projects.component.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "projects_projects_component_projectscomponent",
+      "community": 0,
+      "norm_label": "projectscomponent"
+    },
+    {
+      "label": "ProjectImage",
+      "file_type": "code",
+      "source_file": "src/app/models/project.model.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "models_project_model_projectimage",
+      "community": 30,
+      "norm_label": "projectimage"
+    },
+    {
+      "label": "ProjectMetrics",
+      "file_type": "code",
+      "source_file": "src/app/models/project.model.ts",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "models_project_model_projectmetrics",
+      "community": 31,
+      "norm_label": "projectmetrics"
+    },
+    {
+      "label": "ProjectTeam",
+      "file_type": "code",
+      "source_file": "src/app/models/project.model.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "models_project_model_projectteam",
+      "community": 32,
+      "norm_label": "projectteam"
+    },
+    {
+      "label": "Project",
+      "file_type": "code",
+      "source_file": "src/app/models/project.model.ts",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "models_project_model_project",
+      "community": 0,
+      "norm_label": "project"
+    },
+    {
+      "label": "Breadcrumb",
+      "file_type": "code",
+      "source_file": "src/app/services/breadcrumb.service.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "services_breadcrumb_service_breadcrumb",
+      "community": 3,
+      "norm_label": "breadcrumb"
+    },
+    {
+      "label": "BreadcrumbService",
+      "file_type": "code",
+      "source_file": "src/app/services/breadcrumb.service.ts",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "services_breadcrumb_service_breadcrumbservice",
+      "community": 3,
+      "norm_label": "breadcrumbservice"
+    },
+    {
+      "label": "MetaConfig",
+      "file_type": "code",
+      "source_file": "src/app/services/meta.service.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "services_meta_service_metaconfig",
+      "community": 35,
+      "norm_label": "metaconfig"
+    },
+    {
+      "label": "MetaService",
+      "file_type": "code",
+      "source_file": "src/app/services/meta.service.ts",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "services_meta_service_metaservice",
+      "community": 0,
+      "norm_label": "metaservice"
+    },
+    {
+      "label": "MetaTagsConfig",
+      "file_type": "code",
+      "source_file": "src/app/services/metadata.service.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "services_metadata_service_metatagsconfig",
+      "community": 36,
+      "norm_label": "metatagsconfig"
+    },
+    {
+      "label": "MetadataService",
+      "file_type": "code",
+      "source_file": "src/app/services/metadata.service.ts",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "services_metadata_service_metadataservice",
+      "community": 0,
+      "norm_label": "metadataservice"
+    },
+    {
+      "label": "SitemapService",
+      "file_type": "code",
+      "source_file": "src/app/services/sitemap.service.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "services_sitemap_service_sitemapservice",
+      "community": 37,
+      "norm_label": "sitemapservice"
+    },
+    {
+      "label": "ThemeService",
+      "file_type": "code",
+      "source_file": "src/app/services/theme.service.ts",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "services_theme_service_themeservice",
+      "community": 1,
+      "norm_label": "themeservice"
+    },
+    {
+      "label": "PostCSS Configuration",
+      "file_type": "code",
+      "source_file": ".postcssrc.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "postcssrc_config",
+      "community": 16,
+      "norm_label": "postcss configuration"
+    },
+    {
+      "label": "@tailwindcss/postcss",
+      "file_type": "concept",
+      "source_file": ".postcssrc.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tailwindcss_postcss",
+      "community": 16,
+      "norm_label": "@tailwindcss/postcss"
+    },
+    {
+      "label": "Package Manifest",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "package_json",
+      "community": 15,
+      "norm_label": "package manifest"
+    },
+    {
+      "label": "Repomix Configuration",
+      "file_type": "code",
+      "source_file": "repomix.config.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "repomix_config",
+      "community": 34,
+      "norm_label": "repomix configuration"
+    },
+    {
+      "label": "Vercel Configuration",
+      "file_type": "code",
+      "source_file": "vercel.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "vercel_config",
+      "community": 15,
+      "norm_label": "vercel configuration"
+    },
+    {
+      "label": "Project README",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "Luis Hern\u00e1ndez",
+      "contributor": null,
+      "id": "readme_md",
+      "community": 33,
+      "norm_label": "project readme"
+    },
+    {
+      "label": "Graphify Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/graphify.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "rules_graphify",
+      "community": 18,
+      "norm_label": "graphify rule"
+    },
+    {
+      "label": "Graphify Workflow",
+      "file_type": "document",
+      "source_file": ".agents/workflows/graphify.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "workflows_graphify",
+      "community": 18,
+      "norm_label": "graphify workflow"
+    },
+    {
+      "label": "Principal Engineer Orchestrator",
+      "file_type": "document",
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_orchestrator",
+      "community": 2,
+      "norm_label": "principal engineer orchestrator"
+    },
+    {
+      "label": "Project Roadmap",
+      "file_type": "document",
+      "source_file": ".claude/ROADMAP.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "Comit\u00e9 de Agentes",
+      "contributor": null,
+      "id": "claude_roadmap",
+      "community": 2,
+      "norm_label": "project roadmap"
+    },
+    {
+      "label": "Senior Full Stack Dev Agent",
+      "file_type": "document",
+      "source_file": ".claude/agent_architect.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "agent_architect",
+      "community": 2,
+      "norm_label": "senior full stack dev agent"
+    },
+    {
+      "label": "UX/UI Strategist & Product Designer Agent",
+      "file_type": "document",
+      "source_file": ".claude/agent_ui_ux.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "agent_ui_ux",
+      "community": 2,
+      "norm_label": "ux/ui strategist & product designer agent"
+    },
+    {
+      "label": "Growth Product Manager & SEO Manager Agent",
+      "file_type": "document",
+      "source_file": ".claude/agent_seo_content.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "agent_seo_content",
+      "community": 2,
+      "norm_label": "growth product manager & seo manager agent"
+    },
+    {
+      "label": "Copywriter & Marketing Strategist Agent",
+      "file_type": "document",
+      "source_file": ".claude/agent_marketing_copy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "agent_marketing_copy",
+      "community": 2,
+      "norm_label": "copywriter & marketing strategist agent"
+    },
+    {
+      "label": "GitHub Copilot Instructions",
+      "file_type": "document",
+      "source_file": ".github/copilot-instructions.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "copilot_instructions",
+      "community": 2,
+      "norm_label": "github copilot instructions"
+    },
+    {
+      "label": "Robots.txt",
+      "file_type": "document",
+      "source_file": "public/robots.txt",
+      "id": "public_robots_robots",
+      "community": 17,
+      "norm_label": "robots.txt"
+    },
+    {
+      "label": "Luis Hernandez CV (English)",
+      "file_type": "document",
+      "source_file": "public/cv/luis-hernandez-cv-en.pdf",
+      "id": "cv_luis_hernandez_cv_en_pdf",
+      "community": 21,
+      "norm_label": "luis hernandez cv (english)"
+    },
+    {
+      "label": "Luis Hernandez CV (Spanish)",
+      "file_type": "document",
+      "source_file": "public/cv/luis-hernandez-cv-es.pdf",
+      "id": "cv_luis_hernandez_cv_es_pdf",
+      "community": 22,
+      "norm_label": "luis hernandez cv (spanish)"
+    },
+    {
+      "label": "Sitemap Generator Script",
+      "file_type": "code",
+      "source_file": "scripts/generate-sitemap.js",
+      "id": "scripts_generate_sitemap_generatesitemap",
+      "community": 17,
+      "norm_label": "sitemap generator script"
+    },
+    {
+      "label": "Main Bootstrap",
+      "file_type": "code",
+      "source_file": "src/main.ts",
+      "id": "src_main_bootstrap",
+      "community": 3,
+      "norm_label": "main bootstrap"
+    },
+    {
+      "label": "AppConfig",
+      "file_type": "code",
+      "source_file": "src/app/app.config.ts",
+      "id": "app_app_config_appconfig",
+      "community": 3,
+      "norm_label": "appconfig"
+    },
+    {
+      "label": "AppRoutes",
+      "file_type": "code",
+      "source_file": "src/app/app.routes.ts",
+      "id": "app_app_routes_routes",
+      "community": 3,
+      "norm_label": "approutes"
+    },
+    {
+      "label": "ThemeService Spec",
+      "file_type": "code",
+      "source_file": "src/app/services/theme.service.spec.ts",
+      "id": "services_theme_service_spec",
+      "community": 1,
+      "norm_label": "themeservice spec"
+    },
+    {
+      "label": "Angular v19 Novedades, Rendimiento y Signals",
+      "file_type": "document",
+      "source_file": "src/assets/articles/angular-v19-novedades-rendimiento-signals.json",
+      "id": "articles_angular_v19_novedades_rendimiento_signals",
+      "community": 8,
+      "norm_label": "angular v19 novedades, rendimiento y signals"
+    },
+    {
+      "label": "Componentes accesibles con Angular y Tailwind CSS",
+      "file_type": "document",
+      "source_file": "src/assets/articles/componentes-accesibles-angular-tailwind.json",
+      "id": "articles_componentes_accesibles_angular_tailwind",
+      "community": 8,
+      "norm_label": "componentes accesibles con angular y tailwind css"
+    },
+    {
+      "label": "AzottoDev Portfolio",
+      "file_type": "document",
+      "source_file": "src/assets/projects/azotodev.json",
+      "id": "projects_azotodev",
+      "community": 1,
+      "norm_label": "azottodev portfolio"
+    },
+    {
+      "label": "Sistema de Control de Inventario",
+      "file_type": "document",
+      "source_file": "src/assets/projects/control-inventario.json",
+      "id": "projects_control_inventario",
+      "community": 1,
+      "norm_label": "sistema de control de inventario"
+    },
+    {
+      "label": "Plataforma de Gesti\u00f3n Documental",
+      "file_type": "document",
+      "source_file": "src/assets/projects/gestion-documental.json",
+      "id": "projects_gestion_documental",
+      "community": 1,
+      "norm_label": "plataforma de gestion documental"
+    },
+    {
+      "label": "Sistema de Tickets de Soporte",
+      "file_type": "document",
+      "source_file": "src/assets/projects/tickets-soporte.json",
+      "id": "projects_tickets_soporte",
+      "community": 1,
+      "norm_label": "sistema de tickets de soporte"
+    },
+    {
+      "label": "VentaSimple \u2014 Micro-POS SaaS",
+      "file_type": "document",
+      "source_file": "src/assets/projects/venta-simple.json",
+      "id": "projects_venta_simple",
+      "community": 1,
+      "norm_label": "ventasimple \u2014 micro-pos saas"
+    },
+    {
+      "label": "Articles Registry",
+      "file_type": "document",
+      "source_file": "src/assets/articles.json",
+      "id": "assets_articles_json",
+      "community": 8,
+      "norm_label": "articles registry"
+    },
+    {
+      "label": "Projects Registry",
+      "file_type": "document",
+      "source_file": "src/assets/projects.json",
+      "id": "assets_projects_json",
+      "community": 1,
+      "norm_label": "projects registry"
+    },
+    {
+      "label": "Azotto Brand Icon",
+      "file_type": "image",
+      "source_file": "public/icons/icon-128x128.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icons_icon_128x128_logo",
+      "community": 24,
+      "norm_label": "azotto brand icon"
+    },
+    {
+      "label": "Azotto 144x144 Application Icon",
+      "file_type": "image",
+      "source_file": "public/icons/icon-144x144.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icons_icon_144x144_logo",
+      "community": 25,
+      "norm_label": "azotto 144x144 application icon"
+    },
+    {
+      "label": "Azotto Icon 152x152",
+      "file_type": "image",
+      "source_file": "public/icons/icon-152x152.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icons_icon_152x152_logo",
+      "community": 26,
+      "norm_label": "azotto icon 152x152"
+    },
+    {
+      "label": "Azotto App Icon (192x192)",
+      "file_type": "image",
+      "source_file": "public/icons/icon-192x192.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icons_icon_192x192_logo",
+      "community": 27,
+      "norm_label": "azotto app icon (192x192)"
+    },
+    {
+      "label": "Azotto Application Icon (384x384)",
+      "file_type": "image",
+      "source_file": "public/icons/icon-384x384.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icons_icon_384x384",
+      "community": 28,
+      "norm_label": "azotto application icon (384x384)"
+    },
+    {
+      "label": "Azotto Logo",
+      "file_type": "image",
+      "source_file": "public/icons/icon-512x512.png",
+      "id": "icons_icon_512x512_azotto_logo",
+      "community": 13,
+      "norm_label": "azotto logo"
+    },
+    {
+      "label": "Azotto Visual Identity",
+      "file_type": "concept",
+      "source_file": "public/icons/icon-512x512.png",
+      "id": "icons_icon_512x512_branding",
+      "community": 13,
+      "norm_label": "azotto visual identity"
+    },
+    {
+      "label": "Azotto App Icon (72x72)",
+      "file_type": "image",
+      "source_file": "public/icons/icon-72x72.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icons_icon_72x72_logo",
+      "community": 29,
+      "norm_label": "azotto app icon (72x72)"
+    },
+    {
+      "label": "AzottoDev Logo (96x96)",
+      "file_type": "image",
+      "source_file": "public/icons/icon-96x96.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icons_icon_96x96_logo",
+      "community": 14,
+      "norm_label": "azottodev logo (96x96)"
+    },
+    {
+      "label": "AzottoDev Brand Identity",
+      "file_type": "concept",
+      "source_file": "public/icons/icon-96x96.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icons_icon_96x96_brand_identity",
+      "community": 14,
+      "norm_label": "azottodev brand identity"
+    },
+    {
+      "label": "Banner: Componentes accesibles con Angular y Tailwind CSS",
+      "file_type": "image",
+      "source_file": "src/assets/images/articles/accesibilidad-angular.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_accesibilidad_angular_image",
+      "community": 11,
+      "norm_label": "banner: componentes accesibles con angular y tailwind css"
+    },
+    {
+      "label": "Componentes accesibles con Angular y Tailwind CSS",
+      "file_type": "concept",
+      "source_file": "src/assets/images/articles/accesibilidad-angular.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_accesibilidad_angular_concept",
+      "community": 11,
+      "norm_label": "componentes accesibles con angular y tailwind css"
+    },
+    {
+      "label": "Angular 19 Article Banner",
+      "file_type": "image",
+      "source_file": "src/assets/images/articles/angular19.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_angular19_image",
+      "community": 7,
+      "norm_label": "angular 19 article banner"
+    },
+    {
+      "label": "Angular 19 Novedades y mejoras",
+      "file_type": "concept",
+      "source_file": "src/assets/images/articles/angular19.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_angular19_angular_19_concept",
+      "community": 7,
+      "norm_label": "angular 19 novedades y mejoras"
+    },
+    {
+      "label": "Frontend",
+      "file_type": "concept",
+      "source_file": "src/assets/images/articles/angular19.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_angular19_frontend_concept",
+      "community": 7,
+      "norm_label": "frontend"
+    },
+    {
+      "label": "WCAG Conformance Levels Diagram",
+      "file_type": "image",
+      "source_file": "src/assets/images/articles/wcag-levels.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_wcag_levels_wcag_conformance_levels",
+      "community": 5,
+      "norm_label": "wcag conformance levels diagram"
+    },
+    {
+      "label": "WCAG Level A",
+      "file_type": "concept",
+      "source_file": "src/assets/images/articles/wcag-levels.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_wcag_levels_wcag_level_a",
+      "community": 5,
+      "norm_label": "wcag level a"
+    },
+    {
+      "label": "WCAG Level AA",
+      "file_type": "concept",
+      "source_file": "src/assets/images/articles/wcag-levels.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_wcag_levels_wcag_level_aa",
+      "community": 5,
+      "norm_label": "wcag level aa"
+    },
+    {
+      "label": "WCAG Level AAA",
+      "file_type": "concept",
+      "source_file": "src/assets/images/articles/wcag-levels.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "articles_wcag_levels_wcag_level_aaa",
+      "community": 5,
+      "norm_label": "wcag level aaa"
+    },
+    {
+      "label": "AzotoDev Portfolio Screenshot",
+      "file_type": "image",
+      "source_file": "src/assets/images/projects/azotodev/azoto-portafolio.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_azoto_portafolio_screenshot",
+      "community": 12,
+      "norm_label": "azotodev portfolio screenshot"
+    },
+    {
+      "label": "AzotoDev Portfolio",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/azoto-portafolio.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Desarrollado utilizando Angular 19 con arquitectura basada en componentes standalone para mejorar la eficiencia y mantenibilidad, incorporando un blog con markdown y optimizaci\u00f3n SEO.",
+      "id": "azotodev_azoto_portafolio_project_concept",
+      "community": 12,
+      "norm_label": "azotodev portfolio"
+    },
+    {
+      "label": "Home Dark Theme Mobile UI",
+      "file_type": "image",
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_dark_theme_mobile_portfolio_ui",
+      "community": 4,
+      "norm_label": "home dark theme mobile ui"
+    },
+    {
+      "label": "Luis Hern\u00e1ndez Portfolio Owner",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_dark_theme_mobile_luis_hernandez",
+      "community": 4,
+      "norm_label": "luis hernandez portfolio owner"
+    },
+    {
+      "label": "Angular",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_dark_theme_mobile_angular",
+      "community": 4,
+      "norm_label": "angular"
+    },
+    {
+      "label": "Full Stack Developer",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_dark_theme_mobile_full_stack_dev",
+      "community": 4,
+      "norm_label": "full stack developer"
+    },
+    {
+      "label": "Terminal Mockup Component",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_dark_theme_mobile_terminal_mockup",
+      "community": 4,
+      "norm_label": "terminal mockup component"
+    },
+    {
+      "label": "Mobile Dark Theme Design",
+      "file_type": "rationale",
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_dark_theme_mobile_dark_theme",
+      "community": 4,
+      "norm_label": "mobile dark theme design"
+    },
+    {
+      "label": "home-dark-theme.webp",
+      "file_type": "image",
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_dark_theme_file",
+      "community": 6,
+      "norm_label": "home-dark-theme.webp"
+    },
+    {
+      "label": "Portfolio Home Dark Theme Layout",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_dark_theme_layout",
+      "community": 6,
+      "norm_label": "portfolio home dark theme layout"
+    },
+    {
+      "label": "Terminal Mock Component",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_dark_theme_terminal_mock",
+      "community": 6,
+      "norm_label": "terminal mock component"
+    },
+    {
+      "label": "Portfolio Stat Cards",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_dark_theme_stats_cards",
+      "community": 6,
+      "norm_label": "portfolio stat cards"
+    },
+    {
+      "label": "AzottoDev Home White Theme Mobile Screenshot",
+      "file_type": "image",
+      "source_file": "src/assets/images/projects/azotodev/home-white-theme-mobile.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_white_theme_mobile",
+      "community": 10,
+      "norm_label": "azottodev home white theme mobile screenshot"
+    },
+    {
+      "label": "Luis Hern\u00e1ndez",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/home-white-theme-mobile.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_luis_hernandez",
+      "community": 10,
+      "norm_label": "luis hernandez"
+    },
+    {
+      "label": "Angular",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/home-white-theme-mobile.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_angular",
+      "community": 10,
+      "norm_label": "angular"
+    },
+    {
+      "label": "Home White Theme Image",
+      "file_type": "image",
+      "source_file": "src/assets/images/projects/azotodev/home-white-theme.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_white_theme_image",
+      "community": 9,
+      "norm_label": "home white theme image"
+    },
+    {
+      "label": "Portfolio Home Page Layout (White Theme)",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/home-white-theme.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_white_theme_layout",
+      "community": 9,
+      "norm_label": "portfolio home page layout (white theme)"
+    },
+    {
+      "label": "Luis Hern\u00e1ndez Profile Details",
+      "file_type": "concept",
+      "source_file": "src/assets/images/projects/azotodev/home-white-theme.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "azotodev_home_white_theme_profile_details",
+      "community": 9,
+      "norm_label": "luis hernandez profile details"
+    }
+  ],
+  "links": [
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/app.component.ts",
+      "source": "app_app_component_appcomponent",
+      "target": "breadcrumb_breadcrumb_component_breadcrumbcomponent"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source": "src_main_bootstrap",
+      "target": "app_app_component_appcomponent"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/app/components/article/article.component.ts",
+      "source": "article_article_component_articlecomponent",
+      "target": "article_list_article_list_component_articlelistcomponent"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/article-list/article-list.component.ts",
+      "source": "article_list_article_list_component_articlelistcomponent",
+      "target": "services_meta_service_metaservice"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/article/article.component.ts",
+      "source": "article_article_component_articlecomponent",
+      "target": "services_metadata_service_metadataservice"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/components/breadcrumb/breadcrumb.component.ts",
+      "source_location": "L332",
+      "weight": 1.0,
+      "source": "breadcrumb_breadcrumb_component_breadcrumbcomponent",
+      "target": "services_breadcrumb_service_breadcrumb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/breadcrumb/breadcrumb.component.ts",
+      "source": "breadcrumb_breadcrumb_component_breadcrumbcomponent",
+      "target": "services_breadcrumb_service_breadcrumbservice"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/home/home.component.ts",
+      "context": "import",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "home_home_component_homecomponent",
+      "target": "cv_viewer_cv_viewer_component_cvviewercomponent"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/home/home.component.ts",
+      "context": "import",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "home_home_component_homecomponent",
+      "target": "services_meta_service_metaservice"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/components/project-detail/project-detail.component.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "project_detail_project_detail_component_projectdetailcomponent",
+      "target": "models_project_model_project"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/project-detail/project-detail.component.ts",
+      "context": "import",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "project_detail_project_detail_component_projectdetailcomponent",
+      "target": "services_meta_service_metaservice"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/components/project-detail/project-detail.component.ts",
+      "context": "import",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "project_detail_project_detail_component_projectdetailcomponent",
+      "target": "services_metadata_service_metadataservice"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/components/projects/projects.component.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "projects_projects_component_projectscomponent",
+      "target": "models_project_model_project"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/app.config.ts",
+      "source": "app_app_config_appconfig",
+      "target": "services_breadcrumb_service_breadcrumbservice"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/services/breadcrumb.service.ts",
+      "source": "services_breadcrumb_service_breadcrumbservice",
+      "target": "services_breadcrumb_service_breadcrumbservice"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/services/meta.service.ts",
+      "source": "services_meta_service_metaservice",
+      "target": "services_meta_service_metaservice"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/app/services/meta.service.ts",
+      "source": "services_meta_service_metaservice",
+      "target": "services_metadata_service_metadataservice"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/services/metadata.service.ts",
+      "source": "services_metadata_service_metadataservice",
+      "target": "services_metadata_service_metadataservice"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/services/sitemap.service.ts",
+      "source": "services_sitemap_service_sitemapservice",
+      "target": "services_sitemap_service_sitemapservice"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/assets/projects/azotodev.json",
+      "source": "projects_azotodev",
+      "target": "services_theme_service_themeservice"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/services/theme.service.spec.ts",
+      "context": "import",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "services_theme_service_spec",
+      "target": "services_theme_service_themeservice"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".postcssrc.json",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "postcssrc_config",
+      "target": "tailwindcss_postcss"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "vercel.json",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "vercel_config"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": ".agents/rules/graphify.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "rules_graphify",
+      "target": "workflows_graphify"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_orchestrator",
+      "target": "agent_architect"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_orchestrator",
+      "target": "agent_marketing_copy"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_orchestrator",
+      "target": "agent_seo_content"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_orchestrator",
+      "target": "agent_ui_ux"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_orchestrator",
+      "target": "claude_roadmap"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": ".claude/agent_architect.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "agent_architect",
+      "target": "copilot_instructions"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "scripts/generate-sitemap.js",
+      "source": "scripts_generate_sitemap_generatesitemap",
+      "target": "public_robots_robots"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main.ts",
+      "source": "src_main_bootstrap",
+      "target": "app_app_config_appconfig"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/app.config.ts",
+      "source": "app_app_config_appconfig",
+      "target": "app_app_routes_routes"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/articles.json",
+      "source": "assets_articles_json",
+      "target": "articles_angular_v19_novedades_rendimiento_signals"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/articles.json",
+      "source": "assets_articles_json",
+      "target": "articles_componentes_accesibles_angular_tailwind"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/projects.json",
+      "source": "assets_projects_json",
+      "target": "projects_azotodev"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/projects.json",
+      "source": "assets_projects_json",
+      "target": "projects_control_inventario"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/projects.json",
+      "source": "assets_projects_json",
+      "target": "projects_gestion_documental"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/projects.json",
+      "source": "assets_projects_json",
+      "target": "projects_tickets_soporte"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/projects.json",
+      "source": "assets_projects_json",
+      "target": "projects_venta_simple"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "public/icons/icon-512x512.png",
+      "weight": 1.0,
+      "source": "icons_icon_512x512_azotto_logo",
+      "target": "icons_icon_512x512_branding"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/icons/icon-96x96.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icons_icon_96x96_logo",
+      "target": "icons_icon_96x96_brand_identity"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/articles/accesibilidad-angular.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_accesibilidad_angular_image",
+      "target": "articles_accesibilidad_angular_concept"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/articles/angular19.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_angular19_image",
+      "target": "articles_angular19_angular_19_concept"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/articles/angular19.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_angular19_image",
+      "target": "articles_angular19_frontend_concept"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/articles/wcag-levels.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_wcag_levels_wcag_conformance_levels",
+      "target": "articles_wcag_levels_wcag_level_a"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/articles/wcag-levels.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_wcag_levels_wcag_conformance_levels",
+      "target": "articles_wcag_levels_wcag_level_aa"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/articles/wcag-levels.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_wcag_levels_wcag_conformance_levels",
+      "target": "articles_wcag_levels_wcag_level_aaa"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/articles/wcag-levels.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "articles_wcag_levels_wcag_level_aa",
+      "target": "articles_wcag_levels_wcag_level_a"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/azoto-portafolio.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_azoto_portafolio_screenshot",
+      "target": "azotodev_azoto_portafolio_project_concept"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_dark_theme_mobile_portfolio_ui",
+      "target": "azotodev_home_dark_theme_mobile_angular"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_dark_theme_mobile_portfolio_ui",
+      "target": "azotodev_home_dark_theme_mobile_dark_theme"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_dark_theme_mobile_portfolio_ui",
+      "target": "azotodev_home_dark_theme_mobile_full_stack_dev"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_dark_theme_mobile_portfolio_ui",
+      "target": "azotodev_home_dark_theme_mobile_luis_hernandez"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme-mobile.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_dark_theme_mobile_portfolio_ui",
+      "target": "azotodev_home_dark_theme_mobile_terminal_mockup"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_dark_theme_file",
+      "target": "azotodev_home_dark_theme_layout"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_dark_theme_layout",
+      "target": "azotodev_home_dark_theme_stats_cards"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-dark-theme.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_dark_theme_layout",
+      "target": "azotodev_home_dark_theme_terminal_mock"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-white-theme-mobile.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_white_theme_mobile",
+      "target": "concept_angular"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-white-theme-mobile.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_white_theme_mobile",
+      "target": "concept_luis_hernandez"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-white-theme.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_white_theme_image",
+      "target": "azotodev_home_white_theme_layout"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/projects/azotodev/home-white-theme.webp",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "azotodev_home_white_theme_image",
+      "target": "azotodev_home_white_theme_profile_details"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "agent_orchestration_flow",
+      "label": "AI Agents Coordination",
+      "nodes": [
+        "claude_orchestrator",
+        "agent_architect",
+        "agent_ui_ux",
+        "agent_seo_content",
+        "agent_marketing_copy"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/CLAUDE.md"
+    },
+    {
+      "id": "fullstack_portfolio_projects",
+      "label": "Fullstack Portfolio Projects",
+      "nodes": [
+        "projects_control_inventario",
+        "projects_gestion_documental",
+        "projects_venta_simple"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/assets/projects.json"
+    },
+    {
+      "id": "wcag_conformance_hierarchy",
+      "label": "WCAG Conformance Levels Hierarchy",
+      "nodes": [
+        "articles_wcag_levels_wcag_level_a",
+        "articles_wcag_levels_wcag_level_aa",
+        "articles_wcag_levels_wcag_level_aaa"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/assets/images/articles/wcag-levels.webp"
+    }
+  ],
+  "built_at_commit": "b00070c0a5b01fb71548d67c858b65d51bd89882"
+}
