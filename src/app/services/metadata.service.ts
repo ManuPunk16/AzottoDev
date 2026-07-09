@@ -54,14 +54,15 @@ export class MetadataService {
     this.meta.updateTag({ property: 'og:site_name', content: this.siteName });
     this.meta.updateTag({ property: 'og:locale', content: 'es_ES' });
 
-    if (data.image) {
-      const imageUrl = data.image.startsWith('http') ? data.image : `${this.baseUrl}${data.image}`;
-      this.meta.updateTag({ property: 'og:image', content: imageUrl });
-      this.meta.updateTag({ property: 'og:image:alt', content: data.title });
-      this.meta.updateTag({ property: 'og:image:width', content: '1200' });
-      this.meta.updateTag({ property: 'og:image:height', content: '630' });
-      this.meta.updateTag({ property: 'og:image:type', content: 'image/webp' });
-    }
+    // Default image if not provided
+    const imagePath = data.image || '/assets/images/og-home.webp';
+    const imageUrl = imagePath.startsWith('http') ? imagePath : `${this.baseUrl}${imagePath}`;
+    
+    this.meta.updateTag({ property: 'og:image', content: imageUrl });
+    this.meta.updateTag({ property: 'og:image:alt', content: data.title });
+    this.meta.updateTag({ property: 'og:image:width', content: '1200' });
+    this.meta.updateTag({ property: 'og:image:height', content: '630' });
+    this.meta.updateTag({ property: 'og:image:type', content: 'image/webp' });
 
     // Twitter Cards optimizado
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
@@ -69,12 +70,8 @@ export class MetadataService {
     this.meta.updateTag({ name: 'twitter:description', content: data.description });
     this.meta.updateTag({ name: 'twitter:creator', content: this.twitterHandle });
     this.meta.updateTag({ name: 'twitter:site', content: this.twitterHandle });
-
-    if (data.image) {
-      const imageUrl = data.image.startsWith('http') ? data.image : `${this.baseUrl}${data.image}`;
-      this.meta.updateTag({ name: 'twitter:image', content: imageUrl });
-      this.meta.updateTag({ name: 'twitter:image:alt', content: data.title });
-    }
+    this.meta.updateTag({ name: 'twitter:image', content: imageUrl });
+    this.meta.updateTag({ name: 'twitter:image:alt', content: data.title });
 
     // Article specific meta tags
     if (data.type === 'article') {

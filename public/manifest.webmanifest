@@ -2,7 +2,7 @@
   "name": "AzotoDev - Luis Hernández | Portfolio Desarrollador Full Stack",
   "short_name": "AzotoDev",
   "description": "Portfolio profesional de Luis Hernández (AzotoDev), desarrollador Full Stack especializado en Angular, TypeScript y desarrollo web moderno",
-  "theme_color": "#8B5CF6",
+  "theme_color": "#111111",
   "background_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait",
