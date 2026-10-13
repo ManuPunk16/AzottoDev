@@ -4,7 +4,7 @@ const path = require("path");
 const baseUrl = "https://azotodev.com";
 const today = new Date().toISOString().split("T")[0];
 
-console.log("🚀 Generando sitemap para azotodev.com...");
+console.log("[INFO] Generando sitemap para azotodev.com...");
 
 try {
   // Leer datos reales con manejo de errores
@@ -104,14 +104,14 @@ try {
 
   fs.writeFileSync(path.join(outputDir, "sitemap.xml"), sitemap);
 
-  console.log("✅ Sitemap generado exitosamente");
-  console.log(`🌐 Base URL: ${baseUrl}`);
+  console.log("[SUCCESS] Sitemap generado exitosamente");
+  console.log(`[INFO] Base URL: ${baseUrl}`);
   console.log(
-    `📊 URLs totales: ${5 + projectsData.length + articlesData.length}`
+    `[INFO] URLs totales: ${5 + projectsData.length + articlesData.length}`
   );
-  console.log(`📁 Proyectos: ${projectsData.length}`);
-  console.log(`📝 Artículos: ${articlesData.length}`);
+  console.log(`[INFO] Proyectos: ${projectsData.length}`);
+  console.log(`[INFO] Artículos: ${articlesData.length}`);
 } catch (error) {
-  console.error("❌ Error generando sitemap:", error.message);
+  console.error("[ERROR] Error generando sitemap:", error.message);
   process.exit(1);
 }

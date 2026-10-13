@@ -138,15 +138,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   }
 
   getCategoryIcon(category: string): string {
-    const icons: Record<string, string> = {
-      'web': '🌐',
-      'fullstack': '⚡',
-      'frontend': '🎨',
-      'backend': '⚙️',
-      'mobile': '📱',
-      'desktop': '💻'
-    };
-    return icons[category.toLowerCase()] || '💼';
+    return '';
   }
 
   getStatusText(status: string): string {

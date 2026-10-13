@@ -791,7 +791,7 @@ a.disabled {
    SOBRESCRIBIR PRISM.CSS BACKGROUNDS
    ================================ */
 
-/* ✅ Sobrescribir backgrounds problemáticos de Prism.css */
+/* [CSS] Sobrescribir backgrounds problemáticos de Prism.css */
 .token.operator,
 .token.entity, 
 .token.url,
@@ -800,12 +800,12 @@ a.disabled {
   background: transparent !important;
 }
 
-/* ✅ Asegurar que todos los tokens tengan background transparente */
+/* [CSS] Asegurar que todos los tokens tengan background transparente */
 .token {
   background: transparent !important;
 }
 
-/* ✅ Específico para bloques de código */
+/* [CSS] Específico para bloques de código */
 pre[class*="language-"] .token {
   background: transparent !important;
 }

@@ -22,9 +22,9 @@ try {
   const outputPath = path.join(__dirname, '../routes.txt');
 
   fs.writeFileSync(outputPath, allRoutes.join('\n'), 'utf8');
-  console.log(`✓ routes.txt generado con éxito: ${allRoutes.length} rutas prerenderizadas.`);
+  console.log(`[SUCCESS] routes.txt generado: ${allRoutes.length} rutas prerenderizadas.`);
   allRoutes.forEach(route => console.log(`  - ${route}`));
 } catch (error) {
-  console.error('Error generando routes.txt:', error.message);
+  console.error('[ERROR] Error generando routes.txt:', error.message);
   process.exit(1);
 }

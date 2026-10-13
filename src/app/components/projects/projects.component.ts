@@ -68,15 +68,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   getCategoryIcon(category: string): string {
-    const icons: Record<string, string> = {
-      'web': '🌐',
-      'fullstack': '⚡',
-      'frontend': '🎨',
-      'backend': '⚙️',
-      'mobile': '📱',
-      'desktop': '💻'
-    };
-    return icons[category.toLowerCase()] || '💼';
+    return '';
   }
 
   getStatusText(status: string): string {
@@ -109,30 +101,25 @@ export class ProjectsComponent implements OnInit {
   }
 
   getPrivacyIcon(privacy: string): string {
-    const icons: Record<string, string> = {
-      'public': '🌐',
-      'internal': '🏢',
-      'private': '🔒'
-    };
-    return icons[privacy] || '📁';
+    return '';
   }
 
   onImageError(event: any, project: Project): void {
     const target = event.target as HTMLImageElement;
     
-    // ✅ Solo ocultar la imagen, mantener la estructura
+    // Solo ocultar la imagen, mantener la estructura
     target.style.display = 'none';
     
-    // ✅ Crear placeholder DENTRO del contenedor de imagen
+    // Crear placeholder DENTRO del contenedor de imagen
     const placeholder = document.createElement('div');
-    placeholder.className = 'absolute inset-0 w-full h-full bg-gradient-to-br from-purple-400 to-blue-500 flex flex-col items-center justify-center text-white';
+    placeholder.className = 'absolute inset-0 w-full h-full bg-gradient-to-br from-neutral-800 to-neutral-900 flex flex-col items-center justify-center text-white';
     placeholder.innerHTML = `
-      <div class="text-4xl mb-2 animate-pulse">${this.getCategoryIcon(project.category)}</div>
+      <div class="text-sm font-mono uppercase tracking-wider text-cyan-400 mb-1">${project.category}</div>
       <div class="text-lg font-bold text-center px-4">${project.title}</div>
-      <div class="text-sm opacity-80 mt-1">Imagen próximamente</div>
+      <div class="text-xs text-neutral-400 mt-1 font-mono">Visualización en desarrollo</div>
     `;
     
-    // ✅ Agregar el placeholder sin borrar los botones
+    // Agregar el placeholder sin borrar los botones
     target.parentElement?.insertBefore(placeholder, target);
   }
 

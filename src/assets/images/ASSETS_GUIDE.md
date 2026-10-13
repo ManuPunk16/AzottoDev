@@ -1,10 +1,10 @@
 # Guía de Assets del Portfolio (Imágenes y Logos)
 
-Esta guía explica la estructura de directorios optimizada para organizar imágenes, capturas y logos dentro del portafolio **AzottoDev**, asegurando consistencia y facilidad de mantenimiento.
+Esta guía explica la estructura de directorios optimizada para organizar imágenes, capturas y logos dentro del portafolio **AzotoDev**, asegurando consistencia y facilidad de mantenimiento.
 
 ---
 
-## 📁 Estructura de Directorios
+## 1. Estructura de Directorios
 
 Todos los recursos visuales deben colocarse dentro de la carpeta global `src/assets/images/` organizada bajo las siguientes subcarpetas:
 
@@ -22,7 +22,7 @@ src/assets/images/
 
 ---
 
-## 🏛️ Categorización por Nicho y Contenido
+## 2. Categorización por Nicho y Contenido
 
 ### 1. `projects/gov/` (Gubernamental)
 *   **Qué poner aquí**: Capturas de pantalla de portales ciudadanos, dashboards de trámites públicos, sistemas de transparencia u optimización administrativa.
@@ -46,7 +46,7 @@ src/assets/images/
 
 ---
 
-## 📏 Formatos y Buenas Prácticas de Optimización
+## 3. Formatos y Buenas Prácticas de Optimización
 
 Para mantener la velocidad de carga ultra rápida del portafolio (cumpliendo con Core Web Vitals), sigue estas reglas:
 
@@ -57,13 +57,13 @@ Para mantener la velocidad de carga ultra rápida del portafolio (cumpliendo con
 | **Capturas de Detalle** | `.webp` o `.png` | `800 x 600 px` o similar | < 80 KB |
 | **Avatar / Perfil** | `.webp` | `400 x 400 px` (relación 1:1) | < 45 KB |
 
-### 🛠️ Herramientas de optimización sugeridas:
+### Herramientas de optimización sugeridas:
 - **SVGO / SVGOMG**: Para limpiar código innecesario de archivos SVG.
 - **TinyPNG / Squoosh**: Para comprimir y convertir imágenes PNG/JPG a `.webp`.
 
 ---
 
-## ✏️ Convención de Nombres (Kebab-Case)
+## 4. Convención de Nombres (Kebab-Case)
 
 Nombra siempre tus archivos en minúsculas y separa las palabras con guiones medios.
 

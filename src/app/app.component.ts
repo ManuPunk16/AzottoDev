@@ -134,7 +134,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        // ✅ MODIFICADO: Solo manejar rutas principales, no individuales
+        // [SEO]: Solo manejar rutas principales, no individuales
         setTimeout(() => {
           this.updateSEOForRoute(event.url);
         }, 50); // Reducido delay
@@ -147,7 +147,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private updateSEOForRoute(url: string): void {
-    // ✅ CRÍTICO: NO interferir con rutas individuales
+    // [SEO]: No interferir con rutas individuales
     if (url === '/' || url === '/home') {
       this.metadataService.updateHomeMetadata();
     } else if (url === '/projects' && !url.includes('/projects/')) {
@@ -157,7 +157,7 @@ export class AppComponent implements OnInit, OnDestroy {
     } else if (url === '/certificates' && !url.includes('/certificates/')) {
       this.metadataService.updateCertificatesMetadata();
     }
-    // ✅ Las rutas individuales (/projects/id, /articles/slug) son manejadas por sus componentes
+    // Las rutas individuales (/projects/id, /articles/slug) son manejadas por sus componentes
   }
 
   // Métodos para el menú móvil
@@ -194,7 +194,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private setupAnalytics(): void {
     // Configuración de analytics para Vercel
     if (typeof window !== 'undefined' && window.location.hostname === 'azotodev.com') {
-      console.log('🚀 AzotoDev Portfolio iniciado');
+      console.log('[INFO] AzotoDev Portfolio iniciado');
     }
   }
 

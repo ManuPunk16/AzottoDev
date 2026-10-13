@@ -119,7 +119,7 @@
   }
 }
 
-/* ✅ Estilos de sintaxis Prism.js - TEMA OSCURO SIEMPRE */
+/* [CSS] Estilos de sintaxis Prism.js - TEMA OSCURO SIEMPRE */
 :host ::ng-deep {
   /* Base del código */
   pre[class*="language-"] {
@@ -132,7 +132,7 @@
     color: #e2e8f0 !important;
   }
   
-  /* ✅ Tokens de sintaxis con colores consistentes */
+  /* [CSS] Tokens de sintaxis con colores consistentes */
   .token.punctuation {
     color: #94a3b8 !important; /* Gris claro para { } [ ] ( ) , ; : */
   }
@@ -221,7 +221,7 @@
   }
 }
 
-/* ✅ Contenedor principal optimizado para móviles */
+/* [CSS] Contenedor principal optimizado para móviles */
 .ios-fix-container {
   position: relative;
   z-index: 1;
@@ -248,7 +248,7 @@
   }
 }
 
-/* ✅ Estilos para badges y categorías */
+/* [CSS] Estilos para badges y categorías */
 .category-frontend {
   background-color: rgb(219 234 254);
   color: rgb(30 64 175);
@@ -289,7 +289,7 @@
   }
 }
 
-/* ✅ Dots del header del código */
+/* [CSS] Dots del header del código */
 .code-dot {
   height: 12px;
   width: 12px;
@@ -309,7 +309,7 @@
   }
 }
 
-/* ✅ Prose styling */
+/* [CSS] Prose styling */
 .prose {
   a, button, [role="button"] {
     touch-action: manipulation;
@@ -336,7 +336,7 @@
   }
 }
 
-/* ✅ Loading spinner */
+/* [CSS] Loading spinner */
 .loading-spinner {
   animation: spin 1s linear infinite;
   border-radius: 50%;
@@ -349,7 +349,7 @@
   }
 }
 
-/* ✅ Dark mode adaptaciones para elementos UI (NO código) */
+/* [CSS] Dark mode adaptaciones para elementos UI (NO código) */
 [data-theme="dark"] {
   .date-badge {
     background-color: rgb(55 65 81);
@@ -376,7 +376,7 @@
   }
 }
 
-/* ✅ Optimizaciones iOS */
+/* [CSS] Optimizaciones iOS */
 @supports (-webkit-touch-callout: none) {
   .ios-fix-container {
     -webkit-touch-callout: none;
@@ -407,7 +407,7 @@
   }
 }
 
-/* ✅ Correcciones finales */
+/* [CSS] Correcciones finales */
 .container {
   touch-action: auto;
   transform: translateZ(0);

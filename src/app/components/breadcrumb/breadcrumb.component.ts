@@ -58,7 +58,7 @@ import { Subject, takeUntil } from 'rxjs';
        ================================ */
     
     .breadcrumb-nav {
-      /* ✅ CORREGIDO: No usar @apply para clases que requieren referencia */
+      /* [CSS]: No usar @apply para clases que requieren referencia */
       position: sticky;
       top: 0;
       z-index: 40;
@@ -339,7 +339,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(breadcrumbs => {
         this.breadcrumbs = breadcrumbs;
-        // console.log('🍞 Breadcrumbs actualizados:', breadcrumbs);
+        // console.log('[BREADCRUMBS] Actualizados:', breadcrumbs);
       });
   }
 

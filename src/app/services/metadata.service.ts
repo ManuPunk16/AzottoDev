@@ -119,7 +119,7 @@ export class MetadataService {
     this.document.head.appendChild(canonical);
 
     // Log para debugging (remover en producción)
-    // console.log(`✅ Canonical URL actualizada: ${url}`);
+    // console.log(`[INFO] Canonical URL actualizada: ${url}`);
   }
 
   private updateStructuredData(data: any, currentUrl: string) {
