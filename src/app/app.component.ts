@@ -173,14 +173,17 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Métodos privados
   private toggleBodyScroll(): void {
+    if (typeof document === 'undefined') return;
     document.body.style.overflow = this.isMobileMenuOpen ? 'hidden' : '';
   }
 
   private enableBodyScroll(): void {
+    if (typeof document === 'undefined') return;
     document.body.style.overflow = '';
   }
 
   private setupKeyboardNavigation(): void {
+    if (typeof document === 'undefined') return;
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && this.isMobileMenuOpen) {
         this.closeMobileMenu();

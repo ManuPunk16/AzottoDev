@@ -11,6 +11,7 @@ import { routes } from './app.routes';
 import { provideServiceWorker } from '@angular/service-worker';
 import { BreadcrumbService } from './services/breadcrumb.service';
 import { inject } from '@vercel/analytics';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 inject();
 
@@ -34,6 +35,6 @@ export const appConfig: ApplicationConfig = {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000',
     }),
-    BreadcrumbService,
+    BreadcrumbService, provideClientHydration(withEventReplay()),
   ],
 };

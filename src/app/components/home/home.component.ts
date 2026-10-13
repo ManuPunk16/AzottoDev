@@ -106,12 +106,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   
   // Typewriter properties mejoradas
   private typewriterRoles = [
-    'Full Stack Developer',
-    'Angular Specialist', 
-    'Frontend Expert',
-    'Backend Developer',
-    'Tech Lead',
-    'Digital Innovator'
+    'Senior Full Stack Engineer',
+    'Tech Lead & Architect',
+    'Angular (Signals & Zoneless) Specialist',
+    'Cloud & Serverless Architect',
+    'SaaS Co-Founder'
   ];
   private currentRoleIndex = 0;
   private typewriterInterval?: any;
@@ -310,13 +309,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   socialLinks: SocialLink[] = [
     { 
       name: 'GitHub', 
-      url: 'https://github.com/manupunk16', 
+      url: 'https://github.com/ManuPunk16', 
       icon: 'fab fa-github',
       svg: '' // Vamos a usar SVGs inline en el template
     },
     { 
       name: 'LinkedIn', 
-      url: 'https://linkedin.com/in/azotodev/', 
+      url: 'https://www.linkedin.com/in/azotodev/', 
       icon: 'fab fa-linkedin',
       svg: ''
     },
@@ -615,7 +614,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   scheduleCall(): void {
     if (isPlatformBrowser(this.platformId)) {
-      window.open('https://calendly.com/azottodev', '_blank');
+      window.open('https://calendly.com/azotodev', '_blank');
     }
   }
 

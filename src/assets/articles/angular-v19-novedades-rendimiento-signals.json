@@ -3,7 +3,7 @@
     "title": "Novedades Clave de Angular v19: Rendimiento, DX y Reactividad Mejorados",
     "description": "Explora las características destacadas de Angular v19, incluyendo hidratación incremental (preview), HMR mejorado, APIs de señales estables y nuevas herramientas para desarrolladores.",
     "date": "2024-11-25",
-    "author": "Azotto",
+    "author": "Azoto",
     "category": "Frontend",
     "tags": ["Angular", "JavaScript", "TypeScript", "Web Development", "SSR", "Performance", "Signals", "DX"],
     "image": "/assets/images/articles/angular19.webp",

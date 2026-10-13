@@ -16,7 +16,7 @@ export interface MetaConfig {
 })
 export class MetaService {
   private readonly baseUrl = 'https://azotodev.com';
-  private readonly siteName = 'AzotoDev - Luis Hernández';
+  private readonly siteName = 'AzotoDev - Luis Adrián Hernández Soto';
   private readonly twitterHandle = '@azotodev';
 
   constructor(
@@ -31,7 +31,7 @@ export class MetaService {
 
     // Meta básicos
     this.meta.updateTag({ name: 'description', content: config.description });
-    this.meta.updateTag({ name: 'author', content: 'Luis Hernández (AzotoDev)' });
+    this.meta.updateTag({ name: 'author', content: 'Luis Adrián Hernández Soto (AzotoDev)' });
 
     if (config.keywords) {
       this.meta.updateTag({ name: 'keywords', content: config.keywords });
@@ -77,6 +77,7 @@ export class MetaService {
   }
 
   private updateCanonical(customCanonical?: string): void {
+    if (typeof document === 'undefined') return;
     const canonicalUrl = customCanonical || `${this.baseUrl}${this.router.url}`;
     
     const existingCanonical = document.querySelector('link[rel="canonical"]');
@@ -92,9 +93,9 @@ export class MetaService {
 
   generateHomeMeta(): MetaConfig {
     return {
-      title: 'Luis Hernández (AzotoDev) - Desarrollador Full Stack | Portfolio Angular & TypeScript',
-      description: 'Portfolio profesional de Luis Hernández (AzotoDev), desarrollador Full Stack especializado en Angular, TypeScript y Tailwind CSS. Sistemas de inventario, control de gestión y aplicaciones web modernas.',
-      keywords: 'Luis Hernández, AzotoDev, desarrollador full stack, angular developer, typescript, tailwind css, portfolio desarrollador, desarrollo web, sistemas inventario',
+      title: 'Luis Adrián Hernández Soto | Senior Full Stack Engineer & Tech Lead — Angular & Serverless',
+      description: 'Portfolio y casos de estudio de Luis Adrián Hernández Soto. Senior Full Stack Engineer y Tech Lead especialista en Angular 21, Signals, arquitecturas serverless, 99.8% uptime y SaaS multi-tenant.',
+      keywords: 'Luis Hernández, AzotoDev, Senior Full Stack Engineer, Tech Lead, Angular 21, Signals, TypeScript, Tailwind CSS, Vercel, Firebase',
       ogImage: `${this.baseUrl}/assets/images/og-home.webp`,
       canonical: this.baseUrl
     };
@@ -102,9 +103,9 @@ export class MetaService {
 
   generateProjectsPageMeta(): MetaConfig {
     return {
-      title: 'Proyectos | AzotoDev - Portfolio de Desarrollo Web Angular & TypeScript',
-      description: 'Explora mis proyectos de desarrollo web: sistemas de inventario, control de gestión, plataformas documentales y aplicaciones Angular. Cada proyecto incluye tecnologías utilizadas y casos de estudio.',
-      keywords: 'proyectos angular, portfolio typescript, sistemas inventario, control gestión, aplicaciones web, casos de estudio',
+      title: 'Casos de Estudio de Ingeniería | AzotoDev - Tech Lead & Arquitectura Angular',
+      description: 'Explora casos de estudio de ingeniería de software: plataformas SaaS multi-tenant (Venta Simple), modernización de sistemas gubernamentales críticos (99.8% uptime) y arquitecturas reactivas.',
+      keywords: 'casos de estudio ingenieria, arquitectura angular, venta simple saas, tech lead portfolio, sistemas criticos',
       ogImage: `${this.baseUrl}/assets/images/og-projects.webp`,
       canonical: `${this.baseUrl}/projects`
     };

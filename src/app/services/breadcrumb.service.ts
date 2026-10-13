@@ -149,6 +149,7 @@ export class BreadcrumbService {
   }
   
   private updateBreadcrumbStructuredData(breadcrumbs: Breadcrumb[]): void {
+    if (typeof document === 'undefined') return;
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",

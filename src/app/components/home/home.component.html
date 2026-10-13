@@ -37,58 +37,77 @@
       <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 items-center">
 
         <!-- Left Content -->
+        <!-- Left Content -->
         <div class="space-y-8" #animatedElement>
           <!-- Status Badge -->
           <div
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-[9999px] bg-[var(--color-pearl)] border border-[rgba(17,17,17,0.08)]">
-            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span class="text-[10px] eyebrow-text text-[var(--color-ink)]">Disponible para nuevos proyectos</span>
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[9999px] bg-[var(--color-pearl)] border border-[rgba(17,17,17,0.08)]">
+            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+            <span class="text-[11px] font-mono tracking-wider font-semibold uppercase text-[var(--color-ink)]">⚡ TECH LEAD & SENIOR FULL STACK ARCHITECT</span>
           </div>
 
           <!-- Main Title with restrained Variable Type -->
           <div class="space-y-4">
             <h1
-              class="text-5xl lg:text-[84px] font-black uppercase text-[var(--color-ink)] leading-[0.85] tracking-[-2.52px]">
-              Hola, soy
+              class="text-4xl sm:text-6xl lg:text-[76px] font-black uppercase text-[var(--color-ink)] leading-[0.92] tracking-[-2px]">
+              Construyo sistemas web de
               <br>
-              <span class="text-[var(--color-azoto-blue-solid)]">Luis Hernández</span>
+              <span class="text-[var(--color-azoto-blue-solid)]">alto rendimiento</span>
+              <br>
+              y lidero arquitecturas escalables.
             </h1>
 
             <!-- Typewriter Role -->
-            <div class="text-xl lg:text-2xl text-[var(--color-ash)] font-normal h-8">
-              <span class="typewriter" #typewriterText></span>
-              <span class="cursor animate-pulse">|</span>
+            <div class="text-lg lg:text-xl text-[var(--color-ash)] font-mono h-8 flex items-center gap-1">
+              <span class="typewriter font-medium" #typewriterText></span>
+              <span class="cursor animate-pulse text-[var(--color-azoto-blue-solid)]">|</span>
             </div>
           </div>
 
-          <!-- Description -->
+          <!-- Value Proposition Description -->
           <p class="text-lg text-[var(--color-ink)] font-normal leading-relaxed max-w-2xl">
-            Desarrollador Full Stack especializado en <strong>Angular</strong> con 5+ años creando
-            soluciones digitales escalables y accesibles. Combino innovación técnica con
-            experiencia gubernamental para impulsar la transformación digital.
+            Especialista en frontends empresariales con <strong>Angular (12–21)</strong>, Signals y arquitecturas serverless. He liderado sistemas gubernamentales críticos con <strong>99.8% de disponibilidad</strong> y diseñado desde cero plataformas SaaS multi-tenant como <em>Venta Simple</em>.
           </p>
 
-          <!-- Action Buttons -->
+          <!-- Impact Metrics Grid -->
+          <div class="grid grid-cols-3 gap-4 py-4 px-5 rounded-[12px] bg-[var(--color-pearl)]/70 border border-[rgba(17,17,17,0.08)] max-w-2xl">
+            <div>
+              <p class="text-2xl sm:text-3xl font-black text-[var(--color-ink)]">99.8%</p>
+              <p class="text-[11px] text-[var(--color-ash)] font-mono leading-tight mt-1">Uptime en sistemas críticos</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-black text-[var(--color-ink)]">-40%</p>
+              <p class="text-[11px] text-[var(--color-ash)] font-mono leading-tight mt-1">Ciclos de procesamiento</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-black text-[var(--color-ink)]">120 hrs</p>
+              <p class="text-[11px] text-[var(--color-ash)] font-mono leading-tight mt-1">Ahorro operativo mensual</p>
+            </div>
+          </div>
+
+          <!-- Action Buttons (Optimized CTAs) -->
           <div class="flex flex-col sm:flex-row flex-wrap gap-4 z-50 w-full sm:w-auto items-stretch sm:items-center">
-            <!-- Primary Filled Button (strict #111111) -->
-            <button (click)="scrollToSection('projects')" [routerLink]="['/projects']"
-              class="group px-6 py-3.5 bg-[var(--color-ink)] text-[var(--color-canvas-white)] rounded-[8px] font-normal text-base text-center
-                     hover:opacity-90 transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-250 ease-in-out cursor-pointer">
-              Ver Proyectos
+            <!-- Primary Filled Button -> Projects -->
+            <a [routerLink]="['/projects']"
+              class="group px-7 py-3.5 bg-[var(--color-ink)] text-[var(--color-canvas-white)] rounded-[8px] font-semibold text-base text-center
+                     hover:opacity-90 transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-250 ease-in-out cursor-pointer inline-flex items-center justify-center">
+              Ver Casos de Estudio
               <svg class="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
                 stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </button>
-
-            <!-- CV Button Group: Spanish (Primary) & English (Neutral) -->
-            <a href="/cv/luis-hernandez-cv-es.pdf" target="_blank" rel="noopener noreferrer"
-              class="px-6 py-3.5 bg-[var(--color-ink)] text-[var(--color-canvas-white)] rounded-[8px] font-normal text-base text-center transition-all duration-250 ease-in-out hover:opacity-90 transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
-              Ver CV (Español)
             </a>
-            <a href="/cv/luis-hernandez-cv-en.pdf" target="_blank" rel="noopener noreferrer"
-              class="px-6 py-3.5 bg-[var(--color-pearl)] text-[var(--color-ink)] rounded-[8px] font-normal text-base text-center transition-all duration-250 ease-in-out hover:bg-[var(--color-pearl)]/85 border border-[rgba(17,17,17,0.08)] transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
-              View CV (English)
+
+            <!-- Technical CV Button Group -->
+            <a href="/cv/luis-hernandez-cv-es.pdf" target="_blank" rel="noopener noreferrer"
+              class="px-6 py-3.5 bg-[var(--color-pearl)] text-[var(--color-ink)] rounded-[8px] font-medium text-base text-center transition-all duration-250 ease-in-out hover:bg-[var(--color-pearl)]/85 border border-[rgba(17,17,17,0.12)] transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+              Descargar CV Técnico
+            </a>
+
+            <a href="https://www.linkedin.com/in/azotodev/" target="_blank" rel="noopener noreferrer"
+              class="px-5 py-3.5 text-[var(--color-ash)] hover:text-[var(--color-ink)] font-mono text-sm text-center transition-colors flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
             </a>
           </div>
 

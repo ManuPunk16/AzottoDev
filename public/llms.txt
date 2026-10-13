@@ -1,0 +1,37 @@
+# Luis Adrián Hernández Soto — Senior Full Stack Engineer & Tech Lead
+
+> Senior Full Stack Engineer, Tech Lead y Arquitecto Frontend con especialización profunda en el ecosistema Angular (v12 a v21), TypeScript, Node.js y arquitecturas cloud/serverless en Vercel y Firebase.
+
+## Perfil & Propuesta de Valor
+- **Rol principal:** Senior Full Stack Engineer & Tech Lead
+- **Especialidad:** Modernización de sistemas legacy, diseño de arquitecturas reactivas escalables (Signals, Zoneless), optimización de Core Web Vitals (INP / LCP < 100ms) y desarrollo de plataformas SaaS multi-tenant cloud-native.
+- **Ubicación:** México (Disponible para roles remotos internacionales y consultoría técnica B2B).
+- **Sitio web:** https://azotodev.com
+- **Contacto:** azzotto@icloud.com
+- **LinkedIn:** https://www.linkedin.com/in/azotodev/
+- **GitHub:** https://github.com/ManuPunk16
+
+## Especialización Tecnológica
+- **Frontend:** Angular 12–21 (Standalone Components, Signals API, Control Flow Syntax, SSR/SSG con @angular/ssr, Zoneless, Micro-frontends), TypeScript, Tailwind CSS v4, NgRx, Signals Store, RxJS.
+- **Backend & APIs:** Node.js, Express, NestJS, REST APIs, WebSockets, Firebase Admin SDK, Cloud Functions.
+- **Bases de Datos & Cloud:** MongoDB, PostgreSQL, Firebase Realtime Database / Firestore, Vercel Edge Network.
+- **Ingeniería & DevOps:** CI/CD Pipelines (GitHub Actions), Docker, Gitflow, Auditorías de Rendimiento Web.
+
+## Casos de Éxito de Alto Impacto
+1. **Venta Simple (SaaS Multi-Tenant Cloud-Native):**
+   - Arquitecto fundador y desarrollador principal.
+   - Plataforma en producción para gestión de punto de venta, inventarios e informes analíticos para PyMEs.
+   - Arquitectura Angular moderna con aislamiento de datos por inquilino y sincronización reactiva en tiempo real.
+   - Demo / Producción: https://miventasimple.com/
+
+2. **Sistema de Gestión Documental y Firma Electrónica (Sector Público):**
+   - Tech Lead a cargo de la modernización técnica integral.
+   - Disponibilidad del 99.8% en entorno de misión crítica gubernamental.
+   - Reducción del 40% en ciclos de validación de documentos y ahorro comprobado de 120 horas operativas mensuales.
+
+## Enlaces Canónicos
+- [Página Principal](https://azotodev.com)
+- [Casos de Estudio de Proyectos](https://azotodev.com/projects)
+- [Artículos Técnicos de Ingeniería](https://azotodev.com/articles)
+- [Artículo: Componentes Accesibles con Angular y Tailwind CSS](https://azotodev.com/articles/componentes-accesibles-angular-tailwind)
+- [Artículo: Novedades Clave de Angular v19](https://azotodev.com/articles/angular-v19-novedades-rendimiento-signals)
