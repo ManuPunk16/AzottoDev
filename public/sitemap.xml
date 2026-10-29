@@ -33,6 +33,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/sovereign/sovereign-cover.svg</image:loc>
+      <image:title>Portada y HUD táctico del motor biomecánico Sovereign</image:title>
+      <image:caption>Arquitectura de interfaz OLED táctica con métricas de ingeniería, catálogo de 2,160 ejercicios y trazados vectoriales</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://azotodev.com/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp</image:loc>
       <image:title>Dashboard de Sesión y Entrenamiento Sovereign</image:title>
       <image:caption>Módulo de sesión rápida, microciclo semanal, planificador de torso/brazos y monitoreo de restricciones articulares</image:caption>

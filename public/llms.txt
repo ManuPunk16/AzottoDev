@@ -25,6 +25,7 @@
    - Aplicación en Producción: https://sovereign.azotodev.com
    - Caso de Estudio Canónico: https://azotodev.com/projects/sovereign
    - Activos Visuales e Interfaces Tácticas:
+     - Portada y HUD Táctico Biomecánico (Principal): https://azotodev.com/assets/images/projects/sovereign/sovereign-cover.svg
      - Dashboard de Sesión y Entrenamiento: https://azotodev.com/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp
      - Visualizador Anatómico Vectorial SVG: https://azotodev.com/assets/images/projects/sovereign/sovereign-modelo-anatomico.webp
      - Registro de Series y Timer Desacoplado: https://azotodev.com/assets/images/projects/sovereign/sovereign-series-descanso.webp

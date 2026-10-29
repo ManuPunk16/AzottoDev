@@ -34,6 +34,7 @@
   - Normalización Léxica: Desacoplamiento de la colisión léxica entre el nodo muscular del cuello (neck) y ejercicios tras nuca (behind neck), asignando cada uno a su grupo biomecánico exacto.
   - Ergonomía Móvil: Celdas de registro compactas apiladas verticalmente para pantallas de 360px evitando truncamiento en columnas de marcas históricas previas.
 - Activos Visuales e Interfaces Tácticas:
+  - Portada y HUD Táctico Biomecánico (Principal): https://azotodev.com/assets/images/projects/sovereign/sovereign-cover.svg
   - Dashboard de Sesión y Microciclo Semanal: https://azotodev.com/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp
   - Visualizador Anatómico Termodinámico SVG: https://azotodev.com/assets/images/projects/sovereign/sovereign-modelo-anatomico.webp
   - Registro de Series RIR y Timer Desacoplado: https://azotodev.com/assets/images/projects/sovereign/sovereign-series-descanso.webp

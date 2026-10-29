@@ -324,8 +324,13 @@ export class MetadataService {
         "applicationCategory": "HealthApplication, SportsApplication",
         "operatingSystem": "Web, iOS, Android (PWA Local-First)",
         "url": "https://sovereign.azotodev.com",
-        "image": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp`,
+        "image": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-cover.svg`,
         "screenshot": [
+          {
+            "@type": "ImageObject",
+            "url": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-cover.svg`,
+            "caption": "Portada y HUD táctico del motor biomecánico Sovereign"
+          },
           {
             "@type": "ImageObject",
             "url": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp`,

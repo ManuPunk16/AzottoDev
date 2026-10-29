@@ -3,7 +3,7 @@
     "id": "sovereign",
     "title": "Sovereign — Biomechanical Workout Tracker & Muscle Volume Engine",
     "description": "PWA táctica de alto rendimiento para atletas con arquitectura 100% Local-First / Zero-Cloud, visualizador anatómico termodinámico vectorial (126 trazados SVG) y gobernanza algorítmica de hipertrofia.",
-    "imageUrl": "/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp",
+    "imageUrl": "/assets/images/projects/sovereign/sovereign-cover.svg",
     "technologies": [
       "Angular 22",
       "Signals",

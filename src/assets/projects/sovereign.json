@@ -4,14 +4,20 @@
   "subtitle": "PWA táctica de alto rendimiento para atletas y culturismo natural con arquitectura 100% Local-First / Zero-Cloud, visualizador anatómico termodinámico vectorial (126 trazados SVG) y gobernanza algorítmica de hipertrofia.",
   "description": "PWA táctica de alto rendimiento para atletas y culturismo natural con arquitectura 100% Local-First / Zero-Cloud, visualizador anatómico termodinámico vectorial (126 trazados SVG) y gobernanza algorítmica de hipertrofia.",
   "longDescription": "Sovereign fue concebido bajo el principio de Soberanía Digital Absoluta: el atleta es el único dueño de su historial físico y biométrico. Frente a plataformas con suscripciones mensuales y telemetría intrusiva, Sovereign implementa una filosofía Local-First / Zero-Cloud con cero llamadas a servidor, cero recolección de datos y persistencia íntegra en el dispositivo mediante IndexedDB v3 (Dexie.js). Construido sobre Angular 22 (Signals y Zoneless), integra un motor biomecánico con fórmulas 1RM continuas e híbridas (Epley y Brzycki con compensación de peso corporal lastrado), monitoreo de hitos biológicos de hipertrofia (MEV, MAV, MRV), temporizador desacoplado en Web Workers inmune al throttling móvil con sintetizador Web Audio API, y un mapa térmico corporal bidireccional de 126 trazados SVG interactivos.",
-  "imageUrl": "/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp",
+  "imageUrl": "/assets/images/projects/sovereign/sovereign-cover.svg",
   "previewLabel": "Preview: Biomechanical HUD & Heatmap Interface",
   "gallery": [
+    {
+      "url": "/assets/images/projects/sovereign/sovereign-cover.svg",
+      "alt": "Portada y HUD táctico del motor biomecánico Sovereign",
+      "caption": "Arquitectura de interfaz OLED táctica con métricas de ingeniería, catálogo de 2,160 ejercicios y trazados vectoriales",
+      "isMain": true
+    },
     {
       "url": "/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp",
       "alt": "Dashboard de Sesión y Entrenamiento Sovereign",
       "caption": "Módulo de sesión rápida, microciclo semanal, planificador de torso/brazos y monitoreo de restricciones articulares",
-      "isMain": true
+      "isMain": false
     },
     {
       "url": "/assets/images/projects/sovereign/sovereign-modelo-anatomico.webp",
