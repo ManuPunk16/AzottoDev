@@ -91,7 +91,7 @@ body {
 /* Default Headings: Whisper Weight 400 */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
-  color: var(--color-ink);
+  color: inherit;
 }
 
 /* Display titles: Poster weight 900, uppercase */

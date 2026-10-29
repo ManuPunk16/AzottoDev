@@ -1,4 +1,17 @@
 :host {
+  /* Asegurar alto contraste estricto en tarjetas oscuras */
+  .dark-card-contrast {
+    color: #ffffff;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: #ffffff !important;
+    }
+
+    p {
+      color: #e5e5e5;
+    }
+  }
+
   /* FadeIn animation for the progressive disclosure technical panel */
   .animate-fadeIn {
     animation: fadeIn 0.25s cubic-bezier(0.23, 1, 0.32, 1) forwards;
