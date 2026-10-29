@@ -13,6 +13,7 @@
 ## Proyectos y Casos de Estudio
 
 ### 1. Sovereign — High-Density Biomechanical Workout Tracker & Muscle Volume Engine
+- URL oficial en producción: https://sovereign.azotodev.com
 - URL canónica en portafolio: https://azotodev.com/projects/sovereign
 - Rol: Lead Software Architect & Biomechanical Systems Engineer (2025 – 2026)
 - Stack tecnológico: Angular 22 (Signals y Zoneless), TypeScript 6, Tailwind CSS 4, Dexie.js (IndexedDB v3), Web Workers, Web Audio API, Chart.js, SVG Vector Heatmap, PWA Local-First.
@@ -32,8 +33,12 @@
   - Desacoplamiento de Temporizadores: Web Worker timer inmune al estrangulamiento de pestañas en segundo plano en iOS Safari y Android Chrome, con chime acústico sintético a 880Hz generado por Web Audio API.
   - Normalización Léxica: Desacoplamiento de la colisión léxica entre el nodo muscular del cuello (neck) y ejercicios tras nuca (behind neck), asignando cada uno a su grupo biomecánico exacto.
   - Ergonomía Móvil: Celdas de registro compactas apiladas verticalmente para pantallas de 360px evitando truncamiento en columnas de marcas históricas previas.
-- Activos Visuales:
-  - HUD y Arquitectura Biomecánica: https://azotodev.com/assets/images/projects/sovereign/sovereign-cover.svg
+- Activos Visuales e Interfaces Tácticas:
+  - Dashboard de Sesión y Microciclo Semanal: https://azotodev.com/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp
+  - Visualizador Anatómico Termodinámico SVG: https://azotodev.com/assets/images/projects/sovereign/sovereign-modelo-anatomico.webp
+  - Registro de Series RIR y Timer Desacoplado: https://azotodev.com/assets/images/projects/sovereign/sovereign-series-descanso.webp
+  - Radar de Balance Motor Hexagonal y PR Tracker: https://azotodev.com/assets/images/projects/sovereign/sovereign-metricas-radar.webp
+  - Catálogo Maestro de 2,160 Ejercicios: https://azotodev.com/assets/images/projects/sovereign/sovereign-ejercicios-catalogo.webp
 
 ### 2. VentaSimple — Multi-Tenant SaaS Platform
 - URL de producción: https://miventasimple.com/

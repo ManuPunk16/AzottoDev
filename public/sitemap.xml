@@ -33,9 +33,29 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://azotodev.com/assets/images/projects/sovereign/sovereign-cover.svg</image:loc>
-      <image:title>Portada e interfaz táctica del motor biomecánico Sovereign</image:title>
-      <image:caption>Arquitectura de interfaz OLED táctica con métricas de ingeniería, catálogo de 2,160 ejercicios y trazados vectoriales</image:caption>
+      <image:loc>https://azotodev.com/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp</image:loc>
+      <image:title>Dashboard de Sesión y Entrenamiento Sovereign</image:title>
+      <image:caption>Módulo de sesión rápida, microciclo semanal, planificador de torso/brazos y monitoreo de restricciones articulares</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/sovereign/sovereign-modelo-anatomico.webp</image:loc>
+      <image:title>Visualizador Anatómico Interactivo SVG Sovereign</image:title>
+      <image:caption>Mapeo termodinámico reactivo con 126 trazados vectoriales e iluminación por grupo muscular activo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/sovereign/sovereign-series-descanso.webp</image:loc>
+      <image:title>Registro de Series Efectivas y Timer en Web Worker</image:title>
+      <image:caption>Logging táctico de series RIR/RPE, sugerencia algorítmica de sobrecarga progresiva y cronómetro desacoplado</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/sovereign/sovereign-metricas-radar.webp</image:loc>
+      <image:title>Balance Hexagonal y PR Tracker 1RM Sovereign</image:title>
+      <image:caption>Radar de patrones motores de 7 días y estimador de 1RM con fórmula híbrida continua</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/sovereign/sovereign-ejercicios-catalogo.webp</image:loc>
+      <image:title>Catálogo Maestro de 2,160 Ejercicios con Filtro Anatómico</image:title>
+      <image:caption>Buscador difuso tolerante a errores táctiles y filtrado multicriterio por grupo muscular y equipamiento</image:caption>
     </image:image>
   </url>
   <url>

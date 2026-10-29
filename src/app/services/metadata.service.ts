@@ -320,15 +320,36 @@ export class MetadataService {
       schema = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Sovereign",
+        "name": "Sovereign — Biomechanical Workout Tracker & Muscle Volume Engine",
         "applicationCategory": "HealthApplication, SportsApplication",
         "operatingSystem": "Web, iOS, Android (PWA Local-First)",
-        "image": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-cover.svg`,
+        "url": "https://sovereign.azotodev.com",
+        "image": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp`,
         "screenshot": [
           {
             "@type": "ImageObject",
-            "url": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-cover.svg`,
-            "caption": "HUD de control biomecanico y visualizador de calor anatomico termodinamico"
+            "url": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp`,
+            "caption": "Módulo de sesión rápida, microciclo semanal y planificador de hipertrofia"
+          },
+          {
+            "@type": "ImageObject",
+            "url": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-modelo-anatomico.webp`,
+            "caption": "Visualizador anatómico termodinámico interactivo SVG de 126 trazados vectoriales"
+          },
+          {
+            "@type": "ImageObject",
+            "url": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-series-descanso.webp`,
+            "caption": "Registro de series RIR con recomendación de sobrecarga progresiva y temporizador desacoplado"
+          },
+          {
+            "@type": "ImageObject",
+            "url": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-metricas-radar.webp`,
+            "caption": "Balance de volumen hexagonal de 7 días y PR Tracker con 1RM híbrido"
+          },
+          {
+            "@type": "ImageObject",
+            "url": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-ejercicios-catalogo.webp`,
+            "caption": "Catálogo de 2,160 ejercicios con filtrado biomecánico multicriterio"
           }
         ],
         "author": {

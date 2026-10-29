@@ -22,9 +22,14 @@
    - Lead Software Architect & Biomechanical Systems Engineer.
    - PWA táctica de alto rendimiento para atletas y culturismo natural: arquitectura 100% Local-First / Zero-Cloud, 83,542 LOC en TypeScript, catálogo motor de 2,160 ejercicios y visualizador anatómico vectorial de 126 trazados SVG.
    - Algoritmos biomecánicos en vivo: 1RM continuo e híbrido con compensación de peso corporal lastrado, gobernanza de hitos fisiológicos MEV/MAV/MRV y Web Worker Timer inmune a throttling en móviles.
+   - Aplicación en Producción: https://sovereign.azotodev.com
    - Caso de Estudio Canónico: https://azotodev.com/projects/sovereign
-   - Activos Visuales:
-     - HUD y Arquitectura Biomecánica: https://azotodev.com/assets/images/projects/sovereign/sovereign-cover.svg
+   - Activos Visuales e Interfaces Tácticas:
+     - Dashboard de Sesión y Entrenamiento: https://azotodev.com/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp
+     - Visualizador Anatómico Vectorial SVG: https://azotodev.com/assets/images/projects/sovereign/sovereign-modelo-anatomico.webp
+     - Registro de Series y Timer Desacoplado: https://azotodev.com/assets/images/projects/sovereign/sovereign-series-descanso.webp
+     - Balance Hexagonal de Volumen y PR Tracker: https://azotodev.com/assets/images/projects/sovereign/sovereign-metricas-radar.webp
+     - Catálogo Maestro de 2,160 Ejercicios: https://azotodev.com/assets/images/projects/sovereign/sovereign-ejercicios-catalogo.webp
 
 2. **Venta Simple (SaaS Multi-Tenant Cloud-Native):**
    - Arquitecto fundador y desarrollador principal.

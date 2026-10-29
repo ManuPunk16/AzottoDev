@@ -4,14 +4,38 @@
   "subtitle": "PWA táctica de alto rendimiento para atletas y culturismo natural con arquitectura 100% Local-First / Zero-Cloud, visualizador anatómico termodinámico vectorial (126 trazados SVG) y gobernanza algorítmica de hipertrofia.",
   "description": "PWA táctica de alto rendimiento para atletas y culturismo natural con arquitectura 100% Local-First / Zero-Cloud, visualizador anatómico termodinámico vectorial (126 trazados SVG) y gobernanza algorítmica de hipertrofia.",
   "longDescription": "Sovereign fue concebido bajo el principio de Soberanía Digital Absoluta: el atleta es el único dueño de su historial físico y biométrico. Frente a plataformas con suscripciones mensuales y telemetría intrusiva, Sovereign implementa una filosofía Local-First / Zero-Cloud con cero llamadas a servidor, cero recolección de datos y persistencia íntegra en el dispositivo mediante IndexedDB v3 (Dexie.js). Construido sobre Angular 22 (Signals y Zoneless), integra un motor biomecánico con fórmulas 1RM continuas e híbridas (Epley y Brzycki con compensación de peso corporal lastrado), monitoreo de hitos biológicos de hipertrofia (MEV, MAV, MRV), temporizador desacoplado en Web Workers inmune al throttling móvil con sintetizador Web Audio API, y un mapa térmico corporal bidireccional de 126 trazados SVG interactivos.",
-  "imageUrl": "/assets/images/projects/sovereign/sovereign-cover.svg",
+  "imageUrl": "/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp",
   "previewLabel": "Preview: Biomechanical HUD & Heatmap Interface",
   "gallery": [
     {
-      "url": "/assets/images/projects/sovereign/sovereign-cover.svg",
-      "alt": "Portada e interfaz táctica del motor biomecánico Sovereign",
-      "caption": "Arquitectura de interfaz OLED táctica con métricas de ingeniería, catálogo de 2,160 ejercicios y trazados vectoriales",
+      "url": "/assets/images/projects/sovereign/sovereign-dashboard-sesion.webp",
+      "alt": "Dashboard de Sesión y Entrenamiento Sovereign",
+      "caption": "Módulo de sesión rápida, microciclo semanal, planificador de torso/brazos y monitoreo de restricciones articulares",
       "isMain": true
+    },
+    {
+      "url": "/assets/images/projects/sovereign/sovereign-modelo-anatomico.webp",
+      "alt": "Visualizador Anatómico Interactivo SVG Sovereign",
+      "caption": "Mapeo termodinámico reactivo con 126 trazados vectoriales e iluminación por grupo muscular activo",
+      "isMain": false
+    },
+    {
+      "url": "/assets/images/projects/sovereign/sovereign-series-descanso.webp",
+      "alt": "Registro de Series Efectivas y Timer en Web Worker",
+      "caption": "Logging táctico de series RIR/RPE, sugerencia algorítmica de sobrecarga progresiva y cronómetro desacoplado",
+      "isMain": false
+    },
+    {
+      "url": "/assets/images/projects/sovereign/sovereign-metricas-radar.webp",
+      "alt": "Balance Hexagonal y PR Tracker 1RM Sovereign",
+      "caption": "Radar de patrones motores de 7 días y estimador de 1RM con fórmula híbrida continua",
+      "isMain": false
+    },
+    {
+      "url": "/assets/images/projects/sovereign/sovereign-ejercicios-catalogo.webp",
+      "alt": "Catálogo Maestro de 2,160 Ejercicios con Filtro Anatómico",
+      "caption": "Buscador difuso tolerante a errores táctiles y filtrado multicriterio por grupo muscular y equipamiento",
+      "isMain": false
     }
   ],
   "technologies": [
@@ -60,7 +84,7 @@
   "featured": true,
   "date": "2026-05-10",
   "lastUpdated": "2026-10-29",
-  "demoUrl": "https://azotodev.com/projects/sovereign",
+  "demoUrl": "https://sovereign.azotodev.com",
   "role": "Lead Software Architect & Biomechanical Systems Engineer (2025 – 2026)",
   "impact": "83,542 LOC TypeScript • 100% Offline-First • 2,160 Ejercicios • 126 Trazados Vectoriales",
   "businessProblem": "Atletas de fuerza requerían una herramienta libre de suscripciones mensuales, telemetría abusiva y bloqueos de red en gimnasios con mala cobertura celular, con rigor biomecánico real en lugar de gamificación infantil.",
