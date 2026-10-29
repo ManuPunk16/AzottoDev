@@ -1,0 +1,128 @@
+{
+  "id": "sovereign",
+  "title": "Sovereign — High-Density Biomechanical Workout Tracker & Offline-First Muscle Volume Engine",
+  "subtitle": "PWA táctica de alto rendimiento para atletas y culturismo natural con arquitectura 100% Local-First / Zero-Cloud, visualizador anatómico termodinámico vectorial (126 trazados SVG) y gobernanza algorítmica de hipertrofia.",
+  "description": "PWA táctica de alto rendimiento para atletas y culturismo natural con arquitectura 100% Local-First / Zero-Cloud, visualizador anatómico termodinámico vectorial (126 trazados SVG) y gobernanza algorítmica de hipertrofia.",
+  "longDescription": "Sovereign fue concebido bajo el principio de Soberanía Digital Absoluta: el atleta es el único dueño de su historial físico y biométrico. Frente a plataformas con suscripciones mensuales y telemetría intrusiva, Sovereign implementa una filosofía Local-First / Zero-Cloud con cero llamadas a servidor, cero recolección de datos y persistencia íntegra en el dispositivo mediante IndexedDB v3 (Dexie.js). Construido sobre Angular 22 (Signals y Zoneless), integra un motor biomecánico con fórmulas 1RM continuas e híbridas (Epley y Brzycki con compensación de peso corporal lastrado), monitoreo de hitos biológicos de hipertrofia (MEV, MAV, MRV), temporizador desacoplado en Web Workers inmune al throttling móvil con sintetizador Web Audio API, y un mapa térmico corporal bidireccional de 126 trazados SVG interactivos.",
+  "imageUrl": "/assets/images/projects/sovereign/sovereign-cover.svg",
+  "previewLabel": "Preview: Biomechanical HUD & Heatmap Interface",
+  "gallery": [
+    {
+      "url": "/assets/images/projects/sovereign/sovereign-cover.svg",
+      "alt": "Portada e interfaz táctica del motor biomecánico Sovereign",
+      "caption": "Arquitectura de interfaz OLED táctica con métricas de ingeniería, catálogo de 2,160 ejercicios y trazados vectoriales",
+      "isMain": true
+    }
+  ],
+  "technologies": [
+    "Angular 22 (Signals)",
+    "TypeScript 6",
+    "Tailwind CSS 4",
+    "Dexie.js (IndexedDB v3)",
+    "Web Workers",
+    "Web Audio API",
+    "Chart.js",
+    "SVG Vector Heatmap",
+    "PWA Local-First"
+  ],
+  "features": [
+    "Arquitectura 100% Local-First y Zero-Cloud: Cero telemetría remota, cero servidores y soberanía absoluta de datos",
+    "Visualizador anatómico termodinámico con 126 trazados SVG en 4 vistas ortogonales completas (Frontal y Dorsal Masculina/Femenina)",
+    "Motor biomecánico con 1RM híbrido (Epley y Brzycki) con deducción del 90% de peso corporal en fondos y dominadas",
+    "Gobernanza de fatiga según Renaissance Periodization monitoreando MEV, MAV y MRV semanal por grupo muscular",
+    "Temporizador de descanso en Web Worker inmune al bloqueo de pestañas en iOS y Android con chime sintético a 880Hz vía Web Audio API",
+    "Algoritmo de sustitución articular segura en caliente para eludir dolor patelofemoral, muñeca o lumbar con vectores equivalentes",
+    "Calculadora táctica de discos olímpicos (Plate Loading Math) con resolución de remanentes de carga",
+    "Catálogo maestro de 2,160 ejercicios indexados por patrón motor, equipamiento y grupos musculares sinérgicos",
+    "Compresión client-side en Canvas HTML5 para registros fotográficos en WebP local menores a 150 KB"
+  ],
+  "technicalModules": [
+    {
+      "name": "Motor Biomecánico y Algoritmos de Fatiga",
+      "description": "Implementa fórmulas continuas de 1RM ponderadas para atletas avanzados con compensación de masa corporal lastrada. Integra el protocolo de hitos fisiológicos de hipertrofia (MEV, MAV, MRV) bloqueando sobrecargas ante acumulación de fatiga sistémica y recomendando microciclos de descarga (deload al -10%). Incluye suavizado de tendencia de peso corporal mediante Media Móvil Exponencial (EMA de 7 días, alpha = 0.25)."
+    },
+    {
+      "name": "Visualizador Anatómico Reactivo por SVG Vectorial",
+      "description": "Lienzo declarativo de 126 trazados vectoriales en body-paths.data.ts. Los Signals de Angular transforman el volumen semanal de series efectivas en un mapa de calor fisiológico dinámico en 5 estratos cromáticos tácticos (Grafito neutro, Zinc frío, Esmeralda adaptativo, Ámbar de volumen pico y Carmín de sobrecarga), con alternancia de perspectiva frontal/dorsal y género con latencia de 0 ms."
+    },
+    {
+      "name": "Motor de Sesión Activa, Command Picker y Floating Dock",
+      "description": "Buscador difuso tolerante a errores táctiles en pantalla mojada por sudor con soporte de sinónimos cruzados en inglés y español. El temporizador activo reside en un Web Worker dedicado (timer.worker.ts) desacoplado del hilo principal y proyectado en un Floating Dock fijo que respeta safe-area-inset-bottom, emitiendo alertas acústicas sintéticas con Web Audio API."
+    },
+    {
+      "name": "Persistencia Local-First y Gobernanza de Datos (Dexie.js)",
+      "description": "Esquema multi-versión en IndexedDB v3 gestionando ejercicios, sesiones compuestas, series temporales biométricas y hábitos diarios. Almacenamiento canónico estricto en kilogramos flotantes con transformaciones bidireccionales dinámicas para evitar degradación de precisión por redondeo en libras. Respaldo y migración íntegra mediante exportación JSON con checksum."
+    }
+  ],
+  "category": "Fullstack",
+  "status": "completed",
+  "privacy": "public",
+  "featured": true,
+  "date": "2026-05-10",
+  "lastUpdated": "2026-10-29",
+  "demoUrl": "https://azotodev.com/projects/sovereign",
+  "role": "Lead Software Architect & Biomechanical Systems Engineer (2025 – 2026)",
+  "impact": "83,542 LOC TypeScript • 100% Offline-First • 2,160 Ejercicios • 126 Trazados Vectoriales",
+  "businessProblem": "Atletas de fuerza requerían una herramienta libre de suscripciones mensuales, telemetría abusiva y bloqueos de red en gimnasios con mala cobertura celular, con rigor biomecánico real en lugar de gamificación infantil.",
+  "team": {
+    "size": 1,
+    "role": "Principal Software Architect",
+    "duration": "Desarrollo y mantenimiento activo"
+  },
+  "metrics": {
+    "performance": "100% Offline-First",
+    "responseTime": "0 ms I/O Latency",
+    "uptime": "100% Local-First",
+    "architecture": "Angular 22 + Dexie.js + Signals"
+  },
+  "keyMetrics": [
+    {
+      "label": "Líneas de código",
+      "value": "83,542 LOC"
+    },
+    {
+      "label": "Catálogo motor",
+      "value": "2,160 Ejercicios"
+    },
+    {
+      "label": "Heatmap vectorial",
+      "value": "126 Trazados SVG"
+    },
+    {
+      "label": "Soberanía de datos",
+      "value": "Zero-Cloud"
+    }
+  ],
+  "results": [
+    "Operación autónoma total sin dependencia de servidores ni costo recurrente de infraestructura",
+    "Cero latencia de entrada y salida gracias a la arquitectura basada en IndexedDB local optimizado",
+    "Prevención activa de sobreentrenamiento y lesiones mediante cálculo en vivo de hitos MEV/MAV/MRV",
+    "Experiencia fluida a 120Hz libre de sobrecarga de Zone.js mediante Signals reactivos de Angular 22"
+  ],
+  "challenges": [
+    "Desacoplar colisiones léxicas históricas entre el nodo muscular del cuello y ejercicios espaciales como tras nuca",
+    "Renderizar un mapa anatómico reactivo bidireccional de 126 trazados vectoriales sin caídas de framerate en móviles",
+    "Garantizar la precisión de temporizadores de descanso en segundo plano sorteando el estrangulamiento de Safari y Chrome",
+    "Evitar el truncamiento de marcas previas de series en pantallas compactas de 360px de ancho"
+  ],
+  "learnings": [
+    "Diseño de arquitecturas Local-First con Dexie.js garantizando privacidad de grado militar para datos biométricos",
+    "Implementación de Web Workers y Web Audio API para ejecución acústica y temporal desacoplada de la UI",
+    "Modelado de fórmulas biomecánicas continuas para hipertrofia con discriminación de vectores mecánicos articulares",
+    "Optimización ergonómica táctica para dispositivos móviles de una mano en entornos deportivos hostiles"
+  ],
+  "hasScreenshots": true,
+  "isResponsive": true,
+  "hasDocumentation": true,
+  "tags": [
+    "PWA",
+    "Local-First",
+    "Angular 22",
+    "Biomechanics",
+    "IndexedDB",
+    "Web Workers",
+    "Web Audio API",
+    "SVG Heatmap",
+    "Fitness Engineering"
+  ]
+}

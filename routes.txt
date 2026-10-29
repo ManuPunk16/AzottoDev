@@ -1,6 +1,7 @@
 /
 /projects
 /articles
+/projects/sovereign
 /projects/venta-simple
 /projects/docs-ventasimple
 /projects/gestion-documental

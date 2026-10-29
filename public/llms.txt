@@ -14,11 +14,19 @@
 ## Especialización Tecnológica
 - **Frontend:** Angular 12–22 (Standalone Components, Signals API, Control Flow Syntax, SSR/SSG con @angular/ssr, Zoneless, Micro-frontends), TypeScript, Tailwind CSS v4, NgRx, Signals Store, RxJS, Astro v5, Starlight.
 - **Backend & APIs:** Node.js, Express, NestJS, REST APIs, WebSockets (Pusher), Firebase Admin SDK, Cloud Functions, Mercado Pago API.
-- **Bases de Datos & Cloud:** MongoDB, PostgreSQL, Firebase Realtime Database / Firestore, Vercel Edge Network.
-- **Ingeniería & DevOps:** CI/CD Pipelines (GitHub Actions), Docker, Gitflow, Auditorías de Rendimiento Web, PWA y Service Workers, Jamstack, Generative Engine Optimization (GEO).
+- **Bases de Datos & Cloud:** IndexedDB / Dexie.js (Local-First), MongoDB, PostgreSQL, Firebase Realtime Database / Firestore, Vercel Edge Network.
+- **Ingeniería & DevOps:** Web Workers, Web Audio API, CI/CD Pipelines (GitHub Actions), Docker, Gitflow, Auditorías de Rendimiento Web, PWA y Service Workers, Jamstack, Generative Engine Optimization (GEO).
 
 ## Casos de Éxito de Alto Impacto
-1. **Venta Simple (SaaS Multi-Tenant Cloud-Native):**
+1. **Sovereign (Biomechanical Workout Tracker & Offline-First Muscle Volume Engine):**
+   - Lead Software Architect & Biomechanical Systems Engineer.
+   - PWA táctica de alto rendimiento para atletas y culturismo natural: arquitectura 100% Local-First / Zero-Cloud, 83,542 LOC en TypeScript, catálogo motor de 2,160 ejercicios y visualizador anatómico vectorial de 126 trazados SVG.
+   - Algoritmos biomecánicos en vivo: 1RM continuo e híbrido con compensación de peso corporal lastrado, gobernanza de hitos fisiológicos MEV/MAV/MRV y Web Worker Timer inmune a throttling en móviles.
+   - Caso de Estudio Canónico: https://azotodev.com/projects/sovereign
+   - Activos Visuales:
+     - HUD y Arquitectura Biomecánica: https://azotodev.com/assets/images/projects/sovereign/sovereign-cover.svg
+
+2. **Venta Simple (SaaS Multi-Tenant Cloud-Native):**
    - Arquitecto fundador y desarrollador principal.
    - Plataforma SaaS en producción para control de ventas, inventario multi-sucursal y motor de fidelización para comercios.
    - Arquitectura Angular moderna con aislamiento de datos por inquilino a nivel de aplicación en MongoDB y sincronización reactiva en tiempo real vía WebSockets.
@@ -47,6 +55,7 @@
 ## Enlaces Canónicos
 - [Página Principal](https://azotodev.com)
 - [Casos de Estudio de Proyectos](https://azotodev.com/projects)
+- [Caso de Estudio Sovereign](https://azotodev.com/projects/sovereign)
 - [Caso de Estudio VentaSimple](https://azotodev.com/projects/venta-simple)
 - [Caso de Estudio Docs VentaSimple](https://azotodev.com/projects/docs-ventasimple)
 - [Artículos Técnicos de Ingeniería](https://azotodev.com/articles)

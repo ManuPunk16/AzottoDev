@@ -258,6 +258,8 @@ export class MetadataService {
       ? 'VentaSimple - Dashboard Operativo de Punto de Venta'
       : project.id === 'docs-ventasimple'
       ? 'Docs VentaSimple - Portada y Arquitectura de Documentación Técnica'
+      : project.id === 'sovereign'
+      ? 'Sovereign - Tracker Biomecánico y Motor de Hipertrofia'
       : `${project.title} - Portafolio AzotoDev`;
 
     this.updateMetadata({
@@ -313,6 +315,27 @@ export class MetadataService {
             "caption": "Diagrama de arquitectura tecnica multi-tenant en Angular y Serverless"
           }
         ]
+      };
+    } else if (project.id === 'sovereign') {
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Sovereign",
+        "applicationCategory": "HealthApplication, SportsApplication",
+        "operatingSystem": "Web, iOS, Android (PWA Local-First)",
+        "image": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-cover.svg`,
+        "screenshot": [
+          {
+            "@type": "ImageObject",
+            "url": `${this.baseUrl}/assets/images/projects/sovereign/sovereign-cover.svg`,
+            "caption": "HUD de control biomecanico y visualizador de calor anatomico termodinamico"
+          }
+        ],
+        "author": {
+          "@type": "Person",
+          "name": "Luis Adrián Hernández Soto",
+          "url": this.baseUrl
+        }
       };
     } else if (project.id === 'docs-ventasimple') {
       schema = {

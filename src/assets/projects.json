@@ -1,5 +1,36 @@
 [
   {
+    "id": "sovereign",
+    "title": "Sovereign — Biomechanical Workout Tracker & Muscle Volume Engine",
+    "description": "PWA táctica de alto rendimiento para atletas con arquitectura 100% Local-First / Zero-Cloud, visualizador anatómico termodinámico vectorial (126 trazados SVG) y gobernanza algorítmica de hipertrofia.",
+    "imageUrl": "/assets/images/projects/sovereign/sovereign-cover.svg",
+    "technologies": [
+      "Angular 22",
+      "Signals",
+      "Tailwind CSS 4",
+      "Dexie.js",
+      "Web Workers",
+      "Web Audio API",
+      "PWA"
+    ],
+    "category": "Fullstack",
+    "status": "completed",
+    "privacy": "public",
+    "featured": true,
+    "date": "2026-05-10",
+    "lastUpdated": "2026-10-29",
+    "demoUrl": "https://azotodev.com/projects/sovereign",
+    "role": "Lead Software Architect & Biomechanical Systems Engineer",
+    "impact": "83,542 LOC · 100% Local-First · 2,160 Ejercicios · 126 Trazados Vectoriales",
+    "businessProblem": "Atletas de fuerza requerían una herramienta libre de suscripciones mensuales, telemetría invasiva y fallos de red en gimnasios, con rigor biomecánico real en lugar de gamificación infantil.",
+    "previewLabel": "Preview: Biomechanical HUD & Heatmap",
+    "metrics": {
+      "uptime": "100% Local-First",
+      "responseTime": "0 ms I/O Latency",
+      "architecture": "IndexedDB v3 + Web Workers"
+    }
+  },
+  {
     "id": "venta-simple",
     "title": "VentaSimple — Multi-tenant SaaS Platform",
     "description": "Plataforma SaaS en producción para control de ventas, inventario multi-sucursal y motor de fidelización para comercios.",

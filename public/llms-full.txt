@@ -12,7 +12,30 @@
 
 ## Proyectos y Casos de Estudio
 
-### 1. VentaSimple — Multi-Tenant SaaS Platform
+### 1. Sovereign — High-Density Biomechanical Workout Tracker & Muscle Volume Engine
+- URL canónica en portafolio: https://azotodev.com/projects/sovereign
+- Rol: Lead Software Architect & Biomechanical Systems Engineer (2025 – 2026)
+- Stack tecnológico: Angular 22 (Signals y Zoneless), TypeScript 6, Tailwind CSS 4, Dexie.js (IndexedDB v3), Web Workers, Web Audio API, Chart.js, SVG Vector Heatmap, PWA Local-First.
+- Resumen y Filosofía:
+  - Aplicación web progresiva táctica para atletas y culturismo natural bajo el principio de Soberanía Digital Absoluta (Local-First / Zero-Cloud).
+  - Cero llamadas a servidores, cero telemetría remota, cero rastreo y persistencia local completa con cero latencia de entrada/salida.
+- Métricas Verificadas del Repositorio:
+  - 83,542 líneas de código en TypeScript estructurado en src/app.
+  - 40 archivos de arquitectura frontend con componentes Standalone y Single-File Architecture.
+  - Catálogo maestro de 2,160 ejercicios con categorización anatómica y patrones de movimiento.
+  - 126 trazados vectoriales SVG distribuidos en 4 vistas ortogonales completas.
+  - 20 grupos musculares canónicos normalizados sin colisiones léxicas.
+- Módulos Técnicos y Retos de Ingeniería:
+  - Motor Biomecánico: Fórmulas 1RM continuas e híbridas (Epley y Brzycki) con factor de compensación de masa corporal lastrada para dominadas y fondos.
+  - Hitos Fisiológicos de Hipertrofia (Renaissance Periodization): Cálculo algorítmico continuo de MEV (Minimum Effective Volume), MAV (Maximum Adaptive Volume) y MRV (Maximum Recoverable Volume) con sugerencia automática de deload (-10%).
+  - Visualizador Anatómico Reactivo: Mapa de calor en 5 estratos cromáticos tácticos sobre 126 trazados SVG con latencia de 0 ms en reorientación y cambio de género.
+  - Desacoplamiento de Temporizadores: Web Worker timer inmune al estrangulamiento de pestañas en segundo plano en iOS Safari y Android Chrome, con chime acústico sintético a 880Hz generado por Web Audio API.
+  - Normalización Léxica: Desacoplamiento de la colisión léxica entre el nodo muscular del cuello (neck) y ejercicios tras nuca (behind neck), asignando cada uno a su grupo biomecánico exacto.
+  - Ergonomía Móvil: Celdas de registro compactas apiladas verticalmente para pantallas de 360px evitando truncamiento en columnas de marcas históricas previas.
+- Activos Visuales:
+  - HUD y Arquitectura Biomecánica: https://azotodev.com/assets/images/projects/sovereign/sovereign-cover.svg
+
+### 2. VentaSimple — Multi-Tenant SaaS Platform
 - URL de producción: https://miventasimple.com/
 - Caso de estudio en portafolio: https://azotodev.com/projects/venta-simple
 - Rol: Founder & Lead Software Architect
