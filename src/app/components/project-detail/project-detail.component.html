@@ -122,7 +122,7 @@
           
           <!-- Long Narrative Description -->
           @if (project.longDescription) {
-            <section class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6 md:p-8">
+            <section class="bg-[#f0ece4] border border-[rgba(17,17,17,0.08)] rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.03)] p-6 md:p-8">
               <h2 class="text-xl md:text-2xl font-bold uppercase tracking-[-1px] text-[var(--color-ink)] mb-4">
                 Arquitectura y Resumen del Proyecto
               </h2>
@@ -134,7 +134,7 @@
 
           <!-- Technical Modules (Módulos Técnicos a Describir) -->
           @if (project.technicalModules && project.technicalModules.length > 0) {
-            <section class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6 md:p-8">
+            <section class="bg-[#f0ece4] border border-[rgba(17,17,17,0.08)] rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.03)] p-6 md:p-8">
               <div class="flex items-center justify-between mb-6">
                 <h2 class="text-xl md:text-2xl font-bold uppercase tracking-[-1px] text-[var(--color-ink)]">
                   Módulos Técnicos y Decisiones de Arquitectura
@@ -161,7 +161,7 @@
 
           <!-- Features (Características) -->
           @if (project.features && project.features.length > 0) {
-            <section class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6 md:p-8">
+            <section class="bg-[#f0ece4] border border-[rgba(17,17,17,0.08)] rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.03)] p-6 md:p-8">
               <h2 class="text-xl md:text-2xl font-bold uppercase tracking-[-1px] text-[var(--color-ink)] mb-6">
                 Capacidades Clave del Sistema
               </h2>
@@ -178,7 +178,7 @@
 
           <!-- Results Obtained (Resultados) -->
           @if (project.results && project.results.length > 0) {
-            <section class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6 md:p-8">
+            <section class="bg-[#f0ece4] border border-[rgba(17,17,17,0.08)] rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.03)] p-6 md:p-8">
               <h2 class="text-xl md:text-2xl font-bold uppercase tracking-[-1px] text-[var(--color-ink)] mb-6">
                 Resultados & Impacto Comprobado
               </h2>
@@ -195,7 +195,7 @@
 
           <!-- Challenges & Technical Learnings -->
           @if (project.challenges && project.challenges.length > 0) {
-            <section class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6 md:p-8">
+            <section class="bg-[#f0ece4] border border-[rgba(17,17,17,0.08)] rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.03)] p-6 md:p-8">
               <h2 class="text-xl md:text-2xl font-bold uppercase tracking-[-1px] text-[var(--color-ink)] mb-4">
                 Desafíos Técnicos Superados
               </h2>
@@ -212,7 +212,7 @@
 
           <!-- Screenshot Gallery (Capturas) -->
           @if (project.gallery && project.gallery.length > 0) {
-            <section class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6 md:p-8">
+            <section class="bg-[#f0ece4] border border-[rgba(17,17,17,0.08)] rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.03)] p-6 md:p-8">
               <h2 class="text-xl md:text-2xl font-bold uppercase tracking-[-1px] text-[var(--color-ink)] mb-6">
                 Galería de Capturas
               </h2>
@@ -240,7 +240,7 @@
         <div class="space-y-8">
           
           <!-- Actions & Links Panel -->
-          <div class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6">
+          <div class="bg-[#f0ece4] border border-[rgba(17,17,17,0.08)] rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.03)] p-6">
             <h3 class="text-xs uppercase tracking-[0.5px] font-bold text-[var(--color-ink)] mb-4">Acciones</h3>
             <div class="flex flex-col gap-3">
               @if (project.demoUrl) {
@@ -262,7 +262,7 @@
 
           <!-- Project Metrics (Métricas Clave) -->
           @if (project.metrics) {
-            <div class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6">
+            <div class="bg-[#f0ece4] border border-[rgba(17,17,17,0.08)] rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.03)] p-6">
               <h3 class="text-xs uppercase tracking-[0.5px] font-bold text-[var(--color-ink)] mb-4">Métricas de Impacto</h3>
               <div class="space-y-3">
                 @if (project.metrics.uptime) {
@@ -294,7 +294,7 @@
           }
 
           <!-- Tech Stack Panel -->
-          <div class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6">
+          <div class="bg-[#f0ece4] border border-[rgba(17,17,17,0.08)] rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.03)] p-6">
             <h3 class="text-xs uppercase tracking-[0.5px] font-bold text-[var(--color-ink)] mb-4">Stack Tecnológico</h3>
             <div class="flex flex-wrap gap-2">
               @for (tech of project.technologies; track tech) {
@@ -307,7 +307,7 @@
 
           <!-- Project Details Panel -->
           @if (project.team) {
-            <div class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6">
+            <div class="bg-[#f0ece4] border border-[rgba(17,17,17,0.08)] rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.03)] p-6">
               <h3 class="text-xs uppercase tracking-[0.5px] font-bold text-[var(--color-ink)] mb-4">Ficha Técnica</h3>
               <table class="w-full text-xs text-left text-[var(--color-ash)]">
                 <tbody>
@@ -330,7 +330,7 @@
 
           <!-- Related Projects -->
           @if (relatedProjects.length > 0) {
-            <div class="bg-white border border-[rgba(17,17,17,0.08)] rounded-[12px] p-6">
+            <div class="bg-[#f0ece4] border border-[rgba(17,17,17,0.08)] rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.03)] p-6">
               <h3 class="text-xs uppercase tracking-[0.5px] font-bold text-[var(--color-ink)] mb-4">Otros Casos de Estudio</h3>
               <div class="space-y-4">
                 @for (relatedProject of relatedProjects; track relatedProject.id) {

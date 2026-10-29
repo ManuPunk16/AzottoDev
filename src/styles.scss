@@ -6,8 +6,8 @@
 
 :root {
   /* Tokens — Colors from DESIGN.md */
-  --color-canvas-white: #ffffff;
-  --color-cream-wash: #f6f5f3;
+  --color-canvas-white: #eae6df;
+  --color-cream-wash: #dfdbd3;
   --color-ink: #111111;
   --color-charcoal: #272625;
   --color-midnight-indigo: #10054d;
@@ -21,7 +21,7 @@
   --color-indigo-deep: #2e2460;
   --color-ash: #6d6c6b;
   --color-stone: #b1b1af;
-  --color-pearl: #ecebea;
+  --color-pearl: #d5d0c7;
 
   /* Semantic Mappings */
   --text-primary: var(--color-ink);
@@ -156,7 +156,7 @@ a, button, input, select, textarea, .card, .tag, .button {
 
 /* Sticky Nav scroll styles */
 header.scrolled {
-  background-color: rgba(255, 255, 255, 0.85) !important;
+  background-color: rgba(234, 230, 223, 0.85) !important;
   border-bottom: 1px solid rgba(17, 17, 17, 0.08) !important;
   backdrop-filter: blur(24px) !important;
   -webkit-backdrop-filter: blur(24px) !important;

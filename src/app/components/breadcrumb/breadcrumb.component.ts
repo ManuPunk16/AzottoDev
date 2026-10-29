@@ -63,7 +63,7 @@ import { Subject, takeUntil } from 'rxjs';
       top: 0;
       z-index: 40;
       padding: 0.75rem 0;
-      border-bottom: 1px solid var(--secondary-300);
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
       
       /* Variables CSS del tema para colores */
       background-color: var(--background-primary);
@@ -71,7 +71,7 @@ import { Subject, takeUntil } from 'rxjs';
       /* Glassmorphism effect */
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(234, 230, 223, 0.85);
       
       /* Transición usando la curva del tema */
       transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
