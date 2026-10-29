@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Página principal -->
+  <!-- Pagina principal -->
   <url>
     <loc>https://azotodev.com</loc>
     <lastmod>2026-10-29</lastmod>
@@ -10,7 +10,7 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Páginas principales -->
+  <!-- Paginas principales -->
   <url>
     <loc>https://azotodev.com/projects</loc>
     <lastmod>2026-10-29</lastmod>
@@ -25,45 +25,155 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Proyectos individuales con imágenes -->
+  <!-- Proyectos individuales con imagenes -->
   
   <url>
     <loc>https://azotodev.com/projects/venta-simple</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/dashboard-desktop.webp</image:loc>
+      <image:title>VentaSimple - Dashboard Operativo Desktop</image:title>
+      <image:caption>Panel de control principal de punto de venta e inventario en tiempo real</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/dashboard-mobile.webp</image:loc>
+      <image:title>VentaSimple - Interfaz Mobile-First</image:title>
+      <image:caption>Terminal de ventas optimizada para dispositivos moviles y smartphones</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/reportes-metricas.webp</image:loc>
+      <image:title>VentaSimple - Modulo de Metricas y Analitica</image:title>
+      <image:caption>Panel analitico con balances, margenes comerciales y estado de flujo de caja</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/arquitectura-pos.svg</image:loc>
+      <image:title>VentaSimple - Arquitectura Tecnica de Sistema</image:title>
+      <image:caption>Diagrama de arquitectura multi-tenant cloud-native con Angular y Node.js</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://azotodev.com/projects/gestion-documental</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/documental-workflow.webp</image:loc>
+      <image:title>Sistema de flujos de trabajo configurables</image:title>
+      <image:caption>Vista del diseñador de flujos de trabajo con datos anonimizados</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/documental-tracking.webp</image:loc>
+      <image:title>Panel de seguimiento de documentos</image:title>
+      <image:caption>Sistema de seguimiento en tiempo real del estado de documentos</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/documental-analytics.webp</image:loc>
+      <image:title>Dashboard de analytics y métricas</image:title>
+      <image:caption>Reportes analíticos y métricas de rendimiento del sistema</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/documental-mobile.webp</image:loc>
+      <image:title>Interfaz móvil para seguimiento</image:title>
+      <image:caption>Aplicación móvil para consulta y seguimiento de documentos</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/documental-notifications.webp</image:loc>
+      <image:title>Sistema de notificaciones</image:title>
+      <image:caption>Centro de notificaciones y alertas automáticas</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://azotodev.com/projects/control-inventario</loc>
     <lastmod>2024-03-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/inventario-dashboard.webp</image:loc>
+      <image:title>Dashboard principal del sistema de inventario</image:title>
+      <image:caption>Vista del panel de control con métricas de rendimiento anonimizadas</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/inventario-reports.webp</image:loc>
+      <image:title>Módulo de reportes avanzados</image:title>
+      <image:caption>Sistema de reportería con análisis de datos y exportación</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/inventario-mobile.webp</image:loc>
+      <image:title>Interfaz móvil responsive</image:title>
+      <image:caption>Aplicación completamente adaptativa para dispositivos móviles</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/inventario-alerts.webp</image:loc>
+      <image:title>Sistema de alertas automáticas</image:title>
+      <image:caption>Configuración de notificaciones y alertas de stock bajo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/inventario-analytics.webp</image:loc>
+      <image:title>Analytics y métricas del sistema</image:title>
+      <image:caption>Dashboard de análisis con tendencias y predicciones</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://azotodev.com/projects/tickets-soporte</loc>
     <lastmod>2024-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/tickets-dashboard.webp</image:loc>
+      <image:title>Dashboard principal de gestión de tickets</image:title>
+      <image:caption>Vista principal del sistema con tickets anonimizados y métricas en tiempo real</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/tickets-sla.webp</image:loc>
+      <image:title>Panel de monitoreo de SLA y métricas</image:title>
+      <image:caption>Dashboard de seguimiento de acuerdos de nivel de servicio y KPIs</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/tickets-chat.webp</image:loc>
+      <image:title>Sistema de chat interno integrado</image:title>
+      <image:caption>Herramienta de comunicación interna para coordinación del equipo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/tickets-mobile.webp</image:loc>
+      <image:title>Aplicación móvil para técnicos</image:title>
+      <image:caption>App móvil para gestión de tickets en campo y notificaciones push</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/tickets-reports.webp</image:loc>
+      <image:title>Reportes y analytics avanzados</image:title>
+      <image:caption>Sistema de reportería con análisis predictivo y tendencias</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://azotodev.com/projects/azotodev</loc>
     <lastmod>2024-12-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/azotodev/home-white-theme.webp</image:loc>
+      <image:title>Página principal del portfolio</image:title>
+      <image:caption>Vista de la página principal con tema claro</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/azotodev/home-dark-theme.webp</image:loc>
+      <image:title>Tema oscuro del portfolio</image:title>
+      <image:caption>Interfaz en modo oscuro</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/azotodev/home-dark-theme-mobile.webp</image:loc>
+      <image:title>Vista móvil responsive</image:title>
+      <image:caption>Diseño responsive en dispositivos móviles modo oscuro</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/azotodev/home-white-theme-mobile.webp</image:loc>
+      <image:title>Vista móvil responsive</image:title>
+      <image:caption>Diseño responsive en dispositivos móviles modo claro</image:caption>
+    </image:image>
   </url>
 
-  <!-- Artículos individuales con imágenes -->
+  <!-- Articulos individuales con imagenes -->
   
   <url>
     <loc>https://azotodev.com/articles/angular-v19-novedades-rendimiento-signals</loc>
@@ -73,8 +183,8 @@
     
     <image:image>
       <image:loc>https://azotodev.com/assets/images/articles//assets/images/articles/angular19.webp</image:loc>
-      <image:caption>Artículo: Novedades Clave de Angular v19: Rendimiento, DX y Reactividad Mejorados</image:caption>
       <image:title>Novedades Clave de Angular v19: Rendimiento, DX y Reactividad Mejorados</image:title>
+      <image:caption>Articulo: Novedades Clave de Angular v19: Rendimiento, DX y Reactividad Mejorados</image:caption>
     </image:image>
   </url>
   <url>
@@ -85,8 +195,8 @@
     
     <image:image>
       <image:loc>https://azotodev.com/assets/images/articles//assets/images/articles/accesibilidad-angular.webp</image:loc>
-      <image:caption>Artículo: Componentes accesibles con Angular y Tailwind CSS</image:caption>
       <image:title>Componentes accesibles con Angular y Tailwind CSS</image:title>
+      <image:caption>Articulo: Componentes accesibles con Angular y Tailwind CSS</image:caption>
     </image:image>
   </url>
 

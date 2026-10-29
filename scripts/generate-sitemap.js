@@ -20,7 +20,7 @@ try {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Página principal -->
+  <!-- Pagina principal -->
   <url>
     <loc>${baseUrl}</loc>
     <lastmod>${today}</lastmod>
@@ -28,7 +28,7 @@ try {
     <priority>1.0</priority>
   </url>
 
-  <!-- Páginas principales -->
+  <!-- Paginas principales -->
   <url>
     <loc>${baseUrl}/projects</loc>
     <lastmod>${today}</lastmod>
@@ -43,35 +43,93 @@ try {
     <priority>0.8</priority>
   </url>
 
-  <!-- Proyectos individuales con imágenes -->
+  <!-- Proyectos individuales con imagenes -->
   ${projectsData
-    .map(
-      (project) => `
+    .map((project) => {
+      let projectImages = [];
+      const projectDetailPath = path.join(
+        __dirname,
+        `../src/assets/projects/${project.id}.json`
+      );
+
+      if (fs.existsSync(projectDetailPath)) {
+        try {
+          const detail = JSON.parse(fs.readFileSync(projectDetailPath, "utf8"));
+          if (detail.gallery && Array.isArray(detail.gallery)) {
+            projectImages = detail.gallery.map((g) => ({
+              loc: g.url.startsWith("http")
+                ? g.url
+                : `${baseUrl}${g.url.startsWith(".") ? g.url.substring(1) : g.url}`,
+              title: g.alt || project.title,
+              caption: g.caption || `${project.title} - ${project.description}`,
+            }));
+          }
+        } catch (e) {
+          // Fallback
+        }
+      }
+
+      if (project.id === "venta-simple") {
+        projectImages = [
+          {
+            loc: `${baseUrl}/assets/images/projects/ventasimple/dashboard-desktop.webp`,
+            title: "VentaSimple - Dashboard Operativo Desktop",
+            caption:
+              "Panel de control principal de punto de venta e inventario en tiempo real",
+          },
+          {
+            loc: `${baseUrl}/assets/images/projects/ventasimple/dashboard-mobile.webp`,
+            title: "VentaSimple - Interfaz Mobile-First",
+            caption:
+              "Terminal de ventas optimizada para dispositivos moviles y smartphones",
+          },
+          {
+            loc: `${baseUrl}/assets/images/projects/ventasimple/reportes-metricas.webp`,
+            title: "VentaSimple - Modulo de Metricas y Analitica",
+            caption:
+              "Panel analitico con balances, margenes comerciales y estado de flujo de caja",
+          },
+          {
+            loc: `${baseUrl}/assets/images/projects/ventasimple/arquitectura-pos.svg`,
+            title: "VentaSimple - Arquitectura Tecnica de Sistema",
+            caption:
+              "Diagrama de arquitectura multi-tenant cloud-native con Angular y Node.js",
+          },
+        ];
+      } else if (projectImages.length === 0 && project.imageUrl) {
+        projectImages = [
+          {
+            loc: project.imageUrl.startsWith("http")
+              ? project.imageUrl
+              : `${baseUrl}${project.imageUrl}`,
+            title: project.title,
+            caption: `${project.title} - ${project.description}`,
+          },
+        ];
+      }
+
+      const imagesXml = projectImages
+        .map(
+          (img) => `
+    <image:image>
+      <image:loc>${img.loc}</image:loc>
+      <image:title>${img.title}</image:title>
+      <image:caption>${img.caption}</image:caption>
+    </image:image>`
+        )
+        .join("");
+
+      return `
   <url>
     <loc>${baseUrl}/projects/${project.id}</loc>
     <lastmod>${project.lastUpdated || project.date || today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>${project.featured ? "0.9" : "0.8"}</priority>
-    ${
-      project.images && project.images.length > 0
-        ? project.images
-            .slice(0, 3)
-            .map(
-              (img) => `
-    <image:image>
-      <image:loc>${baseUrl}/assets/images/projects/${project.id}/${img}</image:loc>
-      <image:caption>Proyecto ${project.title} - ${project.description}</image:caption>
-      <image:title>${project.title}</image:title>
-    </image:image>`
-            )
-            .join("")
-        : ""
-    }
-  </url>`
-    )
+    <priority>${project.featured ? "0.9" : "0.8"}</priority>${imagesXml}
+  </url>`;
+    })
     .join("")}
 
-  <!-- Artículos individuales con imágenes -->
+  <!-- Articulos individuales con imagenes -->
   ${articlesData
     .map(
       (article) => `
@@ -85,8 +143,8 @@ try {
         ? `
     <image:image>
       <image:loc>${baseUrl}/assets/images/articles/${article.image}</image:loc>
-      <image:caption>Artículo: ${article.title}</image:caption>
       <image:title>${article.title}</image:title>
+      <image:caption>Articulo: ${article.title}</image:caption>
     </image:image>`
         : ""
     }
@@ -107,10 +165,10 @@ try {
   console.log("[SUCCESS] Sitemap generado exitosamente");
   console.log(`[INFO] Base URL: ${baseUrl}`);
   console.log(
-    `[INFO] URLs totales: ${5 + projectsData.length + articlesData.length}`
+    `[INFO] URLs totales: ${3 + projectsData.length + articlesData.length}`
   );
   console.log(`[INFO] Proyectos: ${projectsData.length}`);
-  console.log(`[INFO] Artículos: ${articlesData.length}`);
+  console.log(`[INFO] Articulos: ${articlesData.length}`);
 } catch (error) {
   console.error("[ERROR] Error generando sitemap:", error.message);
   process.exit(1);

@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1874.6279999999997 1431.3" width="1874.6279999999997" height="1431.3" style="--bg:#18181B;--fg:#F4F4F5;--line:#71717A;--muted:#A1A1AA;--surface:#27272A;--border:#3F3F46;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.5, 8 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+<g class="subgraph" data-id="CLIENT_TIER" data-label="CAPA CLIENTE (Front-end PWA)">
+  <rect x="1381.3265" y="913.6" width="373.868" height="215.60000000000002" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1381.3265" y="913.6" width="373.868" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1393.3265" y="927.6" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">CAPA CLIENTE (Front-end PWA)</text>
+</g>
+<g class="subgraph" data-id="EDGE_TIER" data-label="CAPA DE DISTRIBUCIÓN &amp; EDGE">
+  <rect x="1438.3712499999997" y="1251.5" width="203.62499999999997" height="113.80000000000001" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1438.3712499999997" y="1251.5" width="203.62499999999997" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1450.3712499999997" y="1265.5" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">CAPA DE DISTRIBUCIÓN &amp; EDGE</text>
+</g>
+<g class="subgraph" data-id="AUTH_TIER" data-label="IDENTIDAD &amp; AUTENTICACIÓN">
+  <rect x="1118.5672499999998" y="1227.5" width="291.804" height="113.80000000000001" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1118.5672499999998" y="1227.5" width="291.804" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1130.5672499999998" y="1241.5" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">IDENTIDAD &amp; AUTENTICACIÓN</text>
+</g>
+<g class="subgraph" data-id="API_TIER" data-label="CAPA DE SERVICIOS (Backend Serverless)">
+  <rect x="833.6407499999998" y="58" width="519.4719999999999" height="485.20000000000005" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="833.6407499999998" y="58" width="519.4719999999999" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="845.6407499999998" y="72" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">CAPA DE SERVICIOS (Backend Serverless)</text>
+<g class="subgraph" data-id="MIDDLEWARE_PIPELINE" data-label="Pipeline de Seguridad &amp; Multi-Tenant">
+  <rect x="860.6407499999998" y="110.45" width="196.07799999999992" height="36.900000000000006" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="860.6407499999998" y="110.45" width="196.07799999999992" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="872.6407499999998" y="124.45" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">Pipeline de Seguridad &amp; Multi-Tenant</text>
+</g>
+<g class="subgraph" data-id="MIDDLEWARE_PIPELINE" data-label="Pipeline de Seguridad &amp; Multi-Tenant">
+  <rect x="881.9697499999997" y="209.8" width="286.61699999999996" height="317.40000000000003" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="881.9697499999997" y="209.8" width="286.61699999999996" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="893.9697499999997" y="223.8" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">Pipeline de Seguridad &amp; Multi-Tenant</text>
+</g>
+</g>
+<g class="subgraph" data-id="DATA_TIER" data-label="CAPA DE DATOS (Multi-Tenant Segregation)">
+  <rect x="99" y="1151.2" width="678.1609999999998" height="127.80000000000001" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="99" y="1151.2" width="678.1609999999998" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="111" y="1165.2" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">CAPA DE DATOS (Multi-Tenant Segregation)</text>
+</g>
+<g class="subgraph" data-id="EXTERNAL_TIER" data-label="SERVICIOS EXTERNOS &amp; TIEMPO REAL">
+  <rect x="805.1609999999998" y="671.5" width="901.4979999999999" height="113.80000000000001" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="805.1609999999998" y="671.5" width="901.4979999999999" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="817.1609999999998" y="685.5" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">SERVICIOS EXTERNOS &amp; TIEMPO REAL</text>
+</g>
+<polyline class="edge" data-from="CLIENT_TIER" data-to="CDN" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="HTTPS / PWA Load" points="1407.3265,1129.2 1407.3265,1165.2 1540.1837499999997,1165.2 1540.1837499999997,1283.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="CDN" data-to="EXPRESS" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="API Requests" points="1540.1837499999997,1337.3 1540.1837499999997,1383.3 1775.024,1383.3 1775.024,40 1210.9157499999997,40 1210.9157499999997,102" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="CLIENT_TIER" data-to="FBA" data-style="solid" data-arrow-start="true" data-arrow-end="true" data-label="Auth Handshake &amp; Token Refresh" points="1397.3265,1129.2 1397.3265,1141.2 1264.4692499999999,1141.2 1264.4692499999999,1283.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" marker-start="url(#arrowhead-start)" />
+<polyline class="edge" data-from="FBA" data-to="MW_AUTH" data-style="dotted" data-arrow-start="false" data-arrow-end="true" data-label="Token Verification" points="1264.4692499999999,1337.3 1264.46925,1359.3 88.00000000000023,1359.3 88.00000000000023,40 849.64075,40 849.6407499999998,167.79999999999995 1025.2782499999998,167.79999999999995 1025.2782499999998,253.79999999999995" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="MIDDLEWARE_PIPELINE" data-to="MONGO" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Queries con filtro tenantId estricto" points="946.6239999999998,527.2 946.6239999999996,573.2 290.1029999999996,573.2 290.10299999999995,1195.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="MIDDLEWARE_PIPELINE" data-to="S3" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Presigned URLs" points="956.6239999999998,527.2 956.6239999999996,585.2 615.9561249999997,585.2 615.9561249999997,1133.2 627.1834999999996,1133.2 627.1834999999999,1195.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="MIDDLEWARE_PIPELINE" data-to="MP" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Checkout &amp; Webhooks" points="966.6239999999998,527.2 966.6239999999998,715.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="MIDDLEWARE_PIPELINE" data-to="PUSHER" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Broadcast eventos de venta" points="986.6239999999998,527.2 986.6239999999996,573.2 1490.9604999999997,573.2 1490.9604999999997,653.5 1570.7604999999996,653.5 1570.7604999999999,715.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="PUSHER" data-to="UI" data-style="dotted" data-arrow-start="false" data-arrow-end="true" data-label="Sync en tiempo real (Cajas/Mesas)" points="1570.7604999999999,769.3 1570.7604999999996,957.6" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="MIDDLEWARE_PIPELINE" data-to="RESEND" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Envío de correos" points="976.6239999999998,527.2 976.6239999999996,585.2 1281.4744999999996,585.2 1281.4744999999998,715.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="UI" data-to="SW" data-style="solid" data-arrow-start="false" data-arrow-end="false" points="1570.7604999999999,1011.4000000000001 1570.7604999999999,1059.4" fill="none" stroke="var(--_line)" stroke-width="1" />
+<polyline class="edge" data-from="EXPRESS" data-to="MIDDLEWARE_PIPELINE" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="1210.9157499999997,155.8 1210.9157499999997,167.8 1035.2782499999998,167.8 1035.2782499999998,209.8" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="MW_AUTH" data-to="MW_TENANT" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="1025.2782499999998,307.6 1025.2782499999998,355.6" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="MW_TENANT" data-to="MW_RATE" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="1025.2782499999998,409.40000000000003 1025.2782499999998,457.40000000000003" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<g class="edge-label" data-from="CLIENT_TIER" data-to="CDN" data-label="HTTPS / PWA Load">
+  <rect x="1485.1837499999997" y="1172.2" width="109.72" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1540.0437499999996" y="1187.3500000000001" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">HTTPS / PWA Load</text>
+</g>
+<g class="edge-label" data-from="CDN" data-to="EXPRESS" data-label="API Requests">
+  <rect x="1734.0239999999997" y="834.3000000000001" width="81.20800000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1774.6279999999997" y="849.45" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">API Requests</text>
+</g>
+<g class="edge-label" data-from="CLIENT_TIER" data-to="FBA" data-label="Auth Handshake &amp; Token Refresh">
+  <rect x="1176.4692499999999" y="1148.2" width="175.654" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1264.2962499999999" y="1163.3500000000001" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Auth Handshake &amp; Token Refresh</text>
+</g>
+<g class="edge-label" data-from="FBA" data-to="MW_AUTH" data-label="Token Verification">
+  <rect x="36" y="1322" width="103.78000000000003" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="87.89000000000001" y="1337.15" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Token Verification</text>
+</g>
+<g class="edge-label" data-from="MIDDLEWARE_PIPELINE" data-to="MONGO" data-label="Queries con filtro tenantId estricto">
+  <rect x="203.10299999999984" y="1071.9" width="173.278" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="289.74199999999985" y="1087.0500000000002" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Queries con filtro tenantId estricto</text>
+</g>
+<g class="edge-label" data-from="MIDDLEWARE_PIPELINE" data-to="S3" data-label="Presigned URLs">
+  <rect x="567.4561249999999" y="1071.9" width="96.652" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="615.782125" y="1087.0500000000002" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Presigned URLs</text>
+</g>
+<g class="edge-label" data-from="MIDDLEWARE_PIPELINE" data-to="MP" data-label="Checkout &amp; Webhooks">
+  <rect x="905.1239999999998" y="592.2" width="122.78800000000004" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="966.5179999999998" y="607.35" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Checkout &amp; Webhooks</text>
+</g>
+<g class="edge-label" data-from="MIDDLEWARE_PIPELINE" data-to="PUSHER" data-label="Broadcast eventos de venta">
+  <rect x="1416.4605000000001" y="592.2" width="148.92400000000004" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1490.9225000000001" y="607.35" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Broadcast eventos de venta</text>
+</g>
+<g class="edge-label" data-from="PUSHER" data-to="UI" data-label="Sync en tiempo real (Cajas/Mesas)">
+  <rect x="1480.7604999999999" y="834.3000000000001" width="179.21800000000002" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1570.3694999999998" y="849.45" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Sync en tiempo real (Cajas/Mesas)</text>
+</g>
+<g class="edge-label" data-from="MIDDLEWARE_PIPELINE" data-to="RESEND" data-label="Envío de correos">
+  <rect x="1229.4744999999998" y="592.2" width="103.18600000000004" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1281.0674999999999" y="607.35" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Envío de correos</text>
+</g>
+<g class="node" data-id="UI" data-label="Angular 22 SPA / PWA
+(Signals · Standalone Components · Tailwind CSS)" data-shape="rectangle">
+  <rect x="1402.3265" y="957.6" width="336.868" height="53.800000000000004" rx="0" ry="0" fill="#1e293b" stroke="#38bdf8" stroke-width="2px" />
+  <text x="1570.7604999999999" y="984.5" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="1570.7604999999999" dy="-3.9000000000000012">Angular 22 SPA / PWA</tspan><tspan x="1570.7604999999999" dy="16.900000000000002">(Signals · Standalone Components · Tailwind CSS)</tspan></text>
+</g>
+<g class="node" data-id="SW" data-label="Service Worker
+(Cache First Assets · Offline Resilience)" data-shape="rectangle">
+  <rect x="1433.819" y="1059.4" width="273.8829999999999" height="53.800000000000004" rx="0" ry="0" fill="#1e293b" stroke="#38bdf8" stroke-width="2px" />
+  <text x="1570.7604999999999" y="1086.3000000000002" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="1570.7604999999999" dy="-3.9000000000000012">Service Worker</tspan><tspan x="1570.7604999999999" dy="16.900000000000002">(Cache First Assets · Offline Resilience)</tspan></text>
+</g>
+<g class="node" data-id="CDN" data-label="Vercel Edge Network
+(Global CDN &amp; Routing)" data-shape="rectangle">
+  <rect x="1454.3712499999997" y="1283.5" width="171.62499999999997" height="53.800000000000004" rx="0" ry="0" fill="#0f172a" stroke="#818cf8" stroke-width="2px" />
+  <text x="1540.1837499999997" y="1310.4" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="1540.1837499999997" dy="-3.9000000000000012">Vercel Edge Network</tspan><tspan x="1540.1837499999997" dy="16.900000000000002">(Global CDN &amp; Routing)</tspan></text>
+</g>
+<g class="node" data-id="FBA" data-label="Firebase Auth Service
+(JWT Bearer Tokens · RBAC Claims)" data-shape="rectangle">
+  <rect x="1134.5672499999998" y="1283.5" width="259.804" height="53.800000000000004" rx="0" ry="0" fill="#2e1065" stroke="#ec4899" stroke-width="2px" />
+  <text x="1264.4692499999999" y="1310.4" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="1264.4692499999999" dy="-3.9000000000000012">Firebase Auth Service</tspan><tspan x="1264.4692499999999" dy="16.900000000000002">(JWT Bearer Tokens · RBAC Claims)</tspan></text>
+</g>
+<g class="node" data-id="EXPRESS" data-label="API Gateway (Express.js 5 / Node.js)
+Vercel Serverless Functions" data-shape="rectangle">
+  <rect x="1084.7187499999998" y="102" width="252.39399999999998" height="53.800000000000004" rx="0" ry="0" fill="#1e1e38" stroke="#a855f7" stroke-width="2px" />
+  <text x="1210.9157499999997" y="128.9" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="1210.9157499999997" dy="-3.9000000000000012">API Gateway (Express.js 5 / Node.js)</tspan><tspan x="1210.9157499999997" dy="16.900000000000002">Vercel Serverless Functions</tspan></text>
+</g>
+<g class="node" data-id="MW_AUTH" data-label="Autenticación JWT
+(firebase-admin)" data-shape="rectangle">
+  <rect x="948.7282499999998" y="253.8" width="153.1" height="53.800000000000004" rx="0" ry="0" fill="#1e1e38" stroke="#a855f7" stroke-width="2px" />
+  <text x="1025.2782499999998" y="280.7" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="1025.2782499999998" dy="-3.9000000000000012">Autenticación JWT</tspan><tspan x="1025.2782499999998" dy="16.900000000000002">(firebase-admin)</tspan></text>
+</g>
+<g class="node" data-id="MW_TENANT" data-label="Validador Multi-Tenant
+(Aislamiento estricto por tenantId)" data-shape="rectangle">
+  <rect x="908.3437499999998" y="355.6" width="233.869" height="53.800000000000004" rx="0" ry="0" fill="#1e1e38" stroke="#a855f7" stroke-width="2px" />
+  <text x="1025.2782499999998" y="382.5" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="1025.2782499999998" dy="-3.9000000000000012">Validador Multi-Tenant</tspan><tspan x="1025.2782499999998" dy="16.900000000000002">(Aislamiento estricto por tenantId)</tspan></text>
+</g>
+<g class="node" data-id="MW_RATE" data-label="Rate Limiter &amp; Audit
+(Impersonación segura solo-lectura)" data-shape="rectangle">
+  <rect x="897.9697499999997" y="457.40000000000003" width="254.61699999999996" height="53.800000000000004" rx="0" ry="0" fill="#1e1e38" stroke="#a855f7" stroke-width="2px" />
+  <text x="1025.2782499999998" y="484.3" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="1025.2782499999998" dy="-3.9000000000000012">Rate Limiter &amp; Audit</tspan><tspan x="1025.2782499999998" dy="16.900000000000002">(Impersonación segura solo-lectura)</tspan></text>
+</g>
+<g class="node" data-id="MONGO" data-label="MongoDB Atlas
+(Colecciones particionadas lógicamente por tenantId)" data-shape="cylinder">
+  <rect x="115" y="1202.2" width="350.20599999999985" height="53.80000000000001" fill="#064e3b" stroke="none" />
+  <line x1="115" y1="1202.2" x2="115" y2="1256" stroke="#34d399" stroke-width="2px" />
+  <line x1="465.20599999999985" y1="1202.2" x2="465.20599999999985" y2="1256" stroke="#34d399" stroke-width="2px" />
+  <ellipse cx="290.10299999999995" cy="1256" rx="175.10299999999992" ry="7" fill="#064e3b" stroke="#34d399" stroke-width="2px" />
+  <ellipse cx="290.10299999999995" cy="1202.2" rx="175.10299999999992" ry="7" fill="#064e3b" stroke="#34d399" stroke-width="2px" />
+  <text x="290.10299999999995" y="1229.1000000000001" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="290.10299999999995" dy="-3.9000000000000012">MongoDB Atlas</tspan><tspan x="290.10299999999995" dy="16.900000000000002">(Colecciones particionadas lógicamente por tenantId)</tspan></text>
+</g>
+<g class="node" data-id="S3" data-label="Cloudflare R2 / S3
+(Catálogos &amp; Comprobantes multimedia)" data-shape="rectangle">
+  <rect x="493.2059999999999" y="1195.2" width="267.9549999999999" height="53.800000000000004" rx="0" ry="0" fill="#064e3b" stroke="#34d399" stroke-width="2px" />
+  <text x="627.1834999999999" y="1222.1000000000001" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="627.1834999999999" dy="-3.9000000000000012">Cloudflare R2 / S3</tspan><tspan x="627.1834999999999" dy="16.900000000000002">(Catálogos &amp; Comprobantes multimedia)</tspan></text>
+</g>
+<g class="node" data-id="MP" data-label="Mercado Pago API
+(Checkout API · Cobro de Licencias SaaS)" data-shape="rectangle">
+  <rect x="821.1609999999998" y="715.5" width="290.926" height="53.800000000000004" rx="0" ry="0" fill="#334155" stroke="#94a3b8" stroke-width="1.5px" />
+  <text x="966.6239999999998" y="742.4" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="966.6239999999998" dy="-3.9000000000000012">Mercado Pago API</tspan><tspan x="966.6239999999998" dy="16.900000000000002">(Checkout API · Cobro de Licencias SaaS)</tspan></text>
+</g>
+<g class="node" data-id="PUSHER" data-label="Pusher Channels
+(WebSockets en Vivo entre Cajas)" data-shape="rectangle">
+  <rect x="1450.8619999999999" y="715.5" width="239.79699999999994" height="53.800000000000004" rx="0" ry="0" fill="#334155" stroke="#94a3b8" stroke-width="1.5px" />
+  <text x="1570.7604999999999" y="742.4" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="1570.7604999999999" dy="-3.9000000000000012">Pusher Channels</tspan><tspan x="1570.7604999999999" dy="16.900000000000002">(WebSockets en Vivo entre Cajas)</tspan></text>
+</g>
+<g class="node" data-id="RESEND" data-label="Resend API
+(Emails transaccionales y comprobantes)" data-shape="rectangle">
+  <rect x="1140.087" y="715.5" width="282.775" height="53.800000000000004" rx="0" ry="0" fill="#334155" stroke="#94a3b8" stroke-width="1.5px" />
+  <text x="1281.4745" y="742.4" text-anchor="middle" font-size="13" font-weight="500" fill="#f8fafc"><tspan x="1281.4745" dy="-3.9000000000000012">Resend API</tspan><tspan x="1281.4745" dy="16.900000000000002">(Emails transaccionales y comprobantes)</tspan></text>
+</g>
+</svg>

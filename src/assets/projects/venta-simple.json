@@ -1,39 +1,64 @@
 {
   "id": "venta-simple",
   "title": "VentaSimple — Multi-tenant SaaS Platform",
-  "subtitle": "Plataforma SaaS en producción para control de ventas, inventario con costeo de recetas y motor de fidelización para comercios.",
-  "description": "Plataforma SaaS en producción para control de ventas, inventario con costeo de recetas y motor de fidelización para comercios.",
-  "longDescription": "VentaSimple es una plataforma SaaS multi-tenant diseñada para resolver los retos operativos más críticos de comercios gastronómicos y micro-franquicias: control de ventas en mostrador de alta velocidad (POS en 2 taps), cálculo automático de costos mediante desglose de recetas e insumos, retención de clientes con motor de fidelización por puntos y facturación automatizada por suscripciones escalonadas.",
-  "imageUrl": "/assets/images/projects/ventasimple-hero.webp",
-  "gallery": [],
-  "technologies": ["Angular 21 Standalone", "Signals Reactivos", "Tailwind CSS", "Node.js Serverless", "MongoDB", "Mercado Pago SDK", "Firebase Auth"],
+  "subtitle": "Plataforma SaaS en producción para control de ventas, inventario multi-sucursal y motor de fidelización para comercios.",
+  "description": "Plataforma SaaS en producción para control de ventas, inventario multi-sucursal y motor de fidelización para comercios.",
+  "longDescription": "VentaSimple es una plataforma SaaS multi-tenant diseñada para resolver los retos operativos de comercios y micro-franquicias: control de ventas en mostrador de alta velocidad (Micro-POS Mobile First con soporte offline PWA), federación inter-tenant para showrooms y consignaciones de catálogo compartido, fidelización por puntos, soporte con impersonación segura auditada y control de turnos con corte de caja ciego.",
+  "imageUrl": "/assets/images/projects/ventasimple/dashboard-desktop.webp",
+  "gallery": [
+    {
+      "url": "/assets/images/projects/ventasimple/dashboard-desktop.webp",
+      "alt": "Dashboard principal de VentaSimple POS en escritorio",
+      "caption": "Panel de control principal: balance diario, ventas en tiempo real, alertas de stock bajo y accesos rápidos de mostrador",
+      "isMain": true
+    },
+    {
+      "url": "/assets/images/projects/ventasimple/dashboard-mobile.webp",
+      "alt": "Vista Mobile-First responsiva de VentaSimple POS",
+      "caption": "Micro-POS optimizado para smartphones y terminales de mano con controles ergonómicos al pulgar",
+      "isMain": false
+    },
+    {
+      "url": "/assets/images/projects/ventasimple/reportes-metricas.webp",
+      "alt": "Módulo analítico de reportes financieros y márgenes de ganancia",
+      "caption": "Panel de reportes financieros: margen operativo, cálculo de compras vs ventas y control de fiados por cobrar",
+      "isMain": false
+    },
+    {
+      "url": "/assets/images/projects/ventasimple/arquitectura-pos.svg",
+      "alt": "Diagrama de arquitectura del sistema POS multi-tenant",
+      "caption": "Diagrama de flujo de arquitectura: aislamiento multi-tenant, sincronización de eventos y checkout transaccional",
+      "isMain": false
+    }
+  ],
+  "technologies": ["Angular 22 (Signals)", "Tailwind CSS 4", "Node.js Serverless", "MongoDB", "Firebase Auth", "Pusher (WebSockets)", "Mercado Pago API"],
   "features": [
-    "Punto de venta (POS) ultra-rápido optimizado para flujo en 2 taps",
-    "Aislamiento de base de datos multi-tenant por tenantId y middleware de seguridad",
-    "Costeo de recetas dinámico con deducción en tiempo real de insumos",
-    "Motor de fidelización con acumulación y canje automático de puntos",
-    "Monetización SaaS con suscripciones escalonadas vía Mercado Pago",
-    "Gestión multi-sucursal con permisos segregados por perfil de usuario",
-    "Cortes de caja y conciliación ciega de turnos de venta",
-    "Alertas proactivas de inventario y agotamiento de insumos críticos",
-    "Emisión de comprobantes y tickets térmicos/digitales en milisegundos"
+    "Micro-POS táctil Mobile First optimizado para venta ágil y escaneo de códigos de barra/QR",
+    "Aislamiento estricto multi-tenant a nivel de aplicación mediante tokens y middleware por tenantId",
+    "Federación inter-tenant: catálogo compartido y liquidaciones cruzadas para Showrooms y marcas",
+    "Mecanismo de soporte con impersonación segura auditada en modo solo lectura",
+    "Resiliencia de mostrador con PWA y Service Worker ante desconexiones de red",
+    "Sincronización y presencia multi-caja en tiempo real con Pusher (WebSockets)",
+    "Motor de fidelización con acumulación, saldo y redención de puntos en caja",
+    "Cortes de caja y conciliación ciega de turnos de venta para prevenir mermas",
+    "Emisión de tickets térmicos (58mm/80mm), comprobantes PDF y envío digital por WhatsApp"
   ],
   "technicalModules": [
     {
-      "name": "Arquitectura Multi-tenant",
-      "description": "Frontend desarrollado con Angular 21 Standalone y Signals reactivos. Backend serverless con Node.js y MongoDB configurado con aislamiento lógico estricto por tenantId, middleware de autorización contextual y políticas de acceso fail-closed según el plan contratado."
+      "name": "Arquitectura Multi-tenant & Seguridad",
+      "description": "Frontend moderno en Angular 22 con Signals reactivos y Tailwind CSS 4. Backend serverless con Node.js y MongoDB con aislamiento lógico riguroso por tenantId, validación criptográfica de claims con Firebase Auth y control granular de roles (ADMIN, EMPLEADO, SUPERADMIN)."
     },
     {
-      "name": "Costeo por Recetas",
-      "description": "Motor de explosión de materiales que deduce de forma atómica los insumos unitarios en tiempo real por cada producto o platillo vendido, recalculando márgenes brutos y alertando de variaciones de costo en materias primas."
+      "name": "Federación Inter-Tenant (Showrooms & Consignaciones)",
+      "description": "Arquitectura federada donde tiendas showroom y marcas externas colaboran con catálogo sincronizado, liquidaciones automáticas de ventas y traspasos de mercancía sin duplicación de inventarios."
     },
     {
-      "name": "Fidelización de Clientes",
-      "description": "Motor transaccional de acumulación, expiración y redención de puntos calculados por ticket o categorías promocionales, integrado transparentemente en la experiencia de cobro en caja."
+      "name": "Soporte con Impersonación Segura",
+      "description": "Middleware especializado para soporte técnico que permite a superadmins impersonar cuentas tenant bajo auditoría inmutable en modo restringido sin comprometer credenciales ni datos confidenciales."
     },
     {
-      "name": "Monetización & Suscripciones",
-      "description": "Gestión de tiers de suscripción (Freemium, Pro, Multi-sucursal) integrada con webhooks de Mercado Pago para auto-provisionamiento, upgrades instantáneos y conciliación de pagos."
+      "name": "Checkout & Monetización Transparente",
+      "description": "Integración con Mercado Pago API para cobros con tarjeta y tokenización segura, junto con un motor de ciclo de vida de licencias por vigencia dinámica y soft-locks transaccionales."
     }
   ],
   "category": "Fullstack",
@@ -50,45 +75,45 @@
     "duration": "En producción activa"
   },
   "metrics": {
-    "uptime": "99.9%",
-    "responseTime": "< 120ms",
-    "performance": "Mobile-First",
-    "architecture": "Multi-tenant DB"
+    "uptime": "Multi-Tenant",
+    "responseTime": "< 250 KB Bundle",
+    "performance": "Mobile-First PWA",
+    "architecture": "Tenant Isolated"
   },
   "keyMetrics": [
     {
-      "label": "Uptime de servicio",
-      "value": "99.9%"
+      "label": "Bundle inicial",
+      "value": "< 250 KB"
     },
     {
-      "label": "Latencia en catálogo",
-      "value": "< 120ms"
+      "label": "Impresión de ticket",
+      "value": "Sub-segundo"
     },
     {
       "label": "Aislamiento tenant",
-      "value": "Multi-tenant"
+      "value": "Estricto"
     }
   ],
   "results": [
-    "99.9% de uptime garantizado en infraestructura serverless",
-    "Latencia promedio menor a 120ms en consultas de catálogo y tickets",
-    "Aislamiento riguroso de datos con políticas de plan activas",
-    "Flujo de venta completado en menos de 6 segundos por cajero"
+    "Arquitectura multi-tenant con segregación criptográfica por tenantId en MongoDB",
+    "Bundle frontend ultra liviano (< 250 KB) con arranque inmediato en móviles de mostrador",
+    "Sincronización multi-terminal en tiempo real vía WebSockets con Pusher",
+    "Flujo de caja blindado mediante arqueo y corte ciego por turno"
   ],
   "challenges": [
-    "Garantizar aislamiento total entre empresas en una arquitectura NoSQL compartida sin penalizar latencia",
-    "Diseñar una UX libre de fricciones utilizable en pantallas táctiles de gama baja",
-    "Conciliar operaciones atómicas de reducción de inventario ante ventas concurrentes en varias terminales",
-    "Implementar resiliencia ante cortes de conectividad temporal durante la atención al público"
+    "Garantizar aislamiento estricto entre clientes en una arquitectura NoSQL compartida sin fuga de contexto",
+    "Diseñar una UX libre de fricciones en mostrador táctil móvil con soporte PWA offline",
+    "Modelar liquidaciones cruzadas y catálogo federado entre showrooms y marcas colaboradoras",
+    "Garantizar auditoría e inmutabilidad en la impersonación de cuentas durante sesiones de soporte"
   ],
   "learnings": [
-    "Uso intensivo de Angular 21 Signals para reactividad fina y cero ChangeDetection overhead en POS",
-    "Modelado de índices compuestos en MongoDB para filtrado inmediato por tenantId",
-    "Diseño de interfaces orientadas a tareas críticas donde cada micro-segundo cuenta para el negocio",
-    "Arquitectura de webhooks idempotentes para facturación recurrente con Mercado Pago"
+    "Aprovechamiento pleno de Angular 22 Signals para eliminar sobrecarga de detección de cambios en el POS",
+    "Modelado de índices compuestos y middleware contextual para blindaje multi-tenant en MongoDB",
+    "Orquestación de eventos en vivo con WebSockets para sincronizar estado entre cajas en piso de venta",
+    "Gestión transaccional de pagos directos con tokenización y control de vigencias dinámicas"
   ],
-  "hasScreenshots": false,
+  "hasScreenshots": true,
   "isResponsive": true,
   "hasDocumentation": true,
-  "tags": ["SaaS", "Multi-tenant", "Angular 21", "Node.js", "MongoDB", "Fintech"]
+  "tags": ["SaaS", "Multi-tenant", "Angular 22", "Node.js", "MongoDB", "WebSockets", "PWA"]
 }

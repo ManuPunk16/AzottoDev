@@ -1,0 +1,53 @@
+# Luis Adrián Hernández Soto — Full Technical Context & LLM Knowledge Base
+
+> Tech Lead, Senior Full Stack Engineer y Arquitecto Frontend. Especialista en modernización de arquitecturas frontend con Angular (v12 a v22), sistemas reactivos con Signals, optimización de rendimiento web de grado empresarial, plataformas SaaS multi-tenant cloud-native y accesibilidad WCAG 2.1 AA/AAA.
+
+- Sitio web oficial: https://azotodev.com
+- Repositorio del portafolio: https://github.com/ManuPunk16/AzottoDev
+- Contacto: azzotto@icloud.com
+- Perfil profesional: https://www.linkedin.com/in/azotodev/
+- GitHub: https://github.com/ManuPunk16
+
+---
+
+## Proyectos y Casos de Estudio
+
+### 1. VentaSimple — Multi-Tenant SaaS Platform
+- URL de producción: https://miventasimple.com/
+- Caso de estudio en portafolio: https://azotodev.com/projects/venta-simple
+- Rol: Founder & Lead Software Architect
+- Stack tecnológico: Angular 22 (Signals & Standalone Components), Tailwind CSS v4, Node.js Serverless en Vercel, MongoDB, Firebase Auth, WebSockets (Pusher), Mercado Pago API, PWA Service Worker.
+- Arquitectura y Retos Técnicos:
+  - Aislamiento multi-tenant estricto a nivel de aplicación mediante tokens criptográficos y middleware contextual por tenantId en MongoDB.
+  - Micro-POS táctil optimizado para mobile-first y hardware de mostrador de bajo recurso, con soporte offline PWA.
+  - Federación inter-tenant: catálogo sincronizado y liquidaciones cruzadas entre tiendas tipo Showroom y marcas colaboradoras en consignación.
+  - Mecanismo de impersonación segura para soporte técnico con auditoría inmutable en modo solo lectura.
+  - Sincronización multi-caja en tiempo real mediante eventos WebSockets.
+  - Generación de tickets térmicos (58mm/80mm), comprobantes PDF y envíos a WhatsApp.
+- Activos Visuales y Arquitectura del Sistema:
+  - Mockup de Operacion: https://azotodev.com/assets/images/projects/ventasimple/dashboard-desktop.webp
+  - Diseno Mobile-First: https://azotodev.com/assets/images/projects/ventasimple/dashboard-mobile.webp
+  - Modulo Analitico: https://azotodev.com/assets/images/projects/ventasimple/reportes-metricas.webp
+  - Diagrama Arquitectonico: https://azotodev.com/assets/images/projects/ventasimple/arquitectura-pos.svg
+
+### 2. Plataforma de Gestión Documental y Firma Electrónica
+- Caso de estudio: https://azotodev.com/projects/gestion-documental
+- Rol: Lead Systems Architect
+- Stack: Angular, Node.js, MongoDB, PDF.js, WebSockets.
+- Impacto: Reducción de tiempos de tramitación de 10 días a 4 horas en dependencias gubernamentales.
+
+### 3. Sistema de Control de Inventario y Almacén
+- Caso de estudio: https://azotodev.com/projects/control-inventario
+- Rol: Senior Fullstack Developer
+- Stack: Angular, Node.js, MongoDB, Chart.js, JWT.
+
+### 4. Sistema de Tickets de Soporte y SLA
+- Caso de estudio: https://azotodev.com/projects/tickets-soporte
+- Rol: Fullstack Software Engineer
+- Stack: Angular, Firebase, Cloud Functions, Firestore, PWA.
+
+---
+
+## Artículos Técnicos Publicados
+1. Componentes Accesibles con Angular y Tailwind CSS: https://azotodev.com/articles/componentes-accesibles-angular-tailwind
+2. Novedades Clave de Angular v19, Rendimiento y Signals: https://azotodev.com/articles/angular-v19-novedades-rendimiento-signals

@@ -8,6 +8,7 @@ export interface MetaTagsConfig {
   description: string;
   keywords?: string;
   image?: string;
+  imageAlt?: string;
   url?: string;
   type?: string;
   publishedTime?: string;
@@ -58,8 +59,10 @@ export class MetadataService {
     const imagePath = data.image || '/assets/images/og-home.webp';
     const imageUrl = imagePath.startsWith('http') ? imagePath : `${this.baseUrl}${imagePath}`;
     
+    const imageAlt = data.imageAlt || data.title;
+
     this.meta.updateTag({ property: 'og:image', content: imageUrl });
-    this.meta.updateTag({ property: 'og:image:alt', content: data.title });
+    this.meta.updateTag({ property: 'og:image:alt', content: imageAlt });
     this.meta.updateTag({ property: 'og:image:width', content: '1200' });
     this.meta.updateTag({ property: 'og:image:height', content: '630' });
     this.meta.updateTag({ property: 'og:image:type', content: 'image/webp' });
@@ -71,7 +74,7 @@ export class MetadataService {
     this.meta.updateTag({ name: 'twitter:creator', content: this.twitterHandle });
     this.meta.updateTag({ name: 'twitter:site', content: this.twitterHandle });
     this.meta.updateTag({ name: 'twitter:image', content: imageUrl });
-    this.meta.updateTag({ name: 'twitter:image:alt', content: data.title });
+    this.meta.updateTag({ name: 'twitter:image:alt', content: imageAlt });
 
     // Article specific meta tags
     if (data.type === 'article') {
@@ -245,16 +248,84 @@ export class MetadataService {
       'Luis Hernández'
     ].join(', ');
 
+    const imageAlt = project.id === 'venta-simple'
+      ? 'VentaSimple - Dashboard Operativo de Punto de Venta'
+      : `${project.title} - Portafolio AzotoDev`;
+
     this.updateMetadata({
       title,
       description,
       keywords,
       image: project.imageUrl,
+      imageAlt,
       url: `${this.baseUrl}/projects/${project.id}`,
       type: 'article',
       publishedTime: project.date,
       section: project.category
     });
+
+    this.addProjectStructuredData(project);
+  }
+
+  private addProjectStructuredData(project: any) {
+    const existingScript = this.document.querySelector('script[data-schema="project"]');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    let schema: any;
+
+    if (project.id === 'venta-simple') {
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "VentaSimple",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, iOS, Android",
+        "image": `${this.baseUrl}/assets/images/projects/ventasimple/dashboard-desktop.webp`,
+        "screenshot": [
+          {
+            "@type": "ImageObject",
+            "url": `${this.baseUrl}/assets/images/projects/ventasimple/dashboard-desktop.webp`,
+            "caption": "Dashboard operativo principal de VentaSimple para gestion de punto de venta"
+          },
+          {
+            "@type": "ImageObject",
+            "url": `${this.baseUrl}/assets/images/projects/ventasimple/dashboard-mobile.webp`,
+            "caption": "Interfaz tactil mobile-first para ventas rapidas en smartphones"
+          },
+          {
+            "@type": "ImageObject",
+            "url": `${this.baseUrl}/assets/images/projects/ventasimple/reportes-metricas.webp`,
+            "caption": "Modulo de analitica comercial y balances financieros"
+          },
+          {
+            "@type": "ImageObject",
+            "url": `${this.baseUrl}/assets/images/projects/ventasimple/arquitectura-pos.svg`,
+            "caption": "Diagrama de arquitectura tecnica multi-tenant en Angular y Serverless"
+          }
+        ]
+      };
+    } else {
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": project.title,
+        "description": project.description,
+        "programmingLanguage": project.technologies,
+        "author": {
+          "@type": "Person",
+          "name": "Luis Hernández",
+          "url": this.baseUrl
+        }
+      };
+    }
+
+    const script = this.document.createElement('script');
+    script.type = 'application/ld+json';
+    script.setAttribute('data-schema', 'project');
+    script.textContent = JSON.stringify(schema);
+    this.document.head.appendChild(script);
   }
 
   updateArticleMetadata(article: any) {

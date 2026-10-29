@@ -2,9 +2,9 @@
   {
     "id": "venta-simple",
     "title": "VentaSimple — Multi-tenant SaaS Platform",
-    "description": "Plataforma SaaS en producción para control de ventas, inventario con costeo de recetas y motor de fidelización para comercios.",
-    "imageUrl": "/assets/images/projects/ventasimple-hero.webp",
-    "technologies": ["Angular 21", "Signals", "Tailwind CSS", "Node.js", "MongoDB", "Mercado Pago"],
+    "description": "Plataforma SaaS en producción para control de ventas, inventario multi-sucursal y motor de fidelización para comercios.",
+    "imageUrl": "/assets/images/projects/ventasimple/dashboard-desktop.webp",
+    "technologies": ["Angular 22", "Signals", "Tailwind CSS 4", "Node.js", "MongoDB", "Pusher", "Mercado Pago"],
     "category": "Fullstack",
     "status": "in-progress",
     "privacy": "public",
@@ -12,13 +12,13 @@
     "date": "2026-03-31",
     "demoUrl": "https://miventasimple.com/",
     "role": "Founder & Lead Software Architect",
-    "impact": "99.9% Uptime · < 120ms latencia de catálogo · Aislamiento Multi-tenant",
-    "businessProblem": "Comercios y micro-franquicias perdían hasta un 18% de rentabilidad por falta de costeo en tiempo real, POS lentos y fugas de inventario.",
+    "impact": "Aislamiento Multi-tenant · Mobile-First PWA · Sincronización en Tiempo Real",
+    "businessProblem": "Comercios y showrooms requerían agilizar ventas en mostrador, evitar mermas por caja y sincronizar inventarios compartidos sin perder trazabilidad.",
     "previewLabel": "Preview: POS Checkout Interface",
     "metrics": {
-      "uptime": "99.9%",
-      "responseTime": "< 120ms",
-      "architecture": "Multi-tenant DB"
+      "uptime": "Multi-Tenant",
+      "responseTime": "< 250 KB Bundle",
+      "architecture": "Tenant Isolated"
     }
   },
   {
