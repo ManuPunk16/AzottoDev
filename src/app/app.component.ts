@@ -102,7 +102,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { label: 'Proyectos', value: '15+' },
     { label: 'Commits', value: '2,500+' },
     { label: 'Líneas de Código', value: '50K+' },
-    { label: 'Años de Experiencia', value: '5+' },
+    { label: 'Años de Experiencia', value: '6+' },
   ] as const;
 
   // Información del portfolio

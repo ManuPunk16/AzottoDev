@@ -1,10 +1,10 @@
 /
 /projects
 /articles
-/projects/azotodev
 /projects/venta-simple
-/projects/control-inventario
 /projects/gestion-documental
+/projects/control-inventario
 /projects/tickets-soporte
+/projects/azotodev
 /articles/angular-v19-novedades-rendimiento-signals
 /articles/componentes-accesibles-angular-tailwind

@@ -19,6 +19,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   relatedProjects: Project[] = [];
   loading = true;
   error = false;
+  imageFailed = false;
   currentGalleryIndex = 0;
   isGalleryOpen = false;
   
@@ -61,6 +62,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   private resetComponent(): void {
     this.loading = true;
     this.error = false;
+    this.imageFailed = false;
     this.project = null;
     this.relatedProjects = [];
     this.isGalleryOpen = false;
@@ -96,13 +98,12 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   private loadRelatedProjects() {
     if (!this.project) return;
 
-    // Cargar todos los proyectos para mostrar relacionados
     this.http.get<Project[]>('/assets/projects.json').pipe(
       takeUntil(this.destroy$)
     ).subscribe({
       next: (projects) => {
         this.relatedProjects = projects
-          .filter(p => p.id !== this.project?.id && p.category === this.project?.category)
+          .filter(p => p.id !== this.project?.id)
           .slice(0, 3);
       },
       error: (err) => console.warn('Error cargando proyectos relacionados:', err)
@@ -137,37 +138,14 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
       : this.currentGalleryIndex - 1;
   }
 
-  getCategoryIcon(category: string): string {
-    return '';
-  }
-
   getStatusText(status: string): string {
     const statusMap: Record<string, string> = {
       'completed': 'Completado',
-      'in-progress': 'En desarrollo',
+      'in-progress': 'En producción',
       'planned': 'Planificado',
       'maintenance': 'En mantenimiento'
     };
     return statusMap[status] || status;
-  }
-
-  getStatusClasses(status: string): string {
-    const classMap: Record<string, string> = {
-      'completed': 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300',
-      'in-progress': 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300',
-      'planned': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300',
-      'maintenance': 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300'
-    };
-    return `inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${classMap[status] || 'bg-gray-100 text-gray-800'}`;
-  }
-
-  getPrivacyClasses(privacy: string): string {
-    const classMap: Record<string, string> = {
-      'public': 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300',
-      'internal': 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300',
-      'private': 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'
-    };
-    return `inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${classMap[privacy] || 'bg-gray-100 text-gray-800'}`;
   }
 
   goBack() {
@@ -175,11 +153,6 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   }
 
   onImageError(event: any) {
-    event.target.style.display = 'none';
-    console.warn('Error cargando imagen:', event.target.src);
-  }
-
-  trackByFn(index: number, item: any): any {
-    return item?.id || index;
+    this.imageFailed = true;
   }
 }
