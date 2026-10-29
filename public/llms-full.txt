@@ -30,18 +30,37 @@
   - Modulo Analitico: https://azotodev.com/assets/images/projects/ventasimple/reportes-metricas.webp
   - Diagrama Arquitectonico: https://azotodev.com/assets/images/projects/ventasimple/arquitectura-pos.svg
 
-### 2. Plataforma de Gestión Documental y Firma Electrónica
+### 2. Docs VentaSimple — Technical Documentation & AI Knowledge Base
+- URL de producción: https://docs.miventasimple.com
+- Repositorio: https://github.com/ManuPunk16/docs-miventasimple
+- Caso de estudio en portafolio: https://azotodev.com/projects/docs-ventasimple
+- Rol: Principal Documentation Architect & Jamstack Specialist
+- Stack tecnológico: Astro v5, Starlight, TypeScript, Tailwind CSS, Pagefind, MDX, Vercel Edge.
+- Arquitectura de Decisiones:
+  - Adopción de Jamstack Estático con Astro v5 y Starlight: Entrega de HTML puro compilado (SSG) con cero sobrecarga de JavaScript en el cliente para lectura. Garantiza navegación fluida en dispositivos móviles comerciales en piso de venta con redes móviles inestables.
+  - Pipeline Dual de Contenido (Humano vs. IA / GEO): Una misma fuente canónica en MDX abastece el portal interactivo y alimenta un pipeline automatizado que compila versiones planas en llms.txt y llms-full.txt. Sanea etiquetas visuales JSX preservando semántica, tablas y jerarquía Markdown para ingestión por agentes RAG, GPTBot, ClaudeBot y Perplexity.
+  - Modelado de Procesos Contables Complejos: Guías operativas paso a paso para el Cotizador de Pasillo, prorrateo de costos en compras al mayoreo, desempacado con mermas, balance de centavos en multipacks surtidos y conciliación de Kardex en inventarios ciegos.
+  - Búsqueda Instantánea Cliente con Pagefind: Indexación estática por chunks en build time que permite búsquedas instantáneas por teclado sin costo de infraestructura ni telemetría externa.
+- Métricas Verificadas:
+  - Rendimiento: 100 / 100 en Google Lighthouse.
+  - Latencia en Edge: TTFB menor a 250 ms.
+  - Sobrecarga de Cliente: Cero JavaScript innecesario en lectura.
+  - Cobertura de Protocolo: 100% compatible con estándar llmstxt.org.
+- Activos Visuales:
+  - Portada y Hub de Conocimiento: https://azotodev.com/assets/images/projects/docs-ventasimple/docs-cover.png
+
+### 3. Plataforma de Gestión Documental y Firma Electrónica
 - Caso de estudio: https://azotodev.com/projects/gestion-documental
 - Rol: Lead Systems Architect
 - Stack: Angular, Node.js, MongoDB, PDF.js, WebSockets.
 - Impacto: Reducción de tiempos de tramitación de 10 días a 4 horas en dependencias gubernamentales.
 
-### 3. Sistema de Control de Inventario y Almacén
+### 4. Sistema de Control de Inventario y Almacén
 - Caso de estudio: https://azotodev.com/projects/control-inventario
 - Rol: Senior Fullstack Developer
 - Stack: Angular, Node.js, MongoDB, Chart.js, JWT.
 
-### 4. Sistema de Tickets de Soporte y SLA
+### 5. Sistema de Tickets de Soporte y SLA
 - Caso de estudio: https://azotodev.com/projects/tickets-soporte
 - Rol: Fullstack Software Engineer
 - Stack: Angular, Firebase, Cloud Functions, Firestore, PWA.

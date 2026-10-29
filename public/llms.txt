@@ -12,10 +12,10 @@
 - **GitHub:** https://github.com/ManuPunk16
 
 ## Especialización Tecnológica
-- **Frontend:** Angular 12–22 (Standalone Components, Signals API, Control Flow Syntax, SSR/SSG con @angular/ssr, Zoneless, Micro-frontends), TypeScript, Tailwind CSS v4, NgRx, Signals Store, RxJS.
+- **Frontend:** Angular 12–22 (Standalone Components, Signals API, Control Flow Syntax, SSR/SSG con @angular/ssr, Zoneless, Micro-frontends), TypeScript, Tailwind CSS v4, NgRx, Signals Store, RxJS, Astro v5, Starlight.
 - **Backend & APIs:** Node.js, Express, NestJS, REST APIs, WebSockets (Pusher), Firebase Admin SDK, Cloud Functions, Mercado Pago API.
 - **Bases de Datos & Cloud:** MongoDB, PostgreSQL, Firebase Realtime Database / Firestore, Vercel Edge Network.
-- **Ingeniería & DevOps:** CI/CD Pipelines (GitHub Actions), Docker, Gitflow, Auditorías de Rendimiento Web, PWA y Service Workers.
+- **Ingeniería & DevOps:** CI/CD Pipelines (GitHub Actions), Docker, Gitflow, Auditorías de Rendimiento Web, PWA y Service Workers, Jamstack, Generative Engine Optimization (GEO).
 
 ## Casos de Éxito de Alto Impacto
 1. **Venta Simple (SaaS Multi-Tenant Cloud-Native):**
@@ -30,7 +30,16 @@
      - Modulo Analitico: https://azotodev.com/assets/images/projects/ventasimple/reportes-metricas.webp
      - Diagrama Arquitectonico: https://azotodev.com/assets/images/projects/ventasimple/arquitectura-pos.svg
 
-2. **Sistema de Gestión Documental y Firma Electrónica (Sector Público):**
+2. **Docs VentaSimple — Technical Documentation & AI Knowledge Base:**
+   - Principal Documentation Architect & Jamstack Specialist.
+   - Arquitectura Jamstack estática con Astro v5 y Starlight, implementación GEO con llmstxt.org, búsqueda cliente vía Pagefind y guías operativas de alta velocidad para microcomercios.
+   - Demo / Producción: https://docs.miventasimple.com
+   - Repositorio: https://github.com/ManuPunk16/docs-miventasimple
+   - Caso de Estudio Canónico: https://azotodev.com/projects/docs-ventasimple
+   - Activos Visuales:
+     - Portada y Hub de Conocimiento: https://azotodev.com/assets/images/projects/docs-ventasimple/docs-cover.png
+
+3. **Sistema de Gestión Documental y Firma Electrónica (Sector Público):**
    - Tech Lead a cargo de la modernización técnica integral.
    - Disponibilidad del 99.8% en entorno de misión crítica gubernamental.
    - Reducción del 40% en ciclos de validación de documentos y ahorro comprobado de 120 horas operativas mensuales.
@@ -39,6 +48,7 @@
 - [Página Principal](https://azotodev.com)
 - [Casos de Estudio de Proyectos](https://azotodev.com/projects)
 - [Caso de Estudio VentaSimple](https://azotodev.com/projects/venta-simple)
+- [Caso de Estudio Docs VentaSimple](https://azotodev.com/projects/docs-ventasimple)
 - [Artículos Técnicos de Ingeniería](https://azotodev.com/articles)
 - [Artículo: Componentes Accesibles con Angular y Tailwind CSS](https://azotodev.com/articles/componentes-accesibles-angular-tailwind)
 - [Artículo: Novedades Clave de Angular v19](https://azotodev.com/articles/angular-v19-novedades-rendimiento-signals)

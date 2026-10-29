@@ -235,8 +235,14 @@ export class MetadataService {
   }
 
   updateProjectMetadata(project: any) {
-    const title = `${project.title} | Proyecto ${project.category} - AzotoDev`;
-    const description = `${project.description} Desarrollado con ${project.technologies.join(', ')}. Caso de estudio completo del proyecto ${project.title}.`;
+    let title = `${project.title} | Proyecto ${project.category} - AzotoDev`;
+    let description = `${project.description} Desarrollado con ${project.technologies.join(', ')}. Caso de estudio completo del proyecto ${project.title}.`;
+
+    if (project.id === 'docs-ventasimple') {
+      title = 'Docs VentaSimple — Caso de Estudio Técnico | AzottoDev';
+      description = 'Arquitectura Jamstack estática con Astro v5, protocolo GEO con llmstxt.org y documentación técnica de alta velocidad.';
+    }
+
     const keywords = [
       project.title,
       ...project.technologies,
@@ -250,6 +256,8 @@ export class MetadataService {
 
     const imageAlt = project.id === 'venta-simple'
       ? 'VentaSimple - Dashboard Operativo de Punto de Venta'
+      : project.id === 'docs-ventasimple'
+      ? 'Docs VentaSimple - Portada y Arquitectura de Documentación Técnica'
       : `${project.title} - Portafolio AzotoDev`;
 
     this.updateMetadata({
@@ -305,6 +313,21 @@ export class MetadataService {
             "caption": "Diagrama de arquitectura tecnica multi-tenant en Angular y Serverless"
           }
         ]
+      };
+    } else if (project.id === 'docs-ventasimple') {
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Docs VentaSimple — Technical Documentation & AI Knowledge Base",
+        "description": "Caso de estudio sobre arquitectura Jamstack con Astro v5, Starlight y protocolo de ingestión para IA.",
+        "url": `${this.baseUrl}/projects/docs-ventasimple`,
+        "author": {
+          "@type": "Person",
+          "name": "Luis Adrián Hernández Soto",
+          "url": this.baseUrl
+        },
+        "about": ["Astro v5", "Starlight", "GEO", "RAG", "Technical Writing", "Jamstack"],
+        "image": `${this.baseUrl}/assets/images/projects/docs-ventasimple/docs-cover.png`
       };
     } else {
       schema = {

@@ -2,6 +2,7 @@
 /projects
 /articles
 /projects/venta-simple
+/projects/docs-ventasimple
 /projects/gestion-documental
 /projects/control-inventario
 /projects/tickets-soporte

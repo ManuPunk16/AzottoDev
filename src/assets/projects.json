@@ -4,7 +4,15 @@
     "title": "VentaSimple — Multi-tenant SaaS Platform",
     "description": "Plataforma SaaS en producción para control de ventas, inventario multi-sucursal y motor de fidelización para comercios.",
     "imageUrl": "/assets/images/projects/ventasimple/dashboard-desktop.webp",
-    "technologies": ["Angular 22", "Signals", "Tailwind CSS 4", "Node.js", "MongoDB", "Pusher", "Mercado Pago"],
+    "technologies": [
+      "Angular 22",
+      "Signals",
+      "Tailwind CSS 4",
+      "Node.js",
+      "MongoDB",
+      "Pusher",
+      "Mercado Pago"
+    ],
     "category": "Fullstack",
     "status": "in-progress",
     "privacy": "public",
@@ -22,11 +30,48 @@
     }
   },
   {
+    "id": "docs-ventasimple",
+    "title": "Docs VentaSimple — Technical Documentation & AI Knowledge Base",
+    "description": "Portal de documentación técnica estática, manuales operativos paso a paso y base de conocimiento optimizada para motores de búsqueda y modelos de lenguaje (LLMs / GEO / RAG).",
+    "imageUrl": "/assets/images/projects/docs-ventasimple/docs-cover.png",
+    "technologies": [
+      "Astro v5",
+      "Starlight",
+      "TypeScript",
+      "Tailwind CSS",
+      "Pagefind",
+      "MDX"
+    ],
+    "category": "Web",
+    "status": "completed",
+    "privacy": "public",
+    "featured": true,
+    "date": "2026-04-15",
+    "demoUrl": "https://docs.miventasimple.com",
+    "repoUrl": "https://github.com/ManuPunk16/docs-miventasimple",
+    "role": "Arquitectura de Información, Ingeniería de Documentación & Implementación GEO (2025 – 2026)",
+    "impact": "100/100 Lighthouse • Cero JS innecesario • 100% Compatible llms.txt RAG",
+    "businessProblem": "Comerciantes requerían resolver dudas operativas de alta complejidad matemática en mostrador y los asistentes de IA necesitaban un contexto canónico limpio libre de ruido JSX.",
+    "previewLabel": "Preview: Documentation Portal & Knowledge Hub",
+    "metrics": {
+      "uptime": "100% Estático (SSG)",
+      "responseTime": "< 250 ms Edge TTFB",
+      "architecture": "Astro v5 + Starlight + LLMs.txt"
+    },
+    "lastUpdated": "2026-10-29"
+  },
+  {
     "id": "gestion-documental",
     "title": "Plataforma de Gestión Documental",
     "description": "Sistema gubernamental de recepción, firma digital y procesamiento automatizado de trámites con flujos de trabajo paralelos.",
     "imageUrl": "/assets/images/projects/gestion-documental.webp",
-    "technologies": ["Angular 19", "Node.js", "MongoDB", "PDF.js", "WebSockets"],
+    "technologies": [
+      "Angular 19",
+      "Node.js",
+      "MongoDB",
+      "PDF.js",
+      "WebSockets"
+    ],
     "category": "Fullstack",
     "status": "completed",
     "privacy": "internal",
@@ -42,7 +87,13 @@
     "title": "Sistema de Control de Inventario & Almacén",
     "description": "Aplicación de alto tráfico para conciliación de existencias, auditoría de mermas y balance de inventario en tiempo real.",
     "imageUrl": "/assets/images/projects/gov/inventario-main.webp",
-    "technologies": ["Angular 19", "Node.js", "MongoDB", "Chart.js", "JWT"],
+    "technologies": [
+      "Angular 19",
+      "Node.js",
+      "MongoDB",
+      "Chart.js",
+      "JWT"
+    ],
     "category": "Fullstack",
     "status": "completed",
     "privacy": "internal",
@@ -58,7 +109,13 @@
     "title": "Sistema de Tickets de Soporte & SLA",
     "description": "Plataforma de mesa de ayuda y gestión de incidencias críticas con enrutamiento inteligente y monitoreo de acuerdos de servicio.",
     "imageUrl": "/assets/images/projects/tickets-soporte.webp",
-    "technologies": ["Angular 21", "Firebase", "Cloud Functions", "Firestore", "PWA"],
+    "technologies": [
+      "Angular 21",
+      "Firebase",
+      "Cloud Functions",
+      "Firestore",
+      "PWA"
+    ],
     "category": "Web",
     "status": "maintenance",
     "privacy": "internal",
@@ -74,7 +131,13 @@
     "title": "AzotoDev — Engineering Portfolio & Tech Radar",
     "description": "Plataforma personal y blog técnico con arquitectura SSG, zero-CLS, rendimiento 95+ en Lighthouse y diseño accesible.",
     "imageUrl": "/assets/images/projects/azotodev/home-white-theme.webp",
-    "technologies": ["Angular 21", "Signals", "Tailwind CSS 4.x", "TypeScript", "Vercel"],
+    "technologies": [
+      "Angular 21",
+      "Signals",
+      "Tailwind CSS 4.x",
+      "TypeScript",
+      "Vercel"
+    ],
     "category": "Web",
     "status": "completed",
     "privacy": "public",

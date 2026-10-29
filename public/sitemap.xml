@@ -54,6 +54,17 @@
     </image:image>
   </url>
   <url>
+    <loc>https://azotodev.com/projects/docs-ventasimple</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/docs-ventasimple/docs-cover.png</image:loc>
+      <image:title>Portada y arquitectura del portal de documentación Docs VentaSimple</image:title>
+      <image:caption>Portal centralizado de documentación técnica y base de conocimiento con búsqueda instantánea y soporte RAG</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://azotodev.com/projects/gestion-documental</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>monthly</changefreq>

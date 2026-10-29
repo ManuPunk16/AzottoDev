@@ -1,0 +1,124 @@
+{
+  "id": "docs-ventasimple",
+  "title": "Docs VentaSimple — Technical Documentation & AI Knowledge Base",
+  "subtitle": "Portal de documentación técnica estática, manuales operativos paso a paso y base de conocimiento optimizada para motores de búsqueda y modelos de lenguaje (LLMs / GEO / RAG).",
+  "description": "Portal de documentación técnica estática, manuales operativos paso a paso y base de conocimiento optimizada para motores de búsqueda y modelos de lenguaje (LLMs / GEO / RAG).",
+  "longDescription": "Docs VentaSimple es la plataforma centralizada de documentación técnica y base de conocimiento de VentaSimple. Diseñada con un doble propósito arquitectónico: instruir con precisión milimétrica a comerciantes independientes sobre operaciones complejas de punto de venta (prorrateo de costos en bultos cerrados, balanceo de centavos en cajas surtidas, desempacado con mermas e insumos, y auditorías ciegas de inventario) y proveer una fuente canónica estructurada en Markdown puro (llms.txt y llms-full.txt) optimizada para ingestión por agentes de inteligencia artificial y motores RAG (Retrieval-Augmented Generation). Desarrollada con Astro v5 y Starlight, entrega HTML puro estático con cero sobrecarga de JavaScript para lectura, tiempos de respuesta sub-250ms en Edge y métricas perfectas en Core Web Vitals.",
+  "imageUrl": "/assets/images/projects/docs-ventasimple/docs-cover.png",
+  "previewLabel": "Preview: Documentation Portal & Knowledge Hub",
+  "gallery": [
+    {
+      "url": "/assets/images/projects/docs-ventasimple/docs-cover.png",
+      "alt": "Portada y arquitectura del portal de documentación Docs VentaSimple",
+      "caption": "Portal centralizado de documentación técnica y base de conocimiento con búsqueda instantánea y soporte RAG",
+      "isMain": true
+    }
+  ],
+  "technologies": [
+    "Astro v5",
+    "Starlight",
+    "TypeScript",
+    "Tailwind CSS",
+    "Pagefind",
+    "MDX",
+    "Vercel Edge"
+  ],
+  "features": [
+    "Guía interactiva del Cotizador de Pasillo con casos de compra al mayoreo, fraccionamiento y cálculo de margen real",
+    "Manual de recepción de mercancía y balance estricto entre compras de contado y cuentas por pagar a proveedores",
+    "Metodología de auditorías ciegas y conteos físicos de inventario con conciliación automática de Kardex",
+    "Pipeline de compilación y validación estática de llms.txt y llms-full.txt para ingestión pura por LLMs",
+    "Búsqueda instantánea por teclado (/ o Ctrl+K) indexada por secciones mediante Pagefind sin llamadas de red externas",
+    "Diseño accesible adaptativo con modo oscuro nativo de alto contraste y cero CLS",
+    "Enlazado canónico cruzado y metadatos estructurados OpenGraph y Twitter Cards hacia la plataforma miventasimple.com",
+    "Arquitectura escalable de contenido mediante Content Collections de Astro con validación de esquemas Zod en TypeScript"
+  ],
+  "technicalModules": [
+    {
+      "name": "Adopción de Jamstack Estático con Astro v5 y Starlight",
+      "description": "Justificación de usar Astro v5 y Starlight sobre soluciones SPA o CMS pesados: entrega de HTML puro compilado (SSG) con cero hidratación innecesaria de JavaScript en cliente. Esta arquitectura garantiza una lectura fluida, instantánea y sin bloqueos de renderizado en dispositivos móviles comerciales conectados a redes celulares 3G/4G inestables en piso de venta."
+    },
+    {
+      "name": "Arquitectura Dual: Humano vs. Modelo de Lenguaje (GEO)",
+      "description": "Diseño de un canal de distribución dual donde una misma fuente canónica en MDX abastece la interfaz gráfica interactiva y, en simultáneo, compila una versión estricta y plana en llms-full.txt. El pipeline sanea etiquetas visuales JSX (<Steps>, <Aside>, <Tabs>, <Badge>) preservando semántica pura, tablas y encabezados Markdown para tokenización óptima en agentes RAG, GPTBot, ClaudeBot y Perplexity."
+    },
+    {
+      "name": "Modelado y Redacción de Procesos Contables Complejos",
+      "description": "Metodología editorial y de arquitectura de información aplicada para desglosar flujos matemáticos y operativos rigurosos (prorrateo de costos directos e indirectos en bultos cerrados, ponderación de insumos de empaque en producto a granel y ajuste de centavos por redondeo en multipacks surtidos) en guías comprensibles y aplicables en menos de 3 minutos de lectura."
+    },
+    {
+      "name": "Búsqueda Instantánea sin Sobrecarga Computacional",
+      "description": "Integración de Pagefind compilado estáticamente en el ciclo de build. Genera índices segmentados por chunks estáticos en el cliente, permitiendo consultas instantáneas de texto completo con resaltado de sintaxis y filtrado contextual sin enviar telemetría a terceros ni incurrir en costos operativos de bases de datos vectoriales dedicadas."
+    }
+  ],
+  "category": "Web",
+  "status": "completed",
+  "privacy": "public",
+  "featured": true,
+  "date": "2026-04-15",
+  "lastUpdated": "2026-04-20",
+  "demoUrl": "https://docs.miventasimple.com",
+  "repoUrl": "https://github.com/ManuPunk16/docs-miventasimple",
+  "role": "Arquitectura de Información, Ingeniería de Documentación & Implementación GEO (2025 – 2026)",
+  "impact": "100/100 Lighthouse • Cero JS innecesario • 100% Compatible llms.txt RAG",
+  "businessProblem": "Comerciantes y franquicias requerían resolver dudas operativas de alta complejidad matemática en mostrador sin depender de soporte manual, y los asistentes de IA necesitaban un contexto canónico limpio libre de ruido JSX.",
+  "team": {
+    "size": 1,
+    "role": "Principal Documentation Architect & Jamstack Specialist",
+    "duration": "Lanzamiento y mantenimiento activo"
+  },
+  "metrics": {
+    "performance": "100 / 100 Lighthouse",
+    "responseTime": "< 250 ms Edge TTFB",
+    "uptime": "100% Estático (SSG)",
+    "architecture": "Astro v5 + Starlight + LLMs.txt"
+  },
+  "keyMetrics": [
+    {
+      "label": "Lighthouse Score",
+      "value": "100 / 100"
+    },
+    {
+      "label": "Edge TTFB",
+      "value": "< 250 ms"
+    },
+    {
+      "label": "Protocolo IA",
+      "value": "llms.txt Ready"
+    },
+    {
+      "label": "Cobertura de Guías",
+      "value": "100% Flujos POS"
+    }
+  ],
+  "results": [
+    "Compilación 100% estática que elimina costos de cómputo en servidor y previene vulnerabilidades de inyección",
+    "Ingestión nativa en agentes conversacionales y asistentes RAG con llms-full.txt estructurado sin dependencias",
+    "Reducción sustancial de tickets de soporte técnico repetitivos gracias a guías operativas directas de mostrador",
+    "Indexación inmediata en Googlebot con validación de accesibilidad WCAG 2.1 AA y cero Cumulative Layout Shift"
+  ],
+  "challenges": [
+    "Sanitización automatizada de etiquetas MDX hacia Markdown plano estándar para cumplir con los requerimientos de tokenización de LLMs sin romper la compilación estática ni perder jerarquía documental.",
+    "Prevención de contenido duplicado y gestión de metadatos OpenGraph y Twitter Cards específicos por guía técnica para maximizar el CTR orgánico y la autoridad de dominio.",
+    "Arquitectura editorial orientada a microempresarios: estructuración de guías operativas que resuelven dudas financieras y operativas complejas en menos de 3 minutos de lectura."
+  ],
+  "learnings": [
+    "Aprovechamiento del modelo de contenido basado en esquemas Zod de Astro para garantizar tipado estricto en frontmatter.",
+    "Ingeniería de optimización GEO (Generative Engine Optimization) para asegurar que los motores de búsqueda semántica consuman contexto exacto.",
+    "Indexación distribuida en el cliente mediante Pagefind, demostrando que no se requiere infraestructura pesada para búsqueda de alto rendimiento."
+  ],
+  "hasScreenshots": true,
+  "isResponsive": true,
+  "hasDocumentation": true,
+  "tags": [
+    "Astro v5",
+    "Starlight",
+    "Jamstack",
+    "SSG",
+    "GEO",
+    "RAG",
+    "Technical Writing",
+    "Pagefind",
+    "TypeScript"
+  ]
+}
