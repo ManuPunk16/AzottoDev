@@ -66,30 +66,41 @@
 
           <!-- Value Proposition Description -->
           <p class="text-lg text-[var(--color-ink)] font-normal leading-relaxed max-w-2xl">
-            Especialista en frontends empresariales con <strong>Angular (12–21)</strong>, Signals y arquitecturas serverless. He liderado sistemas gubernamentales críticos con <strong>99.8% de disponibilidad</strong> y diseñado desde cero plataformas SaaS multi-tenant como <em>Venta Simple</em>.
+            <strong>Senior Full Stack Engineer, Tech Lead & AI Systems Integration</strong> con más de <strong>8 años de experiencia</strong>. Especialista en el ecosistema <strong>Angular (12–22)</strong>, Signals, PWA Local-First y arquitecturas serverless. Lidero la orquestación de <strong>Agentes de IA y modelos LLM (Gemini / OpenAI)</strong> junto a flujos con grafos de conocimiento para acelerar la entrega sin comprometer rigor de software.
           </p>
 
           <!-- Impact Metrics Grid -->
-          <div class="grid grid-cols-3 gap-4 py-4 px-5 rounded-[12px] bg-[var(--color-pearl)]/70 border border-[rgba(17,17,17,0.08)] max-w-2xl">
-            <div>
+          <div #heroKpis class="grid grid-cols-3 gap-4 py-4 px-5 rounded-[12px] bg-[var(--color-pearl)]/70 border border-[rgba(17,17,17,0.08)] max-w-2xl">
+            <div class="metric-box">
+              <p class="text-2xl sm:text-3xl font-black text-[var(--color-ink)]">8+ Años</p>
+              <p class="text-[11px] text-[var(--color-ash)] font-mono leading-tight mt-1">Trayectoria & Tech Leadership</p>
+            </div>
+            <div class="metric-box">
               <p class="text-2xl sm:text-3xl font-black text-[var(--color-ink)]">99.8%</p>
               <p class="text-[11px] text-[var(--color-ash)] font-mono leading-tight mt-1">Uptime en sistemas críticos</p>
             </div>
-            <div>
+            <div class="metric-box">
               <p class="text-2xl sm:text-3xl font-black text-[var(--color-ink)]">-40%</p>
-              <p class="text-[11px] text-[var(--color-ash)] font-mono leading-tight mt-1">Ciclos de procesamiento</p>
-            </div>
-            <div>
-              <p class="text-2xl sm:text-3xl font-black text-[var(--color-ink)]">120 hrs</p>
-              <p class="text-[11px] text-[var(--color-ash)] font-mono leading-tight mt-1">Ahorro operativo mensual</p>
+              <p class="text-[11px] text-[var(--color-ash)] font-mono leading-tight mt-1">Ciclos de entrega ágil</p>
             </div>
           </div>
 
+          <!-- Consulting & Independent Projects Highlight -->
+          <div #heroConsulting class="p-4 rounded-[12px] bg-[var(--color-canvas-white)] border border-[rgba(17,17,17,0.12)] max-w-2xl">
+            <div class="flex items-center gap-2 mb-1.5">
+              <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-[var(--color-ink)]">Consultoría & Proyectos Independientes</span>
+            </div>
+            <p class="text-sm text-[var(--color-ash)] leading-relaxed">
+              Disponible para <strong>desarrollo SaaS</strong> de alta escala, <strong>auditorías de rendimiento y SEO técnico (Core Web Vitals)</strong> y <strong>migraciones arquitectónicas modernas</strong> a Angular 19–22.
+            </p>
+          </div>
+
           <!-- Action Buttons (Optimized CTAs) -->
-          <div class="flex flex-col sm:flex-row flex-wrap gap-4 z-50 w-full sm:w-auto items-stretch sm:items-center">
+          <div #heroCtas class="flex flex-col sm:flex-row flex-wrap gap-4 z-50 w-full sm:w-auto items-stretch sm:items-center">
             <!-- Primary Filled Button -> Projects -->
             <a [routerLink]="['/projects']"
-              class="group px-7 py-3.5 bg-[var(--color-ink)] text-[var(--color-canvas-white)] rounded-[8px] font-semibold text-base text-center
+              class="hero-cta-btn group px-7 py-3.5 bg-[var(--color-ink)] text-[var(--color-canvas-white)] rounded-[8px] font-semibold text-base text-center
                      hover:opacity-90 transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-250 ease-in-out cursor-pointer inline-flex items-center justify-center">
               Ver Casos de Estudio
               <svg class="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
@@ -100,22 +111,22 @@
 
             <!-- Technical CV Button Group -->
             <a href="/cv/luis-hernandez-cv-es.pdf" target="_blank" rel="noopener noreferrer"
-              class="px-6 py-3.5 bg-[var(--color-pearl)] text-[var(--color-ink)] rounded-[8px] font-medium text-base text-center transition-all duration-250 ease-in-out hover:bg-[var(--color-pearl)]/85 border border-[rgba(17,17,17,0.12)] transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+              class="hero-cta-btn px-6 py-3.5 bg-[var(--color-pearl)] text-[var(--color-ink)] rounded-[8px] font-medium text-base text-center transition-all duration-250 ease-in-out hover:bg-[var(--color-pearl)]/85 border border-[rgba(17,17,17,0.12)] transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
               Descargar CV Técnico
             </a>
 
             <a href="https://www.linkedin.com/in/azotodev/" target="_blank" rel="noopener noreferrer"
-              class="px-5 py-3.5 text-[var(--color-ash)] hover:text-[var(--color-ink)] font-mono text-sm text-center transition-colors flex items-center justify-center gap-2">
+              class="hero-cta-btn px-5 py-3.5 text-[var(--color-ash)] hover:text-[var(--color-ink)] font-mono text-sm text-center transition-colors flex items-center justify-center gap-2">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               LinkedIn
             </a>
           </div>
 
           <!-- Social Links -->
-          <div class="flex items-center gap-6">
+          <div #heroSocials class="flex items-center gap-6">
             <span class="text-sm text-[var(--color-ash)]">Encuéntrame en:</span>
             @for (social of socialLinks; track social.name) {
-            <a [href]="social.url" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-[8px] bg-[var(--color-pearl)] border border-[rgba(17,17,17,0.08)]
+            <a [href]="social.url" target="_blank" rel="noopener noreferrer" class="hero-social-pill w-11 h-11 rounded-[8px] bg-[var(--color-pearl)] border border-[rgba(17,17,17,0.08)]
                        flex items-center justify-center transition-all duration-250 ease-in-out
                        hover:scale-105 hover:bg-[var(--color-cream-wash)] group" [attr.aria-label]="social.name">
 
@@ -160,72 +171,99 @@
           </div>
         </div>
 
-        <!-- Right Content - Code Terminal -->
-        <div class="relative mb-16 lg:mb-0 z-0" #animatedElement>
+        <!-- Right Content - Animated Interactive Terminal -->
+        <div class="relative mb-16 lg:mb-0 z-0">
           <div class="space-y-6">
 
             <!-- Terminal Window -->
-            <div class="bg-[var(--color-charcoal)] rounded-[12px] border border-white/10 overflow-hidden shadow-sm">
+            <div class="bg-[var(--color-charcoal)] rounded-[14px] border border-white/10 overflow-hidden shadow-2xl">
               <!-- Terminal Header -->
-              <div class="bg-[#1e1d1c] px-4 py-3 flex items-center border-b border-white/5">
-                <div class="flex space-x-2">
+              <div class="bg-[#1e1d1c] px-4 py-3 flex items-center justify-between border-b border-white/5">
+                <div class="flex items-center space-x-2">
                   <div class="w-3 h-3 bg-red-500 rounded-full"></div>
                   <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
                   <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div class="ml-2 text-xs text-[var(--color-ash)] font-mono">
+                    ~/luis-hernandez (zsh)
+                  </div>
                 </div>
-                <div class="ml-4 text-sm text-[var(--color-ash)] font-mono">
-                  ~/luis-hernandez
-                </div>
+
+                <!-- Interactive Replay Button -->
+                <button (click)="replayTerminalAnimation()"
+                  class="px-2.5 py-1 rounded-[6px] bg-white/5 hover:bg-white/15 text-neutral-300 hover:text-white text-xs font-mono flex items-center gap-1.5 transition-colors cursor-pointer border border-white/10"
+                  title="Reiniciar animación de la terminal"
+                  aria-label="Reiniciar terminal">
+                  <svg class="w-3.5 h-3.5" [class.animate-spin]="isTerminalReplaying" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  <span>Replay</span>
+                </button>
               </div>
 
               <!-- Terminal Content -->
-              <div class="p-6 font-mono text-sm text-[var(--color-canvas-white)]">
-                <div class="text-green-400">
-                  <span class="text-blue-400">$</span> whoami
-                </div>
-                <div class="text-[var(--color-canvas-white)] mb-2">Luis Hernández - Full Stack Developer</div>
-
-                <div class="text-green-400">
-                  <span class="text-blue-400">$</span> cat skills.json
-                </div>
-                <div class="text-gray-300 mb-2">
-                  <span class="text-yellow-400">{{ '{' }}</span><br>
-                  &nbsp;&nbsp;<span class="text-cyan-400">"frontend"</span>: <span class="text-orange-400">["Angular",
-                    "React", "TypeScript"]</span>,<br>
-                  &nbsp;&nbsp;<span class="text-cyan-400">"backend"</span>: <span class="text-orange-400">["Node.js",
-                    "MongoDB", "Express"]</span>,<br>
-                  &nbsp;&nbsp;<span class="text-cyan-400">"experience"</span>: <span class="text-orange-400">"5+
-                    years"</span><br>
-                  <span class="text-yellow-400">{{ '}' }}</span>
-                </div>
-
-                <div class="text-green-400">
-                  <span class="text-blue-400">$</span> git status
-                </div>
-                <div class="text-gray-300 mb-2">
-                  On branch <span class="text-green-400">main</span><br>
-                  Your branch is up to date with 'origin/main'.<br>
-                  <span class="text-green-400 font-mono">[OK]</span> Ready for new projects
-                </div>
-
-                <div class="text-green-400 flex">
+              <div class="p-6 font-mono text-xs sm:text-sm text-[var(--color-canvas-white)] min-h-[300px]">
+                
+                <!-- Command 1: whoami -->
+                <div class="text-green-400 flex items-center gap-1">
                   <span class="text-blue-400">$</span>
-                  <span class="ml-2 animate-pulse">|</span>
+                  <span class="text-green-400 font-semibold">{{ terminalCmd1 }}</span>
+                  @if (terminalActiveStep === 1) {
+                    <span class="inline-block w-2 h-4 bg-emerald-400 animate-pulse ml-0.5"></span>
+                  }
                 </div>
+                @if (terminalShowOutput1) {
+                  <div class="terminal-output text-[var(--color-canvas-white)] mb-3 pl-2 border-l-2 border-blue-500/50 mt-1">
+                    Luis Hernández — Senior Full Stack & AI Systems Lead
+                  </div>
+                }
+
+                <!-- Command 2: cat skills.json -->
+                @if (terminalActiveStep >= 2) {
+                  <div class="text-green-400 flex items-center gap-1">
+                    <span class="text-blue-400">$</span>
+                    <span class="text-green-400 font-semibold">{{ terminalCmd2 }}</span>
+                    @if (terminalActiveStep === 2) {
+                      <span class="inline-block w-2 h-4 bg-emerald-400 animate-pulse ml-0.5"></span>
+                    }
+                  </div>
+                }
+                @if (terminalShowOutput2) {
+                  <div class="terminal-output text-gray-300 mb-3 pl-2 border-l-2 border-yellow-500/50 mt-1">
+                    <span class="text-yellow-400">{{ '{' }}</span><br>
+                    &nbsp;&nbsp;<span class="text-cyan-400">"frontend"</span>: <span class="text-orange-400">["Angular 12-22", "Signals", "TypeScript 6"]</span>,<br>
+                    &nbsp;&nbsp;<span class="text-cyan-400">"backend_ai"</span>: <span class="text-orange-400">["Node.js 22", "MongoDB 8", "LLMs (Gemini/OpenAI)"]</span>,<br>
+                    &nbsp;&nbsp;<span class="text-cyan-400">"experience"</span>: <span class="text-orange-400">"8+ years"</span><br>
+                    <span class="text-yellow-400">{{ '}' }}</span>
+                  </div>
+                }
+
+                <!-- Command 3: git status -->
+                @if (terminalActiveStep >= 3) {
+                  <div class="text-green-400 flex items-center gap-1">
+                    <span class="text-blue-400">$</span>
+                    <span class="text-green-400 font-semibold">{{ terminalCmd3 }}</span>
+                    @if (terminalActiveStep === 3) {
+                      <span class="inline-block w-2 h-4 bg-emerald-400 animate-pulse ml-0.5"></span>
+                    }
+                  </div>
+                }
+                @if (terminalShowOutput3) {
+                  <div class="terminal-output text-gray-300 mb-3 pl-2 border-l-2 border-emerald-500/50 mt-1">
+                    On branch <span class="text-green-400 font-bold">main</span><br>
+                    Your branch is up to date with 'origin/main'.<br>
+                    <span class="text-green-400 font-bold">[OK]</span> Ready for new enterprise projects
+                  </div>
+
+                  <!-- Final Active Prompt -->
+                  <div class="text-green-400 flex items-center gap-1 mt-4">
+                    <span class="text-blue-400">$</span>
+                    <span class="terminal-cursor text-emerald-400 font-black animate-pulse">▊</span>
+                  </div>
+                }
+
               </div>
             </div>
 
-            <!-- Quick Stats Cards (Light Feature style, no shadows, 1px borders) -->
-            <div class="grid grid-cols-2 gap-4">
-              @for (stat of stats; track stat.label) {
-              <div
-                class="bg-[var(--color-canvas-white)] border border-[rgba(17,17,17,0.08)] rounded-[12px] p-4 text-center">
-                <div class="text-2xl font-bold text-[var(--color-ink)] mb-1 leading-none tracking-[-0.4px]">{{
-                  stat.value }}</div>
-                <div class="text-[10px] eyebrow-text text-[var(--color-ash)]">{{ stat.label }}</div>
-              </div>
-              }
-            </div>
           </div>
         </div>
       </div>
@@ -240,162 +278,167 @@
     </div>
   </section>
 
-  <!-- Skills Matrix Section (Canvas White background, flat pastel taxonomy) -->
-  <section class="py-24 bg-[var(--color-canvas-white)] border-b border-[rgba(17,17,17,0.08)]" id="skills"
-    #animatedElement>
+  <!-- Skills & Technologies Bento Grid (WCAG AA/AAA High Contrast) -->
+  <section class="py-24 bg-[var(--color-canvas-white)] border-b border-[rgba(17,17,17,0.08)]" id="skills">
     <div class="container mx-auto px-6 max-w-[1200px]">
 
       <!-- Section Header -->
-      <div class="text-center mb-16">
-        <h2 class="title-lg text-[var(--color-ink)] mb-6">
-          Stack Tecnológico
+      <div class="text-center mb-16" appAnimateOnScroll [animationType]="'fade-up'">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-[9999px] bg-[var(--color-pearl)] border border-[rgba(17,17,17,0.08)] mb-4">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span class="text-[11px] font-mono uppercase tracking-wider font-semibold text-[var(--color-ink)]">Ecosistema Técnico de Alto Rendimiento</span>
+        </div>
+        <h2 class="title-lg text-[var(--color-ink)] mb-4">
+          Tecnologías por Dominio de Arquitectura
         </h2>
-        <p class="text-xl text-[var(--color-ash)] font-normal max-w-3xl mx-auto">
-          Dominio completo del ecosistema moderno de desarrollo web,
-          desde interfaces hasta infraestructura en la nube.
+        <p class="text-lg md:text-xl text-[var(--color-ash)] font-normal max-w-3xl mx-auto">
+          Dominio técnico de producción categorizado con contraste optimizado, métricas de observabilidad y componentes listos para escala enterprise.
         </p>
       </div>
 
-      <!-- Interactive Skills Grid: Solid pastel cards, no shadows, no borders -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+      <!-- Bento Grid por Dominio -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8" appAnimateOnScroll [animationType]="'stagger-cards'" [staggerSelector]="'.bento-card'">
 
-        <!-- Frontend Skills (Soft Violet background) -->
-        <div
-          class="bg-[var(--color-soft-violet)] rounded-[12px] p-8 transition-transform duration-250 ease-in-out hover:scale-[1.01]">
-          <div class="flex items-center mb-8">
-            <div
-              class="w-11 h-11 bg-[var(--color-canvas-white)] rounded-[8px] flex items-center justify-center border border-[rgba(17,17,17,0.06)]">
-              <svg class="w-5 h-5 text-[var(--color-ink)]" fill="none" stroke="currentColor" stroke-width="2"
-                viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-              </svg>
-            </div>
-            <h3 class="title-subheading text-[var(--color-ink)] font-normal ml-4">Frontend</h3>
-          </div>
-
-          @for (skill of frontendSkills; track skill.name) {
-          <div class="mb-6">
-            <div class="flex justify-between items-center mb-2">
-              <span class="text-base font-normal text-[var(--color-ink)]">{{ skill.name }}</span>
-              <span class="text-sm font-normal text-[var(--color-ash)]">{{ skill.level }}%</span>
-            </div>
-            <div class="w-full bg-[var(--color-canvas-white)]/60 rounded-full h-1">
-              <div class="bg-[var(--color-ink)] h-1 rounded-full transition-all duration-1000"
-                [style.width.%]="animatedSkills ? skill.level : 0">
+        <!-- 1. Frontend & Local-First -->
+        <div class="bento-card flex flex-col justify-between p-6 sm:p-7 rounded-[16px] bg-[#f8f7f5] border border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+          <div>
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-neutral-200">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-100 border border-purple-200 flex items-center justify-center text-purple-700 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-neutral-900 leading-tight">Frontend & Local-First</h3>
+                  <span class="text-[11px] font-mono text-neutral-600">Reactive Kernels & PWA</span>
+                </div>
               </div>
+              <span class="px-2.5 py-1 rounded-[6px] bg-purple-200/80 text-purple-900 text-[10px] font-mono font-bold shrink-0">5 Core</span>
+            </div>
+
+            <!-- List of high contrast tech pills (Two-line clear layout, zero truncation) -->
+            <div class="space-y-3">
+              @for (tech of frontendTechs; track tech.name) {
+              <div class="flex items-center gap-3.5 p-3 rounded-[10px] bg-white border border-neutral-250 hover:border-neutral-400 hover:shadow-xs transition-all">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 bg-neutral-100 border border-neutral-200">
+                  <svg [attr.viewBox]="tech.svgViewBox" class="w-5 h-5" [style.fill]="tech.color">
+                    <path [attr.d]="tech.svgPath"></path>
+                  </svg>
+                </div>
+                <div class="flex flex-col min-w-0 flex-1">
+                  <span class="text-sm font-bold text-neutral-900 leading-snug">{{ tech.name }}</span>
+                  <span class="text-xs text-neutral-600 font-mono mt-0.5">{{ tech.badge }}</span>
+                </div>
+              </div>
+              }
             </div>
           </div>
-          }
+
+          <div class="mt-6 pt-4 border-t border-neutral-200 text-[11px] font-mono text-neutral-600 flex items-center justify-between">
+            <span>Signals · OnPush · Dexie</span>
+            <span class="font-bold text-neutral-800">Lighthouse 98+</span>
+          </div>
         </div>
 
-        <!-- Backend Skills (Mint Green background) -->
-        <div
-          class="bg-[var(--color-mint-green)] rounded-[12px] p-8 transition-transform duration-250 ease-in-out hover:scale-[1.01]">
-          <div class="flex items-center mb-8">
-            <div
-              class="w-11 h-11 bg-[var(--color-canvas-white)] rounded-[8px] flex items-center justify-center border border-[rgba(17,17,17,0.06)]">
-              <svg class="w-5 h-5 text-[var(--color-ink)]" fill="none" stroke="currentColor" stroke-width="2"
-                viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                <line x1="10" y1="6" x2="18" y2="6"></line>
-                <line x1="10" y1="18" x2="18" y2="18"></line>
-              </svg>
+        <!-- 2. Backend & Cloud Infrastructure -->
+        <div class="bento-card flex flex-col justify-between p-6 sm:p-7 rounded-[16px] bg-[#f8f7f5] border border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+          <div>
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-neutral-200">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                    <line x1="10" y1="6" x2="18" y2="6"></line>
+                    <line x1="10" y1="18" x2="18" y2="18"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-neutral-900 leading-tight">Backend & Cloud</h3>
+                  <span class="text-[11px] font-mono text-neutral-600">Serverless & High Uptime</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-[6px] bg-emerald-200/80 text-emerald-900 text-[10px] font-mono font-bold shrink-0">4 Core</span>
             </div>
-            <h3 class="title-subheading text-[var(--color-ink)] font-normal ml-4">Backend</h3>
+
+            <!-- List of high contrast tech pills (Two-line clear layout, zero truncation) -->
+            <div class="space-y-3">
+              @for (tech of backendTechs; track tech.name) {
+              <div class="flex items-center gap-3.5 p-3 rounded-[10px] bg-white border border-neutral-250 hover:border-neutral-400 hover:shadow-xs transition-all">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 bg-neutral-100 border border-neutral-200">
+                  <svg [attr.viewBox]="tech.svgViewBox" class="w-5 h-5" [style.fill]="tech.color">
+                    <path [attr.d]="tech.svgPath"></path>
+                  </svg>
+                </div>
+                <div class="flex flex-col min-w-0 flex-1">
+                  <span class="text-sm font-bold text-neutral-900 leading-snug">{{ tech.name }}</span>
+                  <span class="text-xs text-neutral-600 font-mono mt-0.5">{{ tech.badge }}</span>
+                </div>
+              </div>
+              }
+            </div>
           </div>
 
-          @for (skill of backendSkills; track skill.name) {
-          <div class="mb-6">
-            <div class="flex justify-between items-center mb-2">
-              <span class="text-base font-normal text-[var(--color-ink)]">{{ skill.name }}</span>
-              <span class="text-sm font-normal text-[var(--color-ash)]">{{ skill.level }}%</span>
-            </div>
-            <div class="w-full bg-[var(--color-canvas-white)]/60 rounded-full h-1">
-              <div class="bg-[var(--color-ink)] h-1 rounded-full transition-all duration-1000"
-                [style.width.%]="animatedSkills ? skill.level : 0">
-              </div>
-            </div>
+          <div class="mt-6 pt-4 border-t border-neutral-200 text-[11px] font-mono text-neutral-600 flex items-center justify-between">
+            <span>REST · JWT · Mongo Atlas</span>
+            <span class="font-bold text-neutral-800">99.8% Uptime</span>
           </div>
-          }
         </div>
 
-        <!-- Tools & DevOps (Canary Yellow background) -->
-        <div
-          class="bg-[var(--color-canary-yellow)] rounded-[12px] p-8 transition-transform duration-250 ease-in-out hover:scale-[1.01]">
-          <div class="flex items-center mb-8">
-            <div
-              class="w-11 h-11 bg-[var(--color-canvas-white)] rounded-[8px] flex items-center justify-center border border-[rgba(17,17,17,0.06)]">
-              <svg class="w-5 h-5 text-[var(--color-ink)]" fill="none" stroke="currentColor" stroke-width="2"
-                viewBox="0 0 24 24">
-                <path
-                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
-                </path>
-              </svg>
+        <!-- 3. AI Engineering & DevOps -->
+        <div class="bento-card flex flex-col justify-between p-6 sm:p-7 rounded-[16px] bg-[#f8f7f5] border border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+          <div>
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-neutral-200">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-100 border border-amber-200 flex items-center justify-center text-amber-700 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M12 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 14a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm-8-7a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm16 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM6.5 10.5l3.8-2.6M6.5 13.5l3.8 2.6m7.4-2.6l-3.8 2.6m3.8-5.6l-3.8-2.6"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-neutral-900 leading-tight">AI Engineering & DevOps</h3>
+                  <span class="text-[11px] font-mono text-neutral-600">LLMs & CI/CD Pipelines</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-[6px] bg-amber-200/80 text-amber-900 text-[10px] font-mono font-bold shrink-0">4 Core</span>
             </div>
-            <h3 class="title-subheading text-[var(--color-ink)] font-normal ml-4">DevOps & Tools</h3>
+
+            <!-- List of high contrast tech pills (Two-line clear layout, zero truncation) -->
+            <div class="space-y-3">
+              @for (tech of aiDevOpsTechs; track tech.name) {
+              <div class="flex items-center gap-3.5 p-3 rounded-[10px] bg-white border border-neutral-250 hover:border-neutral-400 hover:shadow-xs transition-all">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 bg-neutral-100 border border-neutral-200">
+                  <svg [attr.viewBox]="tech.svgViewBox" class="w-5 h-5" [style.fill]="tech.color">
+                    <path [attr.d]="tech.svgPath"></path>
+                  </svg>
+                </div>
+                <div class="flex flex-col min-w-0 flex-1">
+                  <span class="text-sm font-bold text-neutral-900 leading-snug">{{ tech.name }}</span>
+                  <span class="text-xs text-neutral-600 font-mono mt-0.5">{{ tech.badge }}</span>
+                </div>
+              </div>
+              }
+            </div>
           </div>
 
-          @for (skill of toolsSkills; track skill.name) {
-          <div class="mb-6">
-            <div class="flex justify-between items-center mb-2">
-              <span class="text-base font-normal text-[var(--color-ink)]">{{ skill.name }}</span>
-              <span class="text-sm font-normal text-[var(--color-ash)]">{{ skill.level }}%</span>
-            </div>
-            <div class="w-full bg-[var(--color-canvas-white)]/60 rounded-full h-1">
-              <div class="bg-[var(--color-ink)] h-1 rounded-full transition-all duration-1000"
-                [style.width.%]="animatedSkills ? skill.level : 0">
-              </div>
-            </div>
+          <div class="mt-6 pt-4 border-t border-neutral-200 text-[11px] font-mono text-neutral-600 flex items-center justify-between">
+            <span>Gemini · OpenAI · Graph Workflows</span>
+            <span class="font-bold text-neutral-800">40% Más Rápido</span>
           </div>
-          }
         </div>
+
       </div>
 
-      <!-- Technology Icons Cloud -->
-      <div class="relative mt-20">
-        <h3 class="title-sm text-center text-[var(--color-ink)] font-medium mb-10">
-          Tecnologías que domino
-        </h3>
-
-        <div class="flex flex-wrap justify-center gap-5">
-          @for (tech of allTechnologies; track tech.name) {
-          <div class="group relative" (mouseenter)="showTechTooltip(tech, $event)" (mouseleave)="hideTechTooltip()">
-
-            <div class="w-16 h-16 rounded-[12px] transition-all duration-250 ease-in-out 
-                       transform hover:scale-110 cursor-pointer flex items-center justify-center
-                       bg-[var(--color-cream-wash)] border border-[rgba(17,17,17,0.08)] hover:bg-[var(--color-pearl)]"
-              [style.border-color]="tech.color + '40'">
-
-              <svg [attr.viewBox]="tech.viewBox || '0 0 24 24'"
-                class="w-8 h-8 filter grayscale hover:grayscale-0 transition-all duration-300"
-                [style.fill]="tech.color">
-                <path [attr.d]="tech.path"></path>
-              </svg>
-            </div>
-
-            <!-- Tooltip -->
-            <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 
-                       px-3 py-1.5 bg-[var(--color-ink)] text-[var(--color-canvas-white)] text-xs rounded-[8px] opacity-0 
-                       group-hover:opacity-100 transition-opacity duration-250 
-                       pointer-events-none whitespace-nowrap z-10 font-medium">
-              {{ tech.name }}
-              <div class="absolute top-full left-1/2 transform -translate-x-1/2 
-                           border-4 border-transparent border-t-[var(--color-ink)]"></div>
-            </div>
-          </div>
-          }
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- About Me Section (Dark Section Panel - Charcoal background, white text) -->
-  <section class="py-24 dark-section-panel" id="about" #animatedElement>
+  <section class="py-24 dark-section-panel" id="about" appAnimateOnScroll [animationType]="'fade-up'">
     <div class="container mx-auto px-6 max-w-[1200px]">
       <div class="max-w-6xl mx-auto">
 
@@ -405,14 +448,14 @@
             Sobre mí
           </h2>
           <p class="text-xl max-w-3xl mx-auto text-[var(--color-ash)]">
-            Desarrollador apasionado por crear soluciones digitales que impacten positivamente a las personas
+            Senior Full Stack Engineer, Tech Lead & AI Systems Integration enfocado en impacto técnico medible y alta disponibilidad
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" appAnimateOnScroll [animationType]="'stagger-cards'" [staggerSelector]="'.about-card'">
 
           <!-- Left Content - Personal Story -->
-          <div class="space-y-6">
+          <div class="about-card space-y-6">
             <div class="bg-[var(--color-charcoal)] border border-white/10 rounded-[12px] p-8">
               <div class="flex items-center mb-6">
                 <div class="w-11 h-11 bg-white/10 rounded-[8px] flex items-center justify-center mr-4">
@@ -426,28 +469,22 @@
 
               <div class="space-y-4 text-[var(--color-ash)] leading-relaxed">
                 <p>
-                  Soy <strong>Luis Hernández</strong>, un desarrollador Full Stack con más de 5 años de experiencia
-                  creando soluciones digitales innovadoras. Mi pasión por la tecnología comenzó desde joven,
-                  y he dedicado mi carrera a perfeccionar mis habilidades en el desarrollo web moderno.
+                  Soy <strong>Luis Hernández</strong>, <strong>Senior Full Stack Engineer, Tech Lead & AI Systems Integration</strong> con más de <strong>8 años de experiencia</strong> diseñando y modernizando plataformas web críticas, soluciones SaaS multi-tenant y arquitecturas enterprise de alto tráfico.
                 </p>
 
                 <p>
-                  Mi experiencia en el <strong>sector gubernamental</strong> me ha enseñado la importancia de crear
-                  aplicaciones accesibles, seguras y escalables que realmente sirvan a las personas. He liderado
-                  proyectos de transformación digital que han impactado a miles de usuarios.
+                  En mi trayectoria he liderado sistemas clave en la <strong>Consejería Jurídica del Estado de Campeche</strong> con <strong>99.8% de disponibilidad</strong>, ahorrando más de 120 horas de trabajo mensual operativo y acelerando los ciclos de entrega técnica en un 40%.
                 </p>
 
                 <p>
-                  Actualmente me especializo en <strong>Angular</strong> y tecnologías modernas del ecosistema
-                  JavaScript,
-                  siempre manteniéndome actualizado con las últimas tendencias y mejores prácticas del desarrollo web.
+                  Especialista de punta en <strong>Angular (12–22)</strong> (Signals, OnPush, componentes standalone, PWA Local-First con Web Workers) e integración avanzada de <strong>modelos de lenguaje (Gemini / OpenAI) y orquestación de agentes</strong> respaldados por grafos de conocimiento de código para entregar software libre de regresiones.
                 </p>
               </div>
             </div>
           </div>
 
           <!-- Right Content - Stats & Achievements -->
-          <div class="space-y-6">
+          <div class="about-card space-y-6">
 
             <!-- Professional Values -->
             <div class="bg-[var(--color-charcoal)] border border-white/10 rounded-[12px] p-8">
@@ -477,7 +514,7 @@
         </div>
 
         <!-- Personal Interests (frosted dark card style) -->
-        <div class="mt-16 bg-white/5 rounded-[12px] p-8 border border-white/10">
+        <div appAnimateOnScroll [animationType]="'fade-up'" class="mt-16 bg-white/5 rounded-[12px] p-8 border border-white/10">
           <div class="text-center mb-8">
             <h3 class="title-subheading font-medium mb-3">
               Más allá del código
@@ -500,74 +537,87 @@
     </div>
   </section>
 
-  <!-- Contact Section (Soft Cream Wash background, pastel card coding layout) -->
-  <section class="py-24 bg-[var(--color-cream-wash)]" id="contact" #animatedElement>
+  <!-- Contact Section: Command Card Oscura de Alto Impacto (WCAG AAA) -->
+  <section class="py-24 bg-[#141416] text-white border-t border-white/10" id="contact" appAnimateOnScroll [animationType]="'fade-up'">
     <div class="container mx-auto px-6 max-w-[1200px]">
-      <div class="max-w-4xl mx-auto">
-
-        <!-- Section Header -->
-        <div class="text-center mb-16">
-          <h3 class="title-lg text-[var(--color-ink)] mb-6">
-            ¿Listo para colaborar?
-          </h3>
-          <p class="text-xl text-[var(--color-ash)] font-normal">
-            Estoy disponible para proyectos freelance y oportunidades full-time
+      <div class="max-w-4xl mx-auto bg-[#1c1c1e] rounded-[20px] border border-neutral-800 p-8 sm:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        
+        <!-- Header & Live Status Badge -->
+        <div class="text-center space-y-4 mb-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Disponible para Consultoría, Arquitectura SaaS y Proyectos Independientes
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
+            ¿Listo para construir el siguiente nivel?
+          </h2>
+          <p class="text-base sm:text-lg text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+            Hablemos sobre tu plataforma. Especializado en desarrollo Full Stack (Angular 22 / Node.js / MongoDB 8), auditorías de rendimiento/SEO técnico y aceleración con agentes de IA.
           </p>
         </div>
 
-        <!-- Contact Methods Grid using Pastel Taxonomy Solid Colors (no shadows, no borders) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          @for (contact of contactMethods; track contact.type) {
-          <div
-            class="flex items-center p-6 rounded-[12px] transition-all duration-250 ease-in-out transform hover:scale-[1.02] cursor-pointer"
-            [style.background-color]="contact.type === 'email' ? 'var(--color-petal-pink)' : 
-                                         contact.type === 'whatsapp' ? 'var(--color-mint-green)' : 
-                                         contact.type === 'telegram' ? 'var(--color-soft-violet)' : 
-                                         'var(--color-canary-yellow)'" (click)="openContact(contact)">
+        <!-- Primary Action Area -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+          <a href="mailto:azzotto@icloud.com"
+            class="w-full sm:w-auto px-8 py-4 bg-white text-neutral-950 hover:bg-neutral-100 font-bold text-base rounded-[10px] transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2.5 shadow-lg">
+            <svg class="w-5 h-5 text-neutral-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            Enviar Correo / Cotizar Proyecto
+          </a>
 
-            <div
-              class="w-14 h-14 rounded-[8px] bg-[var(--color-canvas-white)] flex items-center justify-center mr-6 flex-shrink-0">
-              <!-- Email Icon -->
-              @if (contact.type === 'email') {
-              <svg class="w-7 h-7 text-[var(--color-ink)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-              </svg>
-              }
+          <button (click)="copyEmail()"
+            class="w-full sm:w-auto px-6 py-4 bg-neutral-900 text-neutral-200 hover:text-white hover:bg-neutral-800 border border-neutral-700 rounded-[10px] font-mono text-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+            {{ copySuccess ? '¡Email Copiado al Portapapeles!' : 'Copiar: azzotto@icloud.com' }}
+          </button>
+        </div>
 
-              <!-- WhatsApp Icon -->
-              @if (contact.type === 'whatsapp') {
-              <svg class="w-7 h-7 text-[var(--color-ink)]" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
-              </svg>
-              }
-
-              <!-- Telegram Icon -->
-              @if (contact.type === 'telegram') {
-              <svg class="w-7 h-7 text-[var(--color-ink)]" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-              </svg>
-              }
-
-              <!-- LinkedIn Icon -->
-              @if (contact.type === 'linkedin') {
-              <svg class="w-7 h-7 text-[var(--color-ink)]" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-              }
+        <!-- Interactive Direct Channels Grid -->
+        <div appAnimateOnScroll [animationType]="'stagger-cards'" [staggerSelector]="'.contact-card'" class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-neutral-800">
+          
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/azotodev/" target="_blank" rel="noopener noreferrer"
+            class="contact-card p-4 rounded-[12px] bg-neutral-900/80 hover:bg-neutral-800/80 border border-neutral-800 hover:border-[#0A66C2]/60 transition-all duration-200 flex items-center gap-3.5 group">
+            <div class="w-10 h-10 rounded-lg bg-[#0A66C2]/15 border border-[#0A66C2]/30 flex items-center justify-center text-[#0A66C2] group-hover:scale-105 transition-transform">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-[var(--color-ink)] leading-none mb-1">{{ contact.label }}</h3>
-              <p class="text-[var(--color-ink)] font-normal text-sm opacity-80">{{ contact.value }}</p>
-              <span class="text-[10px] eyebrow-text text-[var(--color-ink)] block mt-2 opacity-60">{{ contact.action
-                }}</span>
+              <span class="text-xs font-mono text-neutral-400 block">Red Profesional</span>
+              <span class="text-sm font-bold text-white group-hover:text-blue-400 transition-colors">LinkedIn</span>
             </div>
-          </div>
-          }
+          </a>
+
+          <!-- GitHub -->
+          <a href="https://github.com/ManuPunk16" target="_blank" rel="noopener noreferrer"
+            class="contact-card p-4 rounded-[12px] bg-neutral-900/80 hover:bg-neutral-800/80 border border-neutral-800 hover:border-neutral-500 transition-all duration-200 flex items-center gap-3.5 group">
+            <div class="w-10 h-10 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-white group-hover:scale-105 transition-transform">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <span class="text-xs font-mono text-neutral-400 block">Código & Repos</span>
+              <span class="text-sm font-bold text-white group-hover:text-neutral-200 transition-colors">GitHub</span>
+            </div>
+          </a>
+
+          <!-- Descargar CV -->
+          <a href="/cv/luis-hernandez-cv-es.pdf" target="_blank" rel="noopener noreferrer"
+            class="contact-card p-4 rounded-[12px] bg-neutral-900/80 hover:bg-neutral-800/80 border border-neutral-800 hover:border-emerald-500/50 transition-all duration-200 flex items-center gap-3.5 group">
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-xs font-mono text-neutral-400 block">RenderCV Canónico</span>
+              <span class="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">Descargar CV</span>
+            </div>
+          </a>
+
         </div>
+
       </div>
     </div>
   </section>

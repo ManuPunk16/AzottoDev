@@ -12,6 +12,7 @@ import {
 } from '@angular/animations';
 import { MetadataService } from './services/metadata.service';
 import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.component";
+import { AnimateOnScrollDirective } from './directives/animate-on-scroll.directive';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
@@ -39,7 +40,8 @@ interface Stat {
     MarkdownModule,
     DatePipe,
     CommonModule,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    AnimateOnScrollDirective
   ],
   animations: [
     trigger('fadeInOut', [
@@ -102,13 +104,13 @@ export class AppComponent implements OnInit, OnDestroy {
     { label: 'Proyectos', value: '15+' },
     { label: 'Commits', value: '2,500+' },
     { label: 'Líneas de Código', value: '50K+' },
-    { label: 'Años de Experiencia', value: '6+' },
+    { label: 'Años de Experiencia', value: '8+' },
   ] as const;
 
   // Información del portfolio
   readonly portfolioInfo = {
-    version: '2.1.0',
-    angularVersion: '20.1',
+    version: '2.2.0',
+    angularVersion: '22',
     author: 'Luis Hernández (AzotoDev)',
     email: 'azzotto@icloud.com',
     github: 'https://github.com/ManuPunk16',

@@ -39,7 +39,7 @@
 
         <!-- 1. FEATURED HERO PROJECT: VentaSimple (Ancho Completo, 2 Columnas) -->
         @if (featuredProject) {
-          <section class="dark-card-contrast relative bg-neutral-950 text-white rounded-[16px] border border-neutral-800 p-6 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.4)] overflow-hidden transition-all duration-300 hover:border-emerald-500/50">
+          <section appAnimateOnScroll [animationType]="'fade-up'" class="dark-card-contrast relative bg-neutral-950 text-white rounded-[16px] border border-neutral-800 p-6 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.4)] overflow-hidden transition-all duration-300 hover:border-emerald-500/50">
             <!-- Subtle Radial Gradient Background Glow -->
             <div class="absolute -top-32 -right-32 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -203,7 +203,7 @@
         </div>
 
         <!-- 2. GRID BALANCEADO DE PROYECTOS (2 Columnas) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div appAnimateOnScroll [animationType]="'stagger-cards'" [staggerSelector]="'article'" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           @for (project of gridProjects; track project.id) {
             <article class="dark-card-contrast flex flex-col bg-neutral-950 border border-neutral-800 hover:border-emerald-500/50 rounded-[14px] overflow-hidden transition-all duration-300 hover:shadow-[0_12px_36px_rgba(0,0,0,0.5)] text-white group">
               

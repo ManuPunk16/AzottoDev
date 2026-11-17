@@ -5,7 +5,7 @@
   <!-- Pagina principal -->
   <url>
     <loc>https://azotodev.com</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,20 +13,46 @@
   <!-- Paginas principales -->
   <url>
     <loc>https://azotodev.com/projects</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://azotodev.com/articles</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Proyectos individuales con imagenes -->
   
+  <url>
+    <loc>https://azotodev.com/projects/venta-simple</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/dashboard-desktop.webp</image:loc>
+      <image:title>VentaSimple - Dashboard Operativo Desktop</image:title>
+      <image:caption>Panel de control principal de punto de venta e inventario en tiempo real</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/dashboard-mobile.webp</image:loc>
+      <image:title>VentaSimple - Interfaz Mobile-First</image:title>
+      <image:caption>Terminal de ventas optimizada para dispositivos moviles y smartphones</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/reportes-metricas.webp</image:loc>
+      <image:title>VentaSimple - Modulo de Metricas y Analitica</image:title>
+      <image:caption>Panel analitico con balances, margenes comerciales y estado de flujo de caja</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/arquitectura-pos.svg</image:loc>
+      <image:title>VentaSimple - Arquitectura Tecnica de Sistema</image:title>
+      <image:caption>Diagrama de arquitectura multi-tenant cloud-native con Angular y Node.js</image:caption>
+    </image:image>
+  </url>
   <url>
     <loc>https://azotodev.com/projects/sovereign</loc>
     <lastmod>2026-10-29</lastmod>
@@ -64,47 +90,10 @@
     </image:image>
   </url>
   <url>
-    <loc>https://azotodev.com/projects/venta-simple</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/dashboard-desktop.webp</image:loc>
-      <image:title>VentaSimple - Dashboard Operativo Desktop</image:title>
-      <image:caption>Panel de control principal de punto de venta e inventario en tiempo real</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/dashboard-mobile.webp</image:loc>
-      <image:title>VentaSimple - Interfaz Mobile-First</image:title>
-      <image:caption>Terminal de ventas optimizada para dispositivos moviles y smartphones</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/reportes-metricas.webp</image:loc>
-      <image:title>VentaSimple - Modulo de Metricas y Analitica</image:title>
-      <image:caption>Panel analitico con balances, margenes comerciales y estado de flujo de caja</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://azotodev.com/assets/images/projects/ventasimple/arquitectura-pos.svg</image:loc>
-      <image:title>VentaSimple - Arquitectura Tecnica de Sistema</image:title>
-      <image:caption>Diagrama de arquitectura multi-tenant cloud-native con Angular y Node.js</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://azotodev.com/projects/docs-ventasimple</loc>
-    <lastmod>2026-10-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://azotodev.com/assets/images/projects/docs-ventasimple/docs-cover.png</image:loc>
-      <image:title>Portada y arquitectura del portal de documentación Docs VentaSimple</image:title>
-      <image:caption>Portal centralizado de documentación técnica y base de conocimiento con búsqueda instantánea y soporte RAG</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://azotodev.com/projects/gestion-documental</loc>
-    <lastmod>2023-01-09</lastmod>
+    <lastmod>2023-02-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://azotodev.com/assets/images/projects/documental-workflow.webp</image:loc>
       <image:title>Sistema de flujos de trabajo configurables</image:title>

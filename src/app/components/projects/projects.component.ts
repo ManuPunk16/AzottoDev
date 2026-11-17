@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { Project } from '../../models/project.model';
+import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
 
 @Component({
   selector: 'app-projects',
-  imports: [CommonModule, DatePipe, RouterLink],
+  imports: [CommonModule, DatePipe, RouterLink, AnimateOnScrollDirective],
   standalone: true,
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
@@ -22,7 +23,8 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   toggleTechDetails(projectId: string): void {
@@ -38,16 +40,20 @@ export class ProjectsComponent implements OnInit {
   }
 
   loadProjects(): void {
+    this.loading = true;
+    this.error = false;
     this.http.get<Project[]>('/assets/projects.json').subscribe({
       next: (data) => {
         this.projects = data;
         this.categorizeProjects();
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: (err) => {
         console.error('Error cargando proyectos', err);
         this.error = true;
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }

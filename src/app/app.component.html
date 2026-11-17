@@ -122,7 +122,7 @@
     <router-outlet />
   </main>
 
-  <footer class="bg-[var(--footer-bg)] text-[var(--footer-text)]
+  <footer appAnimateOnScroll [animationType]="'fade-up'" class="bg-[var(--footer-bg)] text-[var(--footer-text)]
                 min-h-[25rem] h-auto py-12
                 border-t border-white/10
                 dark-section-panel">
@@ -131,16 +131,16 @@
                 flex flex-col justify-between">
 
       <!-- Main Footer Content -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 flex-1 min-h-[12.5rem]">
+      <div appAnimateOnScroll [animationType]="'stagger-cards'" [staggerSelector]="'.footer-col'" class="grid grid-cols-1 md:grid-cols-3 gap-8 flex-1 min-h-[12.5rem]">
 
         <!-- Brand Section -->
-        <div class="min-h-[9.375rem] space-y-6">
+        <div class="footer-col min-h-[9.375rem] space-y-6">
           <div>
             <div class="mb-4 bg-white px-4 py-2.5 rounded-[12px] inline-block border border-white/10">
               <img src="assets/images/brands/logo-full.png" alt="AzotoDev Logo" class="h-10 w-auto object-contain">
             </div>
             <p class="text-[var(--footer-text-secondary)] leading-relaxed max-w-sm">
-              Tech Lead y Arquitecto Full Stack con más de 6 años liderando modernización de software crítico, plataformas SaaS y frontend enterprise con Angular.
+              Tech Lead y Arquitecto Full Stack con más de 8 años liderando modernización de software crítico, plataformas SaaS y frontend enterprise con Angular 12–22.
             </p>
           </div>
 
@@ -187,7 +187,7 @@
         </div>
 
         <!-- Quick Links -->
-        <div class="min-h-[9.375rem]">
+        <div class="footer-col min-h-[9.375rem]">
           <h4 class="text-lg font-semibold text-[var(--footer-text)] mb-6
                      relative before:content-[''] before:absolute before:bottom-0
                      before:left-0 before:w-8 before:h-0.5
@@ -214,7 +214,7 @@
         </div>
 
         <!-- Portfolio Stats -->
-        <div class="min-h-[11.25rem]">
+        <div class="footer-col min-h-[11.25rem]">
           <h4 class="text-lg font-semibold text-[var(--footer-text)] mb-6
                      relative before:content-[''] before:absolute before:bottom-0
                      before:left-0 before:w-8 before:h-0.5

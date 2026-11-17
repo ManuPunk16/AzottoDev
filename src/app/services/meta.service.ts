@@ -94,8 +94,8 @@ export class MetaService {
   generateHomeMeta(): MetaConfig {
     return {
       title: 'Luis Adrián Hernández Soto | Senior Full Stack Engineer & Tech Lead — Angular & Serverless',
-      description: 'Portfolio y casos de estudio de Luis Adrián Hernández Soto. Senior Full Stack Engineer y Tech Lead especialista en Angular 21, Signals, arquitecturas serverless, 99.8% uptime y SaaS multi-tenant.',
-      keywords: 'Luis Hernández, AzotoDev, Senior Full Stack Engineer, Tech Lead, Angular 21, Signals, TypeScript, Tailwind CSS, Vercel, Firebase',
+      description: 'Portfolio y casos de estudio de Luis Adrián Hernández Soto. Senior Full Stack Engineer y Tech Lead especialista en Angular 22, Signals, arquitecturas serverless, 99.8% uptime y SaaS multi-tenant.',
+      keywords: 'Luis Hernández, AzotoDev, Senior Full Stack Engineer, Tech Lead, Angular 22, Signals, TypeScript, Tailwind CSS, Vercel, Firebase',
       ogImage: `${this.baseUrl}/assets/images/og-home.webp`,
       canonical: this.baseUrl
     };

@@ -1,9 +1,11 @@
 import { NgClass, DatePipe } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren, OnDestroy, ViewChild, Inject, PLATFORM_ID, inject, ChangeDetectorRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren, OnDestroy, ViewChild, Inject, PLATFORM_ID, inject, ChangeDetectorRef, afterNextRender } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { MetaService } from '../../services/meta.service';
+import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
+import { animate, stagger } from 'animejs';
 
 // Interfaces
 interface Particle {
@@ -18,9 +20,20 @@ interface Skill {
   level: number;
 }
 
-interface TechIcon {
+export interface TechItem {
   name: string;
-  icon: string;
+  category: 'frontend' | 'backend' | 'ai-devops';
+  color: string;
+  badge?: string;
+  svgViewBox: string;
+  svgPath: string;
+  svgPaths?: string[];
+  secondaryColor?: string;
+}
+
+export interface TechIcon {
+  name: string;
+  icon?: string;
   color: string;
   viewBox?: string;
   path: string;
@@ -88,7 +101,8 @@ interface PersonalInterest {
   selector: 'app-home',
   standalone: true,
   imports: [
-    RouterLink
+    RouterLink,
+    AnimateOnScrollDirective
 ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
@@ -97,20 +111,35 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren('animatedElement') animatedElements!: QueryList<ElementRef>;
   @ViewChild('typewriterText') typewriterText!: ElementRef;
   @ViewChild('heroSection') heroSection!: ElementRef;
+  @ViewChild('heroKpis') heroKpis!: ElementRef;
+  @ViewChild('heroConsulting') heroConsulting!: ElementRef;
+  @ViewChild('heroCtas') heroCtas!: ElementRef;
+  @ViewChild('heroSocials') heroSocials!: ElementRef;
 
   // Animation properties
   particles: Particle[] = [];
   logoParticles: Particle[] = [];
   animatedSkills = false;
   devText = '<dev/>';
+
+  // Interactive Live Terminal State
+  terminalCmd1 = 'whoami';
+  terminalCmd2 = 'cat skills.json';
+  terminalCmd3 = 'git status';
+  terminalShowOutput1 = true;
+  terminalShowOutput2 = true;
+  terminalShowOutput3 = true;
+  terminalActiveStep = 3;
+  isTerminalReplaying = false;
+  private terminalTimeouts: any[] = [];
   
   // Typewriter properties mejoradas
   private typewriterRoles = [
-    'Senior Full Stack Engineer',
-    'Tech Lead & Architect',
-    'Angular (Signals & Zoneless) Specialist',
-    'Cloud & Serverless Architect',
-    'SaaS Co-Founder'
+    'Senior Full Stack Engineer & Tech Lead',
+    'AI Systems Integration & Agent Orchestration',
+    'Angular (12–22) Signals & Zoneless Expert',
+    'Local-First & Multi-tenant SaaS Architect',
+    'Technical SEO & Performance Consultant'
   ];
   private currentRoleIndex = 0;
   private typewriterInterval?: any;
@@ -118,43 +147,118 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private currentText = '';
 
   // Skills data
-  frontendSkills: Skill[] = [
-    { name: 'Angular', level: 95 },
-    { name: 'React', level: 85 },
-    { name: 'Vue.js', level: 80 },
-    { name: 'TypeScript', level: 90 },
-    { name: 'JavaScript', level: 88 },
-    { name: 'HTML5/CSS3', level: 92 },
-    { name: 'Tailwind CSS', level: 85 },
-    { name: 'Bootstrap', level: 82 },
-    { name: 'SASS/SCSS', level: 82 },
-    { name: 'Webpack', level: 75 }
+  // Bento Grid Categorized High-Contrast Technologies
+  frontendTechs: TechItem[] = [
+    {
+      name: 'Angular 12–22',
+      category: 'frontend',
+      color: '#DD0031',
+      badge: 'Signals & OnPush',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M9.93 12.645h4.134L11.996 7.74 M11.996.009L.686 3.988l1.725 14.76 9.585 5.243 9.588-5.238L23.308 3.99 11.996.01zm7.058 18.297h-2.636l-1.42-3.501H8.995l-1.42 3.501H4.937l7.06-15.648 7.057 15.648z'
+    },
+    {
+      name: 'TypeScript 6',
+      category: 'frontend',
+      color: '#3178C6',
+      badge: 'Strict Typings & AST',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z'
+    },
+    {
+      name: 'Tailwind CSS 4',
+      category: 'frontend',
+      color: '#06B6D4',
+      badge: 'Modern Utility & JIT',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zM6.001 12c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 18.418 9.027 19.8 12.001 19.8c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C14.337 13.982 12.976 12.6 10.001 12.6z'
+    },
+    {
+      name: 'Astro 7 & Starlight',
+      category: 'frontend',
+      color: '#BC52EE',
+      badge: 'SSG, GEO & llms.txt',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M8.358 20.162c-1.187-.565-1.928-1.48-1.928-2.693 0-1.26.79-2.227 2.062-2.732 1.258-.5 2.946-.667 4.935-.667h1.493v-1.077c0-1.424-.879-2.18-2.438-2.18-.946 0-1.867.284-2.589.799-.214.153-.51.107-.663-.106l-1.026-1.43c-.143-.2-.097-.48.102-.633 1.15-.883 2.673-1.393 4.356-1.393 3.167 0 5.158 1.626 5.158 4.475v7.247c0 .324.262.586.586.586h.478c.324 0 .586.262.586.586v1.365c0 .324-.262.586-.586.586h-2.14a.586.586 0 0 1-.586-.586v-.884c-.88 1.002-2.296 1.678-4.103 1.678-1.218 0-2.316-.328-3.14-.946zm6.562-3.834v-.567h-1.38c-2.38 0-4.004.536-4.004 2.016 0 .937.697 1.558 1.848 1.558 1.83 0 3.536-1.282 3.536-3.007z'
+    },
+    {
+      name: 'PWA & Web Workers',
+      category: 'frontend',
+      color: '#5A0FC8',
+      badge: 'Zero-Cloud & Dexie',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'
+    }
   ];
 
-  backendSkills: Skill[] = [
-    { name: 'Node.js', level: 85 },
-    { name: 'Express.js', level: 80 },
-    { name: 'NestJS', level: 75 },
-    { name: 'Python', level: 70 },
-    { name: 'Java', level: 60 },
-    { name: 'Spring Boot', level: 55 },
-    { name: 'MongoDB', level: 82 },
-    { name: 'PostgreSQL', level: 78 },
-    { name: 'MySQL', level: 78 },
-    { name: 'REST APIs', level: 88 },
-    { name: 'Microservices', level: 65 }
+  backendTechs: TechItem[] = [
+    {
+      name: 'Node.js 22',
+      category: 'backend',
+      color: '#339933',
+      badge: 'Micro-APIs & Streaming',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z'
+    },
+    {
+      name: 'MongoDB 8 + Atlas',
+      category: 'backend',
+      color: '#47A248',
+      badge: 'Sub-300ms & Sharding',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05A73.49 73.49 0 0111.91 24h.481c.114-1.032.284-2.056.51-3.07.417-.296.604-.463.85-.693a11.342 11.342 0 003.639-8.464c.01-.814-.103-1.662-.197-2.218zm-5.336 8.195s0-8.291.275-8.29c.213 0 .49 10.695.49 10.695-.381-.045-.765-1.76-.765-2.405z'
+    },
+    {
+      name: 'Firebase & Cloud Functions',
+      category: 'backend',
+      color: '#FFCA28',
+      badge: 'Realtime & Serverless',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M3.89 15.672L6.255.461A.542.542 0 0 1 7.27.284l3.543 6.643zm16.79 3.513l-1.905-11.75a.548.548 0 0 0-.936-.264L3.284 21.688l8.136 4.567a1.2 1.2 0 0 0 1.16 0zM12.915 8.528l2.25-4.307a.542.542 0 0 1 .98.053l3.655 14.862z'
+    },
+    {
+      name: 'Express & REST APIs',
+      category: 'backend',
+      color: '#111111',
+      badge: 'JWT & Robust Middlewares',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M24 18.588a1.529 1.529 0 01-1.895-.72l-3.45-4.771-.5-.667-4.003 5.444a1.466 1.466 0 01-1.802.708l5.158-6.92-4.798-6.251a1.595 1.595 0 011.9.666l3.576 4.83 3.596-4.81a1.435 1.435 0 011.788-.668L21.708 7.9l-2.522 3.283a.666.666 0 000 .994l4.804 6.412zM.002 11.576l.42-2.075c1.154-4.103 5.858-5.81 9.094-3.27 1.895 1.489 2.368 3.597 2.275 5.973H1.116C.943 16.447 4.005 19.009 7.92 17.7a4.078 4.078 0 002.582-2.876c.207-.666.548-.78 1.174-.588a5.417 5.417 0 01-2.589 3.957 6.272 6.272 0 01-7.306-.933 6.575 6.575 0 01-1.64-3.858c0-.235-.08-.455-.134-.666A88.33 88.33 0 010 11.577zm1.127-.286h9.654c-.06-3.076-2.001-5.258-4.59-5.278-2.882-.04-4.944 2.094-5.071 5.264z'
+    }
   ];
 
-  toolsSkills: Skill[] = [
-    { name: 'Git/GitHub', level: 90 },
-    { name: 'Windows Server', level: 75 },
-    { name: 'Google Cloud', level: 65 },
-    { name: 'Firebase', level: 80 },
-    { name: 'Linux', level: 75 },
-    { name: 'VS Code', level: 81 },
-    { name: 'Postman', level: 68 },
-    { name: 'Trello', level: 62 },
-    { name: 'GitHub Actions', level: 75 }
+  aiDevOpsTechs: TechItem[] = [
+    {
+      name: 'AI Agents & LLMs',
+      category: 'ai-devops',
+      color: '#10A37F',
+      badge: 'Gemini, OpenAI & RAG',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.259 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7466-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1683a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4947zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1683a.0757.0757 0 0 1-.071 0l-4.8303-2.7866A4.4992 4.4992 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.6667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1635a.0804.0804 0 0 1-.038-.0567V6.0748a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4598a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z'
+    },
+    {
+      name: 'Knowledge Graphs & Workflows',
+      category: 'ai-devops',
+      color: '#3B82F6',
+      badge: 'AST-Assisted Delivery',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M12 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 14a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm-8-7a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm16 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM6.5 10.5l3.8-2.6M6.5 13.5l3.8 2.6m7.4-2.6l-3.8 2.6m3.8-5.6l-3.8-2.6'
+    },
+    {
+      name: 'Git, GitHub Actions & CI/CD',
+      category: 'ai-devops',
+      color: '#F05032',
+      badge: 'Automated Pipelines',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187'
+    },
+    {
+      name: 'Windows Server & Vercel',
+      category: 'ai-devops',
+      color: '#0078D7',
+      badge: 'Hybrid Cloud & IIS',
+      svgViewBox: '0 0 24 24',
+      svgPath: 'M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801'
+    }
   ];
 
   // Tech icons with floating animation
@@ -391,18 +495,17 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Stats
   stats: Stat[] = [
-    { label: 'Proyectos', value: '10+' },
-    { label: 'Experiencia', value: '5+ años' },
-    // { label: 'Clientes', value: '15+' },
-    { label: 'Commits', value: '1,200+' }
+    { label: 'Años Exp.', value: '8+' },
+    { label: 'Ecosistema', value: 'Angular 12-22' },
+    { label: 'Uptime Crítico', value: '99.8%' }
   ];
 
   // Portfolio stats
   portfolioStats: Stat[] = [
-    { label: 'Proyectos Completados', value: '10+' },
-    { label: 'Líneas de Código', value: '20K+' },
-    { label: 'Commits', value: '1,200+' },
-    { label: 'Horas de Desarrollo', value: '5,000+' }
+    { label: 'Años de Experiencia', value: '8+' },
+    { label: 'Ecosistema Angular', value: '12–22' },
+    { label: 'Uptime Producción', value: '99.8%' },
+    { label: 'Score Lighthouse', value: '98+' }
   ];
 
   // Quick links
@@ -414,8 +517,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
 
   // Portfolio metadata
-  portfolioVersion = '2.1.0';
-  angularVersion = '20.0';
+  portfolioVersion = '2.2.0';
+  angularVersion = '22';
   lastUpdate = new Date();
   currentYear = new Date().getFullYear();
 
@@ -423,31 +526,31 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   professionalAchievements: Achievement[] = [
     {
       title: 'Años de Experiencia',
-      value: '5+',
-      description: 'En desarrollo web profesional',
+      value: '8+',
+      description: 'Liderando arquitectura y frontend moderno',
       icon: 'fas fa-calendar-alt',
       color: '#3B82F6'
     },
     {
-      title: 'Proyectos Completados',
-      value: '50+',
-      description: 'Aplicaciones web exitosas',
-      icon: 'fas fa-project-diagram',
-      color: '#10B981'
+      title: 'Ecosistema Angular',
+      value: '12–22',
+      description: 'Signals, OnPush y Zoneless',
+      icon: 'fas fa-shield-alt',
+      color: '#DD0031'
     },
     {
-      title: 'Usuarios Impactados',
-      value: '10k+',
-      description: 'A través de mis aplicaciones',
+      title: 'Ahorro Operativo',
+      value: '~120 hrs/m',
+      description: 'Automatización y sistemas de alta escala',
       icon: 'fas fa-users',
       color: '#8B5CF6'
     },
     {
-      title: 'Tecnologías Dominadas',
-      value: '15+',
-      description: 'Frameworks y herramientas',
-      icon: 'fas fa-cogs',
-      color: '#F59E0B'
+      title: 'Performance & SEO',
+      value: '98+',
+      description: 'Lighthouse y Core Web Vitals auditados',
+      icon: 'fas fa-bolt',
+      color: '#10B981'
     }
   ];
 
@@ -485,8 +588,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private metaService: MetaService,
+    private cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  ) {
+    afterNextRender(() => {
+      this.initHeroAnimations();
+      this.initTerminalLiveSequence();
+    });
+  }
 
   ngOnInit(): void {
     this.metaService.updateMeta(this.metaService.generateHomeMeta());
@@ -511,6 +620,161 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.typewriterInterval) {
       clearInterval(this.typewriterInterval);
     }
+    this.clearTerminalTimeouts();
+  }
+
+  private clearTerminalTimeouts(): void {
+    this.terminalTimeouts.forEach(t => clearTimeout(t));
+    this.terminalTimeouts = [];
+  }
+
+  private initHeroAnimations(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    // Collect elements to choreograph: KPIs, Consulting card, CTA buttons, Social pills
+    const targets: HTMLElement[] = [];
+    if (this.heroKpis?.nativeElement) targets.push(this.heroKpis.nativeElement);
+    if (this.heroConsulting?.nativeElement) targets.push(this.heroConsulting.nativeElement);
+    if (this.heroCtas?.nativeElement) {
+      const ctas = this.heroCtas.nativeElement.querySelectorAll('.hero-cta-btn');
+      ctas.forEach((btn: any) => targets.push(btn));
+    }
+    if (this.heroSocials?.nativeElement) {
+      const pills = this.heroSocials.nativeElement.querySelectorAll('.hero-social-pill');
+      pills.forEach((pill: any) => targets.push(pill));
+    }
+
+    if (targets.length > 0) {
+      targets.forEach(t => {
+        t.style.opacity = '0';
+        t.style.transform = 'translateY(20px)';
+      });
+
+      animate(targets, {
+        opacity: [0, 1],
+        translateY: [20, 0],
+        delay: stagger(90, { start: 200 }),
+        duration: 700,
+        ease: 'outQuad',
+        onComplete: () => {
+          targets.forEach(t => {
+            t.style.opacity = '1';
+            t.style.transform = 'none';
+          });
+        }
+      });
+    }
+  }
+
+  // Interactive Live Terminal Sequence
+  initTerminalLiveSequence(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      this.terminalCmd1 = 'whoami';
+      this.terminalCmd2 = 'cat skills.json';
+      this.terminalCmd3 = 'git status';
+      this.terminalShowOutput1 = true;
+      this.terminalShowOutput2 = true;
+      this.terminalShowOutput3 = true;
+      this.terminalActiveStep = 3;
+      return;
+    }
+
+    this.runTerminalSequence();
+  }
+
+  replayTerminalAnimation(): void {
+    if (!isPlatformBrowser(this.platformId) || this.isTerminalReplaying) return;
+    this.isTerminalReplaying = true;
+    this.clearTerminalTimeouts();
+    this.runTerminalSequence(() => {
+      this.isTerminalReplaying = false;
+      this.cdr.detectChanges();
+    });
+  }
+
+  private runTerminalSequence(onDone?: () => void): void {
+    this.terminalCmd1 = '';
+    this.terminalCmd2 = '';
+    this.terminalCmd3 = '';
+    this.terminalShowOutput1 = false;
+    this.terminalShowOutput2 = false;
+    this.terminalShowOutput3 = false;
+    this.terminalActiveStep = 1;
+    this.cdr.detectChanges();
+
+    const cmd1Full = 'whoami';
+    const cmd2Full = 'cat skills.json';
+    const cmd3Full = 'git status';
+
+    // Step 1: Type whoami
+    let delay = 350;
+    for (let i = 1; i <= cmd1Full.length; i++) {
+      this.terminalTimeouts.push(
+        setTimeout(() => {
+          this.terminalCmd1 = cmd1Full.slice(0, i);
+          this.cdr.detectChanges();
+        }, delay)
+      );
+      delay += 80;
+    }
+
+    // Step 1 Output
+    delay += 250;
+    this.terminalTimeouts.push(
+      setTimeout(() => {
+        this.terminalShowOutput1 = true;
+        this.terminalActiveStep = 2;
+        this.cdr.detectChanges();
+      }, delay)
+    );
+
+    // Step 2: Type cat skills.json
+    delay += 400;
+    for (let i = 1; i <= cmd2Full.length; i++) {
+      this.terminalTimeouts.push(
+        setTimeout(() => {
+          this.terminalCmd2 = cmd2Full.slice(0, i);
+          this.cdr.detectChanges();
+        }, delay)
+      );
+      delay += 60;
+    }
+
+    // Step 2 Output
+    delay += 250;
+    this.terminalTimeouts.push(
+      setTimeout(() => {
+        this.terminalShowOutput2 = true;
+        this.terminalActiveStep = 3;
+        this.cdr.detectChanges();
+      }, delay)
+    );
+
+    // Step 3: Type git status
+    delay += 400;
+    for (let i = 1; i <= cmd3Full.length; i++) {
+      this.terminalTimeouts.push(
+        setTimeout(() => {
+          this.terminalCmd3 = cmd3Full.slice(0, i);
+          this.cdr.detectChanges();
+        }, delay)
+      );
+      delay += 70;
+    }
+
+    // Step 3 Output
+    delay += 250;
+    this.terminalTimeouts.push(
+      setTimeout(() => {
+        this.terminalShowOutput3 = true;
+        this.cdr.detectChanges();
+        if (onDone) onDone();
+      }, delay)
+    );
   }
 
   // Generate random particles
@@ -612,10 +876,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  scheduleCall(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      window.open('https://calendly.com/azotodev', '_blank');
-    }
+  copySuccess = false;
+  private copyTimeout?: any;
+
+  copyEmail(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    navigator.clipboard.writeText('azzotto@icloud.com').then(() => {
+      this.copySuccess = true;
+      if (this.copyTimeout) clearTimeout(this.copyTimeout);
+      this.copyTimeout = setTimeout(() => {
+        this.copySuccess = false;
+      }, 3000);
+    });
   }
 
   showTechInfo(tech: TechIcon): void {
