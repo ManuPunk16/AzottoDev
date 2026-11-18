@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
@@ -78,6 +78,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private metadataService: MetadataService,
     private sanitizer: DomSanitizer,
+    private cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -108,6 +109,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
     this.error = false;
     this.article = null;
     this.codeBlocksProcessed = false;
+    this.cdr.markForCheck();
   }
 
   private scrollToTop() {
@@ -119,6 +121,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
   private loadArticle(slug: string) {
     this.loading = true;
     this.error = false;
+    this.cdr.markForCheck();
 
     // Cargar artículo específico
     this.http.get<ArticleData>(`/assets/articles/${slug}.json`).pipe(
@@ -149,6 +152,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
           
           this.metadataService.updateArticleMetadata(articleForSEO);
           this.loading = false;
+          this.cdr.markForCheck();
           
           // Procesar código después de un delay
           setTimeout(() => {
@@ -159,6 +163,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
       error: () => {
         this.error = true;
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }

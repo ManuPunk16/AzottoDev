@@ -1,4 +1,4 @@
-import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { DatePipe, isPlatformBrowser } from '@angular/common';
@@ -38,6 +38,7 @@ export class ArticleListComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private metaService: MetaService,
+    private cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -68,11 +69,13 @@ export class ArticleListComponent implements OnInit {
         this.articles = mappedArticles;
         this.featuredArticles = mappedArticles.filter(article => article.featured);
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: (err) => {
         console.error('Error cargando artículos', err);
         this.error = true;
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }

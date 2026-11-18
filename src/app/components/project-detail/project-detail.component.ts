@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
@@ -32,6 +32,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private metadataService: MetadataService,
     private metaService: MetaService,
+    private cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -67,6 +68,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     this.relatedProjects = [];
     this.isGalleryOpen = false;
     this.currentGalleryIndex = 0;
+    this.cdr.markForCheck();
   }
 
   private scrollToTop() {
@@ -78,6 +80,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   private loadProject(id: string) {
     this.loading = true;
     this.error = false;
+    this.cdr.markForCheck();
 
     this.http.get<Project>(`/assets/projects/${id}.json`).pipe(
       takeUntil(this.destroy$)
@@ -87,10 +90,12 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         this.metadataService.updateProjectMetadata(project);
         this.loadRelatedProjects();
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: () => {
         this.error = true;
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }
@@ -105,6 +110,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         this.relatedProjects = projects
           .filter(p => p.id !== this.project?.id)
           .slice(0, 3);
+        this.cdr.markForCheck();
       },
       error: (err) => console.warn('Error cargando proyectos relacionados:', err)
     });
